@@ -1,10 +1,13 @@
 <?php
 
-class Index{
+class Index extends Controller {
 
     function __construct()
     {
-        echo "we are in index controller!<br>";
+//        echo "we are in index controller!<br>";
+    }
+    function index(){
+        $this->View('index/index');
     }
 
     function sayhello(){
@@ -16,9 +19,8 @@ class Index{
         echo $age.'<br>';
     }
 
+
 }
-
-
 
 
 ?>
