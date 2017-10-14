@@ -1,5 +1,5 @@
 <?php
-define('URL','/digiprojectmvc/');
+define('URL','http://localhost/digiprojectmvc/');
 
 
 

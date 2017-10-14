@@ -13,6 +13,7 @@ class App{
             unset($url[0]);
             if (isset($url[1])){
                 $this -> method = $url[1];
+//                echo 'method :'.$this->method;
                 unset($url[1]);
             }
             $this -> params = array_values($url);
@@ -30,7 +31,8 @@ class App{
 
     }
     function parsUrl($url){
-        filter_var($url,FILTER_SANITIZE_URL);
+        $url = filter_var($url,FILTER_SANITIZE_URL);
+        $url = rtrim($url,'/');
         $url = explode('/',$_GET['url']);
         return $url;
     }
