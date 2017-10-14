@@ -2180,14 +2180,14 @@
         var liLength = sliderScrollUl.find('li').length;
         var liWidth = parseInt(sliderScrollUl.find('li').outerWidth());
         var ulWidthSize = (liLength) * (liWidth);
-        var maxMargin = (liLength - 3) * liWidth;
+        var maxMargin = (liLength - 4) * liWidth;
         var marginRight = parseFloat(sliderScrollUl.css('margin-right'));
         sliderScrollUl.css("width", ulWidthSize);
 
         if(direction == 'left'){
             marginRight=marginRight-liWidth;
             if((-marginRight) > maxMargin){
-                marginRight = (-maxMargin)-80;
+                marginRight = (-maxMargin)-70;
             }
         }
         if(direction == 'right'){

@@ -33,7 +33,7 @@ class App{
     function parsUrl($url){
         $url = filter_var($url,FILTER_SANITIZE_URL);
         $url = rtrim($url,'/');
-        $url = explode('/',$_GET['url']);
+        $url = explode('/',$url);
         return $url;
     }
 
