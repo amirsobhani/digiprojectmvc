@@ -182,7 +182,6 @@
                 require ('Newest.php');
                 require ('BestSelling.php');
             ?>
-
         </div><!--Left Part-->
     </div><!---Content--->
 </div>
