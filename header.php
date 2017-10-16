@@ -191,7 +191,7 @@
         border: solid #A2A2A2 1px;
         font-family: iran-sans;
     }
-    .fa-search{
+    .header-search-box .fa-search{
         float: right;
         width: 42px;
         height: 35px;
@@ -338,7 +338,7 @@
                 <span id="cart-text">سبد خرید</span>
                 <span id="cart-count">0</span>
             </div>
-            <div>
+            <div class="header-search-box">
                 <input type="text" placeholder="  محصول، دسته یا برند مورد نظرتان را جستجو کنید. . .">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </div>

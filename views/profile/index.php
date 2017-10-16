@@ -45,10 +45,10 @@
         }
         @font-face{
             font-family: iran-sans;
-            src: url(font/IRANSansLight.ttf),
-            url(font/IRANSansLight.woff),
-            url(font/IRANSansMedium.ttf),
-            url(font/IRANSansMedium.woff);
+            src: url(public/font/IRANSansLight.ttf),
+            url(public/font/IRANSansLight.woff),
+            url(public/font/IRANSansMedium.ttf),
+            url(public/font/IRANSansMedium.woff);
         }
         a{
             text-decoration: none;
@@ -67,8 +67,150 @@
             overflow: hidden;
         }
     </style>
+<style>
+    .tracking-order-table tr td{
+        padding: 15px 0!important;
+        width: 33%;
+    }
+    .order-track tr:last-child td{
+        padding: 0;
+    }
+    .order-route{
+        text-align: center;
+        display: inline-block;
+        margin-bottom: 50px;
+    }
+    .order-route::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .order-route div.approved span{
+        background: #2396f3;
+    }
+    .dashed{
+        float: right;
+        margin-top: 20px;
+    }
 
-
+    .order-route ul li i{
+        position: absolute;
+        right: -21px;
+        top: -5px;
+        color: #FFFFFF;
+        z-index: 2;
+    }
+    .order-route ul li.approved{
+        background: #2396f3;
+        padding-left: 80px;
+        height: 2px;
+        display: inline-block;
+        position: relative;
+        margin-left: 30px;
+    }
+    .approved .state-circle{
+        border: 3px solid #2396f3!important;
+        background: #2396f3;
+    }
+    .approved .state-title{
+        color: #2396f3;
+    }
+    .order-route .state-title{
+        position: absolute;
+        right: -45px;
+        top: 30px;
+    }
+    .order-route .state-circle{
+        display: inline-block;
+        direction: rtl;
+        width: 18px;
+        height: 18px;
+        border-radius: 100%;
+        border: 3px solid #bec2cc;
+        position: absolute;
+        top: -10px;
+        right: -27px;
+    }
+    .order-route ul li{
+        padding-left: 80px;
+        height: 2px;
+        background: #dee1e7;
+        display: inline-block;
+        position: relative;
+        margin-left: 30px;
+    }
+    .order-route ul li:last-child{
+        margin-left: 0;
+    }
+    .order-route ul{
+        float: right;
+        margin: 20px 35px 0 10px;
+    }
+    .order-route .dashed span{
+        display: inline-block;
+        width: 11px;
+        height: 2px;
+        background: #ccc;
+    }
+    .rotate{
+        transform: rotate(180deg);
+        transition-duration: 0.4s;
+    }
+</style><!---order-track--->
+<style>
+    .order{
+        width: 97%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .order > thead{
+        background: #eee;
+    }
+    .order>thead>td{
+        border: 1px solid #e1e1e1;
+        line-height: 22px;
+        font-size: 12px;
+        text-align: center;
+        padding: 10px 0;
+        color: #6b6b6b;
+        background: #f8f9fb;
+    }
+    .order tr td{
+        border: 1px solid #e1e1e1;
+        line-height: 22px;
+        font-size: 12px;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .more-order-detail{
+        color: #6b6b6b;
+        cursor: pointer;
+    }
+    .more-order-detail i{
+        position: relative;
+        top: 9px;
+    }
+    .button a{
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #e2e2e2;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .sub-order{
+        margin:50px;
+    }
+    .sub-order h3{
+        text-align: right;
+        margin: 10px 0;
+    }
+    .sub-order table{
+        width: 100%;
+    }
+    .sub-order table thead{
+        background-color: #ebecee!important;
+    }
+</style><!----Order--->
 <style>
     #content{
         width: 1190px;
@@ -77,7 +219,7 @@
         padding: 10px 0 100px 0;
     }
     #main{
-        background-image: url(img/1503990105pattern42.png);
+        background-image: url(public/img/1503990105pattern42.png);
         background-color: rgb(238,239,241);
         width: 100%;
         height: auto;
@@ -319,60 +461,6 @@
                 </div>
             </header>
             <article id="tab">
-                <style>
-                    .order{
-                        width: 97%;
-                        margin: 0 auto;
-                        margin-bottom: 20px;
-                    }
-                    .order > thead{
-                        background: #eee;
-                    }
-                    .order>thead>td{
-                        border: 1px solid #e1e1e1;
-                        line-height: 22px;
-                        font-size: 12px;
-                        text-align: center;
-                        padding: 10px 0;
-                        color: #6b6b6b;
-                        background: #f8f9fb;
-                    }
-                    .order tr td{
-                        border: 1px solid #e1e1e1;
-                        line-height: 22px;
-                        font-size: 12px;
-                        text-align: center;
-                        padding: 10px 0;
-                    }
-                    .more-order-detail{
-                        color: #6b6b6b;
-                        cursor: pointer;
-                    }
-                    .more-order-detail i{
-                        position: relative;
-                        top: 9px;
-                    }
-                    .button a{
-                        display: inline-block;
-                        padding: 5px 10px;
-                        border: 1px solid #e2e2e2;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    }
-                    .sub-order{
-                        margin:50px;
-                    }
-                    .sub-order h3{
-                        text-align: right;
-                        margin: 10px 0;
-                    }
-                    .sub-order table{
-                        width: 100%;
-                    }
-                    .sub-order table thead{
-                        background-color: #ebecee!important;
-                    }
-                </style>
                 <?php
                     require ('ItemTab1.php');
                     require ('ItemTab2.php');
@@ -381,102 +469,13 @@
                 ?>
             </article>
         </section>
-        <style>
-            .tracking-order-table tr td{
-                padding: 15px 0!important;
-                width: 33%;
-            }
-            .order-track tr:last-child td{
-                padding: 0;
-            }
-            .order-route{
-                text-align: center;
-                display: inline-block;
-                margin-bottom: 50px;
-            }
-            .order-route::after{
-                content: "";
-                display: block;
-                clear: both;
-            }
-            .order-route div.approved span{
-                background: #2396f3;
-            }
-            .dashed{
-                float: right;
-                margin-top: 20px;
-            }
 
-            .order-route ul li i{
-                position: absolute;
-                right: -21px;
-                top: -5px;
-                color: #FFFFFF;
-                z-index: 2;
-            }
-            .order-route ul li.approved{
-                background: #2396f3;
-                padding-left: 80px;
-                height: 2px;
-                display: inline-block;
-                position: relative;
-                margin-left: 30px;
-            }
-            .approved .state-circle{
-                border: 3px solid #2396f3!important;
-                background: #2396f3;
-            }
-            .approved .state-title{
-                color: #2396f3;
-            }
-            .order-route .state-title{
-                position: absolute;
-                right: -45px;
-                top: 30px;
-            }
-            .order-route .state-circle{
-                display: inline-block;
-                direction: rtl;
-                width: 18px;
-                height: 18px;
-                border-radius: 100%;
-                border: 3px solid #bec2cc;
-                position: absolute;
-                top: -10px;
-                right: -27px;
-            }
-            .order-route ul li{
-                padding-left: 80px;
-                height: 2px;
-                background: #dee1e7;
-                display: inline-block;
-                position: relative;
-                margin-left: 30px;
-            }
-            .order-route ul li:last-child{
-                margin-left: 0;
-            }
-            .order-route ul{
-                float: right;
-                margin: 20px 35px 0 10px;
-            }
-            .order-route .dashed span{
-                display: inline-block;
-                width: 11px;
-                height: 2px;
-                background: #ccc;
-            }
-            .rotate{
-                transform: rotate(180deg);
-                transition-duration: 0.4s;
-            }
-        </style><!---order-track--->
         <script>
             $('.more-order-detail').click(function () {
                 $(this).find('i').toggleClass('rotate');
                 $(this).parents('tr').next().slideToggle(200);
             });
-        </script>
+        </script><!---More Order Detail-->
 
     </div><!---Content--->
 </div>
