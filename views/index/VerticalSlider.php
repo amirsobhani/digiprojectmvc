@@ -451,7 +451,7 @@
 <script>
     $('.flipTimer').flipTimer({
         direction:'down',
-        date: 'september 14, 2017 13:04:30',
+        date: 'octobr 18, 2017 14:32:30',
         callback:function(){
             $('.slider-vr-content').css('filter','blur(3px)');
             $('.finished').fadeIn(100);

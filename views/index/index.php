@@ -1,4 +1,6 @@
-
+<?php
+print_r($data);
+?>
 <style>
     #content{
         width: 1190px;
@@ -17,42 +19,6 @@
         width: 1190px;
     }
 </style>
-<script>
-    function scroll(direction,tag){
-
-        var slideTag = $(tag);
-        var sliderScrollUl = slideTag.parent('.scroll-slider').find('ul');
-        var liLength = sliderScrollUl.find('li').length;
-        var liWidth = parseInt(sliderScrollUl.find('li').outerWidth());
-        var ulWidthSize = (liLength) * (liWidth);
-        var maxMargin = (liLength - 3) * liWidth;
-        var marginRight = parseFloat(sliderScrollUl.css('margin-right'));
-        sliderScrollUl.css("width", ulWidthSize);
-
-        if(direction == 'left'){
-            marginRight=marginRight-liWidth;
-            if((-marginRight) > maxMargin){
-                marginRight = (-maxMargin)-80;
-            }
-        }
-        if(direction == 'right'){
-            marginRight=marginRight+liWidth;
-            if(marginRight > 0){
-                marginRight = 0;
-            }
-        }
-        sliderScrollUl.animate({'marginRight':marginRight},1000);
-    }
-    $('.scroll-next').click(function(){
-        scroll('left',this);
-    });
-    $('.scroll-prev').click(function(){
-        scroll('right',this);
-    });
-
-
-
-</script><!--Scroll Slider-->
 <style>
     .scroll-slider{
         width: 890px;
@@ -185,6 +151,42 @@
         </div><!--Left Part-->
     </div><!---Content--->
 </div>
+<script>
+    function scroll(direction,tag){
+
+        var slideTag = $(tag);
+        var sliderScrollUl = slideTag.parent('.scroll-slider').find('ul');
+        var liLength = sliderScrollUl.find('li').length;
+        var liWidth = parseInt(sliderScrollUl.find('li').outerWidth());
+        var ulWidthSize = (liLength) * (liWidth);
+        var maxMargin = (liLength - 3) * liWidth;
+        var marginRight = parseFloat(sliderScrollUl.css('margin-right'));
+        sliderScrollUl.css("width", ulWidthSize);
+
+        if(direction == 'left'){
+            marginRight=marginRight-liWidth;
+            if((-marginRight) > maxMargin){
+                marginRight = (-maxMargin)-80;
+            }
+        }
+        if(direction == 'right'){
+            marginRight=marginRight+liWidth;
+            if(marginRight > 0){
+                marginRight = 0;
+            }
+        }
+        sliderScrollUl.animate({'marginRight':marginRight},1000);
+    }
+    $('.scroll-next').click(function(){
+        scroll('left',this);
+    });
+    $('.scroll-prev').click(function(){
+        scroll('right',this);
+    });
+
+
+
+</script><!--Scroll Slider-->
 
 
 
