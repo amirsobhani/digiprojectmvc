@@ -1,11 +1,15 @@
-<div id="slider-hr" >
+<div id="slider-hr">
     <div id="main-slider" class="dk-box">
         <i class="fa fa-angle-right fa-4x" aria-hidden="true" onClick="preSlider()"></i>
-        <a class="slider-a"><img src="public/img/slider img/97481ec1.jpg"/></a>
-        <a class="slider-a"><img src="public/img/slider img/42aef2f3.jpg"/></a>
-        <a class="slider-a"><img src="public/img/slider img/140a9c8c.jpg"/></a>
-        <a class="slider-a"><img src="public/img/slider img/c6bec8ad.jpg"/></a>
-        <a class="slider-a"><img src="public/img/slider img/d555d2e0.jpg"/></a>
+        <?php
+        foreach ($data as $HorizontalSlider){
+            ?>
+            <a href="<?= $HorizontalSlider['link'] ?>" class="slider-a">
+                <img src="<?= $HorizontalSlider['img'] ?>"/>
+            </a>
+            <?php
+        }
+        ?>
         <i class="fa fa-angle-left fa-4x" aria-hidden="true" onClick="nextSlider()"></i>
     </div>
     <div id="slider-navigator">
@@ -25,73 +29,82 @@
     var tabItem = $('.tab-item');
     var numItems = (slider_a).length;
     var timeOut = 5000;
-    function slider(){
-        if(slide>numItems){
+
+    function slider() {
+        if (slide > numItems) {
             slide = 1;
         }
-        if(slide<=0){
+        if (slide <= 0) {
             slide = numItems;
         }
         slider_a.hide();
-        slider_a.eq(slide-1).fadeIn(100);
+        slider_a.eq(slide - 1).fadeIn(100);
         tabItem.removeClass('active-hr-slider');
-        tabItem.eq(slide-1).addClass('active-hr-slider');
+        tabItem.eq(slide - 1).addClass('active-hr-slider');
         slide++;
     }
+
     slider();
-    var sliderInterval = setInterval(slider,timeOut);
+    var sliderInterval = setInterval(slider, timeOut);
     slider_a.eq(0).fadeIn();
 
-    $('#slider-hr').mouseleave(function(){
+    $('#slider-hr').mouseleave(function () {
         clearInterval(sliderInterval);
-        sliderInterval = setInterval(slider,timeOut);
+        sliderInterval = setInterval(slider, timeOut);
     });
-    function preSlider(){
+
+    function preSlider() {
         clearInterval(sliderInterval);
         slide = slide - 2;
         slider();
     }
-    function nextSlider(){
+
+    function nextSlider() {
         clearInterval(sliderInterval);
         slider();
     }
-    $('#slider-navigator .tab-item').click(function(){
+
+    $('#slider-navigator .tab-item').click(function () {
         clearInterval(sliderInterval);
         var index = $(this).index();
-        goToSlide(index+1);
+        goToSlide(index + 1);
     });
-    function goToSlide(index){
+
+    function goToSlide(index) {
         slide = index;
         slider();
     }
 
 </script> <!--Horizontal Slider--->
 <style>
-    #slider-hr{
+    #slider-hr {
         width: 890px;
         height: 310px;
         margin-bottom: 10px;
         position: relative;
     }
-    #main-slider{
+
+    #main-slider {
         width: 100%;
         height: 100%;
         position: relative;
         margin: 10px 0 0 0;
         overflow: hidden;
     }
-    .slider-a{
+
+    .slider-a {
         display: none;
     }
 
-    #slider-navigator{
+    #slider-navigator {
         width: 890px;
         height: 43px;
-        background-color: rgba(92,92,92,0.5);
+        background-color: rgba(92, 92, 92, 0.5);
         position: absolute;
         top: 265px;
     }
-    .tab-item{
+
+    .tab-item {
         width: 20%;
         line-height: 43px;
         direction: rtl;
@@ -101,14 +114,16 @@
         font-family: iran-sans;
         cursor: pointer;
     }
-    #main-slider .fa-angle-right{
+
+    #main-slider .fa-angle-right {
         color: #fff;
         position: absolute;
         top: 110px;
         right: 0;
         cursor: pointer;
     }
-    #main-slider .fa-angle-left{
+
+    #main-slider .fa-angle-left {
         color: #fff;
         position: absolute;
         top: 110px;
@@ -116,14 +131,15 @@
         cursor: pointer;
     }
 
-    .active-hr-slider{
+    .active-hr-slider {
         background-color: #fff;
-        color:#000;
+        color: #000;
         cursor: pointer;
         position: relative;
         cursor: pointer;
     }
-    .active-hr-slider::after{
+
+    .active-hr-slider::after {
         content: " ";
         width: 0;
         height: 0;

@@ -11,7 +11,7 @@ class model_index
         return 10;
     }
 
-    function getProduct()
+    function getHorizontalSlider()
     {
         $servername = 'localhost';
         $username = 'root';
@@ -19,7 +19,7 @@ class model_index
         $dbname = "digiproject_db";
         $attr = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
         $conn = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password, $attr);
-        $sql = 'SELECT * FROM pro_tbl';
+        $sql = 'SELECT * FROM horizontal_slider_tbl';
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();

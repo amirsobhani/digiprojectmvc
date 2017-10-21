@@ -1,6 +1,4 @@
-<?php
-print_r($data);
-?>
+
 <style>
     #content{
         width: 1190px;

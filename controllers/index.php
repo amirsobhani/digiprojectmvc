@@ -10,8 +10,8 @@ class Index extends Controller
 
     function index()
     {
-        $result = $this->model->getProduct();
-        $this->View('index/index', $result);
+        $HorizontalSlider = $this->model->getHorizontalSlider();
+        $this->View('index/index', $HorizontalSlider);
     }
 
     function sayhello()
