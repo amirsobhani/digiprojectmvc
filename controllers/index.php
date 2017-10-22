@@ -11,7 +11,12 @@ class Index extends Controller
     function index()
     {
         $HorizontalSlider = $this->model->getHorizontalSlider();
-        $this->View('index/index', $HorizontalSlider);
+        $VerticalSlider = $this->model->getVerticalSlider();
+        $VerticalSliderItems = $VerticalSlider[0];
+        $date_end = $VerticalSlider[1];
+        $params = [$HorizontalSlider , $VerticalSliderItems, $date_end];
+
+        $this->View('index/index', $params);
     }
 
     function sayhello()

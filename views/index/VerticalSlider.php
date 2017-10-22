@@ -1,223 +1,49 @@
 <div id="slider-vr" class="dk-box">
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
+    <?php
+    foreach ($data[1] as $VerticalSlider){
+
+        ?>
+        <a href="public/#">
+            <div class="slider-vr-content">
+                <div class="vr-content-right">
+                    <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
+                    <div class="vr-price-info">
+                        <span class="price-old"><?= $VerticalSlider['price']; ?>1.160</span>
+                        <span class="price-new">850 هزار تومان</span>
+                    </div>
+                    <div class="vr-meta">
+                        <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
+                        <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
+                        <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
+                    </div>
+                    <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
+                    <div class="flipTimer">
+                        <div class="hours"></div>
+                        <div class="minutes"></div>
+                        <div class="seconds"></div>
+                    </div>
                 </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/slider  vr img/panasonic-es-lv65-shaver-2f0798.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
+                <div class="vr-content-left">
+                    <span class="vrslider-title"><?= $VerticalSlider['title'] ?></span>
+                    <span class="vrslider-img"><img src="public/img/product gallery/<?= $VerticalSlider['id']; ?>/product220.jpg"/> </span>
                 </div>
             </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/case-logic-vnb-217-backpack-for-17-inch-laptop-8b0abf.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/gameconsole-sony-playstation-4-pro-cuh-2016a-region-2-1-tb.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/jacques-bogart-club-75-eau-de-toilette-for-men-100ml-33dffa.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/Mobile-Huawei-P8-Lite-Dual-SIM-16-GBd5a77b.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/samsung-49m6965-curved-smart-led-tv-49-inch-77459c.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/samsung-galaxy-j7-prime-sm-g610fd-dual-sim-mobile-phone-202313.jpg"/> </span>
-            </div>
-        </div>
-    </a>
-    <a href="public/#">
-        <div class="slider-vr-content">
-            <div class="vr-content-right">
-                <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
-                <div class="vr-price-info">
-                    <span class="price-old">1.160</span>
-                    <span class="price-new">850 هزار تومان</span>
-                </div>
-                <div class="vr-meta">
-                    <span class="vr-slider-meta"><p>دارای 5 تیغه با سه شکل مختلف </p></span>
-                    <span class="vr-slider-meta"><p>دارای سنسور تشخیص تراکم مو و تنظیم سرعت موتور </p></span>
-                    <span class="vr-slider-meta"><p>تیغه‌های تیز شده به کمک فناوری نانو با زاویه‌ی 30 درجه </p></span>
-                </div>
-                <span class="timer-title"><p>فرصت باقی مانده تا این پیشنهاد</p></span>
-                <div class="flipTimer">
-                    <div class="hours"></div>
-                    <div class="minutes"></div>
-                    <div class="seconds"></div>
-                </div>
-            </div>
-            <div class="vr-content-left">
-                <span class="vrslider-title">ماشین اصلاح صورت پاناسونیک مدل ES-LV65</span>
-                <span class="vrslider-img"><img src="public/img/techno-te-8100-steam-press-8a6477.jpg"/> </span>
-            </div>
-        </div>
-    </a>
+        </a>
+    <?php
+    }
+
+
+    ?>
     <div class="finished"><img src="public/img/Finished_Badge.png"/></div>
     <div id="slider-vr-navigator">
         <ul>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
-            <li><a>گوشی موبایل ایسوس</a></li>
+            <?php
+            foreach ($data[1] as $VerticalSlider) {
+                ?>
+                <li><a><?= $VerticalSlider['title'] ?></a></li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
 </div><!--Vertical Slider-->
@@ -260,6 +86,17 @@
         navSlider();
     }
 </script><!--Vertical Slider-->
+<script>
+    $('.flipTimer').flipTimer({
+        direction:'down',
+        date: '<?php echo $data[2]; ?>',
+            //'september 23, 2017 16:47:30',
+        callback:function(){
+            $('.slider-vr-content').css('filter','blur(3px)');
+            $('.finished').fadeIn(100);
+        }
+    });
+</script><!--Timer Script-->
 <style>
     #slider-vr{
         width: 890px;
@@ -448,13 +285,3 @@
         display: none;
     }
 </style><!--Vertical Slider--->
-<script>
-    $('.flipTimer').flipTimer({
-        direction:'down',
-        date: 'octobr 18, 2017 14:32:30',
-        callback:function(){
-            $('.slider-vr-content').css('filter','blur(3px)');
-            $('.finished').fadeIn(100);
-        }
-    });
-</script><!--Timer Script-->

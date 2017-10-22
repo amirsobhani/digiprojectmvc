@@ -2,7 +2,7 @@
     <div id="main-slider" class="dk-box">
         <i class="fa fa-angle-right fa-4x" aria-hidden="true" onClick="preSlider()"></i>
         <?php
-        foreach ($data as $HorizontalSlider){
+        foreach ($data[0] as $HorizontalSlider){
             ?>
             <a href="<?= $HorizontalSlider['link'] ?>" class="slider-a">
                 <img src="<?= $HorizontalSlider['img'] ?>"/>
