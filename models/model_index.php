@@ -33,9 +33,22 @@ class model_index
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
+        foreach ($result as $key => $row) {
+            $discount = $row['discount'];
+            $price = $row['price'];
+            $totalPrice = ((100 - $discount) * $price) / 100;
+            $result[$key]['price_total'] = $totalPrice;
+        }
         $first_row = $result[0];
         $time_special = $first_row['time_special'];
-        $time_end = $time_special + (24 * 3600);
+
+        $sql = 'SELECT * FROM option_tbl WHERE setting = "special_time"';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $resultTime = $stmt->fetch();
+        $duration_time = $resultTime['value'];
+        $time_end = $time_special + $duration_time;
+        date_default_timezone_set('Asia/Tehran');
         $date = date('F d,Y H:i:s', $time_end);
 
         return [$result, $date];
