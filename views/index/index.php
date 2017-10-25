@@ -142,7 +142,7 @@
                 require ('Services.php');
                 require ('VerticalSlider.php');
                 require ('Gallery.php');
-                require ('DigitalProduct.php');
+                require('MostView.php');
                 require ('Newest.php');
                 require ('BestSelling.php');
             ?>

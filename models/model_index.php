@@ -53,6 +53,27 @@ class model_index
 
         return [$result, $date];
     }
+
+    function mostView()
+    {
+        $sql = 'SELECT * FROM option_tbl WHERE setting = "limitScrollSlider"';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $resultLimit = $stmt->fetch();
+        $limit = $resultLimit['value'];
+
+        $sql = 'SELECT * FROM product_tbl ORDER BY mostview DESC limit ' . $limit . ' ';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        foreach ($result as $key => $row) {
+            $discount = $row['discount'];
+            $price = $row['price'];
+            $totalPrice = ((100 - $discount) * $price) / 100;
+            $result[$key]['price_total'] = $totalPrice;
+        }
+        return $result;
+    }
 }
 
 

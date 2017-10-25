@@ -14,7 +14,8 @@ class Index extends Controller
         $VerticalSlider = $this->model->getVerticalSlider();
         $VerticalSliderItems = $VerticalSlider[0];
         $date_end = $VerticalSlider[1];
-        $params = [$HorizontalSlider , $VerticalSliderItems, $date_end];
+        $mostView = $this->model->mostView();
+        $params = [$HorizontalSlider, $VerticalSliderItems, $date_end, $mostView];
 
         $this->View('index/index', $params);
     }
