@@ -328,9 +328,9 @@
     <div id="header-right">
         <div id="header-right-top">
             <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
-            <span>،فروشگاه دی جی کالا</span><a href="#">وارد شوید</a>
+            <span>،فروشگاه دی جی کالا</span><a href="<?= URL ?>login">وارد شوید</a>
             <i class="fa fa-user fa-lg" aria-hidden="true"></i>
-            <a href="#">ثبت نام کنید</a>
+            <a href="<?= URL ?>signup">ثبت نام کنید</a>
         </div>
         <div id="header-right-bottom">
             <div id="cart">

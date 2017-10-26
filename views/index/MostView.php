@@ -11,7 +11,7 @@
                 ?>
 
                 <li>
-                    <a class="scroll-product">
+                    <a href="<?= URL ?>product/index/<?= $row['id']; ?>" class="scroll-product">
                         <img style="width: 150px;" src="public/img/product gallery/<?= $row['id']; ?>/product220.jpg"/>
                         <span class="product-meta">
                             <?= $row['title']; ?>
@@ -20,7 +20,7 @@
                             <span class="product-price-old">
                                 <?= $row['price']; ?>
                             </span>
-                            <span class="product-price-new"><?= $ro['price_total']; ?> تومان</span>
+                            <span class="product-price-new"><?= $row['price_total']; ?> تومان</span>
                         </div>
 
                     </a>

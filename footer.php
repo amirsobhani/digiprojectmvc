@@ -1,3 +1,7 @@
+<?php
+    $option = Model::getOption();
+
+?>
 <div id="footer">
     <div class="info-bar">
         <div class="wrapper">
@@ -7,7 +11,7 @@
             <ul class="info-bar-ul">
                 <li>
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    info@digikala.com
+                    <?= $option['email']; ?>
                 </li>
                 <li>
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -17,9 +21,9 @@
                 </li>
                 <li>
                     <a>
-                        <span>۹٥۱۱۹۰۹٥ - ۰۲۱</span>
+                        <span><?= $option['tel1']; ?></span>
                         <span> | </span>
-                        <span>۶۱۹۳۰۰۰۰ - ۰۲۱</span>
+                        <span><?= $option['tel2']; ?></span>
                     </a>
                     <i class="fa fa-phone" aria-hidden="true"></i>
                 </li>

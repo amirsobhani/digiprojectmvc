@@ -1,15 +1,15 @@
 <div id="slider-vr" class="dk-box">
     <?php
-    foreach ($data[1] as $VerticalSlider) {
+    foreach ($data[1] as $row) {
 
         ?>
-        <a href="public/#">
+        <a href="<?= URL ?>product/index/<?= $row['id']; ?>">
             <div class="slider-vr-content">
                 <div class="vr-content-right">
                     <p class="vr-content-title">پیشنهاد شگفت انگیز امروز</p>
                     <div class="vr-price-info">
-                        <span class="price-old"><?= $VerticalSlider['price']; ?></span>
-                        <span class="price-new"><?= $VerticalSlider['price_total'] ?>
+                        <span class="price-old"><?= $row['price']; ?></span>
+                        <span class="price-new"><?= $row['price_total'] ?>
                             هزار تومان</span>
                     </div>
                     <div class="vr-meta">
@@ -25,9 +25,9 @@
                     </div>
                 </div>
                 <div class="vr-content-left">
-                    <span class="vrslider-title"><?= $VerticalSlider['title'] ?></span>
+                    <span class="vrslider-title"><?= $row['title'] ?></span>
                     <span class="vrslider-img"><img
-                                src="public/img/product gallery/<?= $VerticalSlider['id']; ?>/product220.jpg"/> </span>
+                                src="public/img/product gallery/<?= $row['id']; ?>/product220.jpg"/> </span>
                 </div>
             </div>
         </a>
@@ -40,9 +40,9 @@
     <div id="slider-vr-navigator">
         <ul>
             <?php
-            foreach ($data[1] as $VerticalSlider) {
+            foreach ($data[1] as $row) {
                 ?>
-                <li><a><?= $VerticalSlider['title'] ?></a></li>
+                <li><a><?= $row['title'] ?></a></li>
                 <?php
             }
             ?>
