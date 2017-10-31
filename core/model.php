@@ -14,6 +14,21 @@ class Model
         self::$conn = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password, $attr);
     }
 
+    function doSelect($sql, $values = [], $fetch = '', $fetchStyle = PDO::FETCH_ASSOC)
+    {
+        $stmt = self::$conn->prepare($sql);
+        foreach ($values as $key => $value) {
+            $stmt->bindValue($key + 1, $value);
+        }
+        $stmt->execute();
+        if ($fetch == '') {
+            $result = $stmt->fetchAll($fetchStyle);
+        } else {
+            $result = $stmt->fetch($fetchStyle);
+        }
+        return $result;
+    }
+
     public static function getOption()
     {
         $sql = 'SELECT * FROM option_tbl';

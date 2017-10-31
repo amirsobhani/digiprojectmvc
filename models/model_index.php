@@ -16,18 +16,14 @@ class model_index extends Model
     {
 
         $sql = 'SELECT * FROM horizontal_slider_tbl';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+        $result = $this->doSelect($sql);
         return $result;
     }
 
     function getVerticalSlider()
     {
         $sql = 'SELECT * FROM product_tbl WHERE special = 1 ';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+        $result = $this->doSelect($sql);
         foreach ($result as $key => $row) {
             $discount = $row['discount'];
             $price = $row['price'];
@@ -72,15 +68,11 @@ class model_index extends Model
     function lastProduct()
     {
         $sql = 'SELECT * FROM option_tbl WHERE setting = "limitScrollSlider"';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $resultLimit = $stmt->fetch();
-        $limit = $resultLimit['value'];
+        $result = $this->doSelect($sql,[],1);
+        $limit = $result['value'];
 
         $sql = 'SELECT * FROM product_tbl ORDER BY id DESC limit ' . $limit . ' ';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
+        $result=$this->doSelect($sql);
         foreach ($result as $key => $row) {
             $discount = $row['discount'];
             $price = $row['price'];

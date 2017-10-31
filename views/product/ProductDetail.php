@@ -27,12 +27,18 @@
     <div class="product-info">
         <header>
             <div class="info-header">
-                <h1>
-                    گوشي موبايل سامسونگ مدل Galaxy S8 Plus SM-G955FD دو سيم کارت
-                    <span>
+               <?php
+               $result = $data[0];
+               ?>
+                    <h1>
+                        <?= $result['title']; ?>
+                        <?= $result['product_model']; ?>
+
+                        <span>
 										Samsung Galaxy S8 Plus SM-G955FD Dual SIM Mobile Phone
-									</span>
-                </h1>
+					    </span>
+                    </h1>
+
             </div>
             <div class="star">
                 <div class="ratedStar" style="width: 52%;"></div>
@@ -44,24 +50,20 @@
                 <div class="product-color">
                     <p>انتخاب رنگ</p>
                     <ul class="color-list">
-                        <li>
-							<span class="product-back-color " style="background-color: red;">
+                        <?php
+                        $all_color = $result['all_color'];
+                        foreach ($all_color as $color){
+                            ?>
+                            <li>
+							<span class="product-back-color " style="background-color: <?= $color['hex'] ?>;">
 								<i class="fa fa-check color-check" aria-hidden="true"></i>
 							</span>
-                            <span data-id="28" class="color-name per-text">قرمز</span>
+                            <span data-id="28" class="color-name per-text"><?= $color['title'] ?></span>
                         </li>
-                        <li>
-							<span class="product-back-color" style="background-color:#D8BFD8;">
-								<i class="fa fa-check color-check" aria-hidden="true"></i>
-							</span>
-                            <span data-id="28" class="color-name per-text">یاسی</span>
-                        </li>
-                        <li>
-							<span class="product-back-color" style="background-color:#FFD700;">
-								<i class="fa fa-check color-check" aria-hidden="true"></i>
-							</span>
-                            <span data-id="28" class="color-name per-text">طلایی</span>
-                        </li>
+                        <?php
+                        }
+                        ?>
+
                     </ul>
                 </div>
                 <div class="guarantee">
@@ -474,11 +476,11 @@
         float: left;
         margin: 17px 20px 0;
         text-align: center;
-        background: url(img/stars.png) repeat-x scroll 0 -14px;
+        background: url(public/img/stars.png) repeat-x scroll 0 -14px;
     }
     .ratedStar{
         height: 14px;
-        background: url(img/stars.png) repeat-x scroll 0 0;
+        background: url(public/img/stars.png) repeat-x scroll 0 0;
     }
     .starText{
         text-align: right;
