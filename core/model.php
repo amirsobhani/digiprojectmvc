@@ -45,6 +45,12 @@ class Model
 
     }
 
+    function calculateDiscount($price, $discount)
+    {
+        $price_discount = ($discount * $price) / 100;
+        $totalPrice = $price - $price_discount;
+        return [$price_discount, $totalPrice];
+    }
 
 }
 

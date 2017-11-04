@@ -11,7 +11,14 @@
     <script src="public/js/jsc3d/bin/jsc3d.min.js"></script>
     <div id="content">
         <?php
+
             require ('Breadcrumb.php');
+
+            $productInfo = $data[0];
+
+        if ($productInfo['special'] == 1){
+            require ('amazingOffer.php');
+        }
             require ('ProductDetail.php');
             require('RelatedProduct.php');
             require('FastExplain.php');

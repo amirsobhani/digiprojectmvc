@@ -8,7 +8,7 @@
 </div><!--breadcrumb-->
 <style>
     #main{
-        background-image: url(img/1503990105pattern42.png);
+        background-image: url(public/img/1503990105pattern42.png);
         background-color: #eee;
         padding: 10px 0;
     }
