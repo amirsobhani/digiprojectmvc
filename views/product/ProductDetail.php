@@ -10,8 +10,8 @@
         </div>
         <div class="product-img">
             <img id="product-pic"
-                 src="public/img/scroll%20slider/small/Samsung-Galaxy-S8-Plus-SM-G955FD-Dual-SIM-Mobile-Phone-40bcfb.jpg"
-                 data-magnify-src="public/img/scroll%20slider/larg/Samsung-Galaxy-S8-Plus-SM-G955FD-Dual-SIM-Mobile-Phone-40bcfb.jpg"/>
+                 src="public/img/product gallery/<?= $productInfo['id']; ?>/product350.jpg"
+                 data-magnify-src="public/img/product gallery/<?= $productInfo['id']; ?>/product1280.jpg"/>
         </div>
         <div class="thumb-gallery">
             <a class="more-img">

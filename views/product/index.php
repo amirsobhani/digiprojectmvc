@@ -47,11 +47,25 @@
                 </div>
             </header>
             <article id="tab">
-                <?php
+                <div class="item-tab">
+                    <?php
                     require ('ItemTab1.php');
-                    require ('ItemTab2.php');
-                    require ('ItemTab3.php');
-                    require ('ItemTab4.php');
+                    ?>
+                </div>
+
+                <div class="item-tab">
+                </div>
+
+                <div class="item-tab">
+                </div>
+
+                <div class="item-tab">
+                </div>
+                <?php
+//                    require ('ItemTab1.php');
+//                    require ('ItemTab2.php');
+//                    require ('ItemTab3.php');
+//                    require ('ItemTab4.php');
                     require ('ProductGallery.php')
                 ?>
             </article>
@@ -71,6 +85,41 @@
     });
 
 </script><!--Sticky-->
+<script>
+    var li = $('.product-tab-header li');
+
+    $(function () {
+        getItemTab(li.eq(0));
+    });
+
+    li.click(function(){
+        goHeader();
+        getItemTab(this);
+    });
+
+    function goHeader() {
+        var body = $("html, body");
+        var sticky = $('.product-tab').offset().top;
+        body.animate({scrollTop:sticky-50},500);
+    }
+
+    function getItemTab(elem) {
+        $('.product-tab-header li').removeClass('active');
+        $(elem).addClass('active');
+        var index = $(elem).index();
+        $('.item-tab').hide();
+        var tab = $('.item-tab').eq(index);
+
+        var url = '<?= URL ?>product/tab/<?= $productInfo['id']; ?>';
+        var data = {'number':index};
+        $.post(url, data, function (msg) {
+            tab.html(msg);
+        });
+        tab.fadeIn();
+    }
+
+
+</script><!--Item Tab--->
 <script>
 
     $('.select-list').click(function(){
@@ -242,3 +291,165 @@
 
 
 </script><!--Scroll Slider-->
+<style>
+    .sticky{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index:5;
+        right: 0;
+    }
+</style><!--sticky--->
+<style>
+    .tabContent{
+        padding: 29px;
+        text-align: justify;
+        line-height: 33px;
+    }
+    .tabContent img{
+        margin: 40px auto;
+        display: block;
+    }
+    .tabList{
+        margin: 0 30px;
+        border-right: 3px solid #ccc;
+    }
+    .tabListChild{
+        margin: 35px 0;
+        position: relative;
+    }
+    .tabListChild::after{
+        background: #e5e5e5;
+        content: "";
+        height: 1px;
+        position: absolute;
+        right: -12px;
+        top: 10px;
+        width: 100%;
+
+    }
+    .tabListChild h3{
+        font-size: 20px;
+        position: relative;
+        padding: 0 30px 0 20px;
+        z-index: 1;
+        background: #fff;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .tabListChild h3 i{
+        position: absolute;
+        right: -11px;
+        top: -2px;
+        color: #a2a2a2;
+        cursor: pointer;
+        font-size: 25px;
+        background: #fff;
+    }
+    .item-tab p{
+        line-height: 33px;
+        text-align: justify;
+        padding: 30px;
+    }
+    .item-tab h2{
+        font-size: 20px;
+        padding-right: 30px;
+    }
+    .fa-caret-left{
+        color: #2196F3;
+        margin-left: 10px;
+    }
+    #tab .item-tab:first-child{
+        display: block;
+    }
+    .item-tab{
+        width: 100%;
+        background-color: #fff;
+        display: none;
+        padding: 40px 0;
+    }
+    .product-tab{
+        width: 100%;
+        display: inline-block;
+        direction: rtl;
+    }
+    .product-tab-header{
+        line-height: 70px;
+        background-color: #F5F6F7;
+        border: 1px solid #eee;
+        border-bottom: none;
+        border-radius: 4px;
+        margin: 0 auto;
+        width: 1190px;
+    }
+    .product-tab-header li{
+        display: inline-block;
+        padding: 0 30px;
+        cursor: pointer;
+        box-shadow: 0px 0px 16px #eee;
+    }
+    .product-tab-header li:first-child{
+        display: inline-block;
+    }
+    .product-tab-header li.active{
+        background-color: #fff;
+        color: #2196F3;
+        border-top: 3px solid #2196F3;
+        border-bottom: none;
+        box-shadow: 0 -2px 2px #ccc;
+    }
+    .product-tab-header li i{
+        margin-left: 10px;
+    }
+</style><!--item-tab 1-->
+<style>
+    .product-properties{
+        margin: 50px 0;
+        display: block;
+        float: right;
+    }
+    .product-properties>h4{
+        margin: 0px 25px 15px 0;
+        font-size: 20px;
+        display: block;
+    }
+    .productName{
+        font-size: 12px;
+        color: #888;
+        margin: 10px 25px 35px 0;
+        display: block;
+    }
+    .item-tab>h4{
+        font-size: 25px;
+        font-weight: bolder;
+        margin: 5px 25px;
+    }
+    .pro-tab{
+        display: block;
+        width: 100%;
+        float: right;
+    }
+    .properties-title{
+        float: right;
+        width: 20%;
+        line-height: 40px;
+        background: #F0F1F2;
+        margin: 10px 15px 0px;
+        padding: 5px 15px;
+    }
+    .properties-meta{
+        float: left;
+        display: inline-block;
+        width: 72%;
+        background: #F7F9FA;
+        line-height: 40px !important;
+        margin: 10px 0px 0px 12px;
+        padding: 5px 10px !important;
+        font-size: 13px;
+    }
+    .item-tab::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+</style><!--item-tab 2-->

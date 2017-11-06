@@ -1,4 +1,4 @@
-<div class="item-tab">
+
     <h2><i class="fa fa-caret-left" aria-hidden="true"></i>پرسش و پاسخ خود را مطرح نمایید</h2>
     <div class="question-write">
         <textarea>متن پرسش خود را اینجا بنویسید . . .</textarea>
@@ -17,15 +17,9 @@
 									با انتخاب دکمه “ثبت پرسش”، موافقت خود را با قوانین انتشار محتوا در دیجی کالا اعلام می کنم.
 								</span>
     </div>
-</div><!--item-tab 4-->
+<!--item-tab 4-->
 <style>
-    .sticky{
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index:5;
-        right: 0;
-    }
+
     .rules span{
         display: block;
     }

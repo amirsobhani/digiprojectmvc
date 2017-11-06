@@ -1,4 +1,4 @@
-<div class="item-tab">
+
     <div class="comment">
         <div class="comment-rate">
             <div class="comment-header">

@@ -22,7 +22,7 @@ class model_product extends Model
         $time_special = $first_row['time_special'];
 
         $sql = 'SELECT * FROM option_tbl WHERE setting = "special_time"';
-        $resultTime = $this->doSelect($sql,[],1 );
+        $resultTime = $this->doSelect($sql, [], 1);
         $duration_time = $resultTime['value'];
         $time_end = $time_special + $duration_time;
         date_default_timezone_set('Asia/Tehran');
@@ -87,4 +87,10 @@ class model_product extends Model
         return $result;
     }
 
+    function description($id)
+    {
+        $sql = 'SELECT * FROM review_tbl WHERE idproduct = ?';
+        $result = $this->doSelect($sql, [$id]);
+        return $result;
+    }
 }

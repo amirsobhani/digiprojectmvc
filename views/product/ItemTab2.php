@@ -1,4 +1,4 @@
-<div class="item-tab">
+
     <h4>
         مشخصات فنی
     </h4>
@@ -62,55 +62,4 @@
             <p class="properties-meta">قابلیت استفاده از هر دو دوربین در هنگام مکالمه تصویری (Dual Video Call)   </p>
         </div>
     </div>
-</div><!--item-tab 2-->
-<style>
-    .product-properties{
-        margin: 50px 0;
-        display: block;
-        float: right;
-    }
-    .product-properties>h4{
-        margin: 0px 25px 15px 0;
-        font-size: 20px;
-        display: block;
-    }
-    .productName{
-        font-size: 12px;
-        color: #888;
-        margin: 10px 25px 35px 0;
-        display: block;
-    }
-    .item-tab>h4{
-        font-size: 25px;
-        font-weight: bolder;
-        margin: 5px 25px;
-    }
-    .pro-tab{
-        display: block;
-        width: 100%;
-        float: right;
-    }
-    .properties-title{
-        float: right;
-        width: 20%;
-        line-height: 40px;
-        background: #F0F1F2;
-        margin: 10px 15px 0px;
-        padding: 5px 15px;
-    }
-    .properties-meta{
-        float: left;
-        display: inline-block;
-        width: 72%;
-        background: #F7F9FA;
-        line-height: 40px !important;
-        margin: 10px 0px 0px 12px;
-        padding: 5px 10px !important;
-        font-size: 13px;
-    }
-    .item-tab::after{
-        content: "";
-        display: block;
-        clear: both;
-    }
-</style><!--item-tab 2-->
+<!--item-tab 2-->
