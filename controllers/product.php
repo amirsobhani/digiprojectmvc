@@ -14,12 +14,13 @@ class Product extends Controller
         $this->View('product/index', $data);
     }
 
-    function tab($id)
+    function tab($id, $idcategory)
     {
         $number = $_POST['number'];
         $number = $number + 1;
         $description = $this->model->description($id);
-        $data = [$description];
+        $fanni = $this->model->fanni($idcategory);
+        $data = [$description, $fanni];
         $this->View('product/ItemTab'.$number.'', $data, 'NoHeader', 'NoFooter');
 
     }

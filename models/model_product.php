@@ -93,4 +93,18 @@ class model_product extends Model
         $result = $this->doSelect($sql, [$id]);
         return $result;
     }
+
+    function fanni($idcategory)
+    {
+        $sql = 'SELECT * FROM attr_tbl WHERE idcategory = ? AND parent = 0';
+        $params = [$idcategory];
+        $result = $this->doSelect($sql, $params);
+        foreach ($result as $key => $row){
+            $sql2 = 'SELECT * FROM attr_tbl WHERE parent = ?';
+            $params = [$row['id']];
+            $result2 = $this->doSelect($sql2, $params);
+            $result[$key]['children'] = $result2;
+        }
+        return $result;
+    }
 }

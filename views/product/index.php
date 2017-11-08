@@ -110,7 +110,7 @@
         $('.item-tab').hide();
         var tab = $('.item-tab').eq(index);
 
-        var url = '<?= URL ?>product/tab/<?= $productInfo['id']; ?>';
+        var url = '<?= URL ?>product/tab/<?= $productInfo['id']; ?>/<?= $productInfo['idcategory']; ?>';
         var data = {'number':index};
         $.post(url, data, function (msg) {
             tab.html(msg);
@@ -406,7 +406,6 @@
     .product-properties{
         margin: 50px 0;
         display: block;
-        float: right;
     }
     .product-properties>h4{
         margin: 0px 25px 15px 0;
