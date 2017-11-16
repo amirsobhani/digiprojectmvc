@@ -19,10 +19,11 @@ class Product extends Controller
         $number = $_POST['number'];
         $number = $number + 1;
         $description = $this->model->description($id);
-        $fanni = $this->model->fanni($idcategory);
-        $data = [$description, $fanni];
+        $fanni = $this->model->fanni($idcategory, $id);
+        $comment_param = $this->model->comment_param($idcategory);
+        $getComment = $this->model->getComment($id);
+        $data = [$description, $fanni, $comment_param, $getComment];
         $this->View('product/ItemTab'.$number.'', $data, 'NoHeader', 'NoFooter');
-
     }
 }
 

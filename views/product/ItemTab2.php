@@ -1,31 +1,44 @@
 <?php
-    $fanni = $data[1];
+$fanni = $data[1];
 ?>
-    <h4>
-        مشخصات فنی
-    </h4>
-    <span class="productName"> گوشي موبايل سامسونگ مدل Galaxy S8 G950FD دو سيم کارت </span>
-    <?php
-    foreach ($fanni as $attr_parent){
-        $children = $attr_parent['children'];
-        ?>
-        <div class="product-properties">
-            <h4><i class="fa fa-caret-left" aria-hidden="true"></i><?= $attr_parent['title'] ?></h4>
-            <?php
-            foreach ($children as $child){
-                ?>
-                <div class="pro-tab">
-                    <h5 class="properties-title"><?= $child['title'] ?></h5>
-                    <p class="properties-meta">- </p>
-                </div>
-            <?php
-            }
-            ?>
-        </div>
-        <?php
-    }
-
+<h4>
+    مشخصات فنی
+</h4>
+<span class="productName"> گوشي موبايل سامسونگ مدل Galaxy S8 G950FD دو سيم کارت </span>
+<?php
+foreach ($fanni as $attr_parent) {
+    $children = $attr_parent['children'];
     ?>
+    <div class="product-properties">
+        <h4><i class="fa fa-caret-left" aria-hidden="true"></i><?= $attr_parent['title'] ?></h4>
+        <?php
+        foreach ($children as $child) {
+            ?>
+            <div class="pro-tab">
+                <h5 class="properties-title"><?= $child['title'] ?></h5>
+                <?php
+                if ($child['value'] == '') {
+                    ?>
+                    <p class="properties-meta">--</p>
+                    <?php
+                }else{
+                    $value = unserialize($child['value']);
+                    foreach ($value as $row){
+                        ?>
+                        <p class="properties-meta"><?= $row?></p>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
+}
+
+?>
 <!---
     <div class="product-properties">
         <h4><i class="fa fa-caret-left" aria-hidden="true"></i> مشخصات کلي</h4>

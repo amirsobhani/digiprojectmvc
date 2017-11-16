@@ -20,8 +20,8 @@
             require ('amazingOffer.php');
         }
             require ('ProductDetail.php');
-            require('RelatedProduct.php');
             require('FastExplain.php');
+            require('RelatedProduct.php');
         ?>
         <section class="product-tab">
             <header>

@@ -94,17 +94,34 @@ class model_product extends Model
         return $result;
     }
 
-    function fanni($idcategory)
+    function fanni($idcategory, $idproduct)
     {
         $sql = 'SELECT * FROM attr_tbl WHERE idcategory = ? AND parent = 0';
         $params = [$idcategory];
         $result = $this->doSelect($sql, $params);
-        foreach ($result as $key => $row){
-            $sql2 = 'SELECT * FROM attr_tbl WHERE parent = ?';
-            $params = [$row['id']];
+        foreach ($result as $key => $row) {
+            $sql2 = 'SELECT attr_tbl.title,product_attr_tbl.value FROM attr_tbl LEFT JOIN product_attr_tbl ON attr_tbl.id = product_attr_tbl.idattr AND product_attr_tbl.idproduct = ? WHERE attr_tbl.parent = ?';
+            $params = [$idproduct, $row['id']];
             $result2 = $this->doSelect($sql2, $params);
             $result[$key]['children'] = $result2;
         }
         return $result;
+    }
+
+    function comment_param($idcategory)
+    {
+        $sql = 'SELECT * FROM comment_param_tbl WHERE idcategory = ?';
+        $x = [$idcategory];
+        $result = $this->doSelect($sql, $x);
+        return $result;
+    }
+
+    function getComment($idproduct)
+    {
+        $sql = 'SELECT * FROM comment_tbl WHERE idproduct = ?';
+        $commentId = [$idproduct];
+        $result = $this->doSelect($sql, $commentId);
+        return $result;
+
     }
 }
