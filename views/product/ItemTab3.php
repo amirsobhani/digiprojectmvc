@@ -8,19 +8,36 @@
         </div>
         <?php
         $comment_params = $data[2];
+        $comment_params_rate = $data[4];
         foreach ($comment_params as $param) {
+            $avarage_rate = $comment_params_rate[$param['id']];
+            $full_rate = floor($avarage_rate);
+            $part_rate = 100 * ($avarage_rate - $full_rate);
             ?>
             <div class="rated">
-										<span class="rate-title">
+            <span class="rate-title">
 											<?= $param['title']; ?>
 										</span>
                 <ul class="rate-list">
-                    <li><span class="full"></span></li>
-                    <li><span class="full"></span></li>
-                    <li><span class="full"></span></li>
-                    <li><span style="width:90%"></span></li>
-                    <li><span></span></li>
-                    <span class="numberRate">3.9</span>
+                    <?php
+                    for ($i = 0; $i < $full_rate; $i++) {
+                        ?>
+                        <li><span class="full"></span></li>
+                        <?php
+                    }
+                    if ($full_rate < 5) {
+                        ?>
+                        <li><span style="width:<?= $part_rate ?>%"></span></li>
+
+                        <?php
+                    }
+                    for ($i = 0; $i < 4 - $full_rate; $i++) {
+                        ?>
+                        <li><span></span></li>
+                        <?php
+                    }
+                    ?>
+                    <span class="numberRate"><?= $avarage_rate ?></span>
                 </ul>
             </div>
             <?php

@@ -20,9 +20,13 @@ class Product extends Controller
         $number = $number + 1;
         $description = $this->model->description($id);
         $fanni = $this->model->fanni($idcategory, $id);
-        $comment_param = $this->model->comment_param($idcategory);
+
+        $comment_param = $this->model->comment_param($idcategory, $id);
+        $comment_param_name = $comment_param[0];
+        $comment_param_rate = $comment_param[1];
+
         $getComment = $this->model->getComment($id);
-        $data = [$description, $fanni, $comment_param, $getComment];
+        $data = [$description, $fanni, $comment_param_name, $getComment, $comment_param_rate];
         $this->View('product/ItemTab'.$number.'', $data, 'NoHeader', 'NoFooter');
     }
 }

@@ -108,12 +108,35 @@ class model_product extends Model
         return $result;
     }
 
-    function comment_param($idcategory)
+    function comment_param($idcategory, $idproduct)
     {
         $sql = 'SELECT * FROM comment_param_tbl WHERE idcategory = ?';
         $x = [$idcategory];
         $result = $this->doSelect($sql, $x);
-        return $result;
+
+        $sql = "SELECT * FROM comment_tbl WHERE idproduct = ?";
+        $res = $this->doSelect($sql, [$idproduct]);
+        $rate_total = [];
+
+        foreach ($res as $row) {
+            $param_rate = $row['params'];
+            $param_rate = unserialize($param_rate);
+            foreach ($param_rate as $key => $val) {
+                $param_id = $key;
+                $rate = $val;
+                if (!isset($rate_total[$param_id])) {
+                    $rate_total[$param_id] = 0;
+                }
+                $rate_total[$param_id] = $rate_total[$param_id] + $rate;
+            }
+        }
+        $total_comment = sizeof($res);
+        foreach ($rate_total as $key => $val) {
+            $val = $val / $total_comment;
+            $rate_total[$key] = $val;
+        }
+
+        return [$result, $rate_total];
     }
 
     function getComment($idproduct)
