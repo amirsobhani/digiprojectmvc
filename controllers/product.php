@@ -26,9 +26,13 @@ class Product extends Controller
         $comment_param_rate = $comment_param[1];
 
         $getComment = $this->model->getComment($id);
-        $data = [$description, $fanni, $comment_param_name, $getComment, $comment_param_rate];
-        $this->View('product/ItemTab'.$number.'', $data, 'NoHeader', 'NoFooter');
-    }
-}
 
-?>
+        $getQuestion = $this->model->getQuestion ($id);
+        $question = $getQuestion[0];
+        $answer = $getQuestion[1];
+
+        $data = [$description, $fanni, $comment_param_name, $getComment, $comment_param_rate, $question, $answer];
+        $this->View('product/ItemTab' . $number . '', $data, 'NoHeader', 'NoFooter');
+    }
+
+}

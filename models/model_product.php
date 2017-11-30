@@ -147,4 +147,21 @@ class model_product extends Model
         return $result;
 
     }
+
+    function getQuestion($idproduct)
+    {
+        $sql = 'SELECT * FROM question_tbl WHERE productId = ? AND parent = 0';
+        $questionId = [$idproduct];
+        $question = $this->doSelect($sql, $questionId);
+
+        $sql = 'SELECT * FROM question_tbl WHERE parent = !0';
+        $all_answer = $this->doSelect($sql);
+        $all_answer_new = [];
+        foreach ($all_answer as $answer) {
+            $question_id = $answer['parent'];
+            $all_answer_new[$question_id] = $answer;
+        }
+
+        return [$question, $all_answer_new];
+    }
 }
