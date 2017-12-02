@@ -10,7 +10,8 @@ class Product extends Controller
     function index($id)
     {
         $productInfo = $this->model->productInfo($id);
-        $data = [$productInfo];
+        $productGallery = $this->model->getGallery($id);
+        $data = [$productInfo, $productGallery];
         $this->View('product/index', $data);
     }
 

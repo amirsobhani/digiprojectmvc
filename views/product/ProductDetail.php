@@ -18,21 +18,20 @@
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </a>
             <ul class="img-gallery">
-                <li><a class="product-list-img"><img
-                                src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/></a>
-                </li>
-                <li><a class="product-list-img"><img
-                                src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/></a>
-                </li>
-                <li><a class="product-list-img"><img
-                                src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/></a>
-                </li>
-                <li><a class="product-list-img"><img
-                                src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/></a>
-                </li>
-                <li><a class="product-list-img"><img
-                                src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/></a>
-                </li>
+                <?php
+                $gallery = $data[1];
+                foreach ($gallery as $row) {
+                    if ($row['3d'] == 0) {
+                        ?>
+                        <li>
+                            <a class="product-list-img">
+                                <img src="public/img/product gallery/<?= $row['idproduct'] ?>/gallery/thumbnail/<?= $row['img'] ?>"/>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                }
+                ?>
             </ul><!--img-gallery-->
         </div>
     </div><!--product-gallery-->

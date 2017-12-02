@@ -164,4 +164,11 @@ class model_product extends Model
 
         return [$question, $all_answer_new];
     }
+
+    function getGallery($idproduct)
+    {
+        $sql = 'SELECT * FROM gallery_tbl WHERE idproduct=? ORDER BY 3d DESC ';
+        $result = $this->doSelect($sql, [$idproduct]);
+        return $result;
+    }
 }

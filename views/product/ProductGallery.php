@@ -3,45 +3,31 @@
     </header>
     <div class="right">
         <div class="img-wrapper">
-            <img src=" " />
+            <img src=" "/>
             <canvas id="cv" style=" margin: auto" width="830" height="447"></canvas>
         </div>
     </div>
     <div class="left mCS-dir-rtl">
         <ul>
-            <li>
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li class="active" data-image-id="public/img/product gallery/larg/pic1.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li data-image-id="public/img/product gallery/larg/pic2.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic2.jpg"/>
-            </li>
-            <li class="active" data-image-id="public/img/product gallery/larg/pic1.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li data-image-id="public/img/product gallery/larg/pic2.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic2.jpg"/>
-            </li>
-            <li class="active" data-image-id="public/img/product gallery/larg/pic1.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li data-image-id="public/img/product gallery/larg/pic2.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic2.jpg"/>
-            </li>
-            <li class="active" data-image-id="public/img/product gallery/larg/pic1.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li data-image-id="public/img/product gallery/larg/pic2.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic2.jpg"/>
-            </li>
-            <li class="active" data-image-id="public/img/product gallery/larg/pic1.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic1.jpg"/>
-            </li>
-            <li data-image-id="public/img/product gallery/larg/pic2.jpg">
-                <img src="public/img/product gallery/thumbnail/thumb-pic2.jpg"/>
-            </li>
+            <?php
+            $galley = $data[1];
+            foreach ($galley as $row) {
+                if ($row['3d'] == 1){
+                    ?>
+                    <li>
+                        <img src="public/img/product gallery/<?= $row['idproduct'] ?>/gallery/thumbnail/<?= $row['img'] ?>"/>
+                    </li>
+                    <?php
+                }else{
+                    ?>
+                    <li class=""
+                        data-image-id="public/img/product gallery/<?= $row['idproduct'] ?>/gallery/larg/<?= $row['img'] ?>">
+                        <img src="public/img/product gallery/<?= $row['idproduct'] ?>/gallery/thumbnail/<?= $row['img'] ?>"/>
+                    </li>
+                    <?php
+                }
+            }
+            ?>
         </ul>
     </div>
 </div><!-----product-gallery---->
@@ -54,7 +40,7 @@
 
 
     var thumbImage = $('#product-gallery .left li');
-    var image =  $('#product-gallery .right .img-wrapper');
+    var image = $('#product-gallery .right .img-wrapper');
 
     $('#dark').click(function () {
         fadeOut();
@@ -74,30 +60,29 @@
         thumbImageIndex++;
         $('#cv').fadeOut(0);
         var thumbImageId = thumbImage.eq(thumbImageIndex).attr('data-image-id');
-        showGallery(thumbImageIndex,thumbImageId);
+        showGallery(thumbImageIndex, thumbImageId);
         thumbImage.removeClass('active');
         thumbImage.eq(thumbImageIndex).addClass('active');
     });
-
 
 
     thumbImage.click(function () {
         var thumbImageIndex = $(this).index();
         thumbImage.removeClass('active');
         $(this).addClass('active');
-        if(thumbImageIndex == 0){
+        if (thumbImageIndex == 0) {
             image.find('img').fadeOut(0);
             $('#cv').fadeIn();
-        }else {
+        } else {
             $('#cv').fadeOut(0);
             var thumbImageId = $(this).attr('data-image-id');
-            showGallery(thumbImageIndex,thumbImageId);
+            showGallery(thumbImageIndex, thumbImageId);
         }
 
     });
 
-    function showGallery(thumbImageIndex,thumbImageId) {
-        image.find('img').attr('src',thumbImageId);
+    function showGallery(thumbImageIndex, thumbImageId) {
+        image.find('img').attr('src', thumbImageId);
         image.find('img').fadeIn();
     }
 
@@ -114,41 +99,48 @@
         $('#product-gallery').fadeOut(200);
     }
     $('#product-gallery .left').mCustomScrollbar({
-        scrollAmount:"auto",
-        deltaFactor:"auto",
-        axis:"y",
-        setLeft:0,
-        theme:"inset-dark",
-        autoHideScrollbar:true,
-        scrollbarPosition:"outside",
-        scrollButtons:{
-            enable:true,
-            scrollType:"stepless",
-            scrollAmount:"auto"
+        scrollAmount: "auto",
+        deltaFactor: "auto",
+        axis: "y",
+        setLeft: 0,
+        theme: "inset-dark",
+        autoHideScrollbar: true,
+        scrollbarPosition: "outside",
+        scrollButtons: {
+            enable: true,
+            scrollType: "stepless",
+            scrollAmount: "auto"
         }
 
     });
 </script> <!-- product-gallery -->
 <style>
-    #cv{
+    div.left ul li img {
+        width: 60%;
+    }
+
+    #cv {
         display: none;
         cursor: pointer;
     }
 
-    .mCSB_scrollTools{
-        left: 5px!important;
+    .mCSB_scrollTools {
+        left: 5px !important;
     }
-    .img-wrapper{
+
+    .img-wrapper {
         text-align: center;
         max-height: 440px;
         line-height: 440px;
     }
-    .img-wrapper img{
+
+    .img-wrapper img {
         vertical-align: middle;
         max-height: 350px;
         display: none;
     }
-    #product-gallery .left{
+
+    #product-gallery .left {
         float: left;
         width: 17%;
         height: 88%;
@@ -156,40 +148,47 @@
         overflow-y: auto;
         direction: rtl;
     }
-    #product-gallery .left ul li{
+
+    #product-gallery .left ul li {
         cursor: pointer;
         text-align: center;
         width: 99%;
         height: 130px;
         line-height: 130px;
-        border-bottom:1px solid #ddd;
-        border-right:1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
         opacity: 0.5;
         position: relative;
     }
-    #product-gallery .left ul li.active{
+
+    #product-gallery .left ul li.active {
         opacity: 1;
     }
-    #product-gallery .left ul li img{
+
+    #product-gallery .left ul li img {
         vertical-align: middle;
     }
-    #product-gallery .right{
+
+    #product-gallery .right {
         width: 83%;
         background-color: #fff;
         float: right;
     }
-    #product-gallery header{
+
+    #product-gallery header {
         direction: ltr;
         width: 100%;
         line-height: 40px;
         background-color: #f0f1f2;
     }
-    #product-gallery header i{
+
+    #product-gallery header i {
         color: #999;
         margin: 9px 15px;
         cursor: pointer;
     }
-    #product-gallery{
+
+    #product-gallery {
         position: fixed;
         top: 60px;
         left: 0;
@@ -203,24 +202,25 @@
         border-radius: 2px;
         display: none;
     }
-    #dark{
+
+    #dark {
         display: none;
         position: fixed;
         width: 100%;
         height: 100%;
         z-index: 7;
         top: 0;
-        right:0;
-        background-color: rgba(0,0,0,0.5);
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 </style><!--product-gallery-->
 <script type="text/javascript">
     var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-    viewer.setParameter('SceneUrl',         'public/img/3d/galaxy-s8/source/phone.obj');
-    viewer.setParameter('ModelColor',       '#fff');
+    viewer.setParameter('SceneUrl', 'public/img/product gallery/<?= $productInfo['id']; ?>/gallery/3d/product.obj');
+    viewer.setParameter('ModelColor', '#fff');
     viewer.setParameter('BackgroundColor1', '#E5D7BA');
     viewer.setParameter('BackgroundColor2', '#383840');
-    viewer.setParameter('RenderMode',       'texture');
+    viewer.setParameter('RenderMode', 'texture');
     viewer.setParameter('definition', 'high');
     viewer.init();
     viewer.update();
