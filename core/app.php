@@ -15,7 +15,6 @@ class App
             unset($url[0]);
             if (isset($url[1])) {
                 $this->method = $url[1];
-//                echo 'method :'.$this->method;
                 unset($url[1]);
             }
             $this->params = array_values($url);
