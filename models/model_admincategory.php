@@ -6,8 +6,5 @@ class model_admincategory extends Model
     {
         parent::__construct();
     }
-    function index()
-    {
 
-    }
 }

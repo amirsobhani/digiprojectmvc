@@ -18,7 +18,7 @@
             <li class="header">منو</li>
             <li class="active treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>داشبرد</span>
+                    <i class="fa fa-dashboard"></i> <span>داشبورد</span>
                     <span class="pull-left-container">
               <i class="fa fa-angle-right pull-left"></i>
             </span>
@@ -27,6 +27,11 @@
                     <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> داشبرد اول</a></li>
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i> داشبرد دوم</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-bars"></i> <span>دسته ها</span>
+                </a>
             </li>
             <li class="treeview">
                 <a href="#">
