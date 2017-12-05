@@ -5,7 +5,7 @@ class Index extends Controller
 
     function __construct()
     {
-//        echo "we are in index controller!<br>";
+
     }
 
     function index()
@@ -19,18 +19,6 @@ class Index extends Controller
         $params = [$HorizontalSlider, $VerticalSliderItems, $date_end, $mostView, $lastProduct];
 
         $this->View('index/index', $params);
-    }
-
-    function sayhello()
-    {
-        echo 'we are in sayhello method!';
-    }
-
-    function FullName($name = "", $family = "", $age = "")
-    {
-        echo $family . '<br>';
-        echo $name . '<br>';
-        echo $age . '<br>';
     }
 
 
