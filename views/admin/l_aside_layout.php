@@ -199,9 +199,6 @@
 <!-- ./wrapper -->
 
 
-
-
-
 <script src="/digiprojectmvc/views/admin/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="/digiprojectmvc/views/admin/bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -238,6 +235,17 @@
 <script src="/digiprojectmvc/views/admin/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/digiprojectmvc/views/admin/dist/js/demo.js"></script>
+
+<!--icheck-->
+<script src="/digiprojectmvc/views/admin/plugins/iCheck/icheck.min.js"></script>
+<script src="/digiprojectmvc/views/admin/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="/digiprojectmvc/views/admin/bower_components/moment/min/moment.min.js"></script>
+
+<script src="/digiprojectmvc/views/admin/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/digiprojectmvc/views/admin/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/digiprojectmvc/views/admin/1plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!--icheck-->
+
 
 
 
