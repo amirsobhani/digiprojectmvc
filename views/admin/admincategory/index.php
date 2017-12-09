@@ -1,15 +1,43 @@
+
 <!-- Content Wrapper. Contains page content -->
+<?php
+$parent = [];
+if (isset($data['parent'])) {
+    $parent = $data['parent'];
+    $parent = array_reverse($parent);
+}
+$categoryInfo = [];
+if (isset($data['categoryInfo'])) {
+    $categoryInfo = $data['categoryInfo'];
+}
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            جدول ها
-            <small>پیشرفته</small>
-        </h1>
+<!--        <h1>-->
+<!--            جدول ها-->
+<!--            <small>پیشرفته</small>-->
+<!--        </h1>-->
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> خانه</a></li>
-            <li><a href="#">جدول</a></li>
-            <li class="active">پیشرفته</li>
+            <?php
+            foreach ($parent as $row) {
+                ?>
+                <li>
+                    <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
+                        <?= $row['title'] ?>
+                    </a>
+                </li>
+                <?php
+            }
+            ?>
+            <li><a href="">
+                    <?php
+                    if (isset($categoryInfo['title'])) {
+                        echo $categoryInfo['title'];
+                    }
+                    ?>
+                </a>
+            </li>
         </ol>
     </section>
 
@@ -20,7 +48,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">جدول داده مثال ۲</h3>
+                        <h3 class="box-title">مدیریت دسته ها</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -35,15 +63,29 @@
                             </thead>
                             <tbody>
                             <?php
+                            $child = $data['category'];
                             $category = $data['category'];
-//                            $child = $data['child'];
-                            foreach ($category as $row) {
+                            foreach ($child as $row) {
                                 ?>
                                 <tr>
                                     <td><?= $row['id'] ?></td>
                                     <td><?= $row['title'] ?></td>
                                     <td>
-                                          مشاهده زیر دسته
+                                        <a
+                                            <?php
+                                            if (isset($row['id'])) {
+                                                ?>
+                                                href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>"
+                                                <?php
+                                            } else {
+                                                ?>
+                                                href="#";
+                                                <?php
+                                            }
+                                            ?>
+                                        >
+                                            مشاهده زیر دسته
+                                        </a>
                                     </td>
                                     <td>
                                         <input type="checkbox"/>

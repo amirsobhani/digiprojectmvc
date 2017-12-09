@@ -9,15 +9,18 @@ class admincategory extends Controller
 
     function index()
     {
-        $category = $this->model->getCategory();
-        $data = ['category'=>$category];
+        $category = $this->model->getChild(0);
+        $data = ['category' => $category];
         $this->AdminView('admin/admincategory/index', $data);
     }
 
     function showChild($idcategory)
     {
         $catChild = $this->model->getChild($idcategory);
-        $data = ['category'=>$catChild];
+        $parent = $this->model->getParent($idcategory);
+        $categoryInfo = $this->model->categoryInfo($idcategory);
+        $data = ['category' => $catChild, 'parent' => $parent, 'categoryInfo' => $categoryInfo];
         $this->AdminView('admin/admincategory/index', $data);
     }
+
 }

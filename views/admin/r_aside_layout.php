@@ -29,7 +29,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= URL ?>admincategory">
                     <i class="fa fa-bars"></i> <span>دسته ها</span>
                 </a>
             </li>
