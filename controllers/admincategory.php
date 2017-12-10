@@ -23,4 +23,10 @@ class admincategory extends Controller
         $this->AdminView('admin/admincategory/index', $data);
     }
 
+    function addcategory()
+    {
+        $category = $this->model->getCategory();
+        $data = [$category];
+        $this->AdminView('admin/admincategory/index', $data);
+    }
 }

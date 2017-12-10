@@ -77,10 +77,10 @@ if (isset($data['categoryInfo'])) {
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form action="">
+                                                <form action="addcategory" method="post">
                                                     <div class="col-xs-12">
                                                         <label>عنوان دسته :</label>
-                                                        <input type="text" class="form-control" placeholder="عنوان دسته" >
+                                                        <input type="text" class="form-control" placeholder="عنوان دسته" name="title" >
                                                     </div>
                                                     <div style="margin: 15px 0;" class="col-xs-12">
                                                         <label>دسته اصلی</label>
@@ -90,8 +90,9 @@ if (isset($data['categoryInfo'])) {
                                                     </div>
                                                     <div class="col-xs-12 main-category">
                                                         <label>انتخاب دسته مادر :</label>
-                                                        <select class="form-control select2" style="width: 100%;">
-                                                            <option selected="selected">تهران</option>
+                                                        <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                                                                style="width: 100%;">
+                                                            <option disabled>انتخاب کنید</option>
                                                             <option>مشهد</option>
                                                             <option>اصفهان</option>
                                                             <option>شیراز</option>
@@ -100,13 +101,11 @@ if (isset($data['categoryInfo'])) {
                                                             <option>کرج</option>
                                                         </select>
                                                     </div>
+                                                    <input class="btn btn-primary" type="submit" value="ذخیره">
+                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
-                                        <button type="button" class="btn btn-primary">ذخیره</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -180,84 +179,6 @@ if (isset($data['categoryInfo'])) {
     </section>
     <!-- /.content -->
 </div>
-<script>
-    $(document).ready(function () {
-        $('#tarikh').persianDatepicker({
-            altField: '#tarikhAlt',
-            altFormat: 'X',
-            format: 'D MMMM YYYY HH:mm a',
-            observer: true,
-            timePicker: {
-                enabled: true
-            },
-        });
-    });
-    $(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Datemask dd/mm/yyyy
-        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-        //Datemask2 mm/dd/yyyy
-        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-        //Money Euro
-        $('[data-mask]').inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-                ranges   : {
-                    'Today'       : [moment(), moment()],
-                    'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate  : moment()
-            },
-            function (start, end) {
-                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-            }
-        );
-
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass   : 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass   : 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass   : 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $('.my-colorpicker1').colorpicker();
-        //color picker with addon
-        $('.my-colorpicker2').colorpicker();
-
-        //Timepicker
-        $('.timepicker').timepicker({
-            showInputs: false
-        })
-    })
-</script>
 
 
 
