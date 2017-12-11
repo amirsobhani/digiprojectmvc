@@ -90,8 +90,7 @@ if (isset($data['categoryInfo'])) {
                                                     </div>
                                                     <div class="col-xs-12 main-category">
                                                         <label>انتخاب دسته مادر :</label>
-                                                        <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-                                                                style="width: 100%;">
+                                                        <select class="form-control select2" disabled="disabled" style="width: 100%;">
                                                             <option disabled>انتخاب کنید</option>
                                                             <option>مشهد</option>
                                                             <option>اصفهان</option>
@@ -101,8 +100,10 @@ if (isset($data['categoryInfo'])) {
                                                             <option>کرج</option>
                                                         </select>
                                                     </div>
-                                                    <input class="btn btn-primary" type="submit" value="ذخیره">
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
+                                                    <div class="col-xs-12">
+                                                        <input class="btn btn-primary" type="submit" value="ذخیره">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
