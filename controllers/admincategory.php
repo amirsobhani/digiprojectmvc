@@ -23,4 +23,9 @@ class admincategory extends Controller
         $this->AdminView('admin/admincategory/index', $data);
     }
 
+    function addcategory()
+    {
+        echo $_POST['title'];
+        $this->AdminView('admin/admincategory/index');
+    }
 }

@@ -77,15 +77,15 @@ if (isset($data['categoryInfo'])) {
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form action="">
+                                                <form action="admin/admincategory/index" method="post">
                                                     <div class="col-xs-12">
                                                         <label>عنوان دسته :</label>
-                                                        <input type="text" class="form-control" placeholder="عنوان دسته" >
+                                                        <input type="text" class="form-control" placeholder="عنوان دسته" name="title">
                                                     </div>
                                                     <div style="margin: 15px 0;" class="col-xs-12">
                                                         <label>دسته اصلی</label>
                                                         <label>
-                                                            <input type="checkbox" class="flat-red" checked>
+                                                            <input type="checkbox" class="flat-red" checked name="parent">
                                                         </label>
                                                     </div>
                                                     <div class="col-xs-12 main-category">
@@ -100,12 +100,13 @@ if (isset($data['categoryInfo'])) {
                                                             <option>کرج</option>
                                                         </select>
                                                     </div>
+                                                    <button type="button" class="btn btn-primary">ذخیره</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">انصراف</button>
                                         <button type="button" class="btn btn-primary">ذخیره</button>
                                     </div>
                                 </div>
