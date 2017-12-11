@@ -1,3 +1,6 @@
 <?php
-$category = $data[0];
-print_r($category);
+$id = $data['parent'];
+$title = $data['title'];
+print_r($id) ;
+echo "</br>";
+print_r($title) ;

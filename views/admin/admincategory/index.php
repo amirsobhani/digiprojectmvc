@@ -1,13 +1,19 @@
 <style>
-    .box-header a{
+    .box-header a {
         float: left;
         margin: 5px 30px;
     }
-    .box-header i{
+
+    .box-header i {
         margin-right: 5px;
     }
-    .modal-dialog{
-        width: 300px!important;
+
+    .modal-dialog {
+        width: 300px !important;
+    }
+
+    .form-btn-submit {
+        margin-top: 20px;
     }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -25,10 +31,10 @@ if (isset($data['categoryInfo'])) {
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-<!--        <h1>-->
-<!--            جدول ها-->
-<!--            <small>پیشرفته</small>-->
-<!--        </h1>-->
+        <!--        <h1>-->
+        <!--            جدول ها-->
+        <!--            <small>پیشرفته</small>-->
+        <!--        </h1>-->
         <ol class="breadcrumb">
             <?php
             foreach ($parent as $row) {
@@ -77,10 +83,11 @@ if (isset($data['categoryInfo'])) {
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form action="addcategory" method="post">
+                                                <form action="<?= URL ?>admincategory\addcategory" method="post">
                                                     <div class="col-xs-12">
                                                         <label>عنوان دسته :</label>
-                                                        <input type="text" class="form-control" placeholder="عنوان دسته" name="title" >
+                                                        <input type="text" class="form-control" placeholder="عنوان دسته"
+                                                               name="title">
                                                     </div>
                                                     <div style="margin: 15px 0;" class="col-xs-12">
                                                         <label>دسته اصلی</label>
@@ -90,19 +97,25 @@ if (isset($data['categoryInfo'])) {
                                                     </div>
                                                     <div class="col-xs-12 main-category">
                                                         <label>انتخاب دسته مادر :</label>
-                                                        <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                                                            <option disabled>انتخاب کنید</option>
-                                                            <option>مشهد</option>
-                                                            <option>اصفهان</option>
-                                                            <option>شیراز</option>
-                                                            <option>اهواز</option>
-                                                            <option>تبریز</option>
-                                                            <option>کرج</option>
+                                                        <select class="form-control select2" name="parent" style="width: 100%;">
+                                                            <option>انتخاب کنید</option>
+                                                            <?php
+                                                            $all_category = $data['all_category'];
+                                                            foreach ($all_category as $row) {
+                                                                ?>
+                                                                <option value="<?= $row['id']; ?>">
+                                                                    <?= $row['title'] ?>
+                                                                </option>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-xs-12">
+                                                    <div class="col-xs-12 form-btn-submit">
                                                         <input class="btn btn-primary" type="submit" value="ذخیره">
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">خروج</button>
+                                                        <button type="button" class="btn btn-default pull-left"
+                                                                data-dismiss="modal">خروج
+                                                        </button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -136,24 +149,12 @@ if (isset($data['categoryInfo'])) {
                                     <td><?= $row['title'] ?></td>
                                     <td>
 
-                                        <a
-                                            <?php
-                                            if (isset($data['parent'])) {
-                                                ?>
-                                                href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>"
-                                                <?php
-                                            } else {
-                                                ?>
-                                                href="#";
-                                                <?php
-                                            }
-                                            ?>
-                                        >
+                                        <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
                                             مشاهده زیر دسته
                                         </a>
                                     </td>
                                     <td>
-                                        <input type="checkbox"/>
+                                        <input type="checkbox" class="flat-red"/>
                                     </td>
                                 </tr>
                                 <?php

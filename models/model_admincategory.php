@@ -45,9 +45,20 @@ class model_admincategory extends Model
         return $result;
     }
 
-    function addcetegory()
+    function parentId($parent)
     {
+        $sql = 'SELECT * FROM category_tbl WHERE title = ?';
+        $result = $this->doSelect($sql, [$parent], 'fetch');
+        return $result;
+    }
 
+    function addcetegory($title, $parent)
+    {
+        $sql = 'INSERT INTO category_tbl (title, parent) VALUE (?, ?)';
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindValue(1, $title);
+        $stmt->bindValue(2, $parent);
+        $stmt->execute();
     }
 }
 
