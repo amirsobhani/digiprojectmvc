@@ -37,11 +37,17 @@ class model_admincategory extends Model
         return $all_parent;
 
     }
+
     function categoryInfo($idcategory)
     {
         $sql = 'SELECT * FROM category_tbl WHERE id = ?';
         $result = $this->doSelect($sql, [$idcategory], 'fetch');
         return $result;
+    }
+
+    function addcetegory()
+    {
+
     }
 }
 
