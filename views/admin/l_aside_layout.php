@@ -339,31 +339,30 @@
     })
 </script>
 <script>
-    //    var maincat = $('.maincat');
-    //        var ins = maincat.find('ins');
-    //        var icheck = maincat.find('.icheckbox_flat-green');
-    //        var input = maincat.find('input');
-    //    $('.btn-success').click(function () {
-    //            if (input.is(':checked')){
-    //                $('.main-category').attr("disabled", "disabled");
-    //            }else {
-    //                $('.main-category').removeAttr("disabled");
-    //            }
-    //        alert("sdv");
-    //    })
 
-    function btnclick() {
-        alert("dsc");
-    }
-
-    $('.maincat').on('ifChecked', function(event){
+    $('.maincat').on('ifChecked', function (event) {
         $('.main-category').attr("disabled", "disabled");
     });
-    $('.maincat').on('ifUnchecked', function(event){
+    $('.maincat').on('ifUnchecked', function (event) {
         $('.main-category').removeAttr("disabled");
     });
 
-</script>
+
+    $('.selCat').on('ifChecked', function () {
+        a = $(this).parent().find('td.id').text();
+//        alert(a);
+    });
+
+    $('.editCat').click(function () {
+        var catTitle = $(this).parents('tr').find('td.td-title').text();
+        var catID = $(this).parents('tr').find('td.id').text();
+
+        $('#modal-edit').find('.lbl-title').html(catTitle);
+        $('#modal-edit').find('#edit-form').attr("action","http://localhost/digiprojectmvc/admincategory/addcategory/"+catID+"/edit");
+    });
+
+
+</script><!--add and delete cat--->
 
 
 </body>
