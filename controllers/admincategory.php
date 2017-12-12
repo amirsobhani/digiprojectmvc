@@ -28,12 +28,12 @@ class admincategory extends Controller
         $this->AdminView('admin/admincategory/index', $data);
     }
 
-    function addcategory($id = 0)
+    function addcategory($id = 0,$edit = '')
     {
         if (isset($_POST['parent']) and ($_POST['title'])) {
             $parentId = $_POST['parent'];
             $title = $_POST['title'];
-            $this->model->addcetegory($title, $parentId);
+            $this->model->addcetegory($title, $parentId, $edit, $id);
         } else {
             $parentId = 0;
             $title = "";

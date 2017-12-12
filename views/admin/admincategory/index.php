@@ -231,12 +231,39 @@ if (isset($data['categoryInfo'])) {
                         <form id="edit-form" action="" method="post">
                             <div class="col-xs-12">
                                 <label>عنوان دسته :</label>
-                                <label class="lbl-title"></label>
+                                <input disabled class="form-control lbl-title">
                             </div>
                             <div class="col-xs-12" style="margin-top: 25px;">
                                 <label>عنوان جدید دسته :</label>
                                 <input type="text" class="form-control" placeholder="عنوان جدید دسته را وارد کنید . . ."
                                        name="title">
+                            </div>
+                            <div style="margin: 15px 0;" class="col-xs-12">
+                                <label>دسته اصلی</label>
+                                <label>
+                                    <input type="checkbox" class="flat-red maincat" name="parent" value="0">
+                                </label>
+                            </div>
+                            <div class="col-xs-12">
+                                <label>انتخاب دسته مادر :</label>
+                                <select class="form-control select2 main-category" name="parent"
+                                        style="width: 100%;">
+                                    <?php
+                                    $all_category = $data['all_category'];
+                                    foreach ($all_category as $row) {
+                                        if ($row['id'] == $categoryInfo['id']) {
+                                            $x = 'selected';
+                                        } else {
+                                            $x = '';
+                                        }
+                                        ?>
+                                        <option <?= $x ?> value="<?= $row['id']; ?>">
+                                            <?= $row['title'] ?>
+                                        </option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="col-xs-12 form-btn-submit">
                                 <input class="btn btn-primary" type="submit" value="ذخیره">

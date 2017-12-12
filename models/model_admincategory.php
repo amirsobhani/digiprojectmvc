@@ -52,13 +52,28 @@ class model_admincategory extends Model
         return $result;
     }
 
-    function addcetegory($title, $parent)
+    function addcetegory($title, $parent, $edit = "", $id)
     {
-        $sql = 'INSERT INTO category_tbl (title, parent) VALUE (?, ?)';
-        $stmt = self::$conn->prepare($sql);
-        $stmt->bindValue(1, $title);
-        $stmt->bindValue(2, $parent);
-        $stmt->execute();
+//        $categoryInfo = $this->categoryInfo($id);
+//        if ($title == '') {
+//            $categoryInfoTitle = $categoryInfo['title'];
+//            $title = $categoryInfoTitle;
+//        }
+
+        if ($edit == "") {
+            $sql = 'INSERT INTO category_tbl (title, parent) VALUE (?, ?)';
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1, $title);
+            $stmt->bindValue(2, $parent);
+            $stmt->execute();
+        } else {
+            $sql = 'UPDATE category_tbl SET title = ?,parent = ? WHERE id = ?';
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1, $title);
+            $stmt->bindValue(2, $parent);
+            $stmt->bindValue(3, $id);
+            $stmt->execute();
+        }
     }
 }
 

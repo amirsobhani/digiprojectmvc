@@ -357,7 +357,7 @@
         var catTitle = $(this).parents('tr').find('td.td-title').text();
         var catID = $(this).parents('tr').find('td.id').text();
 
-        $('#modal-edit').find('.lbl-title').html(catTitle);
+        $('#modal-edit').find('.lbl-title').val(catTitle);
         $('#modal-edit').find('#edit-form').attr("action","http://localhost/digiprojectmvc/admincategory/addcategory/"+catID+"/edit");
     });
 
