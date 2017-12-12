@@ -28,13 +28,23 @@ class admincategory extends Controller
         $this->AdminView('admin/admincategory/index', $data);
     }
 
-    function addcategory()
+    function addcategory($id = 0)
     {
-        $title = $_POST['title'];
-        $parent = $_POST['parent'];
-        $this->model->addcetegory($title, $parent);
+        if (isset($_POST['parent']) and ($_POST['title'])) {
+            $parentId = $_POST['parent'];
+            $title = $_POST['title'];
+            $this->model->addcetegory($title, $parentId);
+        } else {
+            $parentId = 0;
+            $title = "";
+        }
 
-        $data = ['title' => $title, 'parent' => $parent];
+        $category = $this->model->getChild(0);
+        $all_category = $this->model->getCategory();
+        $categoryInfo = $this->model->categoryInfo($id);
+
+
+        $data = ['title' => $title, 'parentId' => $parentId, 'category' => $category, 'all_category' => $all_category, 'categoryInfo' => $categoryInfo];
         $this->AdminView('admin/admincategory/addcategory', $data);
     }
 }

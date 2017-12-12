@@ -83,7 +83,8 @@ if (isset($data['categoryInfo'])) {
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form action="<?= URL ?>admincategory\addcategory" method="post">
+                                                <form action="<?= URL ?>admincategory\addcategory\<?php @$categoryInfo['id'] ?>"
+                                                      method="post">
                                                     <div class="col-xs-12">
                                                         <label>عنوان دسته :</label>
                                                         <input type="text" class="form-control" placeholder="عنوان دسته"
@@ -92,18 +93,32 @@ if (isset($data['categoryInfo'])) {
                                                     <div style="margin: 15px 0;" class="col-xs-12">
                                                         <label>دسته اصلی</label>
                                                         <label>
-                                                            <input type="checkbox" class="flat-red" checked>
+                                                            <input type="checkbox" class="flat-red maincat"
+                                                                <?php
+                                                                if (@$categoryInfo['id'] == 0) {
+                                                                    ?>
+                                                                    name="parent" value="0"
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                            >
                                                         </label>
                                                     </div>
-                                                    <div class="col-xs-12 main-category">
+                                                    <div class="col-xs-12">
                                                         <label>انتخاب دسته مادر :</label>
-                                                        <select class="form-control select2" name="parent" style="width: 100%;">
-                                                            <option>انتخاب کنید</option>
+                                                        <select class="form-control select2 main-category" name="parent"
+                                                                style="width: 100%;">
+                                                            <option disabled>انتخاب کنید</option>
                                                             <?php
                                                             $all_category = $data['all_category'];
                                                             foreach ($all_category as $row) {
+                                                                if ($row['id'] == $categoryInfo['id']) {
+                                                                    $x = 'selected';
+                                                                } else {
+                                                                    $x = '';
+                                                                }
                                                                 ?>
-                                                                <option value="<?= $row['id']; ?>">
+                                                                <option <?= $x ?> value="<?= $row['id']; ?>">
                                                                     <?= $row['title'] ?>
                                                                 </option>
                                                                 <?php
@@ -181,7 +196,6 @@ if (isset($data['categoryInfo'])) {
     </section>
     <!-- /.content -->
 </div>
-
 
 
 
