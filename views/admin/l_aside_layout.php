@@ -251,6 +251,7 @@
 <!-- DataTables -->
 <script src="/digiprojectmvc/views/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/digiprojectmvc/views/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/digiprojectmvc/views/admin/bower_components/sweetalert2/dist/sweetalert2.all.js"></script>
 
 <!-- page script -->
 
@@ -358,9 +359,29 @@
         var catID = $(this).parents('tr').find('td.id').text();
 
         $('#modal-edit').find('.lbl-title').val(catTitle);
-        $('#modal-edit').find('#edit-form').attr("action","http://localhost/digiprojectmvc/admincategory/addcategory/"+catID+"/edit");
+        $('#modal-edit').find('#edit-form').attr("action", "http://localhost/digiprojectmvc/admincategory/addcategory/" + catID + "/edit");
     });
 
+    $('.delcat').click(function () {
+        swal({
+            title: 'آیا از این کار مطمئنید؟',
+            text: "پس از انجام اینکار بازگشتی وجود ندارد!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله پاکش کن!',
+            cancelButtonText: 'انصراف'
+        }).then((result) => {
+            if (result.value) {
+            swal(
+                'پاک شد!',
+                'پاک کردن با موفقیت انجام شد.',
+                'success'
+            )
+        }
+    })
+    })
 
 </script><!--add and delete cat--->
 
