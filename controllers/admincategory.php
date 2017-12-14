@@ -47,4 +47,10 @@ class admincategory extends Controller
         $data = ['title' => $title, 'parentId' => $parentId, 'category' => $category, 'all_category' => $all_category, 'categoryInfo' => $categoryInfo];
         $this->AdminView('admin/admincategory/addcategory', $data);
     }
+
+    function deleteCategory()
+    {
+        $ids = $_POST['id'];
+        print_r($ids);
+    }
 }

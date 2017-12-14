@@ -350,8 +350,7 @@
 
 
     $('.selCat').on('ifChecked', function () {
-        a = $(this).parent().find('td.id').text();
-//        alert(a);
+        $(this).find('input').prop('value');
     });
 
     $('.editCat').click(function () {
@@ -377,11 +376,16 @@
             swal(
                 'پاک شد!',
                 'پاک کردن با موفقیت انجام شد.',
-                'success'
-            )
+                'success',
+            );
+//            $.post('<?//= URL ?>//admincategory/deletecategory/',)
         }
     })
-    })
+    });
+
+    function submitForm() {
+        $('.tableForm').submit();
+    }
 
 </script><!--add and delete cat--->
 

@@ -15,7 +15,8 @@
     .form-btn-submit {
         margin-top: 20px;
     }
-    .editCat{
+
+    .editCat {
         cursor: pointer;
     }
 </style>
@@ -75,10 +76,10 @@ if (isset($data['categoryInfo'])) {
                                 دسته جدید
                                 <i class="fa fa-plus"></i>
                             </a>
-                            <a class="btn btn-danger delcat">
-                                حذف
-                                <i class="fa fa-trash"></i>
-                            </a>
+<!--                                                        <a class="btn btn-danger delcat">-->
+<!--                                                            حذف-->
+<!--                                                            <i class="fa fa-trash"></i>-->
+<!--                                                        </a>-->
                         </div><!--modal btn--->
 
                         <div class="box-title">
@@ -98,32 +99,36 @@ if (isset($data['categoryInfo'])) {
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            $child = $data['category'];
-                            $category = $data['category'];
-                            foreach ($child as $row) {
-                                ?>
-                                <tr>
-                                    <td class="id"><?= $row['id'] ?></td>
-                                    <td class="td-title"><?= $row['title'] ?></td>
-                                    <td>
-
-                                        <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
-                                            مشاهده زیر دسته
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="editCat" data-toggle="modal" data-target="#modal-edit">
-                                            <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                    <td class="selCat">
-                                        <input type="checkbox" class="flat-red"/>
-                                    </td>
-                                </tr>
+                            <form class="tableForm" action="<?= URL ?>admincategory/deletecategory/" method="post">
                                 <?php
-                            }
-                            ?>
+                                $child = $data['category'];
+                                $category = $data['category'];
+                                foreach ($child as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $row['id'] ?></td>
+                                        <td class="td-title"><?= $row['title'] ?></td>
+                                        <td>
+
+                                            <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
+                                                مشاهده زیر دسته
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="editCat" data-toggle="modal" data-target="#modal-edit">
+                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td class="selCat">
+                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
+                                                   class="flat-red"/>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                <input type="submit">
+                            </form>
                             </tbody>
                             <tfoot>
                             <tr>
@@ -142,6 +147,11 @@ if (isset($data['categoryInfo'])) {
             <!-- /.col -->
         </div>
         <!-- /.row -->
+        <form class="tableForm" action="<?= URL ?>admincategory/deletecategory/" method="post">
+            <input type="checkbox" class="flat-red" name="id[]" value="3">
+            <input type="checkbox" class="flat-red" name="id[]" value="4">
+        </form>
+        <button type="submit">go</button>
     </section>
     <!-- /.content -->
 </div>
@@ -216,75 +226,6 @@ if (isset($data['categoryInfo'])) {
     <!-- /.modal-dialog -->
 </div><!--add modal--->
 
-<div class="modal fade" id="modal-delete">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">حذف دسته</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <form action="<?= URL ?>admincategory\addcategory\<?= @$categoryInfo['id'] ?>"
-                              method="post">
-                            <div class="col-xs-12">
-                                <label>عنوان دسته :</label>
-                                <input type="text" class="form-control" placeholder="عنوان دسته"
-                                       name="title">
-                            </div>
-                            <div style="margin: 15px 0;" class="col-xs-12">
-                                <label>دسته اصلی</label>
-                                <label>
-                                    <input type="checkbox" class="flat-red maincat"
-                                        <?php
-                                        if (@$categoryInfo['id'] == 0) {
-                                            ?>
-                                            name="parent" value="0"
-                                            <?php
-                                        }
-                                        ?>
-                                    >
-                                </label>
-                            </div>
-                            <div class="col-xs-12">
-                                <label>انتخاب دسته مادر :</label>
-                                <select class="form-control select2 main-category" name="parent"
-                                        style="width: 100%;">
-                                    <option disabled>انتخاب کنید</option>
-                                    <?php
-                                    $all_category = $data['all_category'];
-                                    foreach ($all_category as $row) {
-                                        if ($row['id'] == $categoryInfo['id']) {
-                                            $x = 'selected';
-                                        } else {
-                                            $x = '';
-                                        }
-                                        ?>
-                                        <option <?= $x ?> value="<?= $row['id']; ?>">
-                                            <?= $row['title'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="col-xs-12 form-btn-submit">
-                                <input class="btn btn-primary" type="submit" value="ذخیره">
-                                <button type="button" class="btn btn-default pull-left"
-                                        data-dismiss="modal">خروج
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div><!--delete modal--->
 
 <div class="modal fade" id="modal-edit">
     <div class="modal-dialog">
@@ -349,8 +290,6 @@ if (isset($data['categoryInfo'])) {
     </div>
     <!-- /.modal-dialog -->
 </div><!--edite modal--->
-
-
 
 
 
