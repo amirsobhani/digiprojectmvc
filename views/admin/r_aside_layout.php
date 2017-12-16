@@ -16,7 +16,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">منو</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>داشبورد</span>
                     <span class="pull-left-container">
@@ -24,7 +24,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> داشبرد اول</a></li>
+                    <li><a href="index.html"><i class="fa fa-circle-o"></i> داشبرد اول</a></li>
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i> داشبرد دوم</a></li>
                 </ul>
             </li>
@@ -32,6 +32,18 @@
                 <a href="<?= URL ?>admincategory">
                     <i class="fa fa-bars"></i> <span>دسته ها</span>
                 </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cube" aria-hidden="true"></i><span>محصولات</span>
+                    <span class="pull-left-container">
+                        <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= URL ?>adminproduct"><i class="fa fa-circle-o"></i>مدیریت محصولات</a></li>
+                    <li><a href="<?= URL ?>adminproduct/addproduct"><i class="fa fa-circle-o"></i>اضافه کردن محصول</a></li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">

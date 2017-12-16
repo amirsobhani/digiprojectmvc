@@ -19,6 +19,12 @@
     .editCat {
         cursor: pointer;
     }
+    .delcat{
+        position: relative;
+        right: -143px;
+        top: -77px;
+        float: left;
+    }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <?php
@@ -76,37 +82,38 @@ if (isset($data['categoryInfo'])) {
                                 دسته جدید
                                 <i class="fa fa-plus"></i>
                             </a>
-<!--                                                        <a class="btn btn-danger delcat">-->
-<!--                                                            حذف-->
-<!--                                                            <i class="fa fa-trash"></i>-->
-<!--                                                        </a>-->
+
                         </div><!--modal btn--->
 
                         <div class="box-title">
                         </div>
 
                     </div><!-- /.box-header -->
+                    <form action="<?= URL ?>admincategory/deletecategory/<?= @$categoryInfo['id'] ?>" class="tableForm"  method="post">
+                        <button onclick="Delete($this)"  type="submit" class="btn btn-danger delcat"">
+                        حذف
+                        <i class="fa fa-trash"></i>
+                        </button>
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>عنوان دسته</th>
+                                    <th>زیر دسته</th>
+                                    <th>ویرایش</th>
+                                    <th>انتخاب</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                    <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>عنوان دسته</th>
-                                <th>زیر دسته</th>
-                                <th>ویرایش</th>
-                                <th>انتخاب</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <form class="tableForm" action="<?= URL ?>admincategory/deletecategory/" method="post">
                                 <?php
                                 $child = $data['category'];
                                 $category = $data['category'];
                                 foreach ($child as $row) {
                                     ?>
-                                    <tr>
-                                        <td><?= $row['id'] ?></td>
+                                    <tr class="trTitle">
+                                        <td class="tdId"><?= $row['id'] ?></td>
                                         <td class="td-title"><?= $row['title'] ?></td>
                                         <td>
 
@@ -119,39 +126,37 @@ if (isset($data['categoryInfo'])) {
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
+
                                         <td class="selCat">
+
                                             <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
                                                    class="flat-red"/>
+
                                         </td>
+
                                     </tr>
                                     <?php
                                 }
                                 ?>
-                                <input type="submit">
-                            </form>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>عنوان دسته</th>
-                                <th>زیر دسته</th>
-                                <th>ویرایش</th>
-                                <th>انتخاب</th>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div><!-- /.box-table -->
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>عنوان دسته</th>
+                                    <th>زیر دسته</th>
+                                    <th>ویرایش</th>
+                                    <th>انتخاب</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div><!-- /.box-table -->
+                    </form>
                 </div>
                 <!-- /.box -->
             </div>
             <!-- /.col -->
         </div>
         <!-- /.row -->
-        <form class="tableForm" action="<?= URL ?>admincategory/deletecategory/" method="post">
-            <input type="checkbox" class="flat-red" name="id[]" value="3">
-            <input type="checkbox" class="flat-red" name="id[]" value="4">
-        </form>
-        <button type="submit">go</button>
     </section>
     <!-- /.content -->
 </div>
@@ -167,7 +172,7 @@ if (isset($data['categoryInfo'])) {
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <form action="<?= URL ?>admincategory\addcategory\<?= @$categoryInfo['id'] ?>"
+                        <form action="<?= URL ?>admincategory/addcategory/<?= @$categoryInfo['id'] ?>"
                               method="post">
                             <div class="col-xs-12">
                                 <label>عنوان دسته :</label>
@@ -190,9 +195,7 @@ if (isset($data['categoryInfo'])) {
                             </div>
                             <div class="col-xs-12">
                                 <label>انتخاب دسته مادر :</label>
-                                <select class="form-control select2 main-category" name="parent"
-                                        style="width: 100%;">
-                                    <option disabled>انتخاب کنید</option>
+                                <select class="form-control select2 main-category" name="parent" style="width: 100%;">
                                     <?php
                                     $all_category = $data['all_category'];
                                     foreach ($all_category as $row) {
@@ -290,6 +293,5 @@ if (isset($data['categoryInfo'])) {
     </div>
     <!-- /.modal-dialog -->
 </div><!--edite modal--->
-
 
 

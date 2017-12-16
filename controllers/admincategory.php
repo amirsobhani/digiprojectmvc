@@ -28,7 +28,7 @@ class admincategory extends Controller
         $this->AdminView('admin/admincategory/index', $data);
     }
 
-    function addcategory($id = 0,$edit = '')
+    function addcategory($id = 0, $edit = '')
     {
         if (isset($_POST['parent']) and ($_POST['title'])) {
             $parentId = $_POST['parent'];
@@ -45,12 +45,17 @@ class admincategory extends Controller
 
 
         $data = ['title' => $title, 'parentId' => $parentId, 'category' => $category, 'all_category' => $all_category, 'categoryInfo' => $categoryInfo];
-        $this->AdminView('admin/admincategory/addcategory', $data);
+        $this->AdminView('admin/admincategory/index', $data);
     }
 
-    function deleteCategory()
+    function deleteCategory($idcategory)
     {
         $ids = $_POST['id'];
-        print_r($ids);
+        $this->model->deleteCategory($ids);
+        if ($idcategory == 0) {
+            header('location:' . URL . 'admincategory');
+        }else{
+            header('location:' . URL . 'admincategory/showChild/' . $idcategory . '');
+        }
     }
 }

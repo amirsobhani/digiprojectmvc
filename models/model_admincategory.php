@@ -2,6 +2,8 @@
 
 class model_admincategory extends Model
 {
+    public $allChildParenId = [];
+
     function __construct()
     {
         parent::__construct();
@@ -54,11 +56,6 @@ class model_admincategory extends Model
 
     function addcetegory($title, $parent, $edit = "", $id)
     {
-//        $categoryInfo = $this->categoryInfo($id);
-//        if ($title == '') {
-//            $categoryInfoTitle = $categoryInfo['title'];
-//            $title = $categoryInfoTitle;
-//        }
 
         if ($edit == "") {
             $sql = 'INSERT INTO category_tbl (title, parent) VALUE (?, ?)';
@@ -74,6 +71,33 @@ class model_admincategory extends Model
             $stmt->bindValue(3, $id);
             $stmt->execute();
         }
+    }
+
+    function getChildId($ids)
+    {
+        $all_child = [];
+        foreach ($ids as $child) {
+            $childeren = $this->getChild($child);
+            foreach ($childeren as $childId) {
+                $childId = $childId['id'];
+                array_push($all_child, $childId);
+            }
+        }
+        return $all_child;
+    }
+
+    function deleteCategory($ids = [])
+    {
+        $this->allChildParenId = array_merge($this->allChildParenId, $ids);
+        while (sizeof($ids) > 0) {
+            $childerenId = $this->getChildId($ids);
+            $this->allChildParenId = array_merge($this->allChildParenId, $childerenId);
+            $ids = $childerenId;
+        }
+        $ids = join(',', $this->allChildParenId);
+        $sql = "DELETE FROM category_tbl WHERE id IN (" . $ids . ")";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->execute();
     }
 }
 

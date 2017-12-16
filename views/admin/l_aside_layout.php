@@ -199,6 +199,7 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="/digiprojectmvc/views/admin/bower_components/ckeditor/ckeditor.js"></script>
 
 <script src="/digiprojectmvc/views/admin/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -255,13 +256,85 @@
 
 <!-- page script -->
 
-
 <script>
     $(function () {
-        $('#example1').DataTable();
-        $('.select2').select2();
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1');
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
     })
 </script>
+<script>
+    $(function () {
+        $('#example1').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "داده ای برای نمایش در جدول وجود ندارد.",
+                "sInfo": "نمایش  _START_ به _END_ از _TOTAL_ ورودی",
+                "sInfoEmpty": "ورودی برای نمایش وجود ندارد",
+                "sLoadingRecords": "لطفا شکیبا باشید - در حال بارگزاری . . .",
+                "sZeroRecords": "سابقه ای برای نمایش وجود ندارد .",
+                "sSearch": "جستجو:  ",
+                "sLengthMenu": "نمایش  _MENU_  ورودی",
+                "sInfoFiltered": " - فیلتر شده از  _MAX_ ورودی",
+                "oPaginate": {
+                    "sFirst": "صفحه اول",
+                    "sLast": "صفحه آخر",
+                    "sNext": "صفحه بعدی",
+                    "sPrevious": "صفحه قبلی"
+                }
+
+            }
+        });
+        $('.select2').select2();
+    })
+</script><!----table and select connfig-->
+
+<script>
+
+
+    $('.maincat').on('ifChecked', function () {
+        $('.main-category').attr("disabled", "disabled");
+    });
+    $('.maincat').on('ifUnchecked', function () {
+        $('.main-category').removeAttr("disabled");
+    });
+
+
+    $('.editCat').click(function () {
+        var catTitle = $(this).parents('tr.trTitle').find('td.td-title').text();
+        var catID = $(this).parents('tr.trTitle').find('td.tdId').text();
+
+        $('#modal-edit').find('.lbl-title').val(catTitle);
+        $('#modal-edit').find('#edit-form').attr("action", "http://localhost/digiprojectmvc/admincategory/addcategory/" + catID + "/edit");
+    });
+
+
+    //            swal({
+    //                title: 'آیا از این کار مطمئنید؟',
+    //                text: "پس از انجام اینکار بازگشتی وجود ندارد!",
+    //                type: 'warning',
+    //                showCancelButton: true,
+    //                confirmButtonColor: '#3085d6',
+    //                cancelButtonColor: '#d33',
+    //                confirmButtonText: 'بله پاکش کن!',
+    //                cancelButtonText: 'انصراف'
+    //            }).then((result) = > {
+    //                if (result.value)
+    //            {
+    //
+    //            }
+    //                swal(
+    //                    'پاک شد!',
+    //                    'پاک کردن با موفقیت انجام شد.',
+    //                    'success',
+    //                );
+    //            }
+    //        }
+
+
+</script><!--add and delete cat--->
+
 <script>
     $(document).ready(function () {
         $('#tarikh').persianDatepicker({
@@ -339,55 +412,6 @@
         })
     })
 </script>
-<script>
-
-    $('.maincat').on('ifChecked', function (event) {
-        $('.main-category').attr("disabled", "disabled");
-    });
-    $('.maincat').on('ifUnchecked', function (event) {
-        $('.main-category').removeAttr("disabled");
-    });
-
-
-    $('.selCat').on('ifChecked', function () {
-        $(this).find('input').prop('value');
-    });
-
-    $('.editCat').click(function () {
-        var catTitle = $(this).parents('tr').find('td.td-title').text();
-        var catID = $(this).parents('tr').find('td.id').text();
-
-        $('#modal-edit').find('.lbl-title').val(catTitle);
-        $('#modal-edit').find('#edit-form').attr("action", "http://localhost/digiprojectmvc/admincategory/addcategory/" + catID + "/edit");
-    });
-
-    $('.delcat').click(function () {
-        swal({
-            title: 'آیا از این کار مطمئنید؟',
-            text: "پس از انجام اینکار بازگشتی وجود ندارد!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'بله پاکش کن!',
-            cancelButtonText: 'انصراف'
-        }).then((result) => {
-            if (result.value) {
-            swal(
-                'پاک شد!',
-                'پاک کردن با موفقیت انجام شد.',
-                'success',
-            );
-//            $.post('<?//= URL ?>//admincategory/deletecategory/',)
-        }
-    })
-    });
-
-    function submitForm() {
-        $('.tableForm').submit();
-    }
-
-</script><!--add and delete cat--->
 
 
 </body>
