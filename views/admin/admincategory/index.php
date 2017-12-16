@@ -106,7 +106,6 @@ if (isset($data['categoryInfo'])) {
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <?php
                                 $child = $data['category'];
                                 $category = $data['category'];
@@ -294,4 +293,12 @@ if (isset($data['categoryInfo'])) {
     <!-- /.modal-dialog -->
 </div><!--edite modal--->
 
+<script>
+    $(document).ready(function () {
+        $('.sidebar-menu').find('li').removeClass('open');
+        $('.sidebar-menu').find('li').removeClass('active');
+        $('#category').addClass('open');
+        $('#category').addClass('active');
 
+    });
+</script>

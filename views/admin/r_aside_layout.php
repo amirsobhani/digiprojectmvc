@@ -28,12 +28,12 @@
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i> داشبرد دوم</a></li>
                 </ul>
             </li>
-            <li>
+            <li id="category">
                 <a href="<?= URL ?>admincategory">
                     <i class="fa fa-bars"></i> <span>دسته ها</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview" id="product">
                 <a href="#">
                     <i class="fa fa-cube" aria-hidden="true"></i><span>محصولات</span>
                     <span class="pull-left-container">
@@ -41,8 +41,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= URL ?>adminproduct"><i class="fa fa-circle-o"></i>مدیریت محصولات</a></li>
-                    <li><a href="<?= URL ?>adminproduct/addproduct"><i class="fa fa-circle-o"></i>اضافه کردن محصول</a></li>
+                    <li id="subProduct"><a href="<?= URL ?>adminproduct"><i class="fa fa-circle-o"></i>مدیریت محصولات</a></li>
+                    <li id="addProduct"><a href="<?= URL ?>adminproduct/addproduct"><i class="fa fa-circle-o"></i>اضافه کردن محصول</a></li>
                 </ul>
             </li>
             <li class="treeview">

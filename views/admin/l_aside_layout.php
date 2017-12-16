@@ -232,11 +232,11 @@
 <!-- FastClick -->
 <script src="/digiprojectmvc/views/admin/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="/digiprojectmvc/views/admin/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/digiprojectmvc/views/admin/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/digiprojectmvc/views/admin/dist/js/demo.js"></script>
+<script src="/digiprojectmvc/views/admin/dist/js/adminlte.min.js"></script>
 
 <!--icheck-->
 <script src="/digiprojectmvc/views/admin/plugins/iCheck/icheck.min.js"></script>

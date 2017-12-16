@@ -16,6 +16,8 @@
                     <div class="form-group col-xs-8">
                         <label>عنوان محصول</label>
                         <input type="text" class="form-control" placeholder="عنوان محصول را وارد کنید">
+                        <label>عنوان لاتین محصول</label>
+                        <input type="text" class="form-control" placeholder="عنوان لاتین محصول را وارد کنید">
                         <div class="box box-info">
                             <div class="box-header">
                                 <h3 class="box-title">ویرایشگر CK Editor
@@ -65,6 +67,18 @@
                                 <option>کرج</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>دسته بندی</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option disabled selected="selected">یک گزینه را انتخاب کنید</option>
+                                <option>مشهد</option>
+                                <option>اصفهان</option>
+                                <option>شیراز</option>
+                                <option>اهواز</option>
+                                <option>تبریز</option>
+                                <option>کرج</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box -->
@@ -74,3 +88,12 @@
         <!-- /.row -->
     </section>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.sidebar-menu').find('li').removeClass('open');
+        $('.sidebar-menu').find('li').removeClass('active');
+        $('#product').addClass('open');
+        $('#product').addClass('active');
+    });
+</script>
