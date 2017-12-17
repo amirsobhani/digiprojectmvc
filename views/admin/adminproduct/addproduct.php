@@ -89,11 +89,3 @@
     </section>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('.sidebar-menu').find('li').removeClass('open');
-        $('.sidebar-menu').find('li').removeClass('active');
-        $('#product').addClass('open');
-        $('#product').addClass('active');
-    });
-</script>
