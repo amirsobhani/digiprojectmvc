@@ -1,5 +1,5 @@
 <style>
-    .box::after{
+    .box::after {
         content: '';
         display: block;
         clear: both;
@@ -25,10 +25,12 @@
                                 </h3>
                                 <!-- tools box -->
                                 <div class="pull-right box-tools">
-                                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse"
+                                            data-toggle="tooltip"
                                             title="Collapse">
                                         <i class="fa fa-minus"></i></button>
-                                    <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="remove"
+                                            data-toggle="tooltip"
                                             title="Remove">
                                         <i class="fa fa-times"></i></button>
                                 </div>
@@ -79,13 +81,29 @@
                                 <option>کرج</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>رنگ بندی</label>
+                            <select class="form-control select2" multiple="multiple" data-placeholder="رنگ بندی محصول را انتخاب کنید"
+                                    style="width: 100%;">
+                                <option name=colorid[] value="1" >تهران</option>
+                                <option name=colorid[] value="2" >مشهد</option>
+                                <option name=colorid[] value="3">اصفهان</option>
+                                <option name=colorid[] value="4">شیراز</option>
+                                <option name=colorid[] value="5">اهواز</option>
+                                <option name=colorid[] value="6">تبریز</option>
+                                <option>کرج</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>قیمت</label>
+                            <input class="form-control" type="text" placeholder="قیمت محصول را به تومان وارد کنید" />
+                        </div>
                     </div>
+                    <!-- /.box -->
                 </div>
-                <!-- /.box -->
+                <!-- /.col -->
             </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+            <!-- /.row -->
     </section>
 </div>
 

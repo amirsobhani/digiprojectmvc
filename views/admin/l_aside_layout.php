@@ -339,11 +339,12 @@
         var length = value.length;
         e.preventDefault();
         if (length < 1) {
-            swal(
-                'خطا',
-                'برای پاک کردن، گزینه ای را انتخاب کنید .',
-                'error'
-            );
+            swal({
+                title: 'خطا',
+                text: 'برای پاک کردن، گزینه ای را انتخاب کنید .',
+                type: 'error',
+                confirmButtonText: 'خب'
+            });
             return;
         }
         e.preventDefault();
@@ -365,6 +366,7 @@
 
 
 </script><!--add and delete cat--->
+
 
 <script>
     $(document).ready(function () {
