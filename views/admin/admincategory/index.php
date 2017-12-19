@@ -125,12 +125,8 @@ if (isset($data['categoryInfo'])) {
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
-
                                         <td class="selCat">
-
-                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
-                                                   class="flat-red"/>
-
+                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox" class="flat-red"/>
                                         </td>
 
                                     </tr>
