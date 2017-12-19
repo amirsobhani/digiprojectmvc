@@ -367,6 +367,14 @@
 
 </script><!--add and delete cat--->
 
+<script>
+    $('.discount-checkbox').on('ifChecked', function () {
+        $('.discount').removeAttr("disabled");
+    });
+    $('.discount-checkbox').on('ifUnchecked', function () {
+        $('.discount').attr("disabled", "disabled");
+    });
+</script>
 
 <script>
     $(document).ready(function () {

@@ -4,6 +4,16 @@
         display: block;
         clear: both;
     }
+    .discount{
+        display: inline-block;
+        width: 50%;
+    }
+    .discountlabel{
+        width: 49%;
+    }
+    .discount-div{
+        margin: 20px 0;
+    }
 </style>
 <div class="content-wrapper">
     <section class="content-header">
@@ -97,6 +107,18 @@
                         <div>
                             <label>قیمت</label>
                             <input class="form-control" type="text" placeholder="قیمت محصول را به تومان وارد کنید" />
+                        </div>
+                        <div class="discount-div">
+                            <div>
+                                <label>
+                                    <input type="checkbox" class="flat-red discount-checkbox">
+                                </label>
+                                <label>حراج کردن این محصول</label>
+                            </div>
+                            <div>
+                                <label class="discountlabel" >درصد تخفیف</label>
+                                <input class="form-control discount" disabled="disabled" type="text" placeholder="تخفیف را به درصد وارد کنید"/>
+                            </div>
                         </div>
                     </div>
                     <!-- /.box -->
