@@ -4,17 +4,26 @@
         display: block;
         clear: both;
     }
-    .discount{
+
+    .discount {
         display: inline-block;
         width: 50%;
     }
-    .discountlabel{
+
+    .discountlabel {
         width: 49%;
     }
-    .discount-div{
+
+    .discount-div {
         margin: 20px 0;
     }
 </style>
+<?php
+$sellers = $data['seller'];
+$gurantees = $data['gurantee'];
+$category = $data['category'];
+$colors = $data['color'];
+?>
 <div class="content-wrapper">
     <section class="content-header">
 
@@ -57,56 +66,63 @@
                     <div class="form-group col-xs-4">
                         <div class="form-group">
                             <label>فروشنده</label>
-                            <select class="form-control select2" style="width: 100%;">
-                                <option disabled selected="selected">یک گزینه را انتخاب کنید</option>
-                                <option>مشهد</option>
-                                <option>اصفهان</option>
-                                <option>شیراز</option>
-                                <option>اهواز</option>
-                                <option>تبریز</option>
-                                <option>کرج</option>
+                            <select class="form-control select2" multiple="multiple"
+                                    data-placeholder="رنگ بندی محصول را انتخاب کنید" style="width: 100%;">
+                                <?php
+                                foreach ($sellers as $seller) {
+                                    ?>
+                                    <option name=sellerid[]
+                                            value="<?= $seller['id'] ?>"><?= $seller['title'] ?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>گارانتی</label>
                             <select class="form-control select2" style="width: 100%;">
                                 <option disabled selected="selected">یک گزینه را انتخاب کنید</option>
-                                <option>مشهد</option>
-                                <option>اصفهان</option>
-                                <option>شیراز</option>
-                                <option>اهواز</option>
-                                <option>تبریز</option>
-                                <option>کرج</option>
+                                <?php
+                                foreach ($gurantees as $gurantee) {
+                                    ?>
+                                    <option><?= $gurantee['title'] ?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>دسته بندی</label>
                             <select class="form-control select2" style="width: 100%;">
                                 <option disabled selected="selected">یک گزینه را انتخاب کنید</option>
-                                <option>مشهد</option>
-                                <option>اصفهان</option>
-                                <option>شیراز</option>
-                                <option>اهواز</option>
-                                <option>تبریز</option>
-                                <option>کرج</option>
+                                <?php
+                                foreach ($category as $row) {
+                                    ?>
+                                    <option><?= $row['title'] ?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>رنگ بندی</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="رنگ بندی محصول را انتخاب کنید"
+                            <select class="form-control select2" multiple="multiple"
+                                    data-placeholder="رنگ بندی محصول را انتخاب کنید"
                                     style="width: 100%;">
-                                <option name=colorid[] value="1" >تهران</option>
-                                <option name=colorid[] value="2" >مشهد</option>
-                                <option name=colorid[] value="3">اصفهان</option>
-                                <option name=colorid[] value="4">شیراز</option>
-                                <option name=colorid[] value="5">اهواز</option>
-                                <option name=colorid[] value="6">تبریز</option>
-                                <option>کرج</option>
+                                <?php
+                                foreach ($colors as $color) {
+                                    ?>
+                                    <option name=colorid[] value="<?= $color['id'] ?>">
+                                        <?= $color['title']; ?>
+                                    </option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div>
                             <label>قیمت</label>
-                            <input class="form-control" type="text" placeholder="قیمت محصول را به تومان وارد کنید" />
+                            <input class="form-control" type="text" placeholder="قیمت محصول را به تومان وارد کنید"/>
                         </div>
                         <div class="discount-div">
                             <div>
@@ -116,8 +132,9 @@
                                 <label>حراج کردن این محصول</label>
                             </div>
                             <div>
-                                <label class="discountlabel" >درصد تخفیف</label>
-                                <input class="form-control discount" disabled="disabled" type="text" placeholder="تخفیف را به درصد وارد کنید"/>
+                                <label class="discountlabel">درصد تخفیف</label>
+                                <input class="form-control discount" disabled="disabled" type="text"
+                                       placeholder="تخفیف را به درصد وارد کنید"/>
                             </div>
                         </div>
                     </div>
