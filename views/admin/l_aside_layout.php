@@ -255,7 +255,21 @@
 <script src="/digiprojectmvc/views/admin/bower_components/sweetalert2/dist/sweetalert2.all.js"></script>
 
 <!-- page script -->
+<script>
 
+    if (window.location.href === "<?= URL ?>admincategory") {
+        $('#category').addClass('menu-open active');
+    }
+    if (window.location.href === "<?= URL ?>adminproduct") {
+        $('#product').addClass('menu-open active');
+        $('#subproduct').addClass('menu-open active');
+    }
+    if (window.location.href === "<?= URL ?>adminproduct/addproduct") {
+        $('#product').addClass('menu-open active');
+        $('#addProduct').addClass('menu-open active');
+    }
+
+</script>
 <script>
     $(function () {
         // Replace the <textarea id="editor1"> with a CKEditor
@@ -317,39 +331,50 @@
     });
     $('.selCat input').on('ifUnchecked', function () {
         var val = $(this).attr('value');
-        value.splice($.inArray(val, value),1);
+        value.splice($.inArray(val, value), 1);
+
     });
 
     $('.delcat').click(function (e) {
         var length = value.length;
         e.preventDefault();
-        if (length < 1)
-        {
-            swal(
-                'خطا',
-                'برای پاک کردن، گزینه ای را انتخاب کنید .',
-                'error'
-            );
+        if (length < 1) {
+            swal({
+                title: 'خطا',
+                text: 'برای پاک کردن، گزینه ای را انتخاب کنید .',
+                type: 'error',
+                confirmButtonText: 'خب'
+            });
             return;
         }
         e.preventDefault();
-            swal({
-                title: 'آیا از این کار مطمئنید؟',
-                text: "پس از انجام اینکار بازگشتی وجود ندارد!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'بله پاکش کن!',
-                cancelButtonText: 'انصراف'
-            }).then((result) => {
-                if (result.value) {
-                    $(".tableForm").submit();
-                }
-            })
+        swal({
+            title: 'آیا از این کار مطمئنید؟',
+            text: "پس از انجام اینکار بازگشتی وجود ندارد!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله پاکش کن!',
+            cancelButtonText: 'انصراف'
+        }).then((result) => {
+            if (result.value) {
+                $(".tableForm").submit();
+            }
+        })
     });
 
+
 </script><!--add and delete cat--->
+
+<script>
+    $('.discount-checkbox').on('ifChecked', function () {
+        $('.discount').removeAttr("disabled");
+    });
+    $('.discount-checkbox').on('ifUnchecked', function () {
+        $('.discount').attr("disabled", "disabled");
+    });
+</script>
 
 <script>
     $(document).ready(function () {

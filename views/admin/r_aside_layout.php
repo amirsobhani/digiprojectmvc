@@ -41,7 +41,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li id="subProduct"><a href="<?= URL ?>adminproduct"><i class="fa fa-circle-o"></i>مدیریت محصولات</a></li>
+                    <li id="subproduct"><a href="<?= URL ?>adminproduct"><i class="fa fa-circle-o"></i>مدیریت محصولات</a></li>
                     <li id="addProduct"><a href="<?= URL ?>adminproduct/addproduct"><i class="fa fa-circle-o"></i>اضافه کردن محصول</a></li>
                 </ul>
             </li>
