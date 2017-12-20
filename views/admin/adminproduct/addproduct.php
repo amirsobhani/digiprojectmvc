@@ -7,9 +7,10 @@
     .discount{
         display: inline-block;
         width: 50%;
+        float: left;
     }
     .discountlabel{
-        width: 49%;
+        width: 45%;
     }
     .discount-div{
         margin: 20px 0;

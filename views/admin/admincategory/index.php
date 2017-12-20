@@ -87,7 +87,6 @@ if (isset($data['categoryInfo'])) {
 
                         <div class="box-title">
                         </div>
-
                     </div><!-- /.box-header -->
                     <form action="<?= URL ?>admincategory/deletecategory/<?= @$categoryInfo['id'] ?>" class="tableForm"  method="post">
                         <button onclick="Delete($this)"  type="submit" class="btn btn-danger delcat"">
@@ -288,13 +287,3 @@ if (isset($data['categoryInfo'])) {
     </div>
     <!-- /.modal-dialog -->
 </div><!--edite modal--->
-
-<script>
-    $(document).ready(function () {
-        $('.sidebar-menu').find('li').removeClass('open');
-        $('.sidebar-menu').find('li').removeClass('active');
-        $('#category').addClass('open');
-        $('#category').addClass('active');
-
-    });
-</script>
