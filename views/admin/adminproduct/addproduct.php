@@ -8,10 +8,7 @@
     .discount {
         display: inline-block;
         width: 50%;
-    }
-
-    .discountlabel {
-        width: 49%;
+        float: left;
     }
 
     .discount-div {
@@ -34,13 +31,13 @@ $colors = $data['color'];
                 <div class="box">
                     <div class="form-group col-xs-8">
                         <label>عنوان محصول</label>
-                        <input type="text" class="form-control" placeholder="عنوان محصول را وارد کنید">
+                        <input name="title" type="text" class="form-control" placeholder="عنوان محصول را وارد کنید">
                         <label>عنوان لاتین محصول</label>
-                        <input type="text" class="form-control" placeholder="عنوان لاتین محصول را وارد کنید">
+                        <input name="en-title" type="text" class="form-control" placeholder="عنوان لاتین محصول را وارد کنید">
                         <div class="box box-info">
                             <div class="box-header">
-                                <h3 class="box-title">ویرایشگر CK Editor
-                                    <small>فارسی شده توسط علیرضا حسینی زاده</small>
+                                <h3 class="box-title">معرفی اجمالی محصول
+                                    <small>این بخش بعنوان معرفی اجمالی محصول نشان داده می شود</small>
                                 </h3>
                                 <!-- tools box -->
                                 <div class="pull-right box-tools">
@@ -57,9 +54,7 @@ $colors = $data['color'];
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body pad">
-                                <form>
-                                    <textarea id="editor1" name="editor1" rows="10" cols="80">این ویرایشگر راست چین و فارسی شده و تنظیمات آن به صورت اختصاصی تنظیم شده است...</textarea>
-                                </form>
+                                    <textarea id="editor1" name="introduction" rows="10" cols="80"></textarea>
                             </div>
                         </div>
                     </div>
