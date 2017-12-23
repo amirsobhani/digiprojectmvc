@@ -109,7 +109,7 @@ $products = $data['products'];
                                         <td><?= $row['price'] ?></td>
                                         <td><?= $row['discount'] ?></td>
                                         <td>
-                                            <a class="editPro">
+                                            <a class="editPro" href="adminproduct/addproduct/<?= $row['id'] ?>">
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>

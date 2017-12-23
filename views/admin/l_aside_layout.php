@@ -257,6 +257,7 @@
 <!-- page script -->
 <script>
 
+
     if (window.location.href === "<?= URL ?>admincategory") {
         $('#category').addClass('menu-open active');
     }
@@ -279,6 +280,9 @@
         $('.textarea').wysihtml5()
     })
 </script>
+<?php
+$colors = $data['color'];
+?>
 <script>
     $(function () {
         $('#example1').DataTable({
@@ -301,6 +305,12 @@
             }
         });
         $('.select2').select2();
+//        $('.getcolor').select2({
+//            post: {
+//                url: 'https://api.github.com/search/repositories',
+//                dataType: 'json'
+//            }
+//        });
     })
 </script><!----table and select connfig-->
 

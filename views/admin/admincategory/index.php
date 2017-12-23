@@ -89,7 +89,7 @@ if (isset($data['categoryInfo'])) {
                         </div>
                     </div><!-- /.box-header -->
                     <form action="<?= URL ?>admincategory/deletecategory/<?= @$categoryInfo['id'] ?>" class="tableForm"  method="post">
-                        <button onclick="Delete($this)"  type="submit" class="btn btn-danger delcat"">
+                        <button type="submit" class="btn btn-danger delcat"">
                         حذف
                         <i class="fa fa-trash"></i>
                         </button>

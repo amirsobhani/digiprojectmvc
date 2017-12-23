@@ -41,4 +41,43 @@ class model_adminproduct extends Model
         $result = $this->doSelect($sql);
         return $result;
     }
+
+    function insertProduct($data = [], $productId = '')
+    {
+        $title = $data['title'];
+        $entitle = $data['en-title'];
+        $introduction = $data['introduction'];
+        $productmodel = $data['productmodel'];
+        $sellerid = $data['sellerid'];
+        $gurantees = $data['gurantees'];
+        $category = $data['category'];
+        $colorid = $data['colorid'];
+        $tedad = $data['tedad'];
+        $price = $data['price'];
+//        $discount = $data['discount'];
+
+
+        $gurantees = join(',', $gurantees);
+        $colorid = join(',', $colorid);
+        $sellerid = join(',', $sellerid);
+
+        if ($productId == '') {
+            $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
+            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
+            $this->idu($sql, $value);
+        } else {
+            $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
+            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
+            $this->idu($sql, $value);
+        }
+    }
+
+    function productiInfo($productId)
+    {
+        $sql = 'SELECT * FROM product_tbl WHERE id=?';
+        $data = [$productId];
+        $result = $this->doSelect($sql, $data, 'fetch');
+        return $result;
+    }
+
 }
