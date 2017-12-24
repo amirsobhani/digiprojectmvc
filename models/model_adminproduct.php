@@ -80,4 +80,11 @@ class model_adminproduct extends Model
         return $result;
     }
 
+    function deleteProduct($ids = [])
+    {
+        $ids = join(',', $ids);
+        $sql = "DELETE FROM product_tbl WHERE id IN (" . $ids . ")";
+        $this->idu($sql);
+    }
+
 }

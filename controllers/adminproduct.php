@@ -20,10 +20,8 @@ class adminproduct extends Controller
         //E_WARNING |
 
         if (isset($_POST['title'])) {
-
             $this->model->insertProduct($_POST, $productId);
 //            $productInfo = ['title' => $title, 'entitle' => $entitle, 'introduction' => $introduction, 'productmodel' => $productmodel, 'sellerid' => $sellerid, 'gurantees' => $gurantees, 'category' => $category, 'colorid' => $colorid, 'tedad' => $tedad, 'price' => $price, 'discount' => $discount];
-
         }
         $getSeller = $this->model->getSeller();
         $getGuarantee = $this->model->getGuarantee();
@@ -32,9 +30,13 @@ class adminproduct extends Controller
         $productInfo = $this->model->productiInfo($productId);
         $data = ['seller' => $getSeller, 'gurantee' => $getGuarantee, 'category' => $getCategory, 'color' => $getColor, 'product' => $productInfo];
         $this->AdminView('admin/adminproduct/addproduct', $data);
-
-
     }
 
+    function deleteproduct()
+    {
+        $ids = $_POST['id'];
+        $this->model->deleteProduct($ids);
+        header('location:' . URL . 'adminproduct');
+    }
 
 }

@@ -269,6 +269,10 @@
         $('#product').addClass('menu-open active');
         $('#addProduct').addClass('menu-open active');
     }
+    if (window.location.href === "<?= URL ?>adminproduct/addproduct/") {
+        $('#product').addClass('menu-open active');
+        $('#addProduct').addClass('menu-open active');
+    }
 
 </script>
 <script>
@@ -280,9 +284,7 @@
         $('.textarea').wysihtml5()
     })
 </script>
-<?php
-$colors = $data['color'];
-?>
+
 <script>
     $(function () {
         $('#example1').DataTable({
@@ -464,6 +466,48 @@ $colors = $data['color'];
     })
 </script>
 
+<script>
+    var value = [];
+    $('.selPro input').on('ifChecked', function () {
+        var val = $(this).attr('value');
+        value.push(val);
+        console.log(value);
+    });
+    $('.selPro input').on('ifUnchecked', function () {
+        var val = $(this).attr('value');
+        value.splice($.inArray(val, value), 1);
+        console.log(value);
 
+    });
+
+    $('.delPro').click(function (e) {
+        var length = value.length;
+        e.preventDefault();
+        if (length < 1) {
+            swal({
+                title: 'خطا',
+                text: 'برای پاک کردن، گزینه ای را انتخاب کنید .',
+                type: 'error',
+                confirmButtonText: 'خب'
+            });
+            return;
+        }
+        e.preventDefault();
+        swal({
+            title: 'آیا از این کار مطمئنید؟',
+            text: "پس از انجام اینکار بازگشتی وجود ندارد!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله پاکش کن!',
+            cancelButtonText: 'انصراف'
+        }).then((result) => {
+            if (result.value) {
+                $(".tableForm").submit();
+            }
+        })
+    });
+</script><!---Delete Product-->
 </body>
 </html>

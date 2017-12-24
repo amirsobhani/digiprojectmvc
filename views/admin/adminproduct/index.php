@@ -71,7 +71,7 @@ $products = $data['products'];
                         <h3 class="box-title">مدیریت محصولات ها</h3>
 
                         <div class="box-body">
-                            <a type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                            <a href="adminproduct/addproduct" class="btn btn-success">
                                 محصول جدید
                                 <i class="fa fa-plus"></i>
                             </a>
@@ -82,8 +82,8 @@ $products = $data['products'];
                         </div>
 
                     </div><!-- /.box-header -->
-                    <form action="" class="tableForm"  method="post">
-                        <button onclick="Delete($this)"  type="submit" class="btn btn-danger delPro"">
+                    <form action="<?= URL ?>adminproduct/deleteproduct" class="tableForm"  method="post">
+                        <button type="submit" class="btn btn-danger delPro"">
                         حذف
                         <i class="fa fa-trash"></i>
                         </button>
