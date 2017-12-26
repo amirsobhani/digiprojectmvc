@@ -28,8 +28,8 @@
 </style>
 <!-- Content Wrapper. Contains page content -->
 <?php
-$products = $data['products'];
-
+$productReview = $data['productReview'];
+$idproduct = $data['idproduct'];
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -39,25 +39,25 @@ $products = $data['products'];
         <!--            <small>پیشرفته</small>-->
         <!--        </h1>-->
         <ol class="breadcrumb">
-<!--            --><?php
-//            foreach ($parent as $row) {
-//                ?>
-<!--                <li>-->
-<!--                    <a href="--><?//= URL ?><!--admincategory/showchild/--><?//= $row['id'] ?><!--">-->
-<!--                        --><?//= $row['title'] ?>
-<!--                    </a>-->
-<!--                </li>-->
-<!--                --><?php
-//            }
-//            ?>
-<!--            <li><a href="">-->
-<!--                    --><?php
-//                    if (isset($categoryInfo['title'])) {
-//                        echo $categoryInfo['title'];
-//                    }
-//                    ?>
-<!--                </a>-->
-<!--            </li>-->
+            <!--            --><?php
+            //            foreach ($parent as $row) {
+            //                ?>
+            <!--                <li>-->
+            <!--                    <a href="--><?//= URL ?><!--admincategory/showchild/--><?//= $row['id'] ?><!--">-->
+            <!--                        --><?//= $row['title'] ?>
+            <!--                    </a>-->
+            <!--                </li>-->
+            <!--                --><?php
+            //            }
+            //            ?>
+            <!--            <li><a href="">-->
+            <!--                    --><?php
+            //                    if (isset($categoryInfo['title'])) {
+            //                        echo $categoryInfo['title'];
+            //                    }
+            //                    ?>
+            <!--                </a>-->
+            <!--            </li>-->
         </ol>
     </section>
 
@@ -71,16 +71,13 @@ $products = $data['products'];
                         <h3 class="box-title">مدیریت محصولات ها</h3>
 
                         <div class="box-body">
-                            <a href="adminproduct/addproduct" class="btn btn-success">
-                                محصول جدید
+                            <a href="<?= URL ?>adminproduct/addreview/<?= $idproduct ?>" class="btn btn-success">
+اضافه کردن نقد
                                 <i class="fa fa-plus"></i>
                             </a>
-
                         </div><!--modal btn--->
-
                         <div class="box-title">
                         </div>
-
                     </div><!-- /.box-header -->
                     <form action="<?= URL ?>adminproduct/deleteproduct" class="tableForm"  method="post">
                         <button type="submit" class="btn btn-danger delPro"">
@@ -91,38 +88,27 @@ $products = $data['products'];
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>کد محصول</th>
-                                    <th>نام محصول</th>
-                                    <th>قیمت</th>
-                                    <th>تخفیف (درصد)</th>
-                                    <th>نقد و بررسی</th>
+                                    <th>کد نقد</th>
+                                    <th>عنوان نقد و بررسی</th>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($products as $row) {
+                                foreach ($productReview as $row) {
                                     ?>
                                     <tr class="trTitle">
                                         <td class="tdId"><?= $row['id'] ?></td>
                                         <td class="td-title"><?= $row['title'] ?></td>
-                                        <td><?= $row['price'] ?></td>
-                                        <td><?= $row['discount'] ?></td>
                                         <td>
-                                            <a href="adminproduct/productreview/<?= $row['id'] ?>">
+                                            <a href="<?= URL ?>adminproduct/addreview/<?= $row['id'] ?>/edit">
                                                 <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="editPro" href="adminproduct/addproduct/<?= $row['id'] ?>">
-                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td class="selPro">
                                             <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
                                                    class="flat-red"/>
-
                                         </td>
                                     </tr>
                                     <?php
@@ -131,11 +117,8 @@ $products = $data['products'];
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>کد محصول</th>
-                                    <th>نام محصول</th>
-                                    <th>قیمت</th>
-                                    <th>تخفیف (درصد)</th>
-                                    <th>نقد و بررسی</th>
+                                    <th>کد نقد</th>
+                                    <th>عنوان نقد و بررسی</th>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>

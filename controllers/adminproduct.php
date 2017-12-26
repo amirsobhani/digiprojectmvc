@@ -16,7 +16,7 @@ class adminproduct extends Controller
 
     function addproduct($productId = '')
     {
-//        error_reporting(E_ERROR | E_PARSE);
+        error_reporting(E_ERROR | E_PARSE);
         //E_WARNING |
 
         if (isset($_POST['title'])) {
@@ -37,6 +37,23 @@ class adminproduct extends Controller
         $ids = $_POST['id'];
         $this->model->deleteProduct($ids);
         header('location:' . URL . 'adminproduct');
+    }
+
+    function productreview($idproduct)
+    {
+        $getProductReview = $this->model->getProductReview($idproduct);
+        $data = ['productReview' => $getProductReview, 'idproduct' => $idproduct];
+        $this->AdminView('admin/adminproduct/productreview', $data);
+    }
+
+    function addreview($id, $edit = '')
+    {
+        $this->model->addreview($id, $_POST);
+        $getReview = $this->model->getReview($id);
+        $productInfo = $this->model->getProduct();
+        $data = ['review' => $getReview, 'productInfo' => $productInfo, 'idproduct' => $id, 'edit' => $edit];
+        $this->AdminView('admin/adminproduct/addreview', $data);
+
     }
 
 }

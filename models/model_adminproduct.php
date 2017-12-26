@@ -87,4 +87,30 @@ class model_adminproduct extends Model
         $this->idu($sql);
     }
 
+    function getProductReview($idproduct)
+    {
+        $sql = 'SELECT * FROM review_tbl WHERE idproduct=?';
+        $data = [$idproduct];
+        $result = $this->doSelect($sql, $data);
+        return $result;
+    }
+
+    function getReview($id)
+    {
+        $sql = 'SELECT * FROM review_tbl WHERE id=?';
+        $data = [$id];
+        $result = $this->doSelect($sql, $data);
+        return $result;
+    }
+
+    function addreview($idproduct, $data = [])
+    {
+        $title = $data['title'];
+        $description = $data['description'];
+        $sql = 'INSERT INTO review_tbl (title, description, idproduct) VALUES (?,?,?)';
+        $value = [$title, $description, $idproduct];
+        $this->idu($sql, $value);
+    }
+    
+
 }

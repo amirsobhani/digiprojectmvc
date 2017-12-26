@@ -142,6 +142,7 @@ if (isset($product['title'])) {
                                 <label>دسته بندی</label>
                                 <select name="category" class="form-control select2" style="width: 100%;"
                                         data-placeholder="یک دسته برای محصول انتخاب کنید">
+                                    <option selected disabled>یک دسته برای محصول انتخاب کنید</option>
                                     <?php
                                     foreach ($category as $row) {
                                         ?>
@@ -197,39 +198,6 @@ if (isset($product['title'])) {
                                        type="text"
                                        placeholder="قیمت محصول را به تومان وارد کنید"/>
                             </div>
-                            <!--                                <div class="discount-div">-->
-                            <!--                                    <div>-->
-                            <!--                                        --><?php
-                            //                                        if (isset($product['discount'])) {
-                            //                                            $checked = 'checked';
-                            //                                        } else {
-                            //                                            $checked = '';
-                            //                                        }
-                            //                                        ?>
-                            <!--                                        <label>-->
-                            <!--                                            <input -->
-                            <? //= $checked ?><!-- type="checkbox"-->
-                            <!--                                                   class="flat-red discount-checkbox">-->
-                            <!--                                        </label>-->
-                            <!--                                        <label>حراج کردن این محصول</label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div>-->
-                            <!--                                        <label class="discountlabel">درصد تخفیف</label>-->
-                            <!--                                        --><?php
-                            //                                        if (isset($product['discount'])) {
-                            //                                            $disable = '';
-                            //                                        } else {
-                            //                                            $disable = 'disabled';
-                            //
-                            //                                        }
-                            //                                        ?>
-                            <!--                                        <input value="-->
-                            <? //= $product['discount'] ?><!--" name="discount"-->
-                            <!--                                               class="form-control discount" -->
-                            <? //= $disable ?><!-- type="text"-->
-                            <!--                                               placeholder="تخفیف را به درصد وارد کنید"/>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
                             <?php
                             if ($edit == 1) {
                                 ?>
