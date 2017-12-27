@@ -46,7 +46,7 @@ $productId = $data['idproduct'];
                             <?php
                         } else {
                             ?>
-                            action="<?= URL ?>adminproduct/editReview/<?= $productId['id'] ?>"
+                            action="<?= URL ?>adminproduct/editReview/<?= $productId['id']?>/edit"
                             <?php
                         }
                         ?>

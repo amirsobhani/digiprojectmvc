@@ -59,7 +59,7 @@ class adminproduct extends Controller
 
     }
 
-    function editReview($id, $edit)
+    function editReview($id, $edit = '')
     {
         error_reporting(E_ERROR | E_PARSE);
 
