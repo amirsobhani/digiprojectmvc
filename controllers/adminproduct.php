@@ -47,15 +47,28 @@ class adminproduct extends Controller
         $this->AdminView('admin/adminproduct/productreview', $data);
     }
 
-    function addreview($id, $edit = '')
+    function addreview($id)
     {
         error_reporting(E_ERROR | E_PARSE);
-        $this->model->addreview($id, $_POST);
+        $this->model->addreview($_POST);
+        $getReview = $this->model->getReview($id);
+        $getProductReview = $this->model->getProductReview($id);
+        $productInfo = $this->model->getProduct();
+        $data = ['review' => $getReview, 'productInfo' => $productInfo, 'idproduct' => $id, 'getProductReview' => $getProductReview];
+        $this->AdminView('admin/adminproduct/addreview', $data);
+
+    }
+
+    function editReview($id, $edit)
+    {
+        error_reporting(E_ERROR | E_PARSE);
+
+        $this->model->updateReview($_POST);
         $getReview = $this->model->getReview($id);
         $productInfo = $this->model->getProduct();
         $data = ['review' => $getReview, 'productInfo' => $productInfo, 'idproduct' => $id, 'edit' => $edit];
         $this->AdminView('admin/adminproduct/addreview', $data);
-print_r($id);
+
     }
 
 }

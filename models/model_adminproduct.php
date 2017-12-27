@@ -103,14 +103,26 @@ class model_adminproduct extends Model
         return $result;
     }
 
-    function addreview($idproduct, $data = [])
+    function addreview($data = [])
     {
         $title = $data['title'];
         $description = $data['description'];
+        $idproduct = $data['product'];
         $sql = 'INSERT INTO review_tbl (title, description, idproduct) VALUES (?,?,?)';
         $value = [$title, $description, $idproduct];
         $this->idu($sql, $value);
     }
-    
+
+    function updateReview($data = [])
+    {
+        $id = $data['id'];
+        $title = $data['title'];
+        $description = $data['description'];
+        $idproduct = $data['product'];
+        $sql = 'UPDATE review_tbl SET title=?,description=?,idproduct=? WHERE id=?';
+        $value = [$title, $description, $idproduct, $id];
+        $this->idu($sql, $value);
+    }
+
 
 }

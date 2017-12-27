@@ -102,7 +102,7 @@ $idproduct = $data['idproduct'];
                                         <td class="tdId"><?= $row['id'] ?></td>
                                         <td class="td-title"><?= $row['title'] ?></td>
                                         <td>
-                                            <a href="<?= URL ?>adminproduct/addreview/<?= $row['id'] ?>/edit">
+                                            <a href="<?= URL ?>adminproduct/editReview/<?= $row['id'] ?>/edit">
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>

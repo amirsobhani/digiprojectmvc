@@ -22,11 +22,15 @@
 <?php
 $review = $data['review'][0];
 $productInfo = $data['productInfo'];
-$productId = $data['idproduct'];
+$getProductReview = $data['getProductReview'];
 $edit = $data['edit'];
+$productId = $data['idproduct'];
+
 ?>
 
 <div class="content-wrapper">
+    <!--$edit = $data['edit'];-->
+
     <section class="content-header">
 
     </section>
@@ -34,10 +38,26 @@ $edit = $data['edit'];
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <form action="<?= URL ?>adminproduct/addreview/<?= $productId['id'] ?>" method="post">
+                    <form method="post"
+                        <?php
+                        if ($edit == '') {
+                            ?>
+                            action="<?= URL ?>adminproduct/addreview/<?= $productId['id'] ?>"
+                            <?php
+                        } else {
+                            ?>
+                            action="<?= URL ?>adminproduct/editReview/<?= $productId['id'] ?>"
+                            <?php
+                        }
+                        ?>
+                    >
                         <div class="form-group col-xs-9">
                             <label>عنوان نقد و بررسی</label>
-                            <input value="<?php if ($edit == 'edit'){echo $review['title'];} ?>" name="title" type="text" class="form-control"
+                            <!--                            <label>--><? //= $review['idproduct'] ?><!--</label>-->
+                            <input hidden name="id" value="<?= $review['id'] ?>"/>
+                            <input value="<?php if ($edit == 'edit') {
+                                echo $review['title'];
+                            } ?>" name="title" type="text" class="form-control"
                                    placeholder="عنوان نقد محصول را وارد کنید">
                             <div class="box box-info">
                                 <div class="box-header">
@@ -59,35 +79,35 @@ $edit = $data['edit'];
                                 <!-- /.box-header -->
                                 <div class="box-body pad">
                                     <textarea id="editor1" name="description" rows="10"
-                                              cols="80"><?php if ($edit == 'edit'){echo $review['description'];} ?></textarea>
+                                              cols="80"><?php if ($edit == 'edit') {
+                                            echo $review['description'];
+                                        } ?></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group col-xs-3">
                             <div class="form-group">
                                 <label>محصول</label>
-                                <select name="category" class="form-control select2" style="width: 100%;"
+                                <select name="product" class="form-control select2" style="width: 100%;"
                                         data-placeholder="یک محصول را برای این نقد انتخاب کنید">
-                                    <option selected disabled>یک محصول برای این نقد انتخاب کنید</option>
                                     <?php
                                     foreach ($productInfo as $row) {
                                         ?>
                                         <option
                                             <?php
                                             if ($edit == 'edit') {
-                                                if ($row['id'] == $productInfo[0]['id']) {
+                                                if ($row['id'] == $review['idproduct']) {
                                                     ?>
                                                     selected
                                                     <?php
                                                 }
                                             } else {
-                                                if ($row['id'] == $productId){
+                                                if ($row['id'] ==  $productId) {
                                                     ?>
                                                     selected
                                                     <?php
                                                 }
                                             }
-
                                             ?>
                                                 value="<?= $row['id'] ?>"><?= $row['title'] ?></option>
                                         <?php
@@ -96,7 +116,7 @@ $edit = $data['edit'];
                                 </select>
                             </div>
                             <?php
-                            if ($edit != '') {
+                            if ($edit == 'edit') {
                                 ?>
                                 <button class="btn btn-block btn-info btn-sm frm-submit">بروزرسانی نقد</button>
                                 <?php
