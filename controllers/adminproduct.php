@@ -41,6 +41,7 @@ class adminproduct extends Controller
 
     function productreview($idproduct)
     {
+        error_reporting(E_ERROR | E_PARSE);
         $getProductReview = $this->model->getProductReview($idproduct);
         $data = ['productReview' => $getProductReview, 'idproduct' => $idproduct];
         $this->AdminView('admin/adminproduct/productreview', $data);
@@ -48,12 +49,13 @@ class adminproduct extends Controller
 
     function addreview($id, $edit = '')
     {
+        error_reporting(E_ERROR | E_PARSE);
         $this->model->addreview($id, $_POST);
         $getReview = $this->model->getReview($id);
         $productInfo = $this->model->getProduct();
         $data = ['review' => $getReview, 'productInfo' => $productInfo, 'idproduct' => $id, 'edit' => $edit];
         $this->AdminView('admin/adminproduct/addreview', $data);
-
+print_r($id);
     }
 
 }

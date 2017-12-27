@@ -21,8 +21,8 @@
     }
     .delPro{
         position: relative;
-        right: -153px;
-        top: -77px;
+        right: -179px;
+        top: -78px;
         float: left;
     }
 </style>
@@ -72,7 +72,7 @@ $idproduct = $data['idproduct'];
 
                         <div class="box-body">
                             <a href="<?= URL ?>adminproduct/addreview/<?= $idproduct ?>" class="btn btn-success">
-اضافه کردن نقد
+نقد و بررسی جدید
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div><!--modal btn--->
@@ -103,7 +103,7 @@ $idproduct = $data['idproduct'];
                                         <td class="td-title"><?= $row['title'] ?></td>
                                         <td>
                                             <a href="<?= URL ?>adminproduct/addreview/<?= $row['id'] ?>/edit">
-                                                <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td class="selPro">

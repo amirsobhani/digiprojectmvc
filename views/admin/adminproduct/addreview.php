@@ -34,7 +34,7 @@ $edit = $data['edit'];
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <form action="<?= URL ?>adminproduct/addreview/<?= @$review['id'] ?>" method="post">
+                    <form action="<?= URL ?>adminproduct/addreview/<?= $productId['id'] ?>" method="post">
                         <div class="form-group col-xs-9">
                             <label>عنوان نقد و بررسی</label>
                             <input value="<?php if ($edit == 'edit'){echo $review['title'];} ?>" name="title" type="text" class="form-control"
