@@ -79,7 +79,8 @@ $idproduct = $data['idproduct'];
                         <div class="box-title">
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="<?= URL ?>adminproduct/deleteproduct" class="tableForm"  method="post">
+                    <form action="<?= URL ?>adminproduct/deleteReview" class="tableForm"  method="post">
+                        <input name="idproduct" value="<?= $idproduct ?>" hidden>
                         <button type="submit" class="btn btn-danger delPro"">
                         حذف
                         <i class="fa fa-trash"></i>

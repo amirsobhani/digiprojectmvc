@@ -85,6 +85,8 @@ class model_adminproduct extends Model
         $ids = join(',', $ids);
         $sql = "DELETE FROM product_tbl WHERE id IN (" . $ids . ")";
         $this->idu($sql);
+        $reviewSql = 'DELETE FROM review_tbl WHERE idproduct IN (' . $ids . ')';
+        $this->idu($reviewSql);
     }
 
     function getProductReview($idproduct)
@@ -124,5 +126,10 @@ class model_adminproduct extends Model
         $this->idu($sql, $value);
     }
 
-
+    function deleteReview($ids = [])
+    {
+        $ids = join(',', $ids);
+        $sql = "DELETE FROM review_tbl WHERE id IN (" . $ids . ")";
+        $this->idu($sql);
+    }
 }

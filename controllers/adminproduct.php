@@ -71,4 +71,12 @@ class adminproduct extends Controller
 
     }
 
+    function deleteReview()
+    {
+        $ids = $_POST['id'];
+        $idproduct = $_POST['idproduct'];
+        $this->model->deleteReview($ids);
+        header('location:' . URL . 'adminproduct/productreview/' . $idproduct . '');
+    }
+
 }
