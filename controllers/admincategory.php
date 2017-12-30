@@ -54,8 +54,27 @@ class admincategory extends Controller
         $this->model->deleteCategory($ids);
         if ($idcategory == 0) {
             header('location:' . URL . 'admincategory');
-        }else{
+        } else {
             header('location:' . URL . 'admincategory/showChild/' . $idcategory . '');
         }
+    }
+
+    function ShowAttr($idcategory, $parent = 0)
+    {
+        error_reporting(E_ERROR | E_PARSE);
+
+        $attr = $this->model->getAttr($idcategory, $parent);
+        $categoryInfo = $this->model->categoryInfo($idcategory);
+        $attrInfo = $this->model->attrInfo($parent);
+        $getAttrInfo = $this->model->getAttrInfo();
+        $attrParent = $this->model->attrParent(0);
+        $data = ['attr' => $attr, 'categoryInfo' => $categoryInfo, 'attrInfo' => $attrInfo, 'getAttrInfo' => $getAttrInfo, 'attrParent' => $attrParent];
+        $this->AdminView('admin/admincategory/ShowAttr', $data);
+    }
+
+    function addAttr($categoryInfo, $attrInfo)
+    {
+        $this->model->addAttr($_POST);
+        header('location:' . URL . 'admincategory/ShowAttr/' . $categoryInfo . '/' . $attrInfo . '');
     }
 }

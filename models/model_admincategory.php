@@ -99,6 +99,48 @@ class model_admincategory extends Model
         $stmt = self::$conn->prepare($sql);
         $stmt->execute();
     }
+
+    function getAttr($idcategory, $parent)
+    {
+        $sql = 'SELECT * FROM attr_tbl WHERE idcategory=? AND parent=?';
+        $value = [$idcategory, $parent];
+        $result = $this->doSelect($sql, $value);
+        return $result;
+    }
+
+    function attrInfo($idcategory)
+    {
+        $sql = 'SELECT * FROM attr_tbl WHERE id=?';
+        $value = [$idcategory];
+        $result = $this->doSelect($sql, $value);
+        return $result;
+    }
+
+    function getAttrInfo()
+    {
+        $sql = 'SELECT * FROM attr_tbl';
+        $result = $this->doSelect($sql);
+        return $result;
+    }
+
+    function attrParent($parent)
+    {
+        $sql = 'SELECT * FROM attr_tbl WHERE parent=?';
+        $value = [$parent];
+        $result = $this->doSelect($sql, $value);
+        return $result;
+    }
+
+    function addAttr($data = [])
+    {
+        $title = $data['title'];
+        $idcategory = $data['idcategory'];
+        $parent = $data['parent'];
+
+        $sql = 'INSERT INTO attr_tbl (title, idcategory, parent) VALUES (?,?,?)';
+        $values = [$title, $idcategory, $parent];
+        $this->idu($sql, $values);
+    }
 }
 
 

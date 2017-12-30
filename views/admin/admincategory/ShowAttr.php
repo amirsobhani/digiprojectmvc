@@ -19,7 +19,8 @@
     .editCat {
         cursor: pointer;
     }
-    .delcat{
+
+    .delcat {
         position: relative;
         right: -143px;
         top: -77px;
@@ -27,59 +28,44 @@
     }
 </style>
 <!-- Content Wrapper. Contains page content -->
-<?php
-$parent = [];
-if (isset($data['parent'])) {
-    $parent = $data['parent'];
-    $parent = array_reverse($parent);
-}
-$categoryInfo = [];
-if (isset($data['categoryInfo'])) {
-    $categoryInfo = $data['categoryInfo'];
-}
-?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    <?php
+    $attr = $data['attr'];
+    $categoryInfo = $data['categoryInfo'];
+    $attrInfo = $data['attrInfo'];
+    $getAttrInfo = $data['getAttrInfo'];
+    $attrParent = $data['attrParent'];
+    ?>
     <section class="content-header">
         <!--        <h1>-->
         <!--            جدول ها-->
         <!--            <small>پیشرفته</small>-->
-        <!--        </h1>-->
-        <ol class="breadcrumb">
-            <?php
-            foreach ($parent as $row) {
-                ?>
-                <li>
-                    <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
-                        <?= $row['title'] ?>
-                    </a>
-                </li>
-                <?php
-            }
-            ?>
-            <li><a href="">
-                    <?php
-                    if (isset($categoryInfo['title'])) {
-                        echo $categoryInfo['title'];
-                    }
-                    ?>
-                </a>
-            </li>
-        </ol>
+        <!--        <!--        </h1>-->
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="<?= URL ?>/admincategory/showchild/<?= $categoryInfo['id'] ?>">
+                            <?= $categoryInfo['title'] ?>
+                        </a>
+                    </li>
+                    <li>
+                        <?= $attrInfo[0]['title'] ?>
+                    </li>
+                </ol>
     </section>
 
     <!-- Main content -->
-
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">مدیریت دسته ها</h3>
+                        <h3 class="box-title">مدیریت ویژگی ها</h3>
 
                         <div class="box-body">
                             <a type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                                دسته جدید
+                                ویژگی جدید
                                 <i class="fa fa-plus"></i>
                             </a>
 
@@ -88,8 +74,9 @@ if (isset($data['categoryInfo'])) {
                         <div class="box-title">
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="<?= URL ?>admincategory/deletecategory/<?= @$categoryInfo['id'] ?>" class="tableForm"  method="post">
-                        <button type="submit" class="btn btn-danger delcat"">
+                    <form action="" class="tableForm" method="post">
+                        <button type="submit" class="btn btn-danger delcat"
+                        ">
                         حذف
                         <i class="fa fa-trash"></i>
                         </button>
@@ -98,40 +85,36 @@ if (isset($data['categoryInfo'])) {
                                 <thead>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>عنوان دسته</th>
-                                    <th>زیر دسته</th>
-                                    <th>ویژگی ها</th>
+                                    <th>عنوان ویژگی</th>
+                                    <?php if (!isset($attrInfo[0]['title'])) {?>
+                                    <th>ویژگی های فرزند</th>
+                                    <?php } ?>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $child = $data['category'];
-                                $category = $data['category'];
-                                foreach ($child as $row) {
+                                foreach ($attr as $row) {
                                     ?>
                                     <tr class="trTitle">
                                         <td class="tdId"><?= $row['id'] ?></td>
                                         <td class="td-title"><?= $row['title'] ?></td>
+                                        <?php if (!isset($attrInfo[0]['title'])) {?>
                                         <td>
-
-                                            <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
-                                                مشاهده زیر دسته
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<?= URL ?>admincategory/ShowAttr/<?= $row['id'] ?>">
+                                            <a href="<?= URL ?>admincategory/ShowAttr/<?= $categoryInfo['id'] ?>/<?= $row['id'] ?>">
                                                 مشاهده ویژگی ها
                                             </a>
                                         </td>
+                                        <?php } ?>
                                         <td>
                                             <a class="editCat" data-toggle="modal" data-target="#modal-edit">
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td class="selCat">
-                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox" class="flat-red"/>
+                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
+                                                   class="flat-red"/>
                                         </td>
 
                                     </tr>
@@ -142,9 +125,10 @@ if (isset($data['categoryInfo'])) {
                                 <tfoot>
                                 <tr>
                                     <th>ردیف</th>
-                                    <th>عنوان دسته</th>
-                                    <th>زیر دسته</th>
-                                    <th>ویژگی ها</th>
+                                    <th>عنوان ویژگی</th>
+                                    <?php if (!isset($attrInfo[0]['title'])) {?>
+                                        <th>ویژگی های فرزند</th>
+                                    <?php } ?>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>
@@ -168,51 +152,40 @@ if (isset($data['categoryInfo'])) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">افزودن دسته جدید</h4>
+                <h4 class="modal-title">افزودن ویژگی جدید</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <form action="<?= URL ?>admincategory/addcategory/<?= @$categoryInfo['id'] ?>"
+                        <form action="<?= URL ?>admincategory/addAttr/<?= @$categoryInfo['id'] ?>/<?= $attrInfo[0]['id'] ?>"
                               method="post">
                             <div class="col-xs-12">
-                                <label>عنوان دسته :</label>
-                                <input type="text" class="form-control" placeholder="عنوان دسته"
+                                <label>عنوان ویژگی :</label>
+                                <input type="text" class="form-control" placeholder="عنوان ویژگی"
                                        name="title">
                             </div>
-                            <div style="margin: 15px 0;" class="col-xs-12">
-                                <label>دسته اصلی</label>
-                                <label>
-                                    <input type="checkbox" class="flat-red maincat"
+                            <div class="col-xs-12">
+                                <input hidden name="idcategory" value="<?= $categoryInfo['id'] ?>">
+                                <div >
+                                    <label>انتخاب ویژگی مادر :</label>
+                                    <select class="form-control select2 main-category" name="parent"
+                                            style="width: 100%;">
                                         <?php
-                                        if (@$categoryInfo['id'] == 0) {
+                                        foreach ($attrParent as $row) {
+                                            if ($row['id'] == $attrInfo[0]['id']) {
+                                                $x = 'selected';
+                                            }else{
+                                                $x = '';
+                                            }
                                             ?>
-                                            name="parent" value="0"
+                                            <option <?= $x ?> value="<?= $row['id']; ?>">
+                                                <?= $row['title'] ?>
+                                            </option>
                                             <?php
                                         }
                                         ?>
-                                    >
-                                </label>
-                            </div>
-                            <div class="col-xs-12">
-                                <label>انتخاب دسته مادر :</label>
-                                <select class="form-control select2 main-category" name="parent" style="width: 100%;">
-                                    <?php
-                                    $all_category = $data['all_category'];
-                                    foreach ($all_category as $row) {
-                                        if ($row['id'] == $categoryInfo['id']) {
-                                            $x = 'selected';
-                                        } else {
-                                            $x = '';
-                                        }
-                                        ?>
-                                        <option <?= $x ?> value="<?= $row['id']; ?>">
-                                            <?= $row['title'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-xs-12 form-btn-submit">
                                 <input class="btn btn-primary" type="submit" value="ذخیره">
@@ -231,53 +204,46 @@ if (isset($data['categoryInfo'])) {
 </div><!--add modal--->
 
 
-<div class="modal fade" id="modal-edit">
+<div class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">ویرایش دسته</h4>
+                <h4 class="modal-title">ویرایش ویژگی</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <form id="edit-form" action="" method="post">
+                        <form action="<?= URL ?>admincategory/addAttr/<?= @$categoryInfo['id'] ?>/<?= $attrInfo[0]['id'] ?>"
+                              method="post">
                             <div class="col-xs-12">
-                                <label>عنوان دسته :</label>
-                                <input disabled class="form-control lbl-title">
-                            </div>
-                            <div class="col-xs-12" style="margin-top: 25px;">
-                                <label>عنوان جدید دسته :</label>
-                                <input type="text" class="form-control" placeholder="عنوان جدید دسته را وارد کنید . . ."
+                                <label>عنوان ویژگی :</label>
+                                <input type="text" class="form-control" placeholder="عنوان ویژگی"
                                        name="title">
                             </div>
-                            <div style="margin: 15px 0;" class="col-xs-12">
-                                <label>دسته اصلی</label>
-                                <label>
-                                    <input type="checkbox" class="flat-red maincat" name="parent" value="0">
-                                </label>
-                            </div>
                             <div class="col-xs-12">
-                                <label>انتخاب دسته مادر :</label>
-                                <select class="form-control select2 main-category" name="parent"
-                                        style="width: 100%;">
-                                    <?php
-                                    $all_category = $data['all_category'];
-                                    foreach ($all_category as $row) {
-                                        if ($row['id'] == $categoryInfo['id']) {
-                                            $x = 'selected';
-                                        } else {
-                                            $x = '';
+                                <input hidden name="idcategory" value="<?= $categoryInfo['id'] ?>">
+                                <div >
+                                    <label>انتخاب ویژگی مادر :</label>
+                                    <select class="form-control select2 main-category" name="parent"
+                                            style="width: 100%;">
+                                        <?php
+                                        foreach ($attrParent as $row) {
+                                            if ($row['id'] == $attrInfo[0]['id']) {
+                                                $x = 'selected';
+                                            }else{
+                                                $x = '';
+                                            }
+                                            ?>
+                                            <option <?= $x ?> value="<?= $row['id']; ?>">
+                                                <?= $row['title'] ?>
+                                            </option>
+                                            <?php
                                         }
                                         ?>
-                                        <option <?= $x ?> value="<?= $row['id']; ?>">
-                                            <?= $row['title'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-xs-12 form-btn-submit">
                                 <input class="btn btn-primary" type="submit" value="ذخیره">
@@ -293,4 +259,4 @@ if (isset($data['categoryInfo'])) {
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-</div><!--edite modal--->
+</div><!--add modal--->

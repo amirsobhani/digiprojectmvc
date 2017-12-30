@@ -67,6 +67,7 @@
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <key id="31" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
