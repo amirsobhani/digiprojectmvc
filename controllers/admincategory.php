@@ -77,4 +77,16 @@ class admincategory extends Controller
         $this->model->addAttr($_POST);
         header('location:' . URL . 'admincategory/ShowAttr/' . $categoryInfo . '/' . $attrInfo . '');
     }
+
+    function updateAttr($categoryId)
+    {
+        $this->model->updateAttr($categoryId, $_POST);
+        $parent = $_POST['parent'];
+        header('location:' . URL . 'admincategory/ShowAttr/' . $categoryId . '/' . $parent . '');
+    }
+
+    function deleteAttr()
+    {
+
+    }
 }

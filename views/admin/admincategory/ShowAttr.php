@@ -43,7 +43,7 @@
         <!--            جدول ها-->
         <!--            <small>پیشرفته</small>-->
         <!--        <!--        </h1>-->
-                <ol class="breadcrumb">
+                <ol class="breadcrumb" data-id="<?= $categoryInfo['id'] ?>">
                     <li>
                         <a href="<?= URL ?>/admincategory/showchild/<?= $categoryInfo['id'] ?>">
                             <?= $categoryInfo['title'] ?>
@@ -74,7 +74,7 @@
                         <div class="box-title">
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="" class="tableForm" method="post">
+                    <form action="<?= URL ?>admincategory/deleteAttr/<?= @$categoryInfo['id'] ?>" class="tableForm" method="post">
                         <button type="submit" class="btn btn-danger delcat"
                         ">
                         حذف
@@ -108,7 +108,7 @@
                                         </td>
                                         <?php } ?>
                                         <td>
-                                            <a class="editCat" data-toggle="modal" data-target="#modal-edit">
+                                            <a class="editAttr" data-toggle="modal" data-target="#modal-edit">
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
@@ -164,6 +164,20 @@
                                 <input type="text" class="form-control" placeholder="عنوان ویژگی"
                                        name="title">
                             </div>
+                            <div style="margin: 15px 0;" class="col-xs-12">
+                                <label>ویژگی اصلی</label>
+                                <label>
+                                    <input type="checkbox" class="flat-red maincat"
+                                        <?php
+                                        if (!isset($attrInfo[0]['title'])) {
+                                            ?>
+                                            name="parent" value="0"
+                                            <?php
+                                        }
+                                        ?>
+                                    >
+                                </label>
+                            </div>
                             <div class="col-xs-12">
                                 <input hidden name="idcategory" value="<?= $categoryInfo['id'] ?>">
                                 <div >
@@ -203,8 +217,7 @@
     <!-- /.modal-dialog -->
 </div><!--add modal--->
 
-
-<div class="modal fade" id="modal-default">
+<div class="modal fade" id="modal-edit">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -215,16 +228,29 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <form action="<?= URL ?>admincategory/addAttr/<?= @$categoryInfo['id'] ?>/<?= $attrInfo[0]['id'] ?>"
-                              method="post">
-                            <div class="col-xs-12">
+                        <form id="edit-form" action="" method="post">
+                            <div class="col-xs-12" >
                                 <label>عنوان ویژگی :</label>
-                                <input type="text" class="form-control" placeholder="عنوان ویژگی"
-                                       name="title">
+                                <input id="attr-title" value="" type="text"  class="form-control" placeholder="عنوان ویژگی" name="title">
+                                <input hidden value="" name="id" id="attr-id">
                             </div>
                             <div class="col-xs-12">
                                 <input hidden name="idcategory" value="<?= $categoryInfo['id'] ?>">
-                                <div >
+                                <div style="margin: 15px 0;" class="col-xs-12">
+                                    <label>ویژگی اصلی</label>
+                                    <label>
+                                        <input type="checkbox" class="flat-red maincat"
+                                            <?php
+                                            if (!isset($attrInfo[0]['title'])) {
+                                                ?>
+                                                name="parent" value="0"
+                                                <?php
+                                            }
+                                            ?>
+                                        >
+                                    </label>
+                                </div>
+                                <div>
                                     <label>انتخاب ویژگی مادر :</label>
                                     <select class="form-control select2 main-category" name="parent"
                                             style="width: 100%;">
@@ -259,4 +285,4 @@
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-</div><!--add modal--->
+</div><!--edit modal--->

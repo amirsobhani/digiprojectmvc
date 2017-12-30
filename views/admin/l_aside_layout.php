@@ -335,6 +335,16 @@
         $('#modal-edit').find('#edit-form').attr("action", "http://localhost/digiprojectmvc/admincategory/addcategory/" + catID + "/edit");
     });
 
+    $('.editAttr').click(function () {
+        var attrTitle = $(this).parents('tr.trTitle').find('td.td-title').text();
+        var attrID = $(this).parents('tr.trTitle').find('td.tdId').text();
+        var catID = $('.breadcrumb').attr('data-id');
+
+        $('#attr-title').attr('value', attrTitle);
+        $('#attr-id').attr('value', attrID);
+        $('#modal-edit').find('#edit-form').attr("action", "http://localhost/digiprojectmvc/admincategory/updateAttr/" + catID + "");
+    });
+
 
     var value = [];
     $('.selCat input').on('ifChecked', function () {
@@ -344,7 +354,6 @@
     $('.selCat input').on('ifUnchecked', function () {
         var val = $(this).attr('value');
         value.splice($.inArray(val, value), 1);
-
     });
 
     $('.delcat').click(function (e) {

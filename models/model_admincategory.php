@@ -141,6 +141,16 @@ class model_admincategory extends Model
         $values = [$title, $idcategory, $parent];
         $this->idu($sql, $values);
     }
+
+    function updateAttr($categoryId, $data = [])
+    {
+        $title = $data['title'];
+        $id = $data['id'];
+        $parent = $data['parent'];
+        $sql = 'UPDATE attr_tbl SET title=?,idcategory=?,parent=? WHERE id=?';
+        $value = [$title,$categoryId, $parent, $id];
+        $this->idu($sql, $value);
+    }
 }
 
 
