@@ -74,7 +74,7 @@
                         <div class="box-title">
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="<?= URL ?>admincategory/deleteAttr/<?= @$categoryInfo['id'] ?>" class="tableForm" method="post">
+                    <form action="<?= URL ?>admincategory/deleteAttr/<?= @$categoryInfo['id'] ?>/<?= @$attrInfo[0]['id'] ?>" class="tableForm" method="post">
                         <button type="submit" class="btn btn-danger delcat"
                         ">
                         حذف

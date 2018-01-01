@@ -3,6 +3,7 @@
 class model_admincategory extends Model
 {
     public $allChildParenId = [];
+    public $allAttrChild = [];
 
     function __construct()
     {
@@ -150,6 +151,32 @@ class model_admincategory extends Model
         $sql = 'UPDATE attr_tbl SET title=?,idcategory=?,parent=? WHERE id=?';
         $value = [$title,$categoryId, $parent, $id];
         $this->idu($sql, $value);
+    }
+
+    function deleteAttr($ids = [])
+    {
+        $this->allAttrChild = array_merge($this->allAttrChild, $ids);
+        while (sizeof($ids) > 0) {
+            $childerenId = $this->getAttrChildId($ids);
+            $this->allAttrChild = array_merge($this->allAttrChild, $childerenId);
+            $ids = $childerenId;
+        }
+        $ids = join(',', $this->allAttrChild);
+        $sql = "DELETE FROM attr_tbl WHERE id IN (" . $ids . ")";
+        $this->idu($sql);
+    }
+
+    function getAttrChildId($ids)
+    {
+        $all_child = [];
+        foreach ($ids as $child) {
+            $childeren = $this->attrParent($child);
+            foreach ($childeren as $childId) {
+                $childId = $childId['id'];
+                array_push($all_child, $childId);
+            }
+        }
+        return $all_child;
     }
 }
 

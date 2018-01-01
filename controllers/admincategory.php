@@ -85,8 +85,14 @@ class admincategory extends Controller
         header('location:' . URL . 'admincategory/ShowAttr/' . $categoryId . '/' . $parent . '');
     }
 
-    function deleteAttr()
+    function deleteAttr($idcategory, $parentId)
     {
-
+        $ids = $_POST['id'];
+        $this->model->deleteAttr($ids);
+        if ($idcategory == 0) {
+            header('location:' . URL . 'admincategory');
+        } else {
+            header('location:' . URL . 'admincategory/ShowAttr/' . $idcategory . '/' . $parentId );
+        }
     }
 }
