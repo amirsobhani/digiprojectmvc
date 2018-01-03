@@ -67,7 +67,7 @@ class admincategory extends Controller
         $categoryInfo = $this->model->categoryInfo($idcategory);
         $attrInfo = $this->model->attrInfo($parent);
         $getAttrInfo = $this->model->getAttrInfo();
-        $attrParent = $this->model->attrParent(0);
+        $attrParent = $this->model->attrParent(0, $idcategory);
         $data = ['attr' => $attr, 'categoryInfo' => $categoryInfo, 'attrInfo' => $attrInfo, 'getAttrInfo' => $getAttrInfo, 'attrParent' => $attrParent];
         $this->AdminView('admin/admincategory/ShowAttr', $data);
     }

@@ -96,6 +96,7 @@ $products = $data['products'];
                                     <th>قیمت</th>
                                     <th>تخفیف (درصد)</th>
                                     <th>نقد و بررسی</th>
+                                    <th>ویژگی ها</th>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>
@@ -112,6 +113,11 @@ $products = $data['products'];
                                         <td>
                                             <a href="adminproduct/productreview/<?= $row['id'] ?>">
                                                 <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="adminproduct/productattr/<?= $row['id'] ?>">
+                                                <i class="fa fa-qrcode fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td>
@@ -136,6 +142,7 @@ $products = $data['products'];
                                     <th>قیمت</th>
                                     <th>تخفیف (درصد)</th>
                                     <th>نقد و بررسی</th>
+                                    <th>ویژگی ها</th>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
                                 </tr>

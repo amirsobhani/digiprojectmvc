@@ -132,4 +132,29 @@ class model_adminproduct extends Model
         $sql = "DELETE FROM review_tbl WHERE id IN (" . $ids . ")";
         $this->idu($sql);
     }
+
+    function getProductAttr($idcategory)
+    {
+        $sql = 'SELECT * FROM attr_tbl WHERE idcategory=? AND parent!=0';
+        $value = [$idcategory];
+        $result = $this->doSelect($sql, $value);
+        return $result;
+
+    }
+
+    function addProductAttr()
+    {
+        $sql = 'INSERT INTO product_attr_tbl (idproduct, idattr, "value") VALUES (?,?,?)';
+        $values = [];
+    }
 }
+
+
+
+
+
+
+
+
+
+

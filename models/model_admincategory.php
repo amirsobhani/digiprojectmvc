@@ -124,10 +124,10 @@ class model_admincategory extends Model
         return $result;
     }
 
-    function attrParent($parent)
+    function attrParent($parent, $idcategory)
     {
-        $sql = 'SELECT * FROM attr_tbl WHERE parent=?';
-        $value = [$parent];
+        $sql = 'SELECT * FROM attr_tbl WHERE parent=? AND idcategory=?';
+        $value = [$parent, $idcategory];
         $result = $this->doSelect($sql, $value);
         return $result;
     }
