@@ -133,19 +133,43 @@ class model_adminproduct extends Model
         $this->idu($sql);
     }
 
-    function getProductAttr($idcategory)
+    function getProductAttr($idcategory, $productId)
     {
-        $sql = 'SELECT * FROM attr_tbl WHERE idcategory=? AND parent!=0';
-        $value = [$idcategory];
+        $sql = 'SELECT attr_tbl.*,product_attr_tbl.value FROM attr_tbl LEFT JOIN product_attr_tbl ON attr_tbl.id=product_attr_tbl.idattr AND product_attr_tbl.idproduct=? WHERE 
+idcategory=? AND parent!=0';
+        $value = [$productId, $idcategory];
         $result = $this->doSelect($sql, $value);
         return $result;
-
     }
 
-    function addProductAttr()
+    function addProductAttr($data = [], $idproduct)
     {
-        $sql = 'INSERT INTO product_attr_tbl (idproduct, idattr, "value") VALUES (?,?,?)';
-        $values = [];
+        $ids = $data['id'];
+        foreach ($ids as $id) {
+            $sql = 'INSERT INTO product_attr_tbl (idproduct, idattr, value) VALUES (?,?,?)';
+            $values = [$idproduct, $id, $data['value' . $id]];
+            $this->idu($sql, $values);
+        }
+    }
+
+    function editProductAttr($data = [], $idproduct, $attrIds)
+    {
+        $ids = $data['id'];
+        foreach ($ids as $id) {
+            $sql = 'UPDATE product_attr_tbl SET value=? WHERE idattr=?';
+            $values = [$data['value' . $id], $id];
+            $this->idu($sql, $values);
+        }
+    }
+
+    function getAttrId($idproduct, $idcategory)
+    {
+        $sql = 'SELECT attr_tbl.*,product_attr_tbl.id FROM attr_tbl LEFT JOIN product_attr_tbl ON attr_tbl.id=product_attr_tbl.idattr AND product_attr_tbl.idproduct=? WHERE 
+idcategory=? AND parent!=0';
+        $values = [$idproduct, $idcategory];
+        $result = $this->doSelect($sql, $values);
+        return $result;
+
     }
 }
 

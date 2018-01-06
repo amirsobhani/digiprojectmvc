@@ -79,13 +79,27 @@ class adminproduct extends Controller
         header('location:' . URL . 'adminproduct/productreview/' . $idproduct . '');
     }
 
-    function ProductAttr($idproduct)
+    function ProductAttr($idproduct, $edit = '')
     {
-        $attrPost = serialize($_POST['attr']);
+        error_reporting(E_ERROR | E_PARSE);
 
         $productInfo = $this->model->productiInfo($idproduct);
-        $productAttr = $this->model->getProductAttr($productInfo['idcategory']);
-        $data = ['productInfo' => $productInfo, 'productAttr' => $productAttr];
+        $productAttr = $this->model->getProductAttr($productInfo['idcategory'], $idproduct);
+        $attr = $this->model->getAttrId($idproduct, $productInfo['idcategory']);
+
+        if ($edit == 'edit') {
+            $attrId = [];
+            foreach ($attr as $row) {
+                array_push($attrId, $row['id']);
+            }
+
+            $this->model->editProductAttr($_POST, $idproduct,$attrId);
+        } else {
+            $this->model->addProductAttr($_POST, $idproduct);
+        }
+
+
+        $data = ['productInfo' => $productInfo, 'productAttr' => $productAttr, 'attr' => $attr];
         $this->AdminView('admin/adminproduct/productattr', $data);
 
     }
