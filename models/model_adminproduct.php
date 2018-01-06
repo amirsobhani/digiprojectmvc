@@ -42,7 +42,7 @@ class model_adminproduct extends Model
         return $result;
     }
 
-    function insertProduct($data = [], $productId = '')
+    function insertProduct($data = [], $productId = '', $file = [])
     {
         $title = $data['title'];
         $entitle = $data['en-title'];
@@ -56,20 +56,42 @@ class model_adminproduct extends Model
         $price = $data['price'];
 //        $discount = $data['discount'];
 
+        var_dump($file['image']);
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $filePath = $file['tmp_name'];
+        $fileError = $file['error'];
+        $fileSize = $file['size'];
+        $uploadOk = 1;
+        $newName = 'product';
+        $target = '';
+        if ($fileType != 'image/jpg' and $fileType != 'image/jpeg') {
+            $uploadOk = 0;
+        }
+        if ($fileSize > 5242880) {
+            $uploadOk = 0;
+        }
+        if ($uploadOk == 1) {
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $target = $target . $newName . '.' . $ext;
+            move_uploaded_file($filePath, $target);
+        }
+
 
         $gurantees = join(',', $gurantees);
         $colorid = join(',', $colorid);
         $sellerid = join(',', $sellerid);
-
-        if ($productId == '') {
-            $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
-            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
-            $this->idu($sql, $value);
-        } else {
-            $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
-            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
-            $this->idu($sql, $value);
-        }
+        /*
+                if ($productId == '') {
+                    $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
+                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
+                    $this->idu($sql, $value);
+                } else {
+                    $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
+                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
+                    $this->idu($sql, $value);
+                }
+        */
     }
 
     function productiInfo($productId)

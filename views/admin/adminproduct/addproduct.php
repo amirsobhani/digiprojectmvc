@@ -48,7 +48,7 @@ if (isset($product['title'])) {
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <form action="<?= URL ?>adminproduct/addproduct/<?= @$product['id'] ?>" method="post">
+                    <form action="<?= URL ?>adminproduct/addproduct/<?= @$product['id'] ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group col-xs-9">
                             <label>عنوان محصول</label>
                             <input value="<?= $product['title'] ?>" name="title" type="text" class="form-control"
@@ -163,7 +163,7 @@ if (isset($product['title'])) {
                             <div class="form-group">
                                 <label>رنگ بندی</label>
                                 <select class="form-control select2" multiple="multiple" name=colorid[]
-                                        data-placeholder="رنگ بندی محصول را انتخاب کنید"
+                                        data-placeholder="رنگ بندی محصول را انتخاب کنید"a
                                         style="width: 100%;">
                                     <?php
                                     foreach ($colors as $color) {
@@ -197,6 +197,10 @@ if (isset($product['title'])) {
                                 <input value="<?= $product['price'] ?>" name="price" class="form-control"
                                        type="text"
                                        placeholder="قیمت محصول را به تومان وارد کنید"/>
+                            </div>
+                            <div>
+                                <label>بارگزاری تصویر شاخص</label>
+                                <input type="file" name="image">
                             </div>
                             <?php
                             if ($edit == 1) {

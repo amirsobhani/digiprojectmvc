@@ -18,10 +18,8 @@ class adminproduct extends Controller
     {
         error_reporting(E_ERROR | E_PARSE);
         //E_WARNING |
-
         if (isset($_POST['title'])) {
-            $this->model->insertProduct($_POST, $productId);
-//            $productInfo = ['title' => $title, 'entitle' => $entitle, 'introduction' => $introduction, 'productmodel' => $productmodel, 'sellerid' => $sellerid, 'gurantees' => $gurantees, 'category' => $category, 'colorid' => $colorid, 'tedad' => $tedad, 'price' => $price, 'discount' => $discount];
+            $this->model->insertProduct($_POST, $productId, $_FILES);
         }
         $getSeller = $this->model->getSeller();
         $getGuarantee = $this->model->getGuarantee();
