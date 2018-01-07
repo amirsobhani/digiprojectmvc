@@ -60,17 +60,17 @@ class model_adminproduct extends Model
         $colorid = join(',', $colorid);
         $sellerid = join(',', $sellerid);
 
-                if ($productId == '') {
-                    $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
-                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
-                    $this->idu($sql, $value);
-                    $productId = parent::$conn->lastInsertId();
-                    mkdir('public/img/product gallery/' . $productId . '/');
-                } else {
-                    $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
-                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
-                    $this->idu($sql, $value);
-                }
+        if ($productId == '') {
+            $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
+            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
+            $this->idu($sql, $value);
+            $productId = parent::$conn->lastInsertId();
+            mkdir('public/img/product gallery/' . $productId . '/');
+        } else {
+            $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
+            $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
+            $this->idu($sql, $value);
+        }
 
 
         $file = $file['image'];
@@ -201,6 +201,14 @@ idcategory=? AND parent!=0';
         $result = $this->doSelect($sql, $values);
         return $result;
 
+    }
+
+    function getGallery($productId)
+    {
+        $sql = 'SELECT * FROM gallery_tbl WHERE idproduct=?';
+        $value = [$productId];
+        $result = $this->doSelect($sql, $value);
+        return $result;
     }
 }
 

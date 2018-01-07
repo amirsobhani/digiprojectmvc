@@ -91,7 +91,7 @@ class adminproduct extends Controller
                 array_push($attrId, $row['id']);
             }
 
-            $this->model->editProductAttr($_POST, $idproduct,$attrId);
+            $this->model->editProductAttr($_POST, $idproduct, $attrId);
         } else {
             $this->model->addProductAttr($_POST, $idproduct);
         }
@@ -100,6 +100,15 @@ class adminproduct extends Controller
         $data = ['productInfo' => $productInfo, 'productAttr' => $productAttr, 'attr' => $attr];
         $this->AdminView('admin/adminproduct/productattr', $data);
 
+    }
+
+    function gallery($productId)
+    {
+        $gallery = $this->model->getGallery($productId);
+        $productInfo = $this->model->productiInfo($productId);
+        $data = ['gallery' => $gallery, 'productInfo' => $productInfo];
+
+        $this->AdminView('admin/adminproduct/gallery', $data);
     }
 
 }
