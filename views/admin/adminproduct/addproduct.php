@@ -14,8 +14,16 @@
     .discount-div {
         margin: 20px 0;
     }
-    .frm-submit{
+
+    .frm-submit {
         margin: 15px 0;
+    }
+
+    .pro-img span img {
+        width: 150px;
+        height: 150px;
+        margin: 15px 0;
+        float: left;
     }
 </style>
 <?php
@@ -48,7 +56,8 @@ if (isset($product['title'])) {
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <form action="<?= URL ?>adminproduct/addproduct/<?= @$product['id'] ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= URL ?>adminproduct/addproduct/<?= @$product['id'] ?>" method="post"
+                          enctype="multipart/form-data">
                         <div class="form-group col-xs-9">
                             <label>عنوان محصول</label>
                             <input value="<?= $product['title'] ?>" name="title" type="text" class="form-control"
@@ -163,7 +172,7 @@ if (isset($product['title'])) {
                             <div class="form-group">
                                 <label>رنگ بندی</label>
                                 <select class="form-control select2" multiple="multiple" name=colorid[]
-                                        data-placeholder="رنگ بندی محصول را انتخاب کنید"a
+                                        data-placeholder="رنگ بندی محصول را انتخاب کنید"
                                         style="width: 100%;">
                                     <?php
                                     foreach ($colors as $color) {
@@ -201,6 +210,17 @@ if (isset($product['title'])) {
                             <div>
                                 <label>بارگزاری تصویر شاخص</label>
                                 <input type="file" name="image">
+                                <?php
+                                if ($edit == 1) {
+                                    ?>
+                                    <div class="pro-img">
+                                    <span>
+                                        <img src="<?= URL ?>public/img/product gallery/<?= $product['id'] ?>/product220.jpg">
+                                    </span>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <?php
                             if ($edit == 1) {

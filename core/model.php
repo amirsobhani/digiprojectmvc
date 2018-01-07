@@ -61,7 +61,7 @@ class Model
         return [$price_discount, $totalPrice];
     }
 
-    function resize_image($file, $w, $h, $crop = FALSE)
+    function resize_image($file, $pathToSave, $w, $h, $crop = FALSE)
     {
         list($width, $height) = getimagesize($file);
         $r = $width / $height;
@@ -85,6 +85,8 @@ class Model
         $src = imagecreatefromjpeg($file);
         $dst = imagecreatetruecolor($newwidth, $newheight);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+        imagejpeg($dst, $pathToSave, 95);
 
         return $dst;
     }

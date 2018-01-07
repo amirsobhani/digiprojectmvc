@@ -16,7 +16,7 @@ class adminproduct extends Controller
 
     function addproduct($productId = '')
     {
-        error_reporting(E_ERROR | E_PARSE);
+//        error_reporting(E_ERROR | E_PARSE);
         //E_WARNING |
         if (isset($_POST['title'])) {
             $this->model->insertProduct($_POST, $productId, $_FILES);

@@ -56,7 +56,24 @@ class model_adminproduct extends Model
         $price = $data['price'];
 //        $discount = $data['discount'];
 
-        var_dump($file['image']);
+        $gurantees = join(',', $gurantees);
+        $colorid = join(',', $colorid);
+        $sellerid = join(',', $sellerid);
+
+                if ($productId == '') {
+                    $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
+                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
+                    $this->idu($sql, $value);
+                    $productId = parent::$conn->lastInsertId();
+                    mkdir('public/img/product gallery/' . $productId . '/');
+                } else {
+                    $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
+                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
+                    $this->idu($sql, $value);
+                }
+
+
+        $file = $file['image'];
         $fileName = $file['name'];
         $fileType = $file['type'];
         $filePath = $file['tmp_name'];
@@ -64,34 +81,26 @@ class model_adminproduct extends Model
         $fileSize = $file['size'];
         $uploadOk = 1;
         $newName = 'product';
-        $target = '';
+        $targetMain = 'public/img/product gallery/' . $productId . '/';
         if ($fileType != 'image/jpg' and $fileType != 'image/jpeg') {
             $uploadOk = 0;
+            echo $fileError;
         }
         if ($fileSize > 5242880) {
             $uploadOk = 0;
+            echo $fileError;
         }
         if ($uploadOk == 1) {
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-            $target = $target . $newName . '.' . $ext;
-            move_uploaded_file($filePath, $target);
+            $target1280 = $targetMain . $newName . '1280.' . $ext;
+            move_uploaded_file($filePath, $target1280);
+
+            $target220 = $targetMain . $newName . '220.' . $ext;
+            $target350 = $targetMain . $newName . '350.' . $ext;
+            $this->resize_image($target1280, $target220, 220, 220);
+            $this->resize_image($target1280, $target350, 350, 350);
         }
 
-
-        $gurantees = join(',', $gurantees);
-        $colorid = join(',', $colorid);
-        $sellerid = join(',', $sellerid);
-        /*
-                if ($productId == '') {
-                    $sql = 'INSERT INTO product_tbl (title, idcategory, en_title,product_model,price,introduction,tedad_mojood,color,guarantee,seller) VALUES (?,?,?,?,?,?,?,?,?,?)';
-                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid];
-                    $this->idu($sql, $value);
-                } else {
-                    $sql = 'UPDATE product_tbl SET title=?, idcategory=?, en_title=?,product_model=?,price=?,introduction=?,tedad_mojood=?,color=?,guarantee=?,seller=? WHERE id=?';
-                    $value = [$title, $category, $entitle, $productmodel, $price, $introduction, $tedad, $colorid, $gurantees, $sellerid, $productId];
-                    $this->idu($sql, $value);
-                }
-        */
     }
 
     function productiInfo($productId)
