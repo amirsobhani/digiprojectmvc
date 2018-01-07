@@ -118,7 +118,7 @@ $products = $data['products'];
                                         </td>
                                         <td>
                                             <a href="adminproduct/gallery/<?= $row['id'] ?>">
-                                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                                <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td>

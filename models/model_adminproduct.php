@@ -118,6 +118,10 @@ class model_adminproduct extends Model
         $this->idu($sql);
         $reviewSql = 'DELETE FROM review_tbl WHERE idproduct IN (' . $ids . ')';
         $this->idu($reviewSql);
+        $gallerySql = 'DELETE FROM gallery_tbl WHERE idproduct IN (' . $ids . ')';
+        $this->idu($gallerySql);
+        $attrSql = 'DELETE FROM product_attr_tbl WHERE idproduct IN (' . $ids . ')';
+        $this->idu($attrSql);
     }
 
     function getProductReview($idproduct)
@@ -203,12 +207,61 @@ idcategory=? AND parent!=0';
 
     }
 
-    function getGallery($productId)
+    function getGallery($productId, $file = [])
     {
+        $file = $file['image'];
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $filePath = $file['tmp_name'];
+        $fileError = $file['error'];
+        $fileSize = $file['size'];
+        $uploadOk = 1;
+        $newName = time();
+        $targetMain = 'public/img/product gallery/' . $productId . '/gallery';
+
+        if (!is_dir($targetMain)) {
+            $dir = mkdir('public/img/product gallery/' . $productId . '/gallery/');
+        }
+        if (!is_dir($dir)) {
+            mkdir('public/img/product gallery/' . $productId . '/gallery/larg/');
+            mkdir('public/img/product gallery/' . $productId . '/gallery/thumbnail/');
+        }
+
+        if ($fileType != 'image/jpg' and $fileType != 'image/jpeg') {
+            $uploadOk = 0;
+            echo $fileError;
+        }
+        if ($fileSize > 5242880) {
+            $uploadOk = 0;
+            echo $fileError;
+        }
+        if ($uploadOk == 1) {
+
+            $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $target = $targetMain . '/larg/' . $newName . '.' . $ext;
+            move_uploaded_file($filePath, $target);
+
+            $target_thumbnail = $targetMain . '/thumbnail/' . $newName . '.' . $ext;
+            $this->resize_image($target, $target_thumbnail, 150, 150);
+
+            $sql2 = 'INSERT INTO gallery_tbl (img, idproduct) VALUES (?, ?)';
+            $values = [$newName . '.' . $ext, $productId];
+            $this->idu($sql2, $values);
+
+        }
+
         $sql = 'SELECT * FROM gallery_tbl WHERE idproduct=?';
         $value = [$productId];
         $result = $this->doSelect($sql, $value);
         return $result;
+
+    }
+
+    function deleteGallery($imgIds = [])
+    {
+        $imgIds = join(',', $imgIds['id']);
+        $sql = 'DELETE FROM gallery_tbl WHERE id IN (' . $imgIds . ')';
+        $this->idu($sql);
     }
 }
 

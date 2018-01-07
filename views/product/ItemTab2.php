@@ -22,10 +22,11 @@ foreach ($fanni as $attr_parent) {
                     <p class="properties-meta">--</p>
                     <?php
                 }else{
-                    $value = unserialize($child['value']);
-                    foreach ($value as $row){
-                        ?>
-                        <p class="properties-meta"><?= $row?></p>
+//                    $value = unserialize($child['value']);
+//                    $value = $child['value'];
+//                    foreach ($value as $row){
+//                        ?>
+                        <p class="properties-meta"><?= $child['value'] ?></p>
                         <?php
                     }
                 }
@@ -35,10 +36,7 @@ foreach ($fanni as $attr_parent) {
         }
         ?>
     </div>
-    <?php
-}
 
-?>
 <!---
     <div class="product-properties">
         <h4><i class="fa fa-caret-left" aria-hidden="true"></i> مشخصات کلي</h4>

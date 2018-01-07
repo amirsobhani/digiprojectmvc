@@ -104,11 +104,22 @@ class adminproduct extends Controller
 
     function gallery($productId)
     {
-        $gallery = $this->model->getGallery($productId);
+        error_reporting(E_ERROR | E_PARSE);
+
+        $gallery = $this->model->getGallery($productId, $_FILES);
         $productInfo = $this->model->productiInfo($productId);
+
         $data = ['gallery' => $gallery, 'productInfo' => $productInfo];
 
         $this->AdminView('admin/adminproduct/gallery', $data);
+    }
+
+    function deleteGallery($productId)
+    {
+        error_reporting(E_ERROR | E_PARSE);
+
+        $this->model->deleteGallery($_POST);
+        header('location: ' . URL . '/adminproduct/gallery/' . $productId);
     }
 
 }

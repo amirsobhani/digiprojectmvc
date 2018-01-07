@@ -80,9 +80,8 @@ $productInfo = $data['productInfo'];
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">مدیریت تصاویر گالری</h3>
-
                         <div class="new-img">
-                            <form action="" enctype="multipart/form-data" method="post">
+                            <form action="<?= URL ?>adminproduct/gallery/<?= $productInfo['id'] ?>" enctype="multipart/form-data" method="post">
                                 <input type="file" name="image">
                                 <button class="btn btn-success">
                                     <i class="fa fa-plus"></i>
@@ -91,9 +90,8 @@ $productInfo = $data['productInfo'];
                             </form>
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="" class="tableForm" method="post">
-                        <button type="submit" class="btn btn-danger delPro"
-                        ">
+                    <form action="<?= URL ?>adminproduct/deleteGallery/<?= $productInfo['id'] ?>" class="tableForm" method="post">
+                        <button type="submit" class="btn btn-danger delPro">
                         حذف
                         <i class="fa fa-trash"></i>
                         </button>
@@ -138,7 +136,6 @@ $productInfo = $data['productInfo'];
                         </div><!-- /.box-table -->
                     </form>
                 </div>
-
                 <!-- /.box -->
             </div>
             <!-- /.col -->
