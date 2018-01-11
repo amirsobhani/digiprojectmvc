@@ -91,6 +91,24 @@ class Model
         return $dst;
     }
 
+    function sesionInit()
+    {
+        session_start();
+    }
+
+    function sessionOnSet($name, $value)
+    {
+        $_SESSION[$name] = $value;
+    }
+
+    function sessionOnGet($name)
+    {
+        if (isset($_SESSION[$name])) {
+            return $name;
+        } else {
+            return false;
+        }
+    }
 }
 
 
