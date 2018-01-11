@@ -118,7 +118,7 @@ class adminproduct extends Controller
     {
         error_reporting(E_ERROR | E_PARSE);
 
-        $this->model->deleteGallery($_POST);
+        $this->model->deleteGallery($_POST, $productId);
         header('location: ' . URL . '/adminproduct/gallery/' . $productId);
     }
 

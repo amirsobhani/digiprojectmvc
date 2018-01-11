@@ -229,15 +229,16 @@ idcategory=? AND parent!=0';
 
         if ($fileType != 'image/jpg' and $fileType != 'image/jpeg') {
             $uploadOk = 0;
-            echo $fileError;
+//            echo $fileError;
         }
         if ($fileSize > 5242880) {
             $uploadOk = 0;
-            echo $fileError;
+//            echo $fileError;
         }
         if ($uploadOk == 1) {
 
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+            $ext = strtolower($ext);
             $target = $targetMain . '/larg/' . $newName . '.' . $ext;
             move_uploaded_file($filePath, $target);
 
@@ -257,10 +258,23 @@ idcategory=? AND parent!=0';
 
     }
 
-    function deleteGallery($imgIds = [])
+    function deleteGallery($ids = [], $idproduct)
     {
-        $imgIds = join(',', $imgIds['id']);
-        $sql = 'DELETE FROM gallery_tbl WHERE id IN (' . $imgIds . ')';
+        $imgIds = $ids['id'];
+        foreach ($imgIds as $imgId) {
+            $sql = 'SELECT * FROM gallery_tbl WHERE id=?';
+            $result = $this->doSelect($sql, [$imgId], 'fetch');
+            $fileName = $result['img'];
+            $dir = 'public/img/product gallery/' . $idproduct . '/gallery/';
+            $dir_thumbnail = $dir . 'thumbnail/' . $fileName;
+            $dir_larg = $dir . 'larg/' . $fileName;
+
+            unlink($dir_larg);
+            unlink($dir_thumbnail);
+        }
+
+        $ids = join(',', $ids['id']);
+        $sql = 'DELETE FROM gallery_tbl WHERE id IN (' . $ids . ')';
         $this->idu($sql);
     }
 }

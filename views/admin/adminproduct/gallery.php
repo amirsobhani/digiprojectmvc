@@ -115,8 +115,7 @@ $productInfo = $data['productInfo'];
                                         <img src="<?= URL ?>public/img/product gallery/<?= $productInfo['id'] ?>/gallery/thumbnail/<?= $row['img'] ?>">
                                     </td>
                                     <td class="selPro">
-                                        <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
-                                               class="flat-red"/>
+                                        <input name="id[]" value="<?= $row['id'] ?>" type="checkbox" class="flat-red"/>
 
                                     </td>
                                     <?php
