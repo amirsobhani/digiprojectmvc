@@ -1,168 +1,280 @@
+<style>
+    #conten {
+        background-color: #EEEFF1;
+        width: 100%;
+        float: right;
+        padding-bottom: 40px;
+    }
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <!--        <h1>-->
-        <!--            جدول ها-->
-        <!--            <small>پیشرفته</small>-->
-        <!--        </h1>-->
-        <ol class="breadcrumb">
-            <?php
-            foreach ($parent as $row) {
-                ?>
-                <li>
-                    <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
-                        <?= $row['title'] ?>
-                    </a>
-                </li>
-                <?php
-            }
-            ?>
-            <li><a href="">
-                    <?php
-                    if (isset($categoryInfo['title'])) {
-                        echo $categoryInfo['title'];
-                    }
-                    ?>
-                </a>
-            </li>
-        </ol>
-    </section>
+    .register-wrapper {
+        width: 1190px;
+        margin: 15px auto;
+        border-radius: 4px;
+    }
 
-    <!-- Main content -->
+    .register-box-icon {
+        width: 100%;
+        height: 155px;
+        background-color: #FAFCFC;
+        direction: rtl;
+        text-align: center;
+        font-family: iran-sans;
+    }
 
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">مدیریت دسته ها</h3>
+    .register-box-icon h1 {
+        color: #7A7A7A;
+        font-size: 18px;
+        margin-top: 12px;
+    }
 
-                        <div class="box-body">
-                            <a type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                                دسته جدید
-                                <i class="fa fa-plus"></i>
-                            </a>
+    .register-box-icon i {
+        margin-top: 30px;
+        color: #c4c4c4;
+    }
 
-                        </div><!--modal btn--->
+    .register {
+        background-color: #fff;
+        width: 1190px;
+        height: 300px;
+        padding: 50px 0;
+    }
 
-                        <div class="box-title">
+    #right-register {
+        width: 50%;
+        float: right;
+    }
+
+    .inside-register {
+        width: 365px;
+        margin: 0 auto;
+    }
+
+    .email-register {
+        float: right;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .email-register label {
+        direction: rtl;
+        float: right;
+        font-family: iran-sans;
+        font-size: 14px;
+        line-height: 40px;
+        margin-left: 10px;
+    }
+
+    .email-register input {
+        float: left;
+        line-height: 35px;
+        width: 60%;
+        color: #acacac;
+        text-align: left;
+        direction: ltr;
+        border: 1px solid #f0f1f2;
+        border-radius: 2px;
+        outline: none;
+        padding: 0 17px;
+    }
+
+    .pass-register {
+        float: right;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .pass-register label {
+        direction: rtl;
+        float: right;
+        font-family: iran-sans;
+        font-size: 14px;
+        line-height: 40px;
+    }
+
+    .pass-register input {
+        float: left;
+        line-height: 35px;
+        width: 60%;
+        color: #acacac;
+        text-align: left;
+        direction: ltr;
+        border: 1px solid #f0f1f2;
+        border-radius: 2px;
+        outline: none;
+        padding: 0 17px;
+    }
+
+    .agreement {
+        direction: rtl;
+    }
+
+    .agreement label {
+        font-family: iran-sans;
+        font-size: 13px;
+        margin: 15px 0;
+        display: block;
+        line-height: 25px;
+    }
+
+    .lastNews {
+        position: relative;
+    }
+
+    .lastNews label {
+        font-family: iran-sans;
+        font-size: 13px;
+        margin: 15px 0;
+        display: block;
+        line-height: 25px;
+        direction: rtl;
+    }
+
+    .submit button {
+        background-color: #208DE6;
+        color: #fff;
+        font-family: iran-sans;
+        line-height: 40px;
+        text-align: center;
+        width: 150px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+    }
+
+    #left-register {
+        border-right: 1px solid #f0f1f2;
+        display: block;
+        float: right;
+        padding-right: 55px;
+        width: 35%;
+    }
+
+    #left-register ul li {
+        line-height: 45px;
+        float: right;
+    }
+
+    #left-register ul li span {
+        direction: rtl;
+        float: right;
+        display: block;
+        color: #6d717a;
+        font-family: iran-sans;
+        font-size: 14px;
+    }
+
+    #left-register ul li i {
+        float: right;
+        line-height: 45px;
+        color: #6d717a;
+        margin-left: 20px;
+        font-size: 22px;
+    }
+
+    .check-box {
+        display: block;
+        float: right;
+        margin-left: 10px;
+        z-index: 2;
+        position: relative;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .active-check {
+        width: 17px;
+        height: 17px;
+        display: block;
+        float: right;
+        border: 1px solid #eee;
+        position: absolute;
+        border-radius: 2px;
+    }
+
+    .active-check i {
+        color: #fff;
+        margin-right: 1px;
+    }
+
+    .active-check-cheked {
+        background-color: #208DE6;
+        border-radius: 2px;
+        border: none;
+    }
+
+</style>
+
+<div id="conten">
+    <div class="register-wrapper">
+        <div class="register-box-icon">
+            <i class="fa fa-sign-in fa-5x" aria-hidden="true"></i>
+            <h1>ورود به صفحه کاربری</h1><!--register-box-icon-->
+        </div>
+        <div class="register">
+            <div id="right-register">
+                <div class="inside-register">
+                    <form action="" method="post">
+                        <div class="email-register">
+                            <label>پست الکتروینک</label>
+                            <input name="email" type="email" placeholder="Email"/>
                         </div>
-                    </div><!-- /.box-header -->
-                    <form action="<?= URL ?>admincategory/deletecategory/<?= @$categoryInfo['id'] ?>" class="tableForm"  method="post">
-                        <button type="submit" class="btn btn-danger delcat"">
-                        حذف
-                        <i class="fa fa-trash"></i>
-                        </button>
-                        <div class="box-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>ردیف</th>
-                                    <th>عنوان دسته</th>
-                                    <th>زیر دسته</th>
-                                    <th>ویژگی ها</th>
-                                    <th>ویرایش</th>
-                                    <th>انتخاب</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                $child = $data['category'];
-                                $category = $data['category'];
-                                foreach ($child as $row) {
-                                    ?>
-                                    <tr class="trTitle">
-                                        <td class="tdId"><?= $row['id'] ?></td>
-                                        <td class="td-title"><?= $row['title'] ?></td>
-                                        <td>
-
-                                            <a href="<?= URL ?>admincategory/showchild/<?= $row['id'] ?>">
-                                                مشاهده زیر دسته
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<?= URL ?>admincategory/ShowAttr/<?= $row['id'] ?>">
-                                                مشاهده ویژگی ها
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="editCat" data-toggle="modal" data-target="#modal-edit">
-                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
-                                        <td class="selCat">
-                                            <input name="id[]" value="<?= $row['id'] ?>" type="checkbox" class="flat-red"/>
-                                        </td>
-
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>ردیف</th>
-                                    <th>عنوان دسته</th>
-                                    <th>زیر دسته</th>
-                                    <th>ویژگی ها</th>
-                                    <th>ویرایش</th>
-                                    <th>انتخاب</th>
-                                </tr>
-                                </tfoot>
-                            </table>
-                        </div><!-- /.box-table -->
+                        <div class="pass-register">
+                            <label>رمز عبور</label>
+                            <input name="pass" type="password" placeholder="Password"/>
+                        </div>
+                        <div class="submit">
+                            <button type="submit">ورود</button>
+                        </div>
                     </form>
                 </div>
-                <!-- /.box -->
             </div>
-            <!-- /.col -->
+            <div id="left-register">
+                <ul>
+                    <li><i class="fa fa-shopping-cart fa-flip-horizontal" aria-hidden="true"></i>
+                        <span>سریع تر و ساده تر خرید کنید</span></li>
+                    <li><i class="fa fa-address-book-o" aria-hidden="true"></i>
+                        <span>به سادگی سوابق خرید و فعالیت های خود را مدیریت کنید</span></li>
+                    <li><i class="fa fa-heart" aria-hidden="true"></i>
+                        <span>لیست علاقمندی های خود را بسازید و تغییرات آنها را دنبال کنید</span></li>
+                    <li><i class="fa fa-comments" aria-hidden="true"></i>
+                        <span>نقد، بررسی و نظرات خود را با دیگران به اشتراک گذارید</span></li>
+                    <li><i class="fa fa-percent" aria-hidden="true"></i>
+                        <span>در جریان فروش های ویژه و قیمت روز محصولات قرار بگیرید</span></li>
+                </ul>
+            </div>
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
+    </div>
 </div>
 
 
+<script>
+    $('.menu-li').hover(function () {
+        $(this).find('.submenu1').slideDown(200);
+    }, function () {
+        $(this).find('.submenu1').slideUp(200);
+    })
+    $('.submenu1-li').hover(function () {
+        $(this).find('.submenu2').fadeIn(100);
+    }, function () {
+        $(this).find('.submenu2').fadeOut(100);
+    })
 
+    $('.menu-li').hover(function () {
+        $(this).addClass('active-li');
+        $('.submenu1').css("background-color", "#fff");
+    }, function () {
+        $(this).removeClass('active-li');
+        $('.submenu1').css("background-color", "rgb(247,248,250)");
+    })
 
-
-
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">فرم های عمودی</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">ایمیل</label>
-
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="ایمیل">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">رمز عبور</label>
-
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="رمز عبور">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> مرا به خاطر بسپار
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-default">انصراف</button>
-                    <button type="submit" class="btn btn-info pull-right">ورود</button>
-                </div>
-        </div>
+</script><!--Menu jQuery-->
+<script>
+    $('.check-box').click(function () {
+        if ($(this).is(':checked')) {
+            $(this).parent().find('.active-check').addClass('active-check-cheked');
+        }
+        else {
+            $(this).parent().find('.active-check').removeClass('active-check-cheked');
+        }
+    });
+</script>

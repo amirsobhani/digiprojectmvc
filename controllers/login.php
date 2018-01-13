@@ -9,6 +9,7 @@ class login extends Controller
 
     function index()
     {
-        $this->AdminView('login/index');
+
+        $this->View('login/index');
     }
 }

@@ -6,4 +6,14 @@ class model_login extends Model
     {
         parent::__construct();
     }
+    function getUser($data = [])
+    {
+        $email = $data['email'];
+        $password = $data['pass'];
+        $sql = 'SELECT * FROM users_tbl WHERE email=? AND password=?';
+        $param = [$email, $password];
+
+
+
+    }
 }
