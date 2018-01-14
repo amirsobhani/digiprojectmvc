@@ -36,4 +36,14 @@ class Product extends Controller
         $this->View('product/ItemTab' . $number . '', $data, 'NoHeader', 'NoFooter');
     }
 
+    function addToCart($productId)
+    {
+        $this->model->addToCart($productId);
+    }
+
 }
+
+
+
+
+

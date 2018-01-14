@@ -6,14 +6,20 @@ class model_login extends Model
     {
         parent::__construct();
     }
-    function getUser($data = [])
+
+    function checkUser($data = [])
     {
         $email = $data['email'];
         $password = $data['pass'];
         $sql = 'SELECT * FROM users_tbl WHERE email=? AND password=?';
         $param = [$email, $password];
-
-
-
+        $result = $this->doSelect($sql, $param);
+        if (sizeof($result) > 0 and !empty($email) and !empty($password)) {
+            echo 'password correct';
+            Model::sesionInit();
+            Model::sessionOnSet('UserId', $result[0]['id']);
+        } else {
+            echo 'wrong password';
+        }
     }
 }

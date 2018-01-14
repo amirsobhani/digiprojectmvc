@@ -213,7 +213,7 @@
         <div class="register">
             <div id="right-register">
                 <div class="inside-register">
-                    <form action="" method="post">
+                    <form action="<?= URL ?>login/checkUser" method="post">
                         <div class="email-register">
                             <label>پست الکتروینک</label>
                             <input name="email" type="email" placeholder="Email"/>

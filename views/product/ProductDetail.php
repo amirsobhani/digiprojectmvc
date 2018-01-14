@@ -146,7 +146,7 @@
                         </span>
                         <h5>تومان</h5>
                     </div>
-                    <div class="add-cart">
+                    <div class="add-cart" onclick="addToCart(<?= $productInfo['id']; ?>)">
                         <div class="cart">
                             <i class="fa fa-cart-plus fa-flip-horizontal" aria-hidden="true"></i>
                             <span>افزودن به سبد خرید</span>
@@ -438,6 +438,14 @@
     }
 </style><!--product-color--->
 <script>
+    function addToCart($productId) {
+        var url = '<?= URL ?>product/addToCart/' + $productId + '';
+        var data = {};
+        $.post(url, data, function (msg) {
+            tab.html(msg);
+        });
+
+    }
 
 
     $('.product-back-color ').click(function () {

@@ -171,4 +171,22 @@ class model_product extends Model
         $result = $this->doSelect($sql, [$idproduct]);
         return $result;
     }
+
+    function addToCart($productId)
+    {
+        $sql = 'INSERT INTO cart_tbl (cookie, idproduct) VALUES (?,?)';
+        $cookie = self::getCartCookie();
+        $param = [$cookie, $productId];
+        $this->idu($sql, $param);
+
+    }
 }
+
+
+
+
+
+
+
+
+

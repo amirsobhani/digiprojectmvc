@@ -91,23 +91,37 @@ class Model
         return $dst;
     }
 
-    function sesionInit()
+    public static function sesionInit()
     {
-        session_start();
+        @session_start();
     }
 
-    function sessionOnSet($name, $value)
+    public static function sessionOnSet($name, $value)
     {
         $_SESSION[$name] = $value;
     }
 
-    function sessionOnGet($name)
+    public static function sessionOnGet($name)
     {
         if (isset($_SESSION[$name])) {
             return $name;
         } else {
             return false;
         }
+    }
+
+    public static function getCartCookie()
+    {
+        if (isset($_COOKIE['cart'])) {
+            $cookie = $_COOKIE['cart'];
+        } else {
+            $expire = time() + 7 * 24 * 3600;
+            $value = time().rand(10000, 100000000);
+            setcookie('cart', $value, $expire, '/');
+            $cookie = $value;
+        }
+
+        return $cookie;
     }
 }
 
