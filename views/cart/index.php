@@ -1,20 +1,22 @@
-
 <style>
-    .continue-cart{
-        width:100%;
+    .continue-cart {
+        width: 100%;
         background: #fff;
     }
-    .continue-cart::after{
+
+    .continue-cart::after {
         content: "";
         display: block;
         clear: both;
     }
-    .continue-cart .right{
+
+    .continue-cart .right {
         display: inline-block;
         float: right;
 
     }
-    .continue-cart .left{
+
+    .continue-cart .left {
         display: inline-block;
         direction: rtl;
         background: #4CAF50;
@@ -22,35 +24,42 @@
         margin: 55px 0;
         padding: 10px;
     }
-    .continue-cart .right p{
+
+    .continue-cart .right p {
         font-size: 11px;
         margin: 20px 0;
         direction: rtl;
     }
-    .continue-cart .right h2{
+
+    .continue-cart .right h2 {
         direction: rtl;
         margin: 30px 0 5px;
     }
-    .continue-cart .right h2 i{
+
+    .continue-cart .right h2 i {
         margin-left: 7px;
         color: #2196F3;
     }
-    .cart-wrappper{
-        margin:0 10px;
+
+    .cart-wrappper {
+        margin: 0 10px;
     }
-    #cart-div{
+
+    #cart-div {
         background: #fff;
         margin-bottom: 15px;
     }
-    .go-main{
+
+    .go-main {
         display: inline-block;
         direction: rtl;
-        background-color: #969ba8!important;
+        background-color: #969ba8 !important;
         color: #fff;
         margin: 55px 0;
         padding: 10px;
     }
-    .reserv-alert{
+
+    .reserv-alert {
         direction: rtl;
         font-size: 13px;
         color: red;
@@ -61,83 +70,100 @@
     }
 </style><!--continue-cart--->
 <style>
-    .cart-table{
+    .cart-table {
         width: 100%;
         margin-bottom: 30px;
     }
-    .cart-table table{
+
+    .cart-table table {
         width: 100%;
         direction: rtl;
     }
-    .cart-table table tr td{
+
+    .cart-table table tr td {
         text-align: center;
         vertical-align: middle;
         border: 1px solid #eee;
     }
-    .cart-table table tr td:first-child{
-        text-align: right!important;
+
+    .cart-table table tr td:first-child {
+        text-align: right !important;
     }
-    .cart-table table thead{
+
+    .cart-table table thead {
         line-height: 22px;
         background: #F7F9FA;
         text-align: center;
         font-size: 13px;
     }
-    .cart-table table thead tr td{
+
+    .cart-table table thead tr td {
         border: 1px solid #eee;
         padding: 10px 0;
     }
-    .cart-table table thead tr td:first-child{
-        text-align: center!important;
+
+    .cart-table table thead tr td:first-child {
+        text-align: center !important;
     }
-    .cart-table table thead tr td:last-child{
+
+    .cart-table table thead tr td:last-child {
         border-right: none;
     }
-    .cart-table table thead tr td:nth-child(5){
-        border-left:none;
+
+    .cart-table table thead tr td:nth-child(5) {
+        border-left: none;
     }
-    .product-table-img{
+
+    .product-table-img {
         display: inline-block;
         float: right;
     }
-    .product-table-img img{
+
+    .product-table-img img {
         width: 100px;
         margin: 30px 10px;
     }
-    .product-table-meta{
+
+    .product-table-meta {
         display: inline-block;
         float: right;
         margin: 30px 5px;
     }
-    .product-table-meta h2{
+
+    .product-table-meta h2 {
         font-size: 13px;
         width: 300px;
         line-height: 30px;
         font-weight: 800;
     }
-    .product-table-meta h3{
+
+    .product-table-meta h3 {
         font-size: 10px;
         line-height: 30px;
         font-weight: 800;
     }
-    .product-table-color p{
+
+    .product-table-color p {
         display: inline-block;
         font-size: 11px;
         line-height: 30px;
     }
-    .product-table-color .color{
+
+    .product-table-color .color {
         width: 18px;
         height: 18px;
         display: inline-block;
         border-radius: 100%;
         position: relative;
-        top:5px;
+        top: 5px;
     }
-    .product-table-color span:last-child , .warranty{
+
+    .product-table-color span:last-child, .warranty {
         font-size: 12px;
         color: #777;
     }
-    .cart-table .delete{
+
+    .cart-table .delete {
         border-left: 0;
         background: #ffedee;
         border-right: 0;
@@ -145,31 +171,38 @@
         width: 30px;
         cursor: pointer;
     }
-    .unitprice{
+
+    .unitprice {
         width: 25%;
     }
-    .seperate{
+
+    .seperate {
         margin: 14px 0;
         border-bottom: 1px dashed #e9e9e9;
         height: 1px;
         margin-left: 15px;
     }
-    .unitprice-discoount tr{
+
+    .unitprice-discoount tr {
         line-height: 30px;
     }
-    .unitprice-discoount tr td{
-        border: none!important;
+
+    .unitprice-discoount tr td {
+        border: none !important;
         padding-right: 15px;
         font-size: 13px;
     }
-    .unitprice-discoount tr:last-child td{
+
+    .unitprice-discoount tr:last-child td {
         color: #00B12A;
         font-size: 21px;
     }
-    .red{
+
+    .red {
         color: #ff6b6b;
     }
-    .cart-table tr.gift td.last span{
+
+    .cart-table tr.gift td.last span {
         color: #ff6b6b;
         font-size: 19px;
         display: inline-block;
@@ -180,19 +213,24 @@
         transform: rotate(-90deg);
         font-weight: 800;
     }
-    .cart-table tr.gift td.last{
+
+    .cart-table tr.gift td.last {
         position: relative;
     }
 </style><!---cart-table--->
 <div id="main">
+    <?php
+    $cart = $data['cart'];
+    ?>
     <div id="content">
-        <?php require ('Breadcrumb.php'); ?>
+        <?php require('Breadcrumb.php'); ?>
         <div id="cart-div" class="dk-box">
             <div class="cart-wrappper">
                 <div class="continue-cart">
                     <div class="right">
                         <h2><i class="fa fa-caret-left" aria-hidden="true"></i>سبد خرید شما در دیجی‌کالا</h2>
-                        <p>افزودن کالاها به سبد خرید به معنی رزرو کالا برای شما نیست. برای ثبت سفارش باید مراحل بعدی خرید را تکمیل نمایید.</p>
+                        <p>افزودن کالاها به سبد خرید به معنی رزرو کالا برای شما نیست. برای ثبت سفارش باید مراحل بعدی
+                            خرید را تکمیل نمایید.</p>
                     </div>
                     <div class="left dk-box">
 						<span>
@@ -213,6 +251,78 @@
                             <td></td>
                         </tr>
                         </thead>
+                        <?php
+                        print_r($cart[1]['colorCart']);
+                        foreach ($cart as $row) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <div class="product-table">
+                                        <div class="product-table-img">
+                                            <img src="public/img/product gallery/<?= $row ['id'] ?>/product220.jpg">
+                                        </div>
+                                        <div class="product-table-meta">
+                                            <h2>
+                                                <?= $row['title'] ?>  <?= $row['product_model'] ?>
+                                            </h2>
+                                            <h3>
+                                                <?= $row['en_title'] ?>
+                                            </h3>
+                                            <div class="product-table-color">
+                                                <p>رنگ :</p>
+                                                <span class="color" style="background: #ADD8E6"></span>
+                                                <span><?php
+                                                print_r($row['colorCart'][$row['id']]['title'])
+                                                    ?></span>
+                                            </div>
+                                            <p class="warranty">
+                                                گارانتی : 18ماه گارانتی مایکروتل
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td> دیجی کالا</td>
+                                <td>
+                                    <div class="number-select">
+                                        <select>
+
+                                            <?php
+                                            for ($i = 0; $i <= 10; $i++) {
+                                                ?>
+                                                <option value="<?= $i ?>"
+                                                    <?php
+                                                    if ($i == $row['count']) {
+                                                        ?>
+                                                        selected
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                ><?= $i ?></>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <?= $row['price'] ?>
+                                    <span class="toman">
+									تومان
+								</span>
+                                </td>
+                                <td class="unitprice">
+                                    <?= $row['count'] * $row['price'] ?>
+                                    <span class="toman">
+									تومان
+								</span>
+                                </td>
+                                <td class="delete">
+                                    <i class="fa fa-close" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
                         <tr>
                             <td>
                                 <div class="product-table">
@@ -237,7 +347,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td> دیجی کالا </td>
+                            <td> دیجی کالا</td>
                             <td>
                                 <div class="number-select">
                                     <select>
@@ -294,7 +404,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td> دیجی کالا </td>
+                            <td> دیجی کالا</td>
                             <td>
                                 <div class="number-select">
                                     <select>
@@ -382,27 +492,30 @@
                 </div><!--continue-cart--->
             </div>
         </div>
-        <?php require ('LikeProduct.php'); ?>
+        <?php require('LikeProduct.php'); ?>
     </div><!---Content--->
 </div>
 <style>
-    .complete-price{
+    .complete-price {
         width: 590px;
         border: 1px solid #c0f0c1;
         margin-bottom: 30px;
     }
-    .complete-price::after{
+
+    .complete-price::after {
         content: "";
         display: block;
         clear: both;
     }
-    .price{
+
+    .price {
         height: 55px;
         line-height: 55px;
         padding: 0 40px 0 0;
         border-bottom: 1px solid #c0f0c1;
     }
-    .discount{
+
+    .discount {
         display: inline-block;
         text-align: center;
         float: right;
@@ -414,7 +527,8 @@
         top: 7px;
         direction: rtl;
     }
-    .discount::after{
+
+    .discount::after {
         content: "";
         width: 0;
         height: 0;
@@ -425,19 +539,22 @@
         left: 5px;
         top: 11px;
     }
-    .discount span:first-child{
+
+    .discount span:first-child {
         background: #FF7272;
         color: #fff;
         padding: 5px 15px;
         float: right;
     }
-    .discount span:last-child{
+
+    .discount span:last-child {
         background: #FF5252;
         color: #fff;
         padding: 5px 15px;
         float: right;
     }
-    .lable{
+
+    .lable {
         display: inline-block;
         direction: rtl;
         color: #818181;
@@ -445,24 +562,28 @@
         width: auto;
         margin-left: 60px;
     }
-    .lable-price{
+
+    .lable-price {
         display: inline-block;
         float: left;
         direction: rtl;
         font-size: 20px;
     }
-    .toman{
+
+    .toman {
         font-size: 12px;
         margin: 0 15px;
     }
-    .pay-price{
+
+    .pay-price {
         height: 55px;
         line-height: 55px;
         width: 100%;
         float: left;
         background-color: #F7FFF7;
     }
-    .green{
+
+    .green {
         color: #4caf50 !important;
     }
 </style><!---complete-price-->

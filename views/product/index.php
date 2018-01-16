@@ -1,7 +1,6 @@
-
 <div id="main">
     <script src="public/js/jQueryRotate.js"></script>
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
     <script src="public/js/Scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <link rel="stylesheet" href="public/js/Scroll/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="public/js/magnify/css/magnify.css">
@@ -12,16 +11,16 @@
     <div id="content">
         <?php
 
-            require ('Breadcrumb.php');
+        require('Breadcrumb.php');
 
-            $productInfo = $data[0];
+        $productInfo = $data[0];
 
-        if ($productInfo['special'] == 1){
-            require ('amazingOffer.php');
+        if ($productInfo['special'] == 1) {
+            require('amazingOffer.php');
         }
-            require ('ProductDetail.php');
-            require('FastExplain.php');
-            require('RelatedProduct.php');
+        require('ProductDetail.php');
+        require('FastExplain.php');
+        require('RelatedProduct.php');
         ?>
         <section class="product-tab">
             <header>
@@ -49,7 +48,7 @@
             <article id="tab">
                 <div class="item-tab">
                     <?php
-                    require ('ItemTab1.php');
+                    require('ItemTab1.php');
                     ?>
                 </div>
 
@@ -62,20 +61,20 @@
                 <div class="item-tab">
                 </div>
                 <?php
-//                    require ('ItemTab1.php');
-//                    require ('ItemTab2.php');
-//                    require ('ItemTab3.php');
-//                    require ('ItemTab4.php');
-                    require ('ProductGallery.php')
+                //                    require ('ItemTab1.php');
+                //                    require ('ItemTab2.php');
+                //                    require ('ItemTab3.php');
+                //                    require ('ItemTab4.php');
+                require('ProductGallery.php')
                 ?>
             </article>
         </section><!--product-tab-->
     </div>
 </div>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         var sticky = $('#navbar').offset().top;
-        $(window).bind('scroll',function(){
+        $(window).bind('scroll', function () {
             if ($(window).scrollTop() >= sticky) {
                 $('#navbar').addClass('sticky');
             } else {
@@ -92,7 +91,7 @@
         getItemTab(li.eq(0));
     });
 
-    li.click(function(){
+    li.click(function () {
         goHeader();
         getItemTab(this);
     });
@@ -100,7 +99,7 @@
     function goHeader() {
         var body = $("html, body");
         var sticky = $('.product-tab').offset().top;
-        body.animate({scrollTop:sticky-50},500);
+        body.animate({scrollTop: sticky - 50}, 500);
     }
 
     function getItemTab(elem) {
@@ -112,7 +111,7 @@
         var tab = $('.item-tab').eq(index);
 
         var url = '<?= URL ?>product/tab/<?= $productInfo['id']; ?>/<?= $productInfo['idcategory']; ?>';
-        var data = {'number':index};
+        var data = {'number': index};
         tab.html('<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>');
         $.post(url, data, function (msg) {
             tab.html(msg);
@@ -124,33 +123,76 @@
 </script><!--Item Tab--->
 <script>
 
-    $('.select-list').click(function(){
+    $('.guarantee-list').click(function () {
         var subSelList = $(this).find('.subSelList');
 
-        if(subSelList.css('display') == 'block'){
+        if (subSelList.css('display') == 'block') {
             subSelList.slideUp(200);
-        }else{
+        } else {
             subSelList.slideDown(250);
         }
     });
-    $('.product-info').mouseleave(function(){
+    $('.product-info').mouseleave(function () {
+        $('.subSelList').slideUp(200);
+    });
+
+    $('.color-list').click(function () {
+        var subSelList = $(this).find('.subSelList');
+
+        if (subSelList.css('display') == 'block') {
+            subSelList.slideUp(200);
+        } else {
+            subSelList.slideDown(250);
+        }
+    });
+    $('.product-info').mouseleave(function () {
+        $('.subSelList').slideUp(200);
+    });
+
+    $('.seller-list').click(function () {
+        var subSelList = $(this).find('.subSelList');
+
+        if (subSelList.css('display') == 'block') {
+            subSelList.slideUp(200);
+        } else {
+            subSelList.slideDown(250);
+        }
+    });
+    $('.product-info').mouseleave(function () {
         $('.subSelList').slideUp(200);
     });
 
 
-
-    $('.select-list li').click(function(){
+    $('.guarantee-list li').click(function () {
         var text = $(this).text();
-        $(this).parents('.select-list').find('p').text(text);
+        $('.guarantee-list li').removeClass('active');
+        $(this).addClass('active');
+        $(this).parents('.guarantee-list').find('p').text(text);
     });
+
+    $('.color-list li').click(function () {
+        var text = $(this).text();
+        $('.color-list li').removeClass('active');
+        $(this).addClass('active');
+        $(this).parents('.color-list').find('p').text(text);
+    });
+
+    $('.seller-list li').click(function () {
+        var text = $(this).text();
+        $('.seller-list li').removeClass('active');
+        $(this).addClass('active');
+        $(this).parents('.seller-list').find('p').text(text);
+    });
+
 </script>
 <style>
-    .item-tab i.fa-refresh{
+    .item-tab i.fa-refresh {
         margin: 70px auto;
         display: block;
         color: #555;
     }
-    .scroll-slider{
+
+    .scroll-slider {
         width: 100%;
         height: 310px;
         background-color: #fff;
@@ -158,7 +200,8 @@
         position: relative;
         margin: 15px 0;
     }
-    .scroll-slider h3{
+
+    .scroll-slider h3 {
         direction: rtl;
         line-height: 35px;
         padding: 0 13px;
@@ -166,12 +209,14 @@
         font-size: 13px;
         background-color: #E8E8E8;
     }
-    .scroll-next{
+
+    .scroll-next {
         width: 50px;
         height: 275px;
         float: right;
     }
-    .scroll-prev{
+
+    .scroll-prev {
         width: 50px;
         height: 275px;
         float: left;
@@ -181,7 +226,8 @@
         background-color: #fff;
         box-shadow: 0px 15px 15px #888888;
     }
-    .scroll-slider i{
+
+    .scroll-slider i {
         text-align: center;
         display: block;
         line-height: 275px;
@@ -189,25 +235,29 @@
         background-color: #fff;
         cursor: pointer;
     }
-    .scroll-main{
+
+    .scroll-main {
         height: 90%;
         overflow: hidden;
         margin-right: 50px;
     }
-    .scroll-main ul{
+
+    .scroll-main ul {
         height: 100%;
         width: 1160px;
         float: right;
         overflow: hidden;
     }
-    .scroll-main ul li{
+
+    .scroll-main ul li {
         width: 250px;
         height: 100%;
         float: right;
         padding: 0px 20px;
         position: relative;
     }
-    .scroll-main ul li::after{
+
+    .scroll-main ul li::after {
         content: " ";
         height: 190px;
         top: 41px;
@@ -219,18 +269,21 @@
         border-color: #B8B8B8B8;
 
     }
-    .scroll-product{
+
+    .scroll-product {
         text-align: center;
         display: block;
         height: 90%;
         padding-top: 25px;
     }
-    .scroll-product img{
+
+    .scroll-product img {
         margin: 30px auto;
         float: right;
         display: block;
     }
-    .scroll-product .product-meta{
+
+    .scroll-product .product-meta {
         direction: rtl;
         font-family: iran-sans;
         font-size: 14px;
@@ -241,7 +294,8 @@
         padding: 20px 0;
         color: #153574;
     }
-    .scroll-product .product-price{
+
+    .scroll-product .product-price {
         line-height: 25px;
         text-align: center;
         font-family: iran-sans;
@@ -249,21 +303,23 @@
         direction: rtl;
         width: 40%;
     }
-    .product-price-old{
+
+    .product-price-old {
         background-color: #ccc;
         width: 100%;
         display: block;
         text-decoration-line: line-through;
         margin: 5px 0;
     }
-    .product-price-old{
+
+    .product-price-old {
         background-color: #a6d45b;
         width: 100%;
         display: block;
     }
 </style><!--Scroll Slider-->
 <script>
-    function scroll(direction,tag){
+    function scroll(direction, tag) {
 
         var slideTag = $(tag);
         var sliderScrollUl = slideTag.parent('.scroll-slider').find('ul');
@@ -274,58 +330,62 @@
         var marginRight = parseFloat(sliderScrollUl.css('margin-right'));
         sliderScrollUl.css("width", ulWidthSize);
 
-        if(direction == 'left'){
-            marginRight=marginRight-liWidth;
-            if((-marginRight) > maxMargin){
-                marginRight = (-maxMargin)-70;
+        if (direction == 'left') {
+            marginRight = marginRight - liWidth;
+            if ((-marginRight) > maxMargin) {
+                marginRight = (-maxMargin) - 70;
             }
         }
-        if(direction == 'right'){
-            marginRight=marginRight+liWidth;
-            if(marginRight > 0){
+        if (direction == 'right') {
+            marginRight = marginRight + liWidth;
+            if (marginRight > 0) {
                 marginRight = 0;
             }
         }
-        sliderScrollUl.animate({'marginRight':marginRight},1000);
+        sliderScrollUl.animate({'marginRight': marginRight}, 1000);
     }
-    $('.scroll-next').click(function(){
-        scroll('left',this);
-    });
-    $('.scroll-prev').click(function(){
-        scroll('right',this);
-    });
 
+    $('.scroll-next').click(function () {
+        scroll('left', this);
+    });
+    $('.scroll-prev').click(function () {
+        scroll('right', this);
+    });
 
 
 </script><!--Scroll Slider-->
 <style>
-    .sticky{
+    .sticky {
         position: fixed;
         top: 0;
         width: 100%;
-        z-index:5;
+        z-index: 5;
         right: 0;
     }
 </style><!--sticky--->
 <style>
-    .tabContent{
+    .tabContent {
         padding: 29px;
         text-align: justify;
         line-height: 33px;
     }
-    .tabContent img{
+
+    .tabContent img {
         margin: 40px auto;
         display: block;
     }
-    .tabList{
+
+    .tabList {
         margin: 0 30px;
         border-right: 3px solid #ccc;
     }
-    .tabListChild{
+
+    .tabListChild {
         margin: 35px 0;
         position: relative;
     }
-    .tabListChild::after{
+
+    .tabListChild::after {
         background: #e5e5e5;
         content: "";
         height: 1px;
@@ -335,7 +395,8 @@
         width: 100%;
 
     }
-    .tabListChild h3{
+
+    .tabListChild h3 {
         font-size: 20px;
         position: relative;
         padding: 0 30px 0 20px;
@@ -344,7 +405,8 @@
         display: inline-block;
         cursor: pointer;
     }
-    .tabListChild h3 i{
+
+    .tabListChild h3 i {
         position: absolute;
         right: -11px;
         top: -2px;
@@ -353,34 +415,41 @@
         font-size: 25px;
         background: #fff;
     }
-    .item-tab p{
+
+    .item-tab p {
         line-height: 33px;
         text-align: justify;
         padding: 30px;
     }
-    .item-tab h2{
+
+    .item-tab h2 {
         font-size: 20px;
         padding-right: 30px;
     }
-    .fa-caret-left{
+
+    .fa-caret-left {
         color: #2196F3;
         margin-left: 10px;
     }
-    #tab .item-tab:first-child{
+
+    #tab .item-tab:first-child {
         display: block;
     }
-    .item-tab{
+
+    .item-tab {
         width: 100%;
         background-color: #fff;
         display: none;
         padding: 40px 0;
     }
-    .product-tab{
+
+    .product-tab {
         width: 100%;
         display: inline-block;
         direction: rtl;
     }
-    .product-tab-header{
+
+    .product-tab-header {
         line-height: 70px;
         background-color: #F5F6F7;
         border: 1px solid #eee;
@@ -389,53 +458,62 @@
         margin: 0 auto;
         width: 1190px;
     }
-    .product-tab-header li{
+
+    .product-tab-header li {
         display: inline-block;
         padding: 0 30px;
         cursor: pointer;
         box-shadow: 0px 0px 16px #eee;
     }
-    .product-tab-header li:first-child{
+
+    .product-tab-header li:first-child {
         display: inline-block;
     }
-    .product-tab-header li.active{
+
+    .product-tab-header li.active {
         background-color: #fff;
         color: #2196F3;
         border-top: 3px solid #2196F3;
         border-bottom: none;
         box-shadow: 0 -2px 2px #ccc;
     }
-    .product-tab-header li i{
+
+    .product-tab-header li i {
         margin-left: 10px;
     }
 </style><!--item-tab 1-->
 <style>
-    .product-properties{
+    .product-properties {
         margin: 50px 0;
         display: block;
     }
-    .product-properties>h4{
+
+    .product-properties > h4 {
         margin: 0px 25px 15px 0;
         font-size: 20px;
         display: block;
     }
-    .productName{
+
+    .productName {
         font-size: 12px;
         color: #888;
         margin: 10px 25px 35px 0;
         display: block;
     }
-    .item-tab>h4{
+
+    .item-tab > h4 {
         font-size: 25px;
         font-weight: bolder;
         margin: 5px 25px;
     }
-    .pro-tab{
+
+    .pro-tab {
         display: block;
         width: 100%;
         float: right;
     }
-    .properties-title{
+
+    .properties-title {
         float: right;
         width: 20%;
         line-height: 40px;
@@ -443,7 +521,8 @@
         margin: 10px 15px 0px;
         padding: 5px 15px;
     }
-    .properties-meta{
+
+    .properties-meta {
         float: left;
         display: inline-block;
         width: 72%;
@@ -453,7 +532,8 @@
         padding: 5px 10px !important;
         font-size: 13px;
     }
-    .item-tab::after{
+
+    .item-tab::after {
         content: "";
         display: block;
         clear: both;

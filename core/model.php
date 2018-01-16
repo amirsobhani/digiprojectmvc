@@ -120,7 +120,6 @@ class Model
             setcookie('cart', $value, $expire, '/');
             $cookie = $value;
         }
-
         return $cookie;
     }
 }

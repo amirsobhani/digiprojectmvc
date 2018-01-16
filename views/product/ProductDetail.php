@@ -65,7 +65,7 @@
                         $all_color = $result['all_color'];
                         foreach ($all_color as $color) {
                             ?>
-                            <li>
+                            <li data-id="<?= $color['id'] ?>">
 							<span class="product-back-color " style="background-color: <?= $color['hex'] ?>;">
 								<i class="fa fa-check color-check" aria-hidden="true"></i>
 							</span>
@@ -79,39 +79,38 @@
                 </div>
                 <div class="guarantee">
                     <p>انتخاب گارانتی</p>
-                    <div class="select-list">
+                    <div class="guarantee-list">
                         <i class="fa fa-check" aria-hidden="true"></i>
                         <p>گارانتی مورد نظر را انتخاب کنید</p>
                         <i class="fa fa-angle-down down" aria-hidden="true"></i>
                         <i class="fa fa-angle-up up" aria-hidden="true"></i>
-                        <ul class="subSelList">
+                        <ul class="subSelList" id="guarantee">
                             <?php
                             $all_guarantees = $result ['guarantee'];
                             foreach ($all_guarantees as $guarantee) {
                                 ?>
-                                <li>
+                                <li data-id="<?= $guarantee['id'] ?>">
                                     <?= $guarantee['title'] ?>
                                 </li>
                                 <?php
                             }
-
                             ?>
                         </ul>
                     </div>
                 </div>
                 <div class="seller">
                     <p>انتخاب فروشنده</p>
-                    <div class="select-list">
+                    <div class="seller-list">
                         <i class="fa fa-check" aria-hidden="true"></i>
                         <p>فروشنده مورد نطر را انتخاب کنید</p>
                         <i class="fa fa-angle-down down" aria-hidden="true"></i>
                         <i class="fa fa-angle-up up" aria-hidden="true"></i>
-                        <ul class="subSelList">
+                        <ul class="subSelList" id="seller">
                             <?php
                             $all_seller = $result['seller'];
                             foreach ($all_seller as $seller) {
                                 ?>
-                                <li>
+                                <li data-id="<?= $seller['id'] ?>">
                                     <?= $seller['title']; ?>
                                 </li>
                                 <?php
@@ -135,13 +134,11 @@
                         <p>قیمت</p>
                         <span class="price">
                             <?php
-
                             if ($productInfo['special'] == 1) {
                                 echo $productInfo['total_price'];
                             } else {
                                 echo $productInfo['price'];
                             }
-
                             ?>
                         </span>
                         <h5>تومان</h5>
@@ -310,16 +307,16 @@
         margin-right: 10px;
     }
 
-    .select-list p {
+    .guarantee-list p, .seller-list p {
         margin-right: 10px;
     }
 
-    .select-list .down {
+    .guarantee-list .down, .seller-list .down {
         float: left;
         margin: 9px 10px;
     }
 
-    .select-list .up {
+    .guarantee-list .up, .seller-list .down {
         display: none;
         float: left;
         margin: 9px 10px;
@@ -359,7 +356,7 @@
         position: relative;
     }
 
-    .select-list {
+    .guarantee-list, .seller-list {
         cursor: pointer;
         font-size: 14px;
         width: 100%;
@@ -439,12 +436,15 @@
 </style><!--product-color--->
 <script>
     function addToCart($productId) {
-        var url = '<?= URL ?>product/addToCart/' + $productId + '';
+        var sellerId = $('#seller .active').attr('data-id');
+        var colorId = $('.color-list .active').attr('data-id');
+        var guranteeId = $('#guarantee .active').attr('data-id');
+
+        var url = '<?= URL ?>product/addToCart/' + $productId + '/' + sellerId + '/' + colorId + '/' + guranteeId + '';
         var data = {};
         $.post(url, data, function (msg) {
-            tab.html(msg);
+//            tab.html(msg);
         });
-
     }
 
 
