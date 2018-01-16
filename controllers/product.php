@@ -39,6 +39,7 @@ class Product extends Controller
     function addToCart($productId)
     {
         $this->model->addToCart($productId);
+
     }
 
 }

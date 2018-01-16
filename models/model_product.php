@@ -174,10 +174,23 @@ class model_product extends Model
 
     function addToCart($productId)
     {
-        $sql = 'INSERT INTO cart_tbl (cookie, idproduct) VALUES (?,?)';
         $cookie = self::getCartCookie();
         $param = [$cookie, $productId];
-        $this->idu($sql, $param);
+
+        $selSql = 'SELECT * FROM cart_tbl WHERE cookie=? AND idproduct=?';
+        $result = $this->doSelect($selSql, $param, '1');
+        if (sizeof($result) > 0) {
+            $countSql = 'UPDATE cart_tbl SET count=? WHERE cookie=? AND idproduct=?';
+            $count = $result['count'];
+            $count++;
+            $countValue = [$count, $cookie, $productId];
+            $this->idu($countSql, $countValue);
+        }
+        if (empty($result)) {
+            $sql = 'INSERT INTO cart_tbl (cookie, idproduct) VALUES (?,?)';
+            $this->idu($sql, $param);
+        }
+
 
     }
 }
