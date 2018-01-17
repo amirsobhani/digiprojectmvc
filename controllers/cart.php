@@ -9,8 +9,19 @@ class Cart extends Controller
     function index()
     {
         $cart = $this->model->getCartProduct();
-        $data = ['cart' => $cart];
+        $cartInfo = $cart[0];
+        $cartPrice = $cart[1];
+        $cartDiscount = $cart[2];
+        $data = ['cart' => $cartInfo, 'cartPrice' => $cartPrice, 'cartDiscount' => $cartDiscount];
         $this->View('cart/index', $data);
+    }
+
+    function deleteProductCart($id)
+    {
+        $this->model->deleteProductCart($id);
+        $cart = $this->model->getCartProduct();
+        $cartInfo = $cart[0];
+        echo json_encode($cartInfo);
     }
 }
 

@@ -221,6 +221,8 @@
 <div id="main">
     <?php
     $cart = $data['cart'];
+    $cartPrice = $data['cartPrice'];
+    $cartDiscount = $data['cartDiscount'];
     ?>
     <div id="content">
         <?php require('Breadcrumb.php'); ?>
@@ -252,7 +254,6 @@
                         </tr>
                         </thead>
                         <?php
-                        print_r($cart[1]['colorCart']);
                         foreach ($cart as $row) {
                             ?>
                             <tr>
@@ -272,7 +273,7 @@
                                                 <p>رنگ :</p>
                                                 <span class="color" style="background: #ADD8E6"></span>
                                                 <span><?php
-                                                print_r($row['colorCart'][$row['id']]['title'])
+                                                    //                                                print_r($row['colorCart'][$row['id']]['title'])
                                                     ?></span>
                                             </div>
                                             <p class="warranty">
@@ -305,172 +306,174 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <?= $row['price'] ?>
+                                    <?= number_format($row['price'], 0, '/', ',') ?>
                                     <span class="toman">
 									تومان
 								</span>
                                 </td>
                                 <td class="unitprice">
-                                    <?= $row['count'] * $row['price'] ?>
+                                    <?= number_format($row['count'] * $row['price'], 0, '/', ',') ?>
                                     <span class="toman">
 									تومان
 								</span>
                                 </td>
-                                <td class="delete">
+                                <td class="delete" onclick="removeProductCart(<?= $row['cartId'] ?>)">
                                     <i class="fa fa-close" aria-hidden="true"></i>
                                 </td>
                             </tr>
                             <?php
                         }
                         ?>
-                        <tr>
-                            <td>
-                                <div class="product-table">
-                                    <div class="product-table-img">
-                                        <img src="public/img/scroll%20slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg">
-                                    </div>
-                                    <div class="product-table-meta">
-                                        <h2>
-                                            گوشی موبایل سامسونگ مدل Galaxy S8 G950FD دو سیم کارت
-                                        </h2>
-                                        <h3>
-                                            Samsung Galaxy S8 G950FD Dual SIM Mobile Phone
-                                        </h3>
-                                        <div class="product-table-color">
-                                            <p>رنگ :</p>
-                                            <span class="color" style="background: #ADD8E6"></span>
-                                            <span>آبی روشن</span>
-                                        </div>
-                                        <p class="warranty">
-                                            گارانتی : 18ماه گارانتی مایکروتل
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td> دیجی کالا</td>
-                            <td>
-                                <div class="number-select">
-                                    <select>
-                                        <option selected="selected" value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                2,599,000
-                                <span class="toman">
-									تومان
-								</span>
-                            </td>
-                            <td class="unitprice">
-                                2,599,000
-                                <span class="toman">
-									تومان
-								</span>
-                            </td>
-                            <td class="delete">
-                                <i class="fa fa-close" aria-hidden="true"></i>
-                            </td>
-                        </tr>
-                        <tr class="gift">
-                            <td>
-                                <div class="product-table">
-                                    <div class="product-table-img">
-                                        <img src="public/img/mci-internet-gift-card---1gb-797044.jpg">
-                                    </div>
-                                    <div class="product-table-meta">
-                                        <h2>
-                                            کارت هدیه اینترنت همراه اول حجم 1 گیگابایت
-                                        </h2>
-                                        <h3>
-                                            MCI Internet Gift Card - 1GB
-                                        </h3>
-                                        <div class="product-table-color">
-                                            <p>رنگ :</p>
-                                            <span class="color" style="background: blue"></span>
-                                            <span>آبی</span>
-                                        </div>
-                                        <p class="warranty">
-                                            گارانتی : سرویس ویژه دیجی کالا ۷ روز تضمین تعویض کالا
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td> دیجی کالا</td>
-                            <td>
-                                <div class="number-select">
-                                    <select>
-                                        <option selected="selected" value="1">1</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                10,000
-                                <span class="toman">
-									تومان
-								</span>
-                            </td>
-                            <td class="unitprice">
-                                <div>
-                                    <table class="unitprice-discoount">
-                                        <tr>
-                                            <td>قیمت کل :</td>
-                                            <td>
-                                                10,000
-                                                <span class="toman">تومان</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="red">(-) تخفیف هدیه :</td>
-                                            <td class="red">
-                                                10,000
-                                                <span class="toman">تومان</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <div class="seperate"></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="text-align: center !important;">رایگان</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </td>
-                            <td class="last">
-								<span>
-									هدیه
-								</span>
-                            </td>
-                        </tr>
+                        <!--                        <tr>-->
+                        <!--                            <td>-->
+                        <!--                                <div class="product-table">-->
+                        <!--                                    <div class="product-table-img">-->
+                        <!--                                        <img src="public/img/scroll%20slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg">-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="product-table-meta">-->
+                        <!--                                        <h2>-->
+                        <!--                                            گوشی موبایل سامسونگ مدل Galaxy S8 G950FD دو سیم کارت-->
+                        <!--                                        </h2>-->
+                        <!--                                        <h3>-->
+                        <!--                                            Samsung Galaxy S8 G950FD Dual SIM Mobile Phone-->
+                        <!--                                        </h3>-->
+                        <!--                                        <div class="product-table-color">-->
+                        <!--                                            <p>رنگ :</p>-->
+                        <!--                                            <span class="color" style="background: #ADD8E6"></span>-->
+                        <!--                                            <span>آبی روشن</span>-->
+                        <!--                                        </div>-->
+                        <!--                                        <p class="warranty">-->
+                        <!--                                            گارانتی : 18ماه گارانتی مایکروتل-->
+                        <!--                                        </p>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td> دیجی کالا</td>-->
+                        <!--                            <td>-->
+                        <!--                                <div class="number-select">-->
+                        <!--                                    <select>-->
+                        <!--                                        <option selected="selected" value="1">1</option>-->
+                        <!--                                        <option value="2">2</option>-->
+                        <!--                                        <option value="3">3</option>-->
+                        <!--                                        <option value="4">4</option>-->
+                        <!--                                        <option value="5">5</option>-->
+                        <!--                                        <option value="6">6</option>-->
+                        <!--                                        <option value="7">7</option>-->
+                        <!--                                        <option value="8">8</option>-->
+                        <!--                                        <option value="9">9</option>-->
+                        <!--                                        <option value="10">10</option>-->
+                        <!--                                    </select>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                2,599,000-->
+                        <!--                                <span class="toman">-->
+                        <!--									تومان-->
+                        <!--								</span>-->
+                        <!--                            </td>-->
+                        <!--                            <td class="unitprice">-->
+                        <!--                                2,599,000-->
+                        <!--                                <span class="toman">-->
+                        <!--									تومان-->
+                        <!--								</span>-->
+                        <!--                            </td>-->
+                        <!--                            <td class="delete">-->
+                        <!--                                <i class="fa fa-close" aria-hidden="true"></i>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr class="gift">-->
+                        <!--                            <td>-->
+                        <!--                                <div class="product-table">-->
+                        <!--                                    <div class="product-table-img">-->
+                        <!--                                        <img src="public/img/mci-internet-gift-card---1gb-797044.jpg">-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="product-table-meta">-->
+                        <!--                                        <h2>-->
+                        <!--                                            کارت هدیه اینترنت همراه اول حجم 1 گیگابایت-->
+                        <!--                                        </h2>-->
+                        <!--                                        <h3>-->
+                        <!--                                            MCI Internet Gift Card - 1GB-->
+                        <!--                                        </h3>-->
+                        <!--                                        <div class="product-table-color">-->
+                        <!--                                            <p>رنگ :</p>-->
+                        <!--                                            <span class="color" style="background: blue"></span>-->
+                        <!--                                            <span>آبی</span>-->
+                        <!--                                        </div>-->
+                        <!--                                        <p class="warranty">-->
+                        <!--                                            گارانتی : سرویس ویژه دیجی کالا ۷ روز تضمین تعویض کالا-->
+                        <!--                                        </p>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td> دیجی کالا</td>-->
+                        <!--                            <td>-->
+                        <!--                                <div class="number-select">-->
+                        <!--                                    <select>-->
+                        <!--                                        <option selected="selected" value="1">1</option>-->
+                        <!--                                    </select>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                10,000-->
+                        <!--                                <span class="toman">-->
+                        <!--									تومان-->
+                        <!--								</span>-->
+                        <!--                            </td>-->
+                        <!--                            <td class="unitprice">-->
+                        <!--                                <div>-->
+                        <!--                                    <table class="unitprice-discoount">-->
+                        <!--                                        <tr>-->
+                        <!--                                            <td>قیمت کل :</td>-->
+                        <!--                                            <td>-->
+                        <!--                                                10,000-->
+                        <!--                                                <span class="toman">تومان</span>-->
+                        <!--                                            </td>-->
+                        <!--                                        </tr>-->
+                        <!--                                        <tr>-->
+                        <!--                                            <td class="red">(-) تخفیف هدیه :</td>-->
+                        <!--                                            <td class="red">-->
+                        <!--                                                10,000-->
+                        <!--                                                <span class="toman">تومان</span>-->
+                        <!--                                            </td>-->
+                        <!--                                        </tr>-->
+                        <!--                                        <tr>-->
+                        <!--                                            <td colspan="2">-->
+                        <!--                                                <div class="seperate"></div>-->
+                        <!--                                            </td>-->
+                        <!--                                        </tr>-->
+                        <!--                                        <tr>-->
+                        <!--                                            <td colspan="2" style="text-align: center !important;">رایگان</td>-->
+                        <!--                                        </tr>-->
+                        <!--                                    </table>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td class="last">-->
+                        <!--								<span>-->
+                        <!--									هدیه-->
+                        <!--								</span>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
                     </table>
                 </div>
                 <div class="complete-price">
                     <div class="price">
                         <div class="discount">
                             <span>مجموع تخفیف</span>
-                            <span>10,000 تـومان</span>
+                            <span id="discount"><?= number_format($cartDiscount, 0, '/', ',') ?> </span>
+                            <span>تـومان</span>
                         </div>
                         <span class="lable">جمع کل خرید شما :</span>
-                        <span class="lable-price">
-      2,609,000
-      <span class="toman">تومان</span>
+                        <span class="toman">تومان</span>
+                        <span class="lable-price" id="totalPrice">
+      <?= number_format($cartPrice, 0, '/', ',') ?>
     </span>
                     </div>
                     <div class="pay-price">
                         <span class="lable green">مبلغ قابل پرداخت :</span>
-                        <span class="lable-price green">
-      2,599,000
-      <span class="toman green">تومان</span>
+                        <span class="toman green">تومان</span>
+                        <span class="lable-price green" id="finalPrice">
+                            <?= number_format($cartPrice - $cartDiscount, 0, '/', ',') ?>
+
     </span>
                     </div>
                 </div>
@@ -554,13 +557,20 @@
         float: right;
     }
 
+    #discount {
+        background: #FF5252;
+        color: #fff;
+        padding: 5px 15px;
+        float: right;
+    }
+
     .lable {
         display: inline-block;
         direction: rtl;
         color: #818181;
         font-size: 14px;
         width: auto;
-        margin-left: 60px;
+        margin-left: 20px;
     }
 
     .lable-price {
@@ -573,6 +583,7 @@
     .toman {
         font-size: 12px;
         margin: 0 15px;
+        float: left;
     }
 
     .pay-price {
@@ -586,4 +597,58 @@
     .green {
         color: #4caf50 !important;
     }
+
+    .fa-refresh {
+        margin: 100px auto;
+        display: block;
+        color: #777;
+    }
 </style><!---complete-price-->
+<script>
+    function removeProductCart($idproduct) {
+        var url = 'cart/deleteProductCart/' + $idproduct;
+        var data = {};
+        var refresh = '<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>';
+        var cartTable = $('.cart-table table tbody');
+
+        $.post(url, data, function (msg) {
+            cartTable.html(refresh);
+
+            var finalPrice = 0;
+            var totalPrice = 0;
+            var discount = 0;
+
+            $.each(msg, function (index, value) {
+                var str = '';
+                var i = 0;
+                var selected = '';
+                var count = value['count'];
+                for (i; i <= 10; i++) {
+                    if (i == count) {
+                        selected = 'selected';
+                    } else {
+                        selected = '';
+                    }
+                    str = str + "<option value=" + i + " " + selected + ">" + i + "</option>";
+                }
+
+                var trTag = '<tr><td><div class="product-table"><div class="product-table-img"><img src="public/img/product gallery/' + value['id'] + '/product220.jpg"></div><div class="product-table-meta"><h2>' + value['title'] + '  ' + value['product_model'] + '</h2><h3>' + value['en_title'] + '</h3><div class="product-table-color"><p>رنگ :</p><span class="color" style="background: #ADD8E6"></span><span></span></div><p class="warranty">گارانتی : 18ماه گارانتی مایکروتل</p></div></div></td><td> دیجی کالا</td><td><div class="number-select"><select>' + str + '</select></div></td><td class="price-example">' + value['price'] + '<span class="toman">تومان</span></td><td class="unitprice">' + value['count'] * value['price'] + '<span class="toman">تومان</span></td><td class="delete" onclick="removeProductCart(' + value['cartId'] + ')"><i class="fa fa-close" aria-hidden="true"></i></td></tr>';
+                $('.cart-table table tbody').append(trTag);
+
+                finalPrice = finalPrice + (value['price'] - ((value['price'] * value['discount']) / 100)) * value['count'];
+                $('#finalPrice').html(finalPrice);
+
+
+                totalPrice = totalPrice + (value['price'] * value['count']);
+                $('#totalPrice').html(totalPrice);
+
+                discount = discount + ((value['price'] * value['discount']) / 100) * value['count'];
+                $('#discount').html(discount);
+
+            });
+
+            cartTable.find('.fa-refresh').remove();
+
+        }, 'json')
+    }
+</script>
