@@ -614,11 +614,15 @@
         $.post(url, data, function (msg) {
             cartTable.html(refresh);
 
-            var finalPrice = 0;
-            var totalPrice = 0;
-            var discount = 0;
+//            var finalPrice = 0;
+//            var totalPrice = 0;
+//            var discount = 0;
 
-            $.each(msg, function (index, value) {
+            var cartInfo = msg[0];
+            var cartPrice = msg[1];
+            var cartDiscount = msg[2];
+
+            $.each(msg[0], function (index, value) {
                 var str = '';
                 var i = 0;
                 var selected = '';
@@ -635,20 +639,28 @@
                 var trTag = '<tr><td><div class="product-table"><div class="product-table-img"><img src="public/img/product gallery/' + value['id'] + '/product220.jpg"></div><div class="product-table-meta"><h2>' + value['title'] + '  ' + value['product_model'] + '</h2><h3>' + value['en_title'] + '</h3><div class="product-table-color"><p>رنگ :</p><span class="color" style="background: #ADD8E6"></span><span></span></div><p class="warranty">گارانتی : 18ماه گارانتی مایکروتل</p></div></div></td><td> دیجی کالا</td><td><div class="number-select"><select>' + str + '</select></div></td><td class="price-example">' + value['price'] + '<span class="toman">تومان</span></td><td class="unitprice">' + value['count'] * value['price'] + '<span class="toman">تومان</span></td><td class="delete" onclick="removeProductCart(' + value['cartId'] + ')"><i class="fa fa-close" aria-hidden="true"></i></td></tr>';
                 $('.cart-table table tbody').append(trTag);
 
-                finalPrice = finalPrice + (value['price'] - ((value['price'] * value['discount']) / 100)) * value['count'];
+//                finalPrice = finalPrice + (value['price'] - ((value['price'] * value['discount']) / 100)) * value['count'];
+
+                finalPrice = cartPrice - cartDiscount;
                 $('#finalPrice').html(finalPrice);
-
-
-                totalPrice = totalPrice + (value['price'] * value['count']);
-                $('#totalPrice').html(totalPrice);
-
-                discount = discount + ((value['price'] * value['discount']) / 100) * value['count'];
-                $('#discount').html(discount);
+//
+//
+//                totalPrice = totalPrice + (value['price'] * value['count']);
+                $('#totalPrice').html(cartPrice);
+//
+//                discount = discount + ((value['price'] * value['discount']) / 100) * value['count'];
+                $('#discount').html(cartDiscount);
 
             });
 
             cartTable.find('.fa-refresh').remove();
 
+
         }, 'json')
     }
+
+    document.ready(function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    })
+
 </script>
