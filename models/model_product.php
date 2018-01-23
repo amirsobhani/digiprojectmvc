@@ -187,7 +187,7 @@ class model_product extends Model
             $this->idu($countSql, $countValue);
         }
         if (empty($result)) {
-            $sql = 'INSERT INTO cart_tbl (cookie, idproduct,seller,color,gurantee) VALUES (?,?,?,?,?)';
+            $sql = 'INSERT INTO cart_tbl (cookie, idproduct,seller,color,gurantee, count) VALUES (?,?,?,?,?,1)';
             $this->idu($sql, $param);
         }
 
