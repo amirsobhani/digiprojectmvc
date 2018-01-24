@@ -1,19 +1,21 @@
-
 <style>
-    .continue-cart{
-        width:100%;
+    .continue-cart {
+        width: 100%;
         background: #fff;
     }
-    .continue-cart::after{
+
+    .continue-cart::after {
         content: "";
         display: block;
         clear: both;
     }
-    .continue-cart .right{
+
+    .continue-cart .right {
         display: inline-block;
         float: right;
     }
-    .continue-cart .left{
+
+    .continue-cart .left {
         display: inline-block;
         direction: rtl;
         background: #4CAF50;
@@ -21,27 +23,33 @@
         margin: 55px 0;
         padding: 10px;
     }
-    .continue-cart .right p{
+
+    .continue-cart .right p {
         font-size: 11px;
         margin: 20px 0;
         direction: rtl;
     }
-    .continue-cart .right h2{
+
+    .continue-cart .right h2 {
         direction: rtl;
         margin: 30px 0 5px;
     }
-    .continue-cart .right h2 i{
+
+    .continue-cart .right h2 i {
         margin-left: 7px;
         color: #2196F3;
     }
-    .cart-wrappper{
-        margin:0 10px;
+
+    .cart-wrappper {
+        margin: 0 10px;
     }
-    #cart-div{
+
+    #cart-div {
         background: #fff;
         margin-bottom: 15px;
     }
-    .go-main{
+
+    .go-main {
         display: inline-block;
         direction: rtl;
         background-color: #969ba8;
@@ -49,7 +57,8 @@
         margin: 55px 0;
         padding: 10px;
     }
-    .reserv-alert{
+
+    .reserv-alert {
         direction: rtl;
         font-size: 13px;
         color: red;
@@ -60,83 +69,100 @@
     }
 </style><!--continue-cart--->
 <style>
-    .cart-table{
+    .cart-table {
         width: 100%;
         margin-bottom: 30px;
     }
-    .cart-table table{
+
+    .cart-table table {
         width: 100%;
         direction: rtl;
     }
-    .cart-table table tr td{
+
+    .cart-table table tr td {
         text-align: center;
         vertical-align: middle;
         border: 1px solid #eee;
     }
-    .cart-table table tr td:first-child{
-        text-align: right!important;
+
+    .cart-table table tr td:first-child {
+        text-align: right !important;
     }
-    .cart-table table thead{
+
+    .cart-table table thead {
         line-height: 22px;
         background: #F7F9FA;
         text-align: center;
         font-size: 13px;
     }
-    .cart-table table thead tr td{
+
+    .cart-table table thead tr td {
         border: 1px solid #eee;
         padding: 10px 0;
     }
-    .cart-table table thead tr td:first-child{
-        text-align: center!important;
+
+    .cart-table table thead tr td:first-child {
+        text-align: center !important;
     }
-    .cart-table table thead tr td:last-child{
+
+    .cart-table table thead tr td:last-child {
         border-right: none;
     }
-    .cart-table table thead tr td:nth-child(5){
-        border-left:none;
+
+    .cart-table table thead tr td:nth-child(5) {
+        border-left: none;
     }
-    .product-table-img{
+
+    .product-table-img {
         display: inline-block;
         float: right;
     }
-    .product-table-img img{
+
+    .product-table-img img {
         width: 100px;
         margin: 30px 10px;
     }
-    .product-table-meta{
+
+    .product-table-meta {
         display: inline-block;
         float: right;
         margin: 30px 5px;
     }
-    .product-table-meta h2{
+
+    .product-table-meta h2 {
         font-size: 13px;
         width: 300px;
         line-height: 30px;
         font-weight: 800;
     }
-    .product-table-meta h3{
+
+    .product-table-meta h3 {
         font-size: 10px;
         line-height: 30px;
         font-weight: 800;
     }
-    .product-table-color p{
+
+    .product-table-color p {
         display: inline-block;
         font-size: 11px;
         line-height: 30px;
     }
-    .product-table-color .color{
+
+    .product-table-color .color {
         width: 18px;
         height: 18px;
         display: inline-block;
         border-radius: 100%;
         position: relative;
-        top:5px;
+        top: 5px;
     }
-    .product-table-color span:last-child , .warranty{
+
+    .product-table-color span:last-child, .warranty {
         font-size: 12px;
         color: #777;
     }
-    .cart-table .delete{
+
+    .cart-table .delete {
         border-left: 0;
         background: #ffedee;
         border-right: 0;
@@ -144,31 +170,38 @@
         width: 30px;
         cursor: pointer;
     }
-    .unitprice{
+
+    .unitprice {
         width: 25%;
     }
-    .seperate{
+
+    .seperate {
         margin: 14px 0;
         border-bottom: 1px dashed #e9e9e9;
         height: 1px;
         margin-left: 15px;
     }
-    .unitprice-discoount tr{
+
+    .unitprice-discoount tr {
         line-height: 30px;
     }
-    .unitprice-discoount tr td{
-        border: none!important;
+
+    .unitprice-discoount tr td {
+        border: none !important;
         padding-right: 15px;
         font-size: 13px;
     }
-    .unitprice-discoount tr:last-child td{
+
+    .unitprice-discoount tr:last-child td {
         color: #00B12A;
         font-size: 21px;
     }
-    .red{
+
+    .red {
         color: #ff6b6b;
     }
-    .cart-table tr.gift td.last span{
+
+    .cart-table tr.gift td.last span {
         color: #ff6b6b;
         font-size: 19px;
         display: inline-block;
@@ -179,17 +212,19 @@
         transform: rotate(-90deg);
         font-weight: 800;
     }
-    .cart-table tr.gift td.last{
+
+    .cart-table tr.gift td.last {
         position: relative;
     }
 </style><!---cart-table--->
 <style>
-    .wrapper-shipping{
+    .wrapper-shipping {
         background: #fff;
         height: 100px;
         padding: 20px;
     }
-    .shipping{
+
+    .shipping {
         background-color: #fff;
         border: 1px solid #c0f0c1;
         width: 96%;
@@ -197,44 +232,54 @@
         padding: 10px;
         cursor: pointer;
     }
-    .shipping .right{
+
+    .shipping .right {
         float: right;
     }
-    .shipping .ship-img{
+
+    .shipping .ship-img {
         float: right;
     }
-    .ship-title{
+
+    .ship-title {
         float: right;
         direction: rtl;
         margin: 0 20px;
     }
-    .ship-title h2{
+
+    .ship-title h2 {
         font-size: 15px;
         line-height: 25px;
     }
-    .ship-title p{
+
+    .ship-title p {
         font-size: 13px;
         line-height: 25px;
         color: #777;
     }
-    .shipping .left{
+
+    .shipping .left {
         line-height: 25px;
         padding-left: 40px;
     }
-    .shipping .left p{
+
+    .shipping .left p {
         font-size: 14px;
     }
-    .shipping .left span{
+
+    .shipping .left span {
         margin: 12px;
         white-space: nowrap;
         color: #4caf50;
         font-size: 17px;
     }
-    .next-shipment{
+
+    .next-shipment {
         height: 70px;
         background-color: #fff;
     }
-    .next-shipment-btn{
+
+    .next-shipment-btn {
         display: inline-block;
         line-height: 30px;
         font-size: 14px;
@@ -245,32 +290,39 @@
         margin-left: 25px;
         cursor: pointer;
     }
-    .factor-pack{
+
+    .factor-pack {
         direction: rtl;
         font-size: 13px;
         padding: 15px 0;
     }
-    .factor-pack i{
+
+    .factor-pack i {
         float: right;
         margin-left: 10px;
         margin-top: 9px;
         color: #2396f3;
     }
-    .factor-pack p{
+
+    .factor-pack p {
         display: inline-block;
     }
-    .factor-pack form{
+
+    .factor-pack form {
         display: inline-block;
     }
-    .factor-pack form span input{
+
+    .factor-pack form span input {
         position: relative;
         top: 4px;
         right: -3px;
     }
-    .factor-pack form span{
+
+    .factor-pack form span {
         margin-right: 10px;
     }
-    .factor-message-green{
+
+    .factor-message-green {
         direction: rtl;
         padding: 12px 10px;
         background: #f7fff7;
@@ -278,7 +330,8 @@
         border: 1px solid #c0f0c1;
         font-size: 14px;
     }
-    .factor-message-brown{
+
+    .factor-message-brown {
         display: none;
         direction: rtl;
         padding: 12px 10px;
@@ -287,22 +340,27 @@
         border: 1px solid #E2C868;
         font-size: 14px;
     }
-    .factor-message-green i , .factor-message-brown i{
+
+    .factor-message-green i, .factor-message-brown i {
         float: right;
         margin-left: 10px;
     }
-    .shipping-route{
+
+    .shipping-route {
         margin: 20px 0 60px;
     }
-    .shipping-route::after{
+
+    .shipping-route::after {
         content: "";
         display: block;
         clear: both;
     }
-    .return-cart{
+
+    .return-cart {
         float: right;
     }
-    .return-cart span{
+
+    .return-cart span {
         background-color: #969BA8;
         padding: 5px 15px;
         color: #fff;
@@ -310,7 +368,8 @@
         font-size: 13px;
         cursor: pointer;
     }
-    .next-step span{
+
+    .next-step span {
         padding: 5px 15px;
         color: #fff;
         border-radius: 2px;
@@ -320,59 +379,67 @@
     }
 </style><!---shipping--->
 <style>
-    .address-head{
+    .address-head {
         direction: rtl;
     }
-    .address-head::after{
+
+    .address-head::after {
         content: "";
         display: block;
         clear: both;
     }
-    .add{
+
+    .add {
         display: inline-block;
         float: right;
         padding: 10px;
         margin: 18px 15px;
         color: #FFFFFF;
-        background-color: #999!important;
+        background-color: #999 !important;
         font-size: 13px;
         cursor: pointer;
-        box-shadow: 0 3px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
     }
-    .address-title{
+
+    .address-title {
         display: inline-block;
         line-height: 22px;
         padding: 5px 0;
         margin: 20px 0;
         float: right;
     }
-    .address-title i{
+
+    .address-title i {
         float: right;
         margin-left: 10px;
         color: #2396f3;
     }
-    .address-title h2{
+
+    .address-title h2 {
         float: right;
     }
 </style><!---address-head--->
 <style>
-    .complete-price{
+    .complete-price {
         width: 590px;
         border: 1px solid #c0f0c1;
         margin-bottom: 30px;
     }
-    .complete-price::after{
+
+    .complete-price::after {
         content: "";
         display: block;
         clear: both;
     }
-    .price{
+
+    .price {
         height: 55px;
         line-height: 55px;
         padding: 0 40px 0 0;
         border-bottom: 1px solid #c0f0c1;
     }
-    .discount{
+
+    .discount {
         display: inline-block;
         text-align: center;
         float: right;
@@ -384,7 +451,8 @@
         top: 7px;
         direction: rtl;
     }
-    .discount::after{
+
+    .discount::after {
         content: "";
         width: 0;
         height: 0;
@@ -395,19 +463,22 @@
         left: 5px;
         top: 11px;
     }
-    .discount span:first-child{
+
+    .discount span:first-child {
         background: #FF7272;
         color: #fff;
         padding: 5px 15px;
         float: right;
     }
-    .discount span:last-child{
+
+    .discount span:last-child {
         background: #FF5252;
         color: #fff;
         padding: 5px 15px;
         float: right;
     }
-    .lable{
+
+    .lable {
         display: inline-block;
         direction: rtl;
         color: #818181;
@@ -415,32 +486,36 @@
         width: auto;
         margin-left: 60px;
     }
-    .lable-price{
+
+    .lable-price {
         display: inline-block;
         float: left;
         direction: rtl;
         font-size: 20px;
     }
-    .toman{
+
+    .toman {
         font-size: 12px;
         margin: 0 15px;
     }
-    .pay-price{
+
+    .pay-price {
         height: 55px;
         line-height: 55px;
         width: 100%;
         float: left;
         background-color: #F7FFF7;
     }
-    .green{
+
+    .green {
         color: #4caf50 !important;
     }
 </style><!---complete-price-->
-<div id="main">
+<div id="main" onclick="close()">
     <div id="content">
         <?php
-            require ('Breadcrumb.php');
-            require ('OrderRoute.php');
+        require('Breadcrumb.php');
+        require('OrderRoute.php');
         ?>
 
         <div class="address-head">
@@ -450,14 +525,14 @@
                     انتخاب آدرس
                 </h2>
             </div>
-            <div class="add dk-box">
+            <div onclick="modal()" class="add dk-box">
                 افزودن آدرس جدید
             </div>
         </div><!---address-head--->
 
         <?php
-            require ('AddressScroll.php');
-            require ('ShippingType.php');
+        require('AddressScroll.php');
+        require('ShippingType.php');
         ?>
 
         <div class="shipping-route">
@@ -474,12 +549,161 @@
         </div>
     </div><!---Content--->
 </div>
+<style>
+    .subModal{
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 80;
+    }
+    .modal {
+        display: none;
+        width: 570px;
+        background: #fff;
+        margin: 0 auto;
+        position: fixed;
+        top: 14%;
+        left: 31%;
+        z-index: 100;
+        border-radius: 4px;
+        border: 1px solid #eee;
+    }
+
+    .familyname, .cityInfo, .address-input, .phone-number {
+        text-align: right;
+        margin: 20px 35px;
+        direction: rtl;
+    }
+
+    .familyname input {
+        font-family: iran-sans;
+        border: 1px solid #999;
+        border-radius: 3px;
+        width: 336px;
+        padding-right: 10px;
+    }
+
+    .cityInfo select {
+        width: 180px;
+        height: 28px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        font-family: iran-sans;
+        margin-left: 25px;
+    }
+
+    .address-input textarea {
+        width: 405px;
+        height: 90px;
+        font-family: iran-sans;
+        border: 1px solid #999;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    .address-input label {
+        vertical-align: top;
+    }
+
+    .phone-number input {
+        font-family: iran-sans;
+        border: 1px solid #999;
+        border-radius: 3px;
+        width: 144px;
+        padding-right: 10px;
+    }
+    .submit button{
+        font-family: iran-sans;
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding-right: 10px;
+        float: right;
+        margin: 10px 30px 30px;
+        cursor: pointer;
+        padding: 5px 15px;
+        color: #fff;
+        background: #2396f3;
+    }
+    .close{
+        text-align: right;
+        padding: 10px;
+    }
+    .close span{
+        color: #888;
+        border: 1px solid #999;
+        border-radius: 100%;
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+    }
+    .forceClose{
+        display: none!important;
+    }
+</style>
+<div class="subModal"></div>
+<div class="modal">
+    <div class="close" onclick="close()">
+        <span>
+            <i aria-hidden="true" class="fa fa-close"></i>
+        </span>
+    </div>
+    <div class="familyname">
+        <label>نام و نام خانوادگی :</label>
+        <input name="family" placeholder="نام و نام خانوادگی خود را وارد کنید">
+    </div>
+    <div class="cityInfo">
+        <label>استان :</label>
+        <select>
+            <option>انتخاب استان</option>
+        </select>
+        <label>شهر :</label>
+        <select>
+            <option>انتخاب شهر</option>
+        </select>
+    </div>
+    <div class="address-input">
+        <label>آدرس :</label>
+        <textarea placeholder="آدرس خود را وارد کنید . . ."></textarea>
+    </div>
+    <div class="phone-number">
+        <label>تلفن ثابت :</label>
+        <input name="phone" placeholder="شماره تلفن">
+        <label>تلفن همراه :</label>
+        <input name="mobile" placeholder="شماره همراه">
+    </div>
+    <div class="submit">
+        <button>ثبت آدرس</button>
+    </div>
+</div>
 <script>
-    function factorN (tag) {
+    $('.close').click(function () {
+        $('.modal').css('display', 'none');
+        $('.subModal').css('display', 'none');
+    });
+
+    $('.subModal').click(function () {
+        $('.modal').css('display', 'none');
+        $('.subModal').css('display', 'none');
+    });
+
+
+    function modal() {
+        $('.modal').css('display', 'block');
+        $('.subModal').css('display', 'block');
+    }
+
+    function factorN(tag) {
         $('.factor-message-green').fadeOut(0);
         $('.factor-message-brown').fadeIn(50);
     }
-    function factorY (tag){
+
+    function factorY(tag) {
         $('.factor-message-brown').fadeOut(0);
         $('.factor-message-green').fadeIn(50);
     }
@@ -487,9 +711,9 @@
 <script>
     var input = $('.address-select').find('input');
     input.click(function () {
-        if($(this).is(':checked')){
+        if ($(this).is(':checked')) {
             $(this).parent().find('label').addClass('checked');
-        }else {
+        } else {
             $(this).parent().find('label').removeClass('checked');
         }
     });

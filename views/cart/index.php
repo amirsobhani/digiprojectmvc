@@ -23,6 +23,7 @@
         color: #fff;
         margin: 55px 0;
         padding: 10px;
+        cursor: pointer;
     }
 
     .continue-cart .right p {
@@ -156,6 +157,7 @@
         border-radius: 100%;
         position: relative;
         top: 5px;
+        border: 1px solid #999;
     }
 
     .product-table-color span:last-child, .warranty {
@@ -234,12 +236,12 @@
                         <p>افزودن کالاها به سبد خرید به معنی رزرو کالا برای شما نیست. برای ثبت سفارش باید مراحل بعدی
                             خرید را تکمیل نمایید.</p>
                     </div>
-                    <div class="left dk-box">
+                    <a class="left dk-box" href="user">
 						<span>
 							ادامه ثبت سفارش
 						</span>
                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </div>
+                    </a>
                 </div><!--continue-cart--->
                 <div class="cart-table">
                     <table>
@@ -270,14 +272,14 @@
                                                 <?= $row['en_title'] ?>
                                             </h3>
                                             <div class="product-table-color">
-                                                <p>رنگ : <?= $row['colorCart'] ?></p>
-                                                <span class="color" style="background: #ADD8E6"></span>
+                                                <p>رنگ : <?= $row['colorTitle'] ?></p>
+                                                <span class="color" style="background: <?= $row['hex'] ?>"></span>
                                                 <span><?php
                                                     //                                                print_r($row['colorCart'][$row['id']]['title'])
                                                     ?></span>
                                             </div>
                                             <p class="warranty">
-                                                گارانتی : 18ماه گارانتی مایکروتل
+                                                گارانتی : <?= $row['guaranteeTitle'] ?>
                                             </p>
                                         </div>
                                     </div>
@@ -287,7 +289,7 @@
                                     <div class="number-select">
                                         <select>
                                             <?php
-                                            for ($i = 0; $i <= 10; $i++) {
+                                            for ($i = 1; $i <= 10; $i++) {
                                                 ?>
                                                 <option onclick="refCart(<?= $i ?>,<?= $row ['cartId'] ?>)"
                                                         value="<?= $i ?>"
@@ -483,12 +485,12 @@
 							بازگشت به  صفحه اصلی
 						</span>
                     </div>
-                    <div class="left dk-box">
+                    <a class="left dk-box" href="user">
 						<span>
 							ادامه ثبت سفارش
 						</span>
                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    </div>
+                    </a>
                     <div class="reserv-alert">
                         <p>کالاهای موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید >></p>
                     </div>
@@ -642,6 +644,10 @@
             var i = 1;
             var selected = '';
             var count = value['count'];
+            var guarantee = value['guaranteeTitle'];
+            var color = value['colorTitle'];
+            var hex = value['hex'];
+            var seller = value['sellerTitle'];
             for (i; i <= 10; i++) {
                 if (i == count) {
                     selected = 'selected';
@@ -651,7 +657,7 @@
                 str = str + "<option onclick='refCart(" + i + ", " + value['cartId'] + ")' value=" + i + " " + selected + ">" + i + "</option>";
             }
 
-            var trTag = '<tr><td><div class="product-table"><div class="product-table-img"><img src="public/img/product gallery/' + value['id'] + '/product220.jpg"></div><div class="product-table-meta"><h2>' + value['title'] + '  ' + value['product_model'] + '</h2><h3>' + value['en_title'] + '</h3><div class="product-table-color"><p>رنگ :</p><span class="color" style="background: #ADD8E6"></span><span></span></div><p class="warranty">گارانتی : 18ماه گارانتی مایکروتل</p></div></div></td><td> دیجی کالا</td><td><div class="number-select"><select>' + str + '</select></div></td><td class="price-example">' + value['price'] + '<span class="toman">تومان</span></td><td class="unitprice">' + value['count'] * value['price'] + '<span class="toman">تومان</span></td><td class="delete" onclick="removeProductCart(' + value['cartId'] + ')"><i class="fa fa-close" aria-hidden="true"></i></td></tr>';
+            var trTag = '<tr><td><div class="product-table"><div class="product-table-img"><img src="public/img/product gallery/' + value['id'] + '/product220.jpg"></div><div class="product-table-meta"><h2>' + value['title'] + '  ' + value['product_model'] + '</h2><h3>' + value['en_title'] + '</h3><div class="product-table-color"><p> رنگ :  ' + color + ' </p><span class="color" style="background: ' + hex + '"></span><span></span></div><p class="warranty">گارانتی : ' + guarantee + '</p></div></div></td><td> دیجی کالا</td><td><div class="number-select"><select>' + str + '</select></div></td><td class="price-example">' + value['price'] + '<span class="toman">تومان</span></td><td class="unitprice">' + value['count'] * value['price'] + '<span class="toman">تومان</span></td><td class="delete" onclick="removeProductCart(' + value['cartId'] + ')"><i class="fa fa-close" aria-hidden="true"></i></td></tr>';
             $('.cart-table table tbody').append(trTag);
 
 

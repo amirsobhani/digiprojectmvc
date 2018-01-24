@@ -447,7 +447,7 @@
                 </div>
             </li>
             <li class="main-li">
-                <div class="add-address">
+                <div class="add-address" onclick="modal()">
 						<span>
 							<i class="fa fa-plus" aria-hidden="true"></i>
 							افزودن آدرس جدید

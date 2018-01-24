@@ -172,22 +172,22 @@ class model_product extends Model
         return $result;
     }
 
-    function addToCart($productId, $sellerId, $colorId, $guranteeId)
+    function addToCart($productId, $sellerId, $colorId, $guaranteeId)
     {
         $cookie = self::getCartCookie();
-        $param = [$cookie, $productId, $sellerId, $colorId, $guranteeId];
+        $param = [$cookie, $productId, $sellerId, $colorId, $guaranteeId];
 
-        $selSql = 'SELECT * FROM cart_tbl WHERE cookie=? AND idproduct=? AND seller=? AND color=? AND gurantee=?';
+        $selSql = 'SELECT * FROM cart_tbl WHERE cookie=? AND idproduct=? AND seller=? AND color=? AND guarantee=?';
         $result = $this->doSelect($selSql, $param, 'fetch');
         if (sizeof($result) > 0) {
-            $countSql = 'UPDATE cart_tbl SET count=? WHERE cookie=? AND idproduct=? AND seller=? AND color=? AND gurantee=?';
+            $countSql = 'UPDATE cart_tbl SET count=? WHERE cookie=? AND idproduct=? AND seller=? AND color=? AND guarantee=?';
             $count = $result['count'];
             $count++;
-            $countValue = [$count, $cookie, $productId, $sellerId, $colorId, $guranteeId];
+            $countValue = [$count, $cookie, $productId, $sellerId, $colorId, $guaranteeId];
             $this->idu($countSql, $countValue);
         }
         if (empty($result)) {
-            $sql = 'INSERT INTO cart_tbl (cookie, idproduct,seller,color,gurantee, count) VALUES (?,?,?,?,?,1)';
+            $sql = 'INSERT INTO cart_tbl (cookie, idproduct,seller,color,guarantee, count) VALUES (?,?,?,?,?,1)';
             $this->idu($sql, $param);
         }
 
