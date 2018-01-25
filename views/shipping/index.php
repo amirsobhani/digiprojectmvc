@@ -516,6 +516,8 @@
         <?php
         require('Breadcrumb.php');
         require('OrderRoute.php');
+
+        $province = $data['province'];
         ?>
 
         <div class="address-head">
@@ -550,16 +552,17 @@
     </div><!---Content--->
 </div>
 <style>
-    .subModal{
+    .subModal {
         display: none;
         width: 100%;
         height: 100%;
         position: fixed;
         top: 0;
         left: 0;
-        background: rgba(0,0,0,0.6);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 80;
     }
+
     .modal {
         display: none;
         width: 570px;
@@ -573,18 +576,22 @@
         border: 1px solid #eee;
     }
 
-    .familyname, .cityInfo, .address-input, .phone-number {
+    .familyname, .cityInfo, .address-input, .phone-number, .postalCode {
         text-align: right;
         margin: 20px 35px;
         direction: rtl;
     }
 
-    .familyname input {
+    .familyname input, .postalCode input {
         font-family: iran-sans;
         border: 1px solid #999;
         border-radius: 3px;
         width: 336px;
         padding-right: 10px;
+    }
+
+    .postalCode input {
+        width: 394px !important;
     }
 
     .cityInfo select {
@@ -603,6 +610,7 @@
         border: 1px solid #999;
         padding: 5px 10px;
         font-size: 14px;
+        resize: vertical;
     }
 
     .address-input label {
@@ -616,7 +624,8 @@
         width: 144px;
         padding-right: 10px;
     }
-    .submit button{
+
+    .submit button {
         font-family: iran-sans;
         border: 1px solid #999;
         border-radius: 3px;
@@ -628,11 +637,13 @@
         color: #fff;
         background: #2396f3;
     }
-    .close{
+
+    .close {
         text-align: right;
         padding: 10px;
     }
-    .close span{
+
+    .close span {
         color: #888;
         border: 1px solid #999;
         border-radius: 100%;
@@ -642,46 +653,86 @@
         text-align: center;
         cursor: pointer;
     }
-    .forceClose{
-        display: none!important;
+
+    .forceClose {
+        display: none !important;
     }
 </style>
 <div class="subModal"></div>
 <div class="modal">
-    <div class="close" onclick="close()">
-        <span>
-            <i aria-hidden="true" class="fa fa-close"></i>
-        </span>
-    </div>
-    <div class="familyname">
-        <label>نام و نام خانوادگی :</label>
-        <input name="family" placeholder="نام و نام خانوادگی خود را وارد کنید">
-    </div>
-    <div class="cityInfo">
-        <label>استان :</label>
-        <select>
-            <option>انتخاب استان</option>
-        </select>
-        <label>شهر :</label>
-        <select>
-            <option>انتخاب شهر</option>
-        </select>
-    </div>
-    <div class="address-input">
-        <label>آدرس :</label>
-        <textarea placeholder="آدرس خود را وارد کنید . . ."></textarea>
-    </div>
-    <div class="phone-number">
-        <label>تلفن ثابت :</label>
-        <input name="phone" placeholder="شماره تلفن">
-        <label>تلفن همراه :</label>
-        <input name="mobile" placeholder="شماره همراه">
-    </div>
+    <form method="post">
+        <div class="close" onclick="close()">
+            <span>
+                <i aria-hidden="true" class="fa fa-close"></i>
+            </span>
+        </div>
+        <div class="familyname">
+            <label>نام و نام خانوادگی :</label>
+            <input name="user_name" placeholder="نام و نام خانوادگی خود را وارد کنید">
+        </div>
+        <div class="cityInfo">
+            <label>استان :</label>
+            <select name="province">
+                <option>انتخاب استان</option>
+                <?php
+                foreach ($province as $row) {
+                    ?>
+                    <option onclick="city(<?= $row['id'] ?>)"
+                            value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                    <?php
+                }
+                ?>
+            </select>
+            <label>شهر :</label>
+            <select name="city" class="cityList">
+                <option>انتخاب شهر</option>
+            </select>
+        </div>
+        <div class="postalCode">
+            <label>کد پستی :</label>
+            <input name="postal_code" placeholder="کد پستی خود را وارد کنید">
+        </div>
+        <div class="address-input">
+            <label>آدرس :</label>
+            <textarea name="address" rows="3" placeholder="آدرس خود را وارد کنید . . ."></textarea>
+        </div>
+        <div class="phone-number">
+            <label>تلفن ثابت :</label>
+            <input name="phone" placeholder="شماره تلفن">
+            <label>تلفن همراه :</label>
+            <input name="mobile" placeholder="شماره همراه">
+        </div>
+    </form>
     <div class="submit">
-        <button>ثبت آدرس</button>
+        <button onclick="submitAddress()" >ثبت آدرس</button>
     </div>
 </div>
+
 <script>
+
+
+    function city(province) {
+        var url = 'shipping/getCity/';
+        var data = {'province': province};
+        $('.cityList option').remove();
+        $.post(url, data, function (msg) {
+            $.each(msg, function (index, value) {
+                var city = value['name'];
+                var cityId = value['id'];
+                var cityTag = '<option name="city" value="' + cityId + '">' + city + '</option>';
+                $('.cityList').append(cityTag);
+            })
+        }, 'json')
+    }
+
+    function submitAddress() {
+        var url = 'shipping/addAddress/';
+        var data = $('.modal form').serializeArray();
+        $.post(url, data, function (msg) {
+            console.log(msg);
+        })
+    }
+
     $('.close').click(function () {
         $('.modal').css('display', 'none');
         $('.subModal').css('display', 'none');
@@ -691,7 +742,6 @@
         $('.modal').css('display', 'none');
         $('.subModal').css('display', 'none');
     });
-
 
     function modal() {
         $('.modal').css('display', 'block');
