@@ -41,7 +41,7 @@
     .address-location ul li {
         line-height: 50px;
         float: right;
-        width: 120px;
+        width: 40%;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -237,131 +237,138 @@
         cursor: pointer;
     }
 </style><!-----addressScroll----->
+<?php
+$address = $data['address'];
+?>
 <div class="addressScroll">
     <div id="address-bar">
         <ul class="main-ul">
-            <li class="main-li">
-                <div class="address">
-                    <div class="address-name">
-                        <h3>امیرحسین سبحانی</h3>
-                        <i class="fa fa-close" aria-hidden="true"></i>
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </div>
-                    <div class="location">
-                        <div class="address-location">
-                            <ul>
-                                <li class="state">
-                                    استان :
-                                    <span>
-								قم
-							</span>
-                                </li>
-                                <li class="city">
-                                    شهر :
-                                    <span>
-								قم
-							</span>
-                                </li>
-                                <li class="distric">
-                                    محله :
-                                    <span>
-								-
-							</span>
-                                </li>
-                            </ul>
+            <?php
+            foreach ($address as $row) {
+                ?>
+                <li class="main-li">
+                    <div class="address">
+                        <div class="address-name">
+                            <h3><?= $row['user_name'] ?></h3>
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                            <i onclick="editAddress(<?= $row['id'] ?>)" class="fa fa-pencil" aria-hidden="true"></i>
                         </div>
-                        <div class="complete-address">
-                            <span class="1st">آدرس :</span>
-                            <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>
-                            <div class="postal-code">
-                                کد پستی :00000
+                        <div class="location">
+                            <div class="address-location">
+                                <ul>
+                                    <li class="state">
+                                        استان :
+                                        <span>
+								<?= $row['provinceName'] ?>
+							</span>
+                                    </li>
+                                    <li class="city">
+                                        شهر :
+                                        <span>
+								<?= $row['cityName'] ?>
+							</span>
+                                    </li>
+                                    <!--                                    <li class="distric">-->
+                                    <!--                                        محله :-->
+                                    <!--                                        <span>-->
+                                    <!--								--->
+                                    <!--							</span>-->
+                                    <!--                                    </li>-->
+                                </ul>
                             </div>
-                        </div>
-                        <div class="tell">
-                            <div class="phone">
-                                شماره تلفن ثابت :
-                                <span>
-							32104
+                            <div class="complete-address">
+                                <span class="1st">آدرس :</span>
+                                <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>
+                                <div class="postal-code">
+                                    کد پستی :<?= $row['postal_code'] ?>
+                                </div>
+                            </div>
+                            <div class="tell">
+                                <div class="phone">
+                                    شماره تلفن ثابت :
+                                    <span>
+							<?= $row['phone'] ?>
 						</span>
-                            </div>
-                            <div class="emergency">
-                                شماره تلفن ضروری :
-                                <span>
-							09198508964
+                                </div>
+                                <div class="emergency">
+                                    شماره تلفن ضروری :
+                                    <span>
+							<?= $row['mobile'] ?>
 						</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="address-select">
-                        <input type="radio" autocomplete="on" name="address">
-                        <label class="checked"></label>
-                        <span class="address-txt">
+                        <div class="address-select">
+                            <input type="radio" autocomplete="on" name="address">
+                            <label class="checked"></label>
+                            <span class="address-txt">
 							به این آدرس ارسال می‌شود .
 				</span>
+                        </div>
                     </div>
-                </div>
-            </li>
-<!--            <li class="main-li">-->
-<!--                <div class="address">-->
-<!--                    <div class="address-name">-->
-<!--                        <h3>امیرحسین سبحانی</h3>-->
-<!--                        <i class="fa fa-close" aria-hidden="true"></i>-->
-<!--                        <i class="fa fa-pencil" aria-hidden="true"></i>-->
-<!--                    </div>-->
-<!--                    <div class="location">-->
-<!--                        <div class="address-location">-->
-<!--                            <ul>-->
-<!--                                <li class="state">-->
-<!--                                    استان :-->
-<!--                                    <span>-->
-<!--								قم-->
-<!--							</span>-->
-<!--                                </li>-->
-<!--                                <li class="city">-->
-<!--                                    شهر :-->
-<!--                                    <span>-->
-<!--								قم-->
-<!--							</span>-->
-<!--                                </li>-->
-<!--                                <li class="distric">-->
-<!--                                    محله :-->
-<!--                                    <span>-->
-<!--								--->
-<!--							</span>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                        <div class="complete-address">-->
-<!--                            <span class="1st">آدرس :</span>-->
-<!--                            <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>-->
-<!--                            <div class="map-hint">-->
-<!--                                با ثبت آدرس روی نقشه، روند ارسال را سرعت ببخشید.-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="tell">-->
-<!--                            <div class="phone">-->
-<!--                                شماره تلفن ثابت :-->
-<!--                                <span>-->
-<!--							32104-->
-<!--						</span>-->
-<!--                            </div>-->
-<!--                            <div class="emergency">-->
-<!--                                شماره تلفن ضروری :-->
-<!--                                <span>-->
-<!--							09198508964-->
-<!--						</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="address-select">-->
-<!--                        <input type="radio" autocomplete="off" name="address">-->
-<!--                        <label class=""></label>-->
-<!--                        <span class="address-txt">-->
-<!--							به این آدرس ارسال می‌شود .-->
-<!--				</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </li>-->
+                </li>
+            <?php } ?>
+            <!--                        <li class="main-li">-->
+            <!--                            <div class="address">-->
+            <!--                                <div class="address-name">-->
+            <!--                                    <h3>امیرحسین سبحانی</h3>-->
+            <!--                                    <i class="fa fa-close" aria-hidden="true"></i>-->
+            <!--                                    <i class="fa fa-pencil" aria-hidden="true"></i>-->
+            <!--                                </div>-->
+            <!--                                <div class="location">-->
+            <!--                                    <div class="address-location">-->
+            <!--                                        <ul>-->
+            <!--                                            <li class="state">-->
+            <!--                                                استان :-->
+            <!--                                                <span>-->
+            <!--            								قم-->
+            <!--            							</span>-->
+            <!--                                            </li>-->
+            <!--                                            <li class="city">-->
+            <!--                                                شهر :-->
+            <!--                                                <span>-->
+            <!--            								قم-->
+            <!--            							</span>-->
+            <!--                                            </li>-->
+            <!--                                            <li class="distric">-->
+            <!--                                                محله :-->
+            <!--                                                <span>-->
+            <!--            								--->
+            <!--            							</span>-->
+            <!--                                            </li>-->
+            <!--                                        </ul>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="complete-address">-->
+            <!--                                        <span class="1st">آدرس :</span>-->
+            <!--                                        <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>-->
+            <!--                                        <div class="map-hint">-->
+            <!--                                            با ثبت آدرس روی نقشه، روند ارسال را سرعت ببخشید.-->
+            <!--                                        </div>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="tell">-->
+            <!--                                        <div class="phone">-->
+            <!--                                            شماره تلفن ثابت :-->
+            <!--                                            <span>-->
+            <!--            							32104-->
+            <!--            						</span>-->
+            <!--                                        </div>-->
+            <!--                                        <div class="emergency">-->
+            <!--                                            شماره تلفن ضروری :-->
+            <!--                                            <span>-->
+            <!--            							09198508964-->
+            <!--            						</span>-->
+            <!--                                        </div>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                                <div class="address-select">-->
+            <!--                                    <input type="radio" autocomplete="off" name="address">-->
+            <!--                                    <label class=""></label>-->
+            <!--                                    <span class="address-txt">-->
+            <!--            							به این آدرس ارسال می‌شود .-->
+            <!--            				</span>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </li>-->
             <li class="main-li">
                 <div class="add-address" onclick="modal()">
 						<span>
@@ -377,6 +384,49 @@
     <div class="prev-address" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x" aria-hidden="true"></i>
     </div>
 </div><!-----addressScroll----->
+<script>
+    function editAddress(addressId) {
+        var url = 'shipping/editAddress/' + addressId;
+        var data = {};
+        $.post(url, data, function (msg) {
+            $('input[name = user_name]').val(msg['user_name']);
+            $('select[name = province]').val(msg['province']);
+            $('select[name = city]').val(msg['city']);
+            $('input[name = postal_code]').val(msg['postal_code']);
+            $('textarea[name = address]').val(msg['address']);
+            $('input[name = phone]').val(msg['phone']);
+            $('input[name = mobile]').val(msg['mobile']);
+
+            var province = msg['province'];
+            var cityid = msg['city'];
+            $('.cityList option').remove();
+
+            $('.province option').each(function (index) {
+                var value = $(this).attr('value');
+                if (value == province) {
+                    $(this).attr('selected', 'selected');
+                    var url = 'shipping/getCity';
+                    var data = {'province': value};
+                    $.post(url, data, function (msg) {
+                        $.each(msg, function (index, value) {
+                            var city = value['name'];
+                            var cityId = value['id'];
+                            var selected = '';
+                            if (cityid == cityId) {
+                                var selected = 'selected';
+                            }
+                            var cityTag = '<option name="city" value="' + cityId + '"' + selected + '>' + city + '</option>';
+                            $('.cityList').append(cityTag);
+                            $('.cityList option[value = cityid]').val('selected', 'selected');
+                        })
+                    }, 'json');
+                }
+            });
+            $('.modal').fadeIn(200);
+            $('.subModal').css('display', 'block');
+        }, 'json');
+    }
+</script><!-----edit address----->
 <script>
     function addressScroll(direction, tag) {
 

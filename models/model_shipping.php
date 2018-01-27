@@ -40,4 +40,28 @@ class model_shipping extends Model
         $params = [$user_id, $user_name, $province, $city, $postal_code, $address, $phone, $mobile];
         $this->idu($sql, $params);
     }
+
+    function getAddress()
+    {
+        Model::sesionInit();
+        $userId = Model::sessionOnGet('UserId');
+
+        $sql = 'SELECT user_address_tbl.*, province.name as provinceName, city.name as cityName 
+        FROM user_address_tbl
+        JOIN province ON province.id = user_address_tbl.province
+        JOIN city ON city.id = user_address_tbl.city
+        WHERE user_id=?';
+
+        $param = [$userId];
+        $result = $this->doSelect($sql, $param);
+        return $result;
+    }
+
+    function AddressInfo($addressId)
+    {
+        $sql = 'SELECT * FROM user_address_tbl WHERE id = ?';
+        $param = [$addressId];
+        $result = $this->doSelect($sql, $param, 'fetch');
+        return $result;
+    }
 }

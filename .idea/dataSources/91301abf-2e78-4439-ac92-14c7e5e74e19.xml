@@ -546,68 +546,73 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="128" parent="28" name="user_name">
+    <column id="128" parent="28" name="user_id">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="129" parent="28" name="province">
-      <Position>3</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="130" parent="28" name="city">
+    <column id="129" parent="28" name="user_name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="28" name="province">
       <Position>4</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="131" parent="28" name="postal_code">
+    <column id="131" parent="28" name="city">
       <Position>5</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="132" parent="28" name="address">
+    <column id="132" parent="28" name="postal_code">
       <Position>6</Position>
-      <DataType>varchar(500)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="133" parent="28" name="phone">
-      <Position>7</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="134" parent="28" name="mobile">
+    <column id="133" parent="28" name="address">
+      <Position>7</Position>
+      <DataType>varchar(500)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="134" parent="28" name="phone">
       <Position>8</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="135" parent="28" name="PRIMARY">
+    <column id="135" parent="28" name="mobile">
+      <Position>9</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="136" parent="28" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="136" parent="29" name="id">
+    <column id="137" parent="29" name="id">
       <Position>1</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="137" parent="29" name="email">
+    <column id="138" parent="29" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="138" parent="29" name="password">
+    <column id="139" parent="29" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="139" parent="29" name="family">
+    <column id="140" parent="29" name="family">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="140" parent="29" name="PRIMARY">
+    <key id="141" parent="29" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
