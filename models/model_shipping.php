@@ -33,8 +33,11 @@ class model_shipping extends Model
         $phone = $data['phone'];
         $mobile = $data['mobile'];
 
-        $sql = 'INSERT INTO user_address_tbl (user_name, province, city, postal_code, address, phone, mobile) VALUES (?,?,?,?,?,?,?)';
-        $params = [$user_name, $province, $city, $postal_code, $address, $phone, $mobile];
+        Model::sesionInit();
+        $user_id = Model::sessionOnGet('UserId');
+
+        $sql = 'INSERT INTO user_address_tbl (user_id, user_name, province, city, postal_code, address, phone, mobile) VALUES (?,?,?,?,?,?,?,?)';
+        $params = [$user_id, $user_name, $province, $city, $postal_code, $address, $phone, $mobile];
         $this->idu($sql, $params);
     }
 }

@@ -729,8 +729,10 @@
         var url = 'shipping/addAddress/';
         var data = $('.modal form').serializeArray();
         $.post(url, data, function (msg) {
-            console.log(msg);
-        })
+
+        });
+        $('.modal').fadeOut(100);
+        $('.subModal').css('display', 'none');
     }
 
     $('.close').click(function () {
@@ -739,12 +741,13 @@
     });
 
     $('.subModal').click(function () {
-        $('.modal').css('display', 'none');
+
+        $('.modal').fadeOut(100);
         $('.subModal').css('display', 'none');
     });
 
     function modal() {
-        $('.modal').css('display', 'block');
+        $('.modal').fadeIn(200);
         $('.subModal').css('display', 'block');
     }
 

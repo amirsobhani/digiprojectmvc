@@ -104,7 +104,7 @@ class Model
     public static function sessionOnGet($name)
     {
         if (isset($_SESSION[$name])) {
-            return $name;
+            return $_SESSION[$name];
         } else {
             return false;
         }
