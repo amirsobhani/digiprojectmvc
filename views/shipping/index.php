@@ -220,7 +220,6 @@
 <style>
     .wrapper-shipping {
         background: #fff;
-        height: 100px;
         padding: 20px;
     }
 
@@ -239,6 +238,10 @@
 
     .shipping .ship-img {
         float: right;
+    }
+
+    .ship-img img{
+        max-width: 85px;
     }
 
     .ship-title {
@@ -554,6 +557,7 @@
             }
 
             .address-name .fa-close {
+                cursor: pointer;
                 color: red;
                 margin-right: 35px;
             }
@@ -645,12 +649,12 @@
                 border: 1px solid #ccc;
             }
 
-            .address-select label.checked {
+            .address-select label.checked, .sel-post label.checked {
                 background: #2196f3;
                 border: 1px solid transparent;
             }
 
-            .address-select label::after {
+            .address-select label::after, .sel-post label::after {
                 position: absolute;
                 top: 5px;
                 left: 5px;
@@ -663,6 +667,7 @@
             }
 
             .address-select input {
+                cursor: pointer;
                 position: relative;
                 right: 20px;
                 top: 2px;
@@ -966,10 +971,10 @@
     }
 
     function submitAddress() {
-        var url = 'shipping/addAddress/';
+        var url = 'shipping/addAddress/' + editAddressId;
         var data = $('.modal form').serializeArray();
         $.post(url, data, function (msg) {
-
+            window.location = 'shipping';
         });
         $('.modal').fadeOut(100);
         $('.subModal').css('display', 'none');
@@ -987,15 +992,13 @@
     });
 
     function modal() {
+        editAddressId = '';
+        $('.modal form').trigger('reset');
         $('.modal').fadeIn(200);
         $('.subModal').css('display', 'block');
-        $('input[name = user_name]').val('');
+
         $('select[name = province]').val('انتخاب استان');
         $('select[name = city]').val('انتخاب شهر');
-        $('input[name = postal_code]').val('');
-        $('textarea[name = address]').val('');
-        $('input[name = phone]').val('');
-        $('input[name = mobile]').val('');
     }
 
     function factorN(tag) {
@@ -1012,9 +1015,16 @@
     var input = $('.address-select').find('input');
     input.click(function () {
         if ($(this).is(':checked')) {
+            $('.address-select label').removeClass('checked');
             $(this).parent().find('label').addClass('checked');
-        } else {
-            $(this).parent().find('label').removeClass('checked');
+        }
+    });
+
+    var postInput = $('.sel-post').find('input');
+    postInput.click(function () {
+        if ($(this).is(':checked')) {
+            $('.sel-post label').removeClass('checked');
+            $(this).parent().find('label').addClass('checked');
         }
     });
 </script><!----address-select---->

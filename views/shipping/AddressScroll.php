@@ -25,6 +25,7 @@
 
     .address-name .fa-pencil {
         color: #2396f3;
+        cursor: pointer;
     }
 
     .address-location {
@@ -299,8 +300,8 @@ $address = $data['address'];
                             </div>
                         </div>
                         <div class="address-select">
-                            <input type="radio" autocomplete="on" name="address">
-                            <label class="checked"></label>
+                            <input type="radio" name="address">
+                            <label class=""></label>
                             <span class="address-txt">
 							به این آدرس ارسال می‌شود .
 				</span>
@@ -385,7 +386,9 @@ $address = $data['address'];
     </div>
 </div><!-----addressScroll----->
 <script>
+    var editAddressId = '';
     function editAddress(addressId) {
+        editAddressId = addressId;
         var url = 'shipping/editAddress/' + addressId;
         var data = {};
         $.post(url, data, function (msg) {

@@ -1,24 +1,27 @@
 <style>
-    .scroll-slider{
+    .scroll-slider {
         width: 100%;
         height: 310px;
         background-color: #fff;
         overflow: hidden;
         position: relative;
     }
-    .scroll-slider h3{
+
+    .scroll-slider h3 {
         direction: rtl;
         line-height: 35px;
         padding: 0 13px;
         font-family: iran-sans;
         font-size: 13px;
     }
-    .scroll-next{
+
+    .scroll-next {
         width: 50px;
         height: 275px;
         float: right;
     }
-    .scroll-prev{
+
+    .scroll-prev {
         width: 50px;
         height: 275px;
         float: left;
@@ -28,7 +31,8 @@
         background-color: #fff;
         box-shadow: 0px 15px 15px #888888;
     }
-    .scroll-slider i{
+
+    .scroll-slider i {
         text-align: center;
         display: block;
         line-height: 275px;
@@ -36,18 +40,21 @@
         background-color: #fff;
         cursor: pointer;
     }
-    .scroll-main{
+
+    .scroll-main {
         height: 90%;
         overflow: hidden;
         margin-right: 50px;
     }
-    .scroll-main ul{
+
+    .scroll-main ul {
         height: 100%;
         width: 1160px;
         float: right;
         overflow: hidden;
     }
-    .scroll-main ul li{
+
+    .scroll-main ul li {
         width: 250px;
         height: 100%;
         float: right;
@@ -55,19 +62,22 @@
         position: relative;
         text-align: center;
     }
-    .scroll-product{
+
+    .scroll-product {
         text-align: center;
         display: inline-block;
         height: 90%;
         padding-top: 25px;
         margin: 0 auto;
     }
-    .scroll-product img{
+
+    .scroll-product img {
         margin: 30px auto;
         float: right;
         display: block;
     }
-    .scroll-product .product-meta{
+
+    .scroll-product .product-meta {
         direction: rtl;
         font-family: iran-sans;
         font-size: 14px;
@@ -78,7 +88,8 @@
         padding: 20px 0;
         color: #153574;
     }
-    .scroll-product .product-price{
+
+    .scroll-product .product-price {
         line-height: 25px;
         text-align: center;
         font-family: iran-sans;
@@ -86,14 +97,16 @@
         direction: rtl;
         width: 40%;
     }
-    .product-price-old{
+
+    .product-price-old {
         background-color: #ccc;
         width: 100%;
         display: block;
         text-decoration-line: line-through;
         margin: 5px 0;
     }
-    .product-price-old{
+
+    .product-price-old {
         background-color: #a6d45b;
         width: 100%;
         display: block;
@@ -105,21 +118,61 @@
         padding: 5px 0;
         margin: 10px 0;
     }
-    #ShippingType .head i , .shipment-selection i{
+
+    #ShippingType .head i, .shipment-selection i {
         float: right;
         margin-left: 10px;
         color: #2396f3;
     }
-    #ShippingType .head h2 , .shipment-selection h2{
+
+    #ShippingType .head h2, .shipment-selection h2 {
         direction: rtl;
     }
-    .shipment-selection{
+
+    .shipment-selection {
         background-color: #fff;
         padding: 10px;
         border-bottom: 1px solid #ddd;
         line-height: 22px;
     }
+
+    .sel-post {
+        float: right;
+        border-left: 1px solid #c0f0c1;
+        height: 50px;
+        margin-left: 10px;
+        background: #f7fff7;
+        line-height: 50px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .sel-post input {
+        cursor: pointer;
+        position: relative;
+        right: -15px;
+        top: 2px;
+        opacity: 0;
+        z-index: 2;
+    }
+
+    .sel-post label {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        transition: none;
+        position: relative;
+        border-radius: 100%;
+        right: 7px;
+        top: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+    }
 </style><!---ShippingType--->
+<?php
+$post = $data['post'];
+?>
+
 <div id="ShippingType">
     <div class="head">
         <i class="fa fa-caret-left" aria-hidden="true"></i>
@@ -136,7 +189,8 @@
         </div>
         <div class="scroll-slider">
             <h3>محصولاتی که در این مرسوله ارسال می‌شوند: </h3>
-            <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x" aria-hidden="true"></i></div>
+            <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
+                                                                       aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
                     <li>
@@ -181,33 +235,42 @@
                     </li>
                 </ul>
             </div>
-            <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x" aria-hidden="true"></i></div>
+            <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"
+                                                                        aria-hidden="true"></i></div>
         </div><!--Scroll Slider-->
         <div class="wrapper-shipping">
-            <div class="shipping">
-                <div class="right">
-                    <div class="ship-img">
-                        <img src="public/img/express_delivery_dk_48_icon.png"/>
-                    </div>
-                    <div class="ship-title">
-                        <h2>
-                            تحویل اکسپرس دیجی‌کالا
-                        </h2>
-                        <p>
-                            زمان تقريبي تحويل سفارشات: 24 ساعت
-                        </p>
-                    </div>
+            <?php
+            foreach ($post as $row) {
+                ?>
+                <div class="shipping">
+                    <div class="right">
+                        <div class="sel-post">
+                            <input type="radio" name="post">
+                            <label class=""></label>
+                        </div>
+                        <div class="ship-img">
+                            <img src="<?= $row['img'] ?>"/>
+                        </div>
+                        <div class="ship-title">
+                            <h2><?= $row['post_type'] ?></h2>
+                            <p>
+                                <?= $row['introduction'] ?>
+                            </p>
+                        </div>
 
+                    </div>
+                    <div class="left">
+                        <p>
+                            هزینه ارسال
+                        </p>
+                        <span class="ship-price">
+<?= $row['price'] ?>
+                        </span>
+                    </div>
                 </div>
-                <div class="left">
-                    <p>
-                        هزینه ارسال
-                    </p>
-                    <span class="ship-price">
-								رایگان
-							</span>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <div class="next-shipment">
 					<span class="next-shipment-btn">
@@ -224,7 +287,8 @@
 							<input type="radio" name="factor-pack" value="no" autocomplete="on" onclick="factorY(this)">خیر
 						</span>
                 <span class="factor-pack-radio">
-							<input type="radio" name="factor-pack" value="yes" autocomplete="off" onclick="factorN(this)">آره
+							<input type="radio" name="factor-pack" value="yes" autocomplete="off"
+                                   onclick="factorN(this)">آره
 						</span>
             </form>
         </div>
@@ -243,7 +307,7 @@
     </div>
 </div>
 <script>
-    function scroll(direction,tag){
+    function scroll(direction, tag) {
 
         var slideTag = $(tag);
         var sliderScrollUl = slideTag.parent('.scroll-slider').find('ul');
@@ -253,30 +317,30 @@
         var maxMargin = (liLength - 4) * liWidth;
         var marginRight = parseFloat(sliderScrollUl.css('margin-right'));
         sliderScrollUl.css("width", ulWidthSize);
-        if (maxMargin == 0 || maxMargin < 0){
+        if (maxMargin == 0 || maxMargin < 0) {
             maxMargin = 0;
         }
-        if(direction == 'left'){
-            marginRight=marginRight-liWidth;
-            if((-marginRight) > maxMargin){
-                marginRight = (-maxMargin)-80;
+        if (direction == 'left') {
+            marginRight = marginRight - liWidth;
+            if ((-marginRight) > maxMargin) {
+                marginRight = (-maxMargin) - 80;
             }
         }
-        if(direction == 'right'){
-            marginRight=marginRight+liWidth;
-            if(marginRight > 0){
+        if (direction == 'right') {
+            marginRight = marginRight + liWidth;
+            if (marginRight > 0) {
                 marginRight = 0;
             }
         }
-        sliderScrollUl.animate({'marginRight':marginRight},1000);
+        sliderScrollUl.animate({'marginRight': marginRight}, 1000);
     }
-    $('.scroll-next').click(function(){
-        scroll('left',this);
-    });
-    $('.scroll-prev').click(function(){
-        scroll('right',this);
-    });
 
+    $('.scroll-next').click(function () {
+        scroll('left', this);
+    });
+    $('.scroll-prev').click(function () {
+        scroll('right', this);
+    });
 
 
 </script><!--Scroll Slider-->

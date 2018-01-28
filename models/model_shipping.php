@@ -23,7 +23,7 @@ class model_shipping extends Model
         return $result;
     }
 
-    function addAddress($data)
+    function addAddress($data, $editAddressId)
     {
         $user_name = $data['user_name'];
         $province = $data['province'];
@@ -36,8 +36,14 @@ class model_shipping extends Model
         Model::sesionInit();
         $user_id = Model::sessionOnGet('UserId');
 
-        $sql = 'INSERT INTO user_address_tbl (user_id, user_name, province, city, postal_code, address, phone, mobile) VALUES (?,?,?,?,?,?,?,?)';
-        $params = [$user_id, $user_name, $province, $city, $postal_code, $address, $phone, $mobile];
+        if ($editAddressId == '') {
+            $sql = 'INSERT INTO user_address_tbl (user_id, user_name, province, city, postal_code, address, phone, mobile) VALUES (?,?,?,?,?,?,?,?)';
+            $params = [$user_id, $user_name, $province, $city, $postal_code, $address, $phone, $mobile];
+        } else {
+            $sql = 'UPDATE user_address_tbl SET  user_name=?, province=?, city=?, postal_code=?, address=?, phone=?, mobile=? WHERE id=?';
+            $params = [$user_name, $province, $city, $postal_code, $address, $phone, $mobile, $editAddressId];
+        }
+
         $this->idu($sql, $params);
     }
 
@@ -62,6 +68,13 @@ class model_shipping extends Model
         $sql = 'SELECT * FROM user_address_tbl WHERE id = ?';
         $param = [$addressId];
         $result = $this->doSelect($sql, $param, 'fetch');
+        return $result;
+    }
+
+    function getPostTtype()
+    {
+        $sql ='SELECT * FROM post_tbl';
+        $result = $this->doSelect($sql);
         return $result;
     }
 }

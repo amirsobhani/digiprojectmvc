@@ -11,8 +11,9 @@ class Shipping extends Controller
     {
         $province = $this->model->province();
         $address = $this->model->getAddress();
+        $postType = $this->model->getPostTtype();
 
-        $data = ['province' => $province, 'address' => $address];
+        $data = ['province' => $province, 'address' => $address, 'post' => $postType];
         $this->View('shipping/index', $data);
     }
 
@@ -22,9 +23,9 @@ class Shipping extends Controller
         echo json_encode($city);
     }
 
-    function addAddress()
+    function addAddress($editAddressId)
     {
-        $this->model->addAddress($_POST);
+        $this->model->addAddress($_POST, $editAddressId);
     }
 
     function editAddress($addressId)
@@ -32,6 +33,7 @@ class Shipping extends Controller
         $addressInfo = $this->model->AddressInfo($addressId);
         echo json_encode($addressInfo);
     }
+
 }
 
 
