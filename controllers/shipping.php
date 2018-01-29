@@ -12,8 +12,9 @@ class Shipping extends Controller
         $province = $this->model->province();
         $address = $this->model->getAddress();
         $postType = $this->model->getPostTtype();
+        $cartProduct = $this->model->getCartProduct();
 
-        $data = ['province' => $province, 'address' => $address, 'post' => $postType];
+        $data = ['province' => $province, 'address' => $address, 'post' => $postType, 'cart' => $cartProduct];
         $this->View('shipping/index', $data);
     }
 
@@ -32,6 +33,11 @@ class Shipping extends Controller
     {
         $addressInfo = $this->model->AddressInfo($addressId);
         echo json_encode($addressInfo);
+    }
+
+    function deleteAddress()
+    {
+        $this->model->deleteAddress($_POST);
     }
 
 }

@@ -333,11 +333,11 @@
             <a href="<?= URL ?>signup">ثبت نام کنید</a>
         </div>
         <div id="header-right-bottom">
-            <div id="cart">
+            <a href="cart" id="cart">
                 <span id="cart-icon"><i class="fa fa-shopping-cart fa-lg fa-flip-horizontal" aria-hidden="true"></i></span>
                 <span id="cart-text">سبد خرید</span>
                 <span id="cart-count">0</span>
-            </div>
+            </a>
             <div class="header-search-box">
                 <input type="text" placeholder="  محصول، دسته یا برند مورد نظرتان را جستجو کنید. . .">
                 <i class="fa fa-search" aria-hidden="true"></i>

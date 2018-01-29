@@ -251,7 +251,7 @@ $address = $data['address'];
                     <div class="address">
                         <div class="address-name">
                             <h3><?= $row['user_name'] ?></h3>
-                            <i class="fa fa-close" aria-hidden="true"></i>
+                            <i onclick="deleteAddress(<?= $row['id'] ?>)" class="fa fa-close" aria-hidden="true"></i>
                             <i onclick="editAddress(<?= $row['id'] ?>)" class="fa fa-pencil" aria-hidden="true"></i>
                         </div>
                         <div class="location">
@@ -386,6 +386,15 @@ $address = $data['address'];
     </div>
 </div><!-----addressScroll----->
 <script>
+    function deleteAddress(addressId) {
+        var url ='shipping/deleteAddress';
+        var data = {'addressId':addressId};
+        $.post(url, data, function (msg) {
+            window.location = 'shipping';
+        })
+    }
+
+
     var editAddressId = '';
     function editAddress(addressId) {
         editAddressId = addressId;

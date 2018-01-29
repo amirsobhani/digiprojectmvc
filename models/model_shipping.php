@@ -73,8 +73,26 @@ class model_shipping extends Model
 
     function getPostTtype()
     {
-        $sql ='SELECT * FROM post_tbl';
+        $sql = 'SELECT * FROM post_tbl';
         $result = $this->doSelect($sql);
         return $result;
+    }
+
+    function getCartProduct()
+    {
+        $cookie = self::getCartCookie();
+        $sql = 'SELECT * FROM cart_tbl WHERE cookie=?';
+        $param = [$cookie];
+        $result = $this->doSelect($sql, $param);
+        return $result;
+
+    }
+
+    function deleteAddress($data)
+    {
+        $addressId = $data['addressId'];
+        $sql = 'DELETE FROM user_address_tbl WHERE id=?';
+        $param = [$addressId];
+        $this->idu($sql, $param);
     }
 }

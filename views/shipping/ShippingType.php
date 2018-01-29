@@ -73,6 +73,7 @@
 
     .scroll-product img {
         margin: 30px auto;
+        max-width: 160px;
         float: right;
         display: block;
     }
@@ -141,7 +142,6 @@
         border-left: 1px solid #c0f0c1;
         height: 50px;
         margin-left: 10px;
-        background: #f7fff7;
         line-height: 50px;
         text-align: center;
         font-size: 14px;
@@ -171,6 +171,7 @@
 </style><!---ShippingType--->
 <?php
 $post = $data['post'];
+$cart = $data['cart'];
 ?>
 
 <div id="ShippingType">
@@ -193,46 +194,17 @@ $post = $data['post'];
                                                                        aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/scroll slider/Samsung-Galaxy-S8-Dual-SIM-Mobile-Phone-a8bcd0.jpg"/>
-                        </a>
-                    </li>
+                    <?php
+                    foreach ($cart as $row) {
+                        ?>
+                        <li>
+                            <a class="scroll-product">
+                                <img src="public/img/product gallery/<?= $row['idproduct'] ?>/product220.jpg">
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"

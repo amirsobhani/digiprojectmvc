@@ -275,7 +275,6 @@
                                                 <p>رنگ : <?= $row['colorTitle'] ?></p>
                                                 <span class="color" style="background: <?= $row['hex'] ?>"></span>
                                                 <span><?php
-                                                    //                                                print_r($row['colorCart'][$row['id']]['title'])
                                                     ?></span>
                                             </div>
                                             <p class="warranty">
