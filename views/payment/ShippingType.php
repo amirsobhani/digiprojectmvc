@@ -13,6 +13,11 @@
         padding: 0 13px;
         font-family: iran-sans;
         font-size: 13px;
+        display: inline-block;
+    }
+
+    .scroll-slider h3:first-child {
+        float: right;
     }
 
     .scroll-next {
@@ -39,6 +44,10 @@
         color: #B8B8B8B8;
         background-color: #fff;
         cursor: pointer;
+    }
+
+    .scroll-slider div:first-child {
+        background-color: #f7f9fa;
     }
 
     .scroll-main {
@@ -114,6 +123,12 @@
     }
 </style><!--Scroll Slider-->
 <style>
+    #ShippingType {
+        padding: 0 10px 10px 10px;
+        background: #fff;
+        margin: 15px 0;
+    }
+
     #ShippingType .head {
         line-height: 22px;
         padding: 5px 0;
@@ -168,19 +183,42 @@
         background: #fff;
         border: 1px solid #ccc;
     }
+
+    .product-pack {
+        margin: 15px 0;
+    }
+
+    .shipping-notice {
+        background-color: #fff;
+        direction: rtl;
+        padding: 10px;
+        background: url("public/img/express_delivery_dk_48_icon.png") no-repeat 1130px 0 #fff;
+    }
+
+    .shipping-notice span {
+        margin-right: 60px;
+        font-size: 12px;
+    }
+
+    .payment-price {
+        background: #f7fff7;
+        padding: 10px;
+        border: 1px solid #f0f1f2;
+        border-radius: 3px;
+    }
+
+    .payment-price h3:first-child {
+        float: right;
+    }
+
+    .payment-price h3:last-child {
+        display: inline-block;
+        direction: rtl;
+        color: green;
+    }
 </style><!---ShippingType--->
-<?php
-$post = $data['post'];
-$cart = $data['cart'];
-?>
 
 <div id="ShippingType">
-    <div class="head">
-        <i class="fa fa-caret-left" aria-hidden="true"></i>
-        <h2>
-            انتخاب شیوه ارسال
-        </h2>
-    </div>
     <div class="product-pack">
         <div class="shipment-selection">
             <i class="fa fa-caret-left" aria-hidden="true"></i>
@@ -189,92 +227,30 @@ $cart = $data['cart'];
             </h2>
         </div>
         <div class="scroll-slider">
-            <h3>محصولاتی که در این مرسوله ارسال می‌شوند: </h3>
+            <div>
+                <h3>هزینه ارسال :</h3>
+                <h3>11500 تومان</h3>
+            </div>
             <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
                                                                        aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
-                    <?php
-                    foreach ($cart as $row) {
-                        ?>
-                        <li>
-                            <a class="scroll-product">
-                                <img src="public/img/product gallery/<?= $row['idproduct'] ?>/product220.jpg">
-                            </a>
-                        </li>
-                        <?php
-                    }
-                    ?>
+                    <li>
+                        <a class="scroll-product">
+                            <img src="public/img/product gallery/1/product220.jpg">
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"
                                                                         aria-hidden="true"></i></div>
         </div><!--Scroll Slider-->
-        <div class="wrapper-shipping">
-            <?php
-            foreach ($post as $row) {
-                ?>
-                <div class="shipping">
-                    <div class="right">
-                        <div class="sel-post">
-                            <input type="radio" name="post">
-                            <label class=""></label>
-                        </div>
-                        <div class="ship-img">
-                            <img src="<?= $row['img'] ?>"/>
-                        </div>
-                        <div class="ship-title">
-                            <h2><?= $row['post_type'] ?></h2>
-                            <p>
-                                <?= $row['introduction'] ?>
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="left">
-                        <p>
-                            هزینه ارسال
-                        </p>
-                        <span class="ship-price">
-<?= $row['price'] ?>
-                        </span>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
+        <div class="shipping-notice">
+            <span>این مرسوله توسط دیجی کالا و از طریق تحویل اکسپرس دیجی کالا به شما تحویل داده خواهد شد. زمان تقریبی تحویل سفارشات بین 2 تا 4 روز کاری می باشد.</span>
         </div>
-        <div class="next-shipment">
-					<span class="next-shipment-btn">
-						تایید و ثبت مرسوله
-					</span>
-        </div>
-        <div class="factor-pack">
-            <i class="fa fa-caret-left"></i>
-            <p>
-                آیا مایل هستید به همراه این سفارش فاکتور (فقط اقلام عرضه شده توسط دیجی کالا) ارسال شود؟
-            </p>
-            <form>
-						<span class="factor-pack-radio">
-							<input type="radio" name="factor-pack" value="no" autocomplete="on" onclick="factorY(this)">خیر
-						</span>
-                <span class="factor-pack-radio">
-							<input type="radio" name="factor-pack" value="yes" autocomplete="off"
-                                   onclick="factorN(this)">آره
-						</span>
-            </form>
-        </div>
-        <div class="factor-message-green">
-            <i class="fa fa-tree" aria-hidden="true"></i>
-            <p>
-                از شما سپاسگزاریم که با عدم دریافت فاکتور کاغذی به سبز ماندن زمین کمک می کنید.
-            </p>
-        </div>
-        <div class="factor-message-brown">
-            <i class="fa fa-tree" aria-hidden="true"></i>
-            <p>
-                بیاییم با عدم دریافت فاکتور کاغذی به سبز ماندن زمین کمک کنیم.
-            </p>
+        <div class="payment-price">
+            <h3>جمع کل قابل پرداخت</h3>
+            <h3>35000 تومان</h3>
         </div>
     </div>
 </div>

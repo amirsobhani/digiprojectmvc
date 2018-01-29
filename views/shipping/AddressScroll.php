@@ -309,67 +309,6 @@ $address = $data['address'];
                     </div>
                 </li>
             <?php } ?>
-            <!--                        <li class="main-li">-->
-            <!--                            <div class="address">-->
-            <!--                                <div class="address-name">-->
-            <!--                                    <h3>امیرحسین سبحانی</h3>-->
-            <!--                                    <i class="fa fa-close" aria-hidden="true"></i>-->
-            <!--                                    <i class="fa fa-pencil" aria-hidden="true"></i>-->
-            <!--                                </div>-->
-            <!--                                <div class="location">-->
-            <!--                                    <div class="address-location">-->
-            <!--                                        <ul>-->
-            <!--                                            <li class="state">-->
-            <!--                                                استان :-->
-            <!--                                                <span>-->
-            <!--            								قم-->
-            <!--            							</span>-->
-            <!--                                            </li>-->
-            <!--                                            <li class="city">-->
-            <!--                                                شهر :-->
-            <!--                                                <span>-->
-            <!--            								قم-->
-            <!--            							</span>-->
-            <!--                                            </li>-->
-            <!--                                            <li class="distric">-->
-            <!--                                                محله :-->
-            <!--                                                <span>-->
-            <!--            								--->
-            <!--            							</span>-->
-            <!--                                            </li>-->
-            <!--                                        </ul>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="complete-address">-->
-            <!--                                        <span class="1st">آدرس :</span>-->
-            <!--                                        <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>-->
-            <!--                                        <div class="map-hint">-->
-            <!--                                            با ثبت آدرس روی نقشه، روند ارسال را سرعت ببخشید.-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="tell">-->
-            <!--                                        <div class="phone">-->
-            <!--                                            شماره تلفن ثابت :-->
-            <!--                                            <span>-->
-            <!--            							32104-->
-            <!--            						</span>-->
-            <!--                                        </div>-->
-            <!--                                        <div class="emergency">-->
-            <!--                                            شماره تلفن ضروری :-->
-            <!--                                            <span>-->
-            <!--            							09198508964-->
-            <!--            						</span>-->
-            <!--                                        </div>-->
-            <!--                                    </div>-->
-            <!--                                </div>-->
-            <!--                                <div class="address-select">-->
-            <!--                                    <input type="radio" autocomplete="off" name="address">-->
-            <!--                                    <label class=""></label>-->
-            <!--                                    <span class="address-txt">-->
-            <!--            							به این آدرس ارسال می‌شود .-->
-            <!--            				</span>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-            <!--                        </li>-->
             <li class="main-li">
                 <div class="add-address" onclick="modal()">
 						<span>
@@ -387,15 +326,15 @@ $address = $data['address'];
 </div><!-----addressScroll----->
 <script>
     function deleteAddress(addressId) {
-        var url ='shipping/deleteAddress';
-        var data = {'addressId':addressId};
+        var url = 'shipping/deleteAddress';
+        var data = {'addressId': addressId};
         $.post(url, data, function (msg) {
             window.location = 'shipping';
         })
     }
 
-
     var editAddressId = '';
+
     function editAddress(addressId) {
         editAddressId = addressId;
         var url = 'shipping/editAddress/' + addressId;
