@@ -240,7 +240,7 @@
         float: right;
     }
 
-    .ship-img img{
+    .ship-img img {
         max-width: 85px;
     }
 
@@ -513,6 +513,81 @@
     .green {
         color: #4caf50 !important;
     }
+
+    .payment {
+        background: #fff;
+        direction: rtl;
+        padding: 10px;
+        color: #666;
+    }
+
+    .payment > header {
+        margin: 50px 0;
+    }
+
+    .payment header i {
+        float: left;
+        margin: -15px 20px;
+    }
+
+    .pay i {
+        float: right;
+        margin-left: 10px;
+        color: #2396f3;
+    }
+
+    .payment-table {
+        border: 1px solid #c0f0c1;
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 3px;
+    }
+
+    .second-td {
+        font-size: 14px;
+    }
+
+    .second-td > header {
+        display: inline-block;
+        margin: 20px 10px 10px;
+        font-weight: 800;
+        font-size: 16px;
+    }
+
+    .second-td > header::after {
+        content: "";
+        display: block;
+        height: 1px;
+        clear: both;
+        width: 350px;
+        background: #ccc;
+        margin: 22px -10px 0;
+    }
+
+    .second-td i {
+        color: #2396f3;
+        margin-right: 90px;
+    }
+
+    .first-td {
+        border-left: 1px solid #c0f0c1;
+        vertical-align: middle;
+        background: #f7fff7;
+    }
+
+    .pay-gate {
+        font-size: 12px;
+        margin: 5px 5px 25px;
+    }
+
+    .pay-gate ul {
+        width: 40%;
+        margin: 20px 0;
+    }
+
+    .pay-gate ul li {
+        display: inline-block;
+    }
 </style><!---complete-price-->
 <div id="main" onclick="close()">
     <div id="content">
@@ -522,7 +597,54 @@
         require('ShippingType.php');
 
         ?>
-
+        <div class="payment">
+            <header>
+                شیوه پرداخت را انتخاب نمایید .
+                <i class="fa fa-3x fa-credit-card-alt" aria-hidden="true"></i>
+            </header>
+            <span class="pay">
+                <i class="fa fa-caret-left" aria-hidden="true"></i>
+پرداخت
+            </span>
+            <table class="payment-table">
+                <tr>
+                    <td class="first-td">
+                        <input type="radio">
+                    </td>
+                    <td>
+                        <div class="second-td">
+                            <header>
+                                پرداخت اینترنتی ( با تمامی کارت‌های عضو شتاب )
+                            </header>
+                            <span>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+تجربه خرید سریع با پرداخت اینترنتی
+                            </span>
+                        </div>
+                        <div class="pay-gate">
+                            درگاه مورد نظر خود را انتخاب نمایید
+                            <span style="color: #2396f3;">
+                                ( پرداخت از طریق کلیه کارت‌های عضو شتاب )
+                            </span>
+                            <ul>
+                                <li>
+                                    <input type="radio">
+                                    درگاه پرداخت اینترنتی بانک
+                                </li>
+                                <li>
+                                    <input type="radio">
+                                    درگاه پرداخت اینترنتی بانک
+                                </li>
+                                <li>
+                                    <input type="radio">
+                                    درگاه پرداخت اینترنتی بانک
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <style>
             .address {
                 display: inline-block;
