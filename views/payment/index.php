@@ -537,7 +537,7 @@
     }
 
     .payment-table {
-        border: 1px solid #c0f0c1;
+        border: 1px solid #eee;
         width: 100%;
         margin: 20px 0;
         border-radius: 3px;
@@ -570,9 +570,9 @@
     }
 
     .first-td {
-        border-left: 1px solid #c0f0c1;
+        border-left: 1px solid #eee;
         vertical-align: middle;
-        background: #f7fff7;
+        cursor: pointer;
     }
 
     .pay-gate {
@@ -587,6 +587,73 @@
 
     .pay-gate ul li {
         display: inline-block;
+    }
+
+    .td-lable {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        transition: none;
+        position: relative;
+        border-radius: 100%;
+        right: -2px;
+        top: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+    }
+
+    .td-lable::after {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        content: "";
+        background: #fff;
+        width: 2px;
+        height: 2px;
+        border-radius: 100%;
+        border: 1px solid #fff;
+    }
+
+    .td-lable.checked {
+        background: #2196f3;
+        border: 1px solid transparent;
+    }
+
+    .pay-gate ul li input, .first-td input, .local-pay-class input {
+        position: relative;
+        right: 20px;
+        top: 2px;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .local-pay {
+        font-size: 14px;
+        border: 1px solid #eee;
+        width: 100%;
+        height: 50px;
+    }
+
+    .local-pay td:last-child {
+        vertical-align: middle;
+        padding-right: 10px;
+    }
+
+    .local-pay-class {
+        border-left: 1px solid #eee;
+        width: 72px;
+        vertical-align: middle;
+    }
+
+    .activePay {
+        border: 1px solid #c0f0c1;
+    }
+
+    table.activePay td:first-child {
+        border-left: 1px solid #c0f0c1;
+        vertical-align: middle;
+        background: #f7fff7;
     }
 </style><!---complete-price-->
 <div id="main" onclick="close()">
@@ -606,10 +673,11 @@
                 <i class="fa fa-caret-left" aria-hidden="true"></i>
 پرداخت
             </span>
-            <table class="payment-table">
+            <table class="payment-table activePay">
                 <tr>
                     <td class="first-td">
-                        <input type="radio">
+                        <input type="radio" name="payType" checked>
+                        <label class="td-lable checked"></label>
                     </td>
                     <td>
                         <div class="second-td">
@@ -626,21 +694,35 @@
                             <span style="color: #2396f3;">
                                 ( پرداخت از طریق کلیه کارت‌های عضو شتاب )
                             </span>
-                            <ul>
+                            <ul class="pay-ul">
                                 <li>
-                                    <input type="radio">
+                                    <input type="radio" name="pay-gate" checked>
+                                    <label class="td-lable checked"></label>
                                     درگاه پرداخت اینترنتی بانک
                                 </li>
                                 <li>
-                                    <input type="radio">
+                                    <input type="radio" name="pay-gate">
+                                    <label class="td-lable"></label>
                                     درگاه پرداخت اینترنتی بانک
                                 </li>
                                 <li>
-                                    <input type="radio">
+                                    <input type="radio" name="pay-gate">
+                                    <label class="td-lable"></label>
                                     درگاه پرداخت اینترنتی بانک
                                 </li>
                             </ul>
                         </div>
+                    </td>
+                </tr>
+            </table>
+            <table class="local-pay">
+                <tr>
+                    <td class="local-pay-class first-td">
+                        <input type="radio" name="payType">
+                        <label class="td-lable"></label>
+                    </td>
+                    <td>
+                        پرداخت در محل
                     </td>
                 </tr>
             </table>
@@ -1007,7 +1089,40 @@
         display: none !important;
     }
 </style>
+<script>
+    var input = $('.pay-ul').find('input');
+    var firstTd = $('.first-td').find('input');
+    var firstTdPay = $('.payment-table .first-td');
+    input.click(function () {
+        if ($(this).is(':checked')) {
+            $('.pay-ul label').removeClass('checked');
+            $(this).parent().find('label').addClass('checked');
+            $('.local-pay-class input').prop("checked", false);
+            $('.local-pay-class label').removeClass('checked');
+            firstTdPay.find('input').prop("checked", true);
+            firstTdPay.find('label').addClass('checked');
 
+            $('.local-pay').removeClass('activePay');
+            $('.payment-table').addClass('activePay');
+
+        }
+    });
+
+
+    $('.first-td').click(function () {
+        $(this).find('input').prop("checked", true);
+        $('.first-td label').removeClass('checked');
+        $('.pay-ul label').removeClass('checked');
+        $(this).parent().find('label').addClass('checked');
+        $('.payment table').removeClass('activePay');
+        $(this).parents('table').addClass('activePay');
+    });
+
+    $('.payment-table .first-td').click(function () {
+        $('.pay-ul label').removeClass('checked');
+        $('.pay-ul li').eq(0).find('label').addClass('checked');
+    });
+</script><!-----lable input----->
 <script>
     function addressScroll(direction, tag) {
 

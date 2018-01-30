@@ -212,13 +212,14 @@ $cart = $data['cart'];
         </div><!--Scroll Slider-->
         <div class="wrapper-shipping">
             <?php
+            $first = 1;
             foreach ($post as $row) {
                 ?>
                 <div class="shipping">
                     <div class="right">
                         <div class="sel-post">
-                            <input type="radio" name="post">
-                            <label class=""></label>
+                            <input type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="post">
+                            <label class="<?php if ($first == 1) {echo 'checked';} ?>"></label>
                         </div>
                         <div class="ship-img">
                             <img src="<?= $row['img'] ?>"/>
@@ -240,9 +241,7 @@ $cart = $data['cart'];
                         </span>
                     </div>
                 </div>
-                <?php
-            }
-            ?>
+                <?php $first = 0; } ?>
         </div>
         <div class="next-shipment">
 					<span class="next-shipment-btn">
@@ -256,7 +255,7 @@ $cart = $data['cart'];
             </p>
             <form>
 						<span class="factor-pack-radio">
-							<input type="radio" name="factor-pack" value="no" autocomplete="on" onclick="factorY(this)">خیر
+							<input type="radio" checked name="factor-pack" value="no" autocomplete="on" onclick="factorY(this)">خیر
 						</span>
                 <span class="factor-pack-radio">
 							<input type="radio" name="factor-pack" value="yes" autocomplete="off"

@@ -192,11 +192,11 @@
         background-color: #fff;
         direction: rtl;
         padding: 10px;
-        background: url("public/img/express_delivery_dk_48_icon.png") no-repeat 1130px 0 #fff;
+        background: url("public/img/express_delivery_dk_48_icon.png") no-repeat 1125px 0 #fff;
     }
 
     .shipping-notice span {
-        margin-right: 60px;
+        margin-right: 45px;
         font-size: 12px;
     }
 
@@ -235,11 +235,18 @@
                                                                        aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
-                    <li>
-                        <a class="scroll-product">
-                            <img src="public/img/product gallery/1/product220.jpg">
-                        </a>
-                    </li>
+                    <?php
+                    $cart = $data ['cart'];
+                    foreach ($cart as $row) {
+                        ?>
+                        <li>
+                            <a class="scroll-product">
+                                <img src="public/img/product gallery/<?= $row['id'] ?>/product220.jpg">
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"

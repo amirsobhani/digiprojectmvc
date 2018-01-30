@@ -240,7 +240,7 @@
         float: right;
     }
 
-    .ship-img img{
+    .ship-img img {
         max-width: 85px;
     }
 
@@ -791,9 +791,11 @@
 				</span>
             </div>
             <div class="next-step">
-				<span>
+                <a href="payment">
+                    <span>
 					ثبت اطلاعات و ادامه خرید
-				</span>
+				    </span>
+                </a>
             </div>
         </div>
     </div><!---Content--->

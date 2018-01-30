@@ -245,6 +245,7 @@ $address = $data['address'];
     <div id="address-bar">
         <ul class="main-ul">
             <?php
+            $first = 1;
             foreach ($address as $row) {
                 ?>
                 <li class="main-li">
@@ -300,15 +301,15 @@ $address = $data['address'];
                             </div>
                         </div>
                         <div class="address-select">
-                            <input type="radio" name="address">
-                            <label class=""></label>
+                            <input type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="address">
+                            <label class="<?php if ($first == 1) {echo 'checked';} ?>"></label>
                             <span class="address-txt">
 							به این آدرس ارسال می‌شود .
 				</span>
                         </div>
                     </div>
                 </li>
-            <?php } ?>
+            <?php $first=0; } ?>
             <li class="main-li">
                 <div class="add-address" onclick="modal()">
 						<span>

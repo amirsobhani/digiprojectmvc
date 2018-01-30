@@ -9,6 +9,8 @@ class Payment extends Controller
 
     function index()
     {
-        $this->View('payment/index');
+        $cart = $this->model->getCart();
+        $data = ['cart' => $cart];
+        $this->View('payment/index', $data);
     }
 }
