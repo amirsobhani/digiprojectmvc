@@ -96,10 +96,9 @@ class model_shipping extends Model
         $this->idu($sql, $param);
     }
 
-    function sessionPost($dataPost)
+    function sessionPost($data)
     {
-//        $postId = $data['dataPost'];
-
+        $dataPost = $data['dataPost'];
         $sql = 'SELECT * FROM post_tbl WHERE id=?';
         $param = [$dataPost];
         $result = $this->doSelect($sql, $param, 'fetch');

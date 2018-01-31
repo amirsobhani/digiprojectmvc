@@ -14,7 +14,7 @@ class Payment extends Controller
         $cartPrice = $productCartInfo[1];
         $cartDiscount = $productCartInfo[2];
         $postInfo = $productCartInfo[3];
-        $postInfo = unserialize($postInfo);
+//        $postInfo = unserialize($postInfo);
 
         $data = ['cart' => $cart, 'cartPrice' => $cartPrice, 'cartDiscount' => $cartDiscount, 'postInfo' => $postInfo];
         $this->View('payment/index', $data);

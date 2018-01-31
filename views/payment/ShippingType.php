@@ -241,7 +241,6 @@
                     $cartDiscount = $data ['cartDiscount'];
                     $cartFinalPrice = $cartPrice - $cartDiscount;
                     $postInfo = $data['postInfo'];
-                    print_r($postInfo);
 
                     foreach ($cart as $row) {
                         ?>
@@ -259,7 +258,11 @@
                                                                         aria-hidden="true"></i></div>
         </div><!--Scroll Slider-->
         <div class="shipping-notice">
-            <span>این مرسوله توسط دیجی کالا و از طریق تحویل <?= $postInfo['post_type'] ?> به شما تحویل داده خواهد شد. زمان تقریبی تحویل سفارشات بین 2 تا 4 روز کاری می باشد.</span>
+            <span>این مرسوله توسط دیجی کالا و از طریق تحویل
+                <b style="color: #0d32ed"><?= $postInfo['post_type'] ?></b>
+ به شما تحویل داده خواهد شد.
+ <b style="color: #0d32ed"><?= $postInfo['introduction'] ?></b>
+            </span>
         </div>
         <div class="payment-price">
             <h3>جمع کل قابل پرداخت</h3>

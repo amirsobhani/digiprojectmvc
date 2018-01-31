@@ -292,11 +292,11 @@ $cart = $data['cart'];
 
     function sessionPost() {
         var dataPost = $('.sel-post').find('input:checked').attr('data-post');
-        var url = 'shipping/sessionPost' + dataPost;
-        var data = {};
+        var url = 'shipping/sessionPost/';
+        var data = {'dataPost': dataPost};
         $.post(url, data, function (msg) {
-//            console.log(msg);
-        })
+            console.log(msg);
+        }, 'json')
     }
 </script>
 <script>

@@ -37,7 +37,8 @@ class model_payment extends Model
         }
 
         parent::sesionInit();
-        $postInfo = parent::sessionOnGet('$post');
+        $postInfo = parent::sessionOnGet('post');
+        $postInfo = unserialize($postInfo);
 
 
         return [$result, $finalCartPrice, $finalCartDiscount, $postInfo];

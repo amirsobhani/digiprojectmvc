@@ -786,9 +786,11 @@
 
         <div class="shipping-route">
             <div class="return-cart">
-				<span>
+                <a href="cart">
+                   <span>
 					بازگشت به سبد خرید
-				</span>
+				    </span>
+                </a>
             </div>
             <div class="next-step">
                 <a href="payment">

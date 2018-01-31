@@ -220,6 +220,113 @@
         position: relative;
     }
 </style><!---cart-table--->
+<style>
+    .complete-price {
+        width: 590px;
+        border: 1px solid #c0f0c1;
+        margin-bottom: 30px;
+    }
+
+    .complete-price::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .price {
+        height: 55px;
+        line-height: 55px;
+        padding: 0 40px 0 0;
+        border-bottom: 1px solid #c0f0c1;
+    }
+
+    .discount {
+        display: inline-block;
+        text-align: center;
+        float: right;
+        min-width: 200px;
+        font-size: 13px;
+        padding: 5px;
+        line-height: 20px;
+        position: relative;
+        top: 7px;
+        direction: rtl;
+    }
+
+    .discount::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9px 0 10px 8px;
+        border-color: transparent transparent transparent #fff;
+        position: absolute;
+        left: 5px;
+        top: 11px;
+    }
+
+    .discount span:first-child {
+        background: #FF7272;
+        color: #fff;
+        padding: 5px 15px;
+        float: right;
+    }
+
+    .discount span:last-child {
+        background: #FF5252;
+        color: #fff;
+        padding: 5px 15px;
+        float: right;
+    }
+
+    #discount {
+        background: #FF5252;
+        color: #fff;
+        padding: 5px 15px;
+        float: right;
+    }
+
+    .lable {
+        display: inline-block;
+        direction: rtl;
+        color: #818181;
+        font-size: 14px;
+        width: auto;
+        margin-left: 20px;
+    }
+
+    .lable-price {
+        display: inline-block;
+        float: left;
+        direction: rtl;
+        font-size: 20px;
+    }
+
+    .toman {
+        font-size: 12px;
+        margin: 0 15px;
+        float: left;
+    }
+
+    .pay-price {
+        height: 55px;
+        line-height: 55px;
+        width: 100%;
+        float: left;
+        background-color: #F7FFF7;
+    }
+
+    .green {
+        color: #4caf50 !important;
+    }
+
+    .fa-refresh {
+        margin: 100px auto;
+        display: block;
+        color: #777;
+    }
+</style><!---complete-price-->
+
 <div id="main">
     <?php
     $cart = $data['cart'];
@@ -480,9 +587,11 @@
                 </div>
                 <div class="continue-cart">
                     <div class="right go-main dk-box">
-						<span>
+                        <a href="<?= URL ?>">
+                            <span style="color: #fff">
 							بازگشت به  صفحه اصلی
-						</span>
+						    </span>
+                        </a>
                     </div>
                     <a class="left dk-box" href="user">
 						<span>
@@ -499,112 +608,6 @@
         <?php require('LikeProduct.php'); ?>
     </div><!---Content--->
 </div>
-<style>
-    .complete-price {
-        width: 590px;
-        border: 1px solid #c0f0c1;
-        margin-bottom: 30px;
-    }
-
-    .complete-price::after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    .price {
-        height: 55px;
-        line-height: 55px;
-        padding: 0 40px 0 0;
-        border-bottom: 1px solid #c0f0c1;
-    }
-
-    .discount {
-        display: inline-block;
-        text-align: center;
-        float: right;
-        min-width: 200px;
-        font-size: 13px;
-        padding: 5px;
-        line-height: 20px;
-        position: relative;
-        top: 7px;
-        direction: rtl;
-    }
-
-    .discount::after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 9px 0 10px 8px;
-        border-color: transparent transparent transparent #fff;
-        position: absolute;
-        left: 5px;
-        top: 11px;
-    }
-
-    .discount span:first-child {
-        background: #FF7272;
-        color: #fff;
-        padding: 5px 15px;
-        float: right;
-    }
-
-    .discount span:last-child {
-        background: #FF5252;
-        color: #fff;
-        padding: 5px 15px;
-        float: right;
-    }
-
-    #discount {
-        background: #FF5252;
-        color: #fff;
-        padding: 5px 15px;
-        float: right;
-    }
-
-    .lable {
-        display: inline-block;
-        direction: rtl;
-        color: #818181;
-        font-size: 14px;
-        width: auto;
-        margin-left: 20px;
-    }
-
-    .lable-price {
-        display: inline-block;
-        float: left;
-        direction: rtl;
-        font-size: 20px;
-    }
-
-    .toman {
-        font-size: 12px;
-        margin: 0 15px;
-        float: left;
-    }
-
-    .pay-price {
-        height: 55px;
-        line-height: 55px;
-        width: 100%;
-        float: left;
-        background-color: #F7FFF7;
-    }
-
-    .green {
-        color: #4caf50 !important;
-    }
-
-    .fa-refresh {
-        margin: 100px auto;
-        display: block;
-        color: #777;
-    }
-</style><!---complete-price-->
 <script>
     function removeProductCart($idproduct) {
         var url = 'cart/deleteProductCart/' + $idproduct;
