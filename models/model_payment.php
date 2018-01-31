@@ -7,11 +7,11 @@ class model_payment extends Model
         parent::__construct();
     }
 
-    function getCart()
+    function getCartProduct()
     {
         $cookie = self::getCartCookie();
 
-        $sql ="SELECT c.count ,c.id as cartId, p.*, r.title as colorTitle, r.hex, g.title as guaranteeTitle, s.title as sellerTitle
+        $sql = "SELECT c.count ,c.id as cartId, p.*, r.title as colorTitle, r.hex, g.title as guaranteeTitle, s.title as sellerTitle
         FROM cart_tbl c
         JOIN product_tbl p ON c.idproduct=p.id
         JOIN color_tbl r ON c.color=r.id
@@ -19,8 +19,31 @@ class model_payment extends Model
         JOIN seller_tbl s ON c.seller=s.id
         WHERE cookie = ?";
 
+
         $param = [$cookie];
         $result = $this->doSelect($sql, $param);
-        return $result;
+
+
+        $finalCartPrice = 0;
+        foreach ($result as $row) {
+            $priceTotal = $row['price'] * $row['count'];
+            $finalCartPrice = $finalCartPrice + $priceTotal;
+        }
+
+        $finalCartDiscount = 0;
+        foreach ($result as $row) {
+            $discountTotal = ($row['discount'] * $row['price']) / 100 * $row['count'];
+            $finalCartDiscount = $finalCartDiscount + $discountTotal;
+        }
+
+        parent::sesionInit();
+        $postInfo = parent::sessionOnGet('$post');
+
+
+        return [$result, $finalCartPrice, $finalCartDiscount, $postInfo];
     }
+
+
+
+
 }

@@ -40,6 +40,11 @@ class Shipping extends Controller
         $this->model->deleteAddress($_POST);
     }
 
+    function sessionPost($dataPost)
+    {
+        $this->model->sessionPost($dataPost);
+    }
+
 }
 
 

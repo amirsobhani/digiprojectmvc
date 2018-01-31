@@ -218,8 +218,12 @@ $cart = $data['cart'];
                 <div class="shipping">
                     <div class="right">
                         <div class="sel-post">
-                            <input type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="post">
-                            <label class="<?php if ($first == 1) {echo 'checked';} ?>"></label>
+                            <input data-post="<?= $row['id'] ?>" type="radio" <?php if ($first == 1) {
+                                echo 'checked';
+                            } ?> name="post">
+                            <label class="<?php if ($first == 1) {
+                                echo 'checked';
+                            } ?>"></label>
                         </div>
                         <div class="ship-img">
                             <img src="<?= $row['img'] ?>"/>
@@ -241,7 +245,8 @@ $cart = $data['cart'];
                         </span>
                     </div>
                 </div>
-                <?php $first = 0; } ?>
+                <?php $first = 0;
+            } ?>
         </div>
         <div class="next-shipment">
 					<span class="next-shipment-btn">
@@ -255,7 +260,8 @@ $cart = $data['cart'];
             </p>
             <form>
 						<span class="factor-pack-radio">
-							<input type="radio" checked name="factor-pack" value="no" autocomplete="on" onclick="factorY(this)">خیر
+							<input type="radio" checked name="factor-pack" value="no" autocomplete="on"
+                                   onclick="factorY(this)">خیر
 						</span>
                 <span class="factor-pack-radio">
 							<input type="radio" name="factor-pack" value="yes" autocomplete="off"
@@ -277,6 +283,22 @@ $cart = $data['cart'];
         </div>
     </div>
 </div>
+<script>
+    sessionPost();
+
+    $('.sel-post input').click(function () {
+        sessionPost();
+    });
+
+    function sessionPost() {
+        var dataPost = $('.sel-post').find('input:checked').attr('data-post');
+        var url = 'shipping/sessionPost' + dataPost;
+        var data = {};
+        $.post(url, data, function (msg) {
+//            console.log(msg);
+        })
+    }
+</script>
 <script>
     function scroll(direction, tag) {
 

@@ -301,7 +301,7 @@ $address = $data['address'];
                             </div>
                         </div>
                         <div class="address-select">
-                            <input type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="address">
+                            <input data-address = "<?= $row['id'] ?>" type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="address">
                             <label class="<?php if ($first == 1) {echo 'checked';} ?>"></label>
                             <span class="address-txt">
 							به این آدرس ارسال می‌شود .
@@ -325,6 +325,8 @@ $address = $data['address'];
     <div class="prev-address" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x" aria-hidden="true"></i>
     </div>
 </div><!-----addressScroll----->
+
+
 <script>
     function deleteAddress(addressId) {
         var url = 'shipping/deleteAddress';

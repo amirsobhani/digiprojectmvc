@@ -95,4 +95,16 @@ class model_shipping extends Model
         $param = [$addressId];
         $this->idu($sql, $param);
     }
+
+    function sessionPost($dataPost)
+    {
+//        $postId = $data['dataPost'];
+
+        $sql = 'SELECT * FROM post_tbl WHERE id=?';
+        $param = [$dataPost];
+        $result = $this->doSelect($sql, $param, 'fetch');
+        parent::sesionInit();
+        parent::sessionOnSet('post', serialize($result));
+
+    }
 }

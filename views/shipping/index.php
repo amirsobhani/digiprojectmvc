@@ -958,6 +958,8 @@
 </div>
 
 <script>
+
+
     function city(province) {
         var url = 'shipping/getCity/';
         var data = {'province': province};
