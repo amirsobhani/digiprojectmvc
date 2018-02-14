@@ -62,16 +62,22 @@
                     <p>انتخاب رنگ</p>
                     <ul class="color-list">
                         <?php
+                        $firstColor = 1;
                         $all_color = $result['all_color'];
                         foreach ($all_color as $color) {
                             ?>
-                            <li data-id="<?= $color['id'] ?>">
+                            <li <?php if ($firstColor == 1) {
+                                echo 'class="active"';
+                            } ?> data-id="<?= $color['id'] ?>">
 							<span class="product-back-color " style="background-color: <?= $color['hex'] ?>;">
-								<i class="fa fa-check color-check" aria-hidden="true"></i>
+								<i class="fa fa-check color-check <?php if ($firstColor == 1) {
+                                    echo 'activecheck';
+                                } ?>" aria-hidden="true"></i>
 							</span>
                                 <span data-id="28" class="color-name per-text"><?= $color['title'] ?></span>
                             </li>
                             <?php
+                            $firstColor = 0;
                         }
                         ?>
 
@@ -87,12 +93,16 @@
                         <ul class="subSelList" id="guarantee">
                             <?php
                             $all_guarantees = $result ['guarantee'];
+                            $firstGuarantee = 1;
                             foreach ($all_guarantees as $guarantee) {
                                 ?>
-                                <li data-id="<?= $guarantee['id'] ?>">
+                                <li <?php if ($firstGuarantee == 1) {
+                                    echo 'class="active"';
+                                } ?> data-id="<?= $guarantee['id'] ?>">
                                     <?= $guarantee['title'] ?>
                                 </li>
                                 <?php
+                                $firstGuarantee = 0;
                             }
                             ?>
                         </ul>
@@ -107,13 +117,15 @@
                         <i class="fa fa-angle-up up" aria-hidden="true"></i>
                         <ul class="subSelList" id="seller">
                             <?php
+                            $firstSeller = 1;
                             $all_seller = $result['seller'];
                             foreach ($all_seller as $seller) {
                                 ?>
-                                <li data-id="<?= $seller['id'] ?>">
+                                <li <?php if ($firstSeller == 1) {echo 'class="active"';} ?> data-id="<?= $seller['id'] ?>">
                                     <?= $seller['title']; ?>
                                 </li>
                                 <?php
+                                $firstSeller = 0;
                             }
                             ?>
                         </ul>
@@ -416,6 +428,7 @@
         border-radius: 3px;
         border: 1px solid #dfe5e8;
         margin-left: 15px;
+        margin-bottom: 8px;
     }
 
     .color-name {

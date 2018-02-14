@@ -10,7 +10,7 @@
             برای تکمیل فرآیند خرید خود وارد شوید
         </p>
         <div class="signIN-but dk-box">
-            <a>
+            <a href="login">
                 ورود به دیجی کالا
             </a>
         </div>
@@ -26,7 +26,7 @@
             برای تکمیل فرآیند خرید خود ثبت نام کنید
         </p>
         <div class="signUp-but dk-box">
-            <a>
+            <a href="register">
                 ثبت نام در دیجی کالا
             </a>
         </div>

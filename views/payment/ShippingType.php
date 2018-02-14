@@ -217,7 +217,13 @@
         color: green;
     }
 </style><!---ShippingType--->
-
+<?php
+$cart = $data ['cart'];
+$cartPrice = $data ['cartPrice'];
+$cartDiscount = $data ['cartDiscount'];
+$cartFinalPrice = $cartPrice - $cartDiscount;
+$postInfo = $data['postInfo'];
+?>
 <div id="ShippingType">
     <div class="product-pack">
         <div class="shipment-selection">
@@ -229,19 +235,13 @@
         <div class="scroll-slider">
             <div>
                 <h3>هزینه ارسال :</h3>
-                <h3>11500 تومان</h3>
+                <h3><?= $postInfo['price'] ?> تومان</h3>
             </div>
             <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
                                                                        aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
                     <?php
-                    $cart = $data ['cart'];
-                    $cartPrice = $data ['cartPrice'];
-                    $cartDiscount = $data ['cartDiscount'];
-                    $cartFinalPrice = $cartPrice - $cartDiscount;
-                    $postInfo = $data['postInfo'];
-
                     foreach ($cart as $row) {
                         ?>
                         <li>
