@@ -216,6 +216,34 @@
         direction: rtl;
         color: green;
     }
+
+    .coupon {
+        margin: 25px 8px;
+        direction: rtl;
+        font-size: 13px;
+    }
+
+    .coupon p {
+        display: inline-block;
+    }
+
+    .coupon button {
+        width: 110px;
+        line-height: 30px;
+        margin: 18px 0 40px 0;
+        font-family: iran-sans;
+        background-color: #208DE6;
+        border: 1px solid #ebeced;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .coupon input {
+        height: 22px;
+        vertical-align: middle;
+        margin: 0 15px;
+    }
 </style><!---ShippingType--->
 <?php
 $cart = $data ['cart'];
@@ -264,13 +292,29 @@ $postInfo = $data['postInfo'];
  <b style="color: #0d32ed"><?= $postInfo['introduction'] ?></b>
             </span>
         </div>
+        <div class="coupon">
+            <p>در صورت داشتن کد تخفیف آن را وارد کنید</p>
+            <input name="coupon">
+            <button onclick="coupon()">اعمال کد تخفیف</button>
+        </div>
         <div class="payment-price">
             <h3>جمع کل قابل پرداخت</h3>
-            <h3><?= $cartFinalPrice ?> تومان</h3>
+            <h3><span class="finalPay"><?= $cartFinalPrice + $postInfo['price'] ?></span> تومان</h3>
         </div>
     </div>
 </div>
 <script>
+
+    function coupon() {
+        var code = $('input[name="coupon"]').val();
+        var url = 'payment/coupon';
+        var data = {'coupon': code};
+        $.post(url, data, function (msg) {
+            console.log(msg);
+            $('.finalPay').text(msg);
+        }, 'json')
+    }
+
     function scroll(direction, tag) {
 
         var slideTag = $(tag);

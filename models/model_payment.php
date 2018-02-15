@@ -44,7 +44,14 @@ class model_payment extends Model
         return [$result, $finalCartPrice, $finalCartDiscount, $postInfo];
     }
 
-
+    function coupon($data)
+    {
+        $coupon = $data['coupon'];
+        $sql = 'SELECT * FROM coupon_tbl WHERE coupon=?';
+        $param = [$coupon];
+        $result = $this->doSelect($sql, $param, 'fetch');
+        return $result['discount'];
+    }
 
 
 }
