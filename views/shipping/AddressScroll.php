@@ -301,15 +301,20 @@ $address = $data['address'];
                             </div>
                         </div>
                         <div class="address-select">
-                            <input data-address = "<?= $row['id'] ?>" type="radio" <?php if ($first == 1) {echo 'checked';} ?> name="address">
-                            <label class="<?php if ($first == 1) {echo 'checked';} ?>"></label>
+                            <input data-address="<?= $row['id'] ?>" type="radio" <?php if ($first == 1) {
+                                echo 'checked';
+                            } ?> name="address" onclick="setAddress(<?= $row['id'] ?>)">
+                            <label class="<?php if ($first == 1) {
+                                echo 'checked';
+                            } ?>"></label>
                             <span class="address-txt">
 							به این آدرس ارسال می‌شود .
 				</span>
                         </div>
                     </div>
                 </li>
-            <?php $first=0; } ?>
+                <?php $first = 0;
+            } ?>
             <li class="main-li">
                 <div class="add-address" onclick="modal()">
 						<span>
@@ -328,6 +333,14 @@ $address = $data['address'];
 
 
 <script>
+    function setAddress(addresId) {
+        var url = 'shipping/setAddress';
+        var data = {'dataAddress': addresId};
+        $.post(url, data, function (msg) {
+
+        })
+    }
+
     function deleteAddress(addressId) {
         var url = 'shipping/deleteAddress';
         var data = {'addressId': addressId};

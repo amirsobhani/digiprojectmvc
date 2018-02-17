@@ -977,7 +977,7 @@
                 </a>
             </div>
             <div class="next-step">
-				<span>
+				<span onclick="setOrder()">
 					پرداخت و تکمیل خرید
 				</span>
             </div>
@@ -1092,6 +1092,9 @@
     }
 </style>
 <script>
+
+
+
     var input = $('.pay-ul').find('input');
     var firstTd = $('.first-td').find('input');
     var firstTdPay = $('.payment-table .first-td');

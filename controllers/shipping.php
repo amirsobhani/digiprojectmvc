@@ -45,6 +45,11 @@ class Shipping extends Controller
         $this->model->sessionPost($_POST);
     }
 
+    function setAddress()
+    {
+        $this->model->setAddress($_POST);
+    }
+
 }
 
 

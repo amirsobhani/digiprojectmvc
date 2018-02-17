@@ -104,6 +104,14 @@ class model_shipping extends Model
         $result = $this->doSelect($sql, $param, 'fetch');
         parent::sesionInit();
         parent::sessionOnSet('post', serialize($result));
-
+    }
+    function setAddress($data)
+    {
+        $dataAddress = $data['dataAddress'];
+        $sql = 'SELECT * FROM user_address_tbl WHERE id=?';
+        $param = [$dataAddress];
+        $result = $this->doSelect($sql, $param, 'fetch');
+        parent::sesionInit();
+        parent::sessionOnSet('Address', serialize($result));
     }
 }

@@ -29,11 +29,17 @@ class Payment extends Controller
         $cartPrice = $productCartInfo[1];
         $cartDiscount = $productCartInfo[2];
         $postInfo = $productCartInfo[3];
-        $total = $cartPrice + $postInfo['price'] - $cartDiscount;
-        $couponPrice = ($total * ((100 - $coupon) / 100));
+        $couponPrice = ($cartPrice * ((100 - $coupon) / 100));
+        $total = $couponPrice + $postInfo['price'] - $cartDiscount;
+
 //        $totalPrice = $total - $couponPrice;
 
-        echo json_encode($couponPrice);
+        echo json_encode($total);
+    }
+
+    function setOrder()
+    {
+        $this->model->setOrder($_POST);
     }
 
 

@@ -227,8 +227,9 @@
         display: inline-block;
     }
 
-    .coupon button {
+    .coupon span {
         width: 110px;
+        display: inline-block;
         line-height: 30px;
         margin: 18px 0 40px 0;
         font-family: iran-sans;
@@ -237,6 +238,7 @@
         border-radius: 4px;
         color: #fff;
         cursor: pointer;
+        text-align: center;
     }
 
     .coupon input {
@@ -252,58 +254,71 @@ $cartDiscount = $data ['cartDiscount'];
 $cartFinalPrice = $cartPrice - $cartDiscount;
 $postInfo = $data['postInfo'];
 ?>
-<div id="ShippingType">
-    <div class="product-pack">
-        <div class="shipment-selection">
-            <i class="fa fa-caret-left" aria-hidden="true"></i>
-            <h2>
-                لیست مرسوله‌ها
-            </h2>
-        </div>
-        <div class="scroll-slider">
-            <div>
-                <h3>هزینه ارسال :</h3>
-                <h3><?= $postInfo['price'] ?> تومان</h3>
+<form id="order" action="payment/setOrder" method="post">
+    <div id="ShippingType">
+        <div class="product-pack">
+            <div class="shipment-selection">
+                <i class="fa fa-caret-left" aria-hidden="true"></i>
+                <h2>
+                    لیست مرسوله‌ها
+                </h2>
             </div>
-            <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
-                                                                       aria-hidden="true"></i></div>
-            <div class="scroll-main">
-                <ul>
-                    <?php
-                    foreach ($cart as $row) {
-                        ?>
-                        <li>
-                            <a class="scroll-product">
-                                <img src="public/img/product gallery/<?= $row['id'] ?>/product220.jpg">
-                            </a>
-                        </li>
+            <div class="scroll-slider">
+                <div>
+                    <h3>هزینه ارسال :</h3>
+                    <h3><?= $postInfo['price'] ?> تومان</h3>
+                </div>
+                <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
+                                                                           aria-hidden="true"></i></div>
+                <div class="scroll-main">
+                    <ul>
                         <?php
-                    }
-                    ?>
-                </ul>
-            </div>
-            <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"
-                                                                        aria-hidden="true"></i></div>
-        </div><!--Scroll Slider-->
-        <div class="shipping-notice">
+                        foreach ($cart as $row) {
+                            ?>
+                            <li>
+                                <a class="scroll-product">
+                                    <img src="public/img/product gallery/<?= $row['id'] ?>/product220.jpg">
+                                </a>
+                            </li>
+                            <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"
+                                                                            aria-hidden="true"></i></div>
+            </div><!--Scroll Slider-->
+            <div class="shipping-notice">
             <span>این مرسوله توسط دیجی کالا و از طریق تحویل
                 <b style="color: #0d32ed"><?= $postInfo['post_type'] ?></b>
  به شما تحویل داده خواهد شد.
  <b style="color: #0d32ed"><?= $postInfo['introduction'] ?></b>
             </span>
-        </div>
-        <div class="coupon">
-            <p>در صورت داشتن کد تخفیف آن را وارد کنید</p>
-            <input name="coupon">
-            <button onclick="coupon()">اعمال کد تخفیف</button>
-        </div>
-        <div class="payment-price">
-            <h3>جمع کل قابل پرداخت</h3>
-            <h3><span class="finalPay"><?= $cartFinalPrice + $postInfo['price'] ?></span> تومان</h3>
+            </div>
+            <div class="coupon">
+                <p>در صورت داشتن کد تخفیف آن را وارد کنید</p>
+                <input name="coupon">
+                <span onclick="coupon()">اعمال کد تخفیف</span>
+            </div>
+            <div class="payment-price">
+                <h3>جمع کل قابل پرداخت</h3>
+                <h3><span class="finalPay"><?= $cartFinalPrice + $postInfo['price'] ?></span> تومان</h3>
+            </div>
         </div>
     </div>
-</div>
+    <?php
+    $cart = serialize($cart);
+    $postInfo = serialize($postInfo);
+    ?>
+    <input hidden name="cartPrice" value="<?= $cartPrice ?>">
+    <input hidden name="cartDiscount" value="<?= $cartDiscount ?>">
+    <input hidden name="postInfo" value="<?= $postInfo ?>">
+</form>
 <script>
+    function setOrder() {
+        $('#order').submit();
+    }
+
 
     function coupon() {
         var code = $('input[name="coupon"]').val();
