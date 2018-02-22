@@ -65,7 +65,8 @@ class model_payment extends Model
         $Address = parent::sessionOnGet('Address');
         $post = unserialize($post);
         $Address = unserialize($Address);
-
+        $cart = serialize($cart[0]);
+        print_r($cart);
         $postPrice = $post['price'];
 
         $mobile = $Address['mobile'];
@@ -76,14 +77,14 @@ class model_payment extends Model
         $user_family = $Address['user_name'];
         $user_id = $Address['user_id'];
 
-        $cartProductId = [];
-        foreach ($cart[0] as $row){
-            array_push($cartProductId, $row['id']);
-        }
-        $cartProductId = serialize($cartProductId);
+//        $cartProductId = [];
+//        foreach ($cart[0] as $row){
+//            array_push($cartProductId, $row['id']);
+//        }
+//        $cartProductId = serialize($cartProductId);
 
         $sql = 'INSERT INTO order_tbl (user_id, user_family, cart, cart_price, cart_discount, coupon, user_address, city, province, mobile, postal_code, post_price) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
-        $params = [$user_id, $user_family, $cartProductId, $cartPrice, $cartDiscount,$coupon, $addressInfo, $city, $province, $mobile, $postal_code, $postPrice];
+        $params = [$user_id, $user_family, $cart, $cartPrice, $cartDiscount,$coupon, $addressInfo, $city, $province, $mobile, $postal_code, $postPrice];
         $this->idu($sql, $params);
 
         //serialize parameter => cart

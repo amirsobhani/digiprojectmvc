@@ -280,7 +280,7 @@ $address = $data['address'];
                             </div>
                             <div class="complete-address">
                                 <span class="1st">آدرس :</span>
-                                <span class="2st">قم.خیابان صدوقی.خیابان یاسمن.پلاک120</span>
+                                <span class="2st"><?= $row['address'] ?></span>
                                 <div class="postal-code">
                                     کد پستی :<?= $row['postal_code'] ?>
                                 </div>

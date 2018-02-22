@@ -2,12 +2,14 @@
 
 class model_profile extends Model
 {
+    private $userId;
+
     function __construct()
     {
         parent::__construct();
         Model::sesionInit();
-        $session = Model::sessionOnGet('UserId');
-        if ($session == false) {
+        $userId = $this->userId = Model::sessionOnGet('UserId');
+        if ($userId == false) {
             header('location:' . URL . 'login');
         }
     }
@@ -16,4 +18,38 @@ class model_profile extends Model
     {
 
     }
+
+    function getProfile()
+    {
+        $userId = $this->userId;
+        $sql = 'SELECT * FROM users_tbl WHERE id=?';
+        $params = [$userId];
+        $result = $this->doSelect($sql, $params, 'fetch');
+        return $result;
+    }
+
+    function getOrder()
+    {
+        $userId = $this->userId;
+        $sql = 'SELECT * FROM order_tbl WHERE user_id=?';
+        $param = [$userId];
+        $result = $this->doSelect($sql, $param);
+        $i = 0;
+        foreach ($result as $row) {
+            $i++;
+        }
+        return [$result, $i];
+
+    }
+
+    function getMessage()
+    {
+        $userId = $this->userId;
+        $sql = 'SELECT * FROM message_tbl WHERE user_id=? ORDER BY id DESC';
+        $params = [$userId];
+        $result = $this->doSelect($sql, $params);
+        return $result;
+    }
+
+
 }

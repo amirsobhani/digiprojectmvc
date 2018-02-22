@@ -1,106 +1,120 @@
+<style>
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
 
+    HTML5 display-role reset for older browsers
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+
+    body {
+        line-height: 1;
+    }
+
+    ol, ul {
+        list-style: none;
+    }
+
+    blockquote, q {
+        quotes: none;
+    }
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    @font-face {
+        font-family: iran-sans;
+        src: url(public/font/IRANSansLight.ttf),
+        url(public/font/IRANSansLight.woff),
+        url(public/font/IRANSansMedium.ttf),
+        url(public/font/IRANSansMedium.woff);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .dk-box {
+        background-color: #fff;
+        border: 1px solid #ebeced;
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        -ms-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+</style>
 <style>
-        html, body, div, span, applet, object, iframe,
-        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-        a, abbr, acronym, address, big, cite, code,
-        del, dfn, em, img, ins, kbd, q, s, samp,
-        small, strike, strong, sub, sup, tt, var,
-        b, u, i, center,
-        dl, dt, dd, ol, ul, li,
-        fieldset, form, label, legend,
-        table, caption, tbody, tfoot, thead, tr, th, td,
-        article, aside, canvas, details, embed,
-        figure, figcaption, footer, header, hgroup,
-        menu, nav, output, ruby, section, summary,
-        time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-        HTML5 display-role reset for older browsers
-        article, aside, details, figcaption, figure,
-        footer, header, hgroup, menu, nav, section {
-            display: block;
-        }
-        body {
-            line-height: 1;
-        }
-        ol, ul {
-            list-style: none;
-        }
-        blockquote, q {
-            quotes: none;
-        }
-        blockquote:before, blockquote:after,
-        q:before, q:after {
-            content: '';
-            content: none;
-        }
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-        @font-face{
-            font-family: iran-sans;
-            src: url(public/font/IRANSansLight.ttf),
-            url(public/font/IRANSansLight.woff),
-            url(public/font/IRANSansMedium.ttf),
-            url(public/font/IRANSansMedium.woff);
-        }
-        a{
-            text-decoration: none;
-        }
-        .dk-box{
-            background-color: #fff;
-            border: 1px solid #ebeced;
-            -ms-border-radius: 4px;
-            border-radius: 4px;
-            -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-            -ms-box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-    </style>
-<style>
-    .tracking-order-table tr td{
-        padding: 15px 0!important;
+    .tracking-order-table tr td {
+        padding: 15px 0 !important;
         width: 33%;
     }
-    .order-track tr:last-child td{
+
+    .order-track tr:last-child td {
         padding: 0;
     }
-    .order-route{
+
+    .order-route {
         text-align: center;
         display: inline-block;
         margin-bottom: 50px;
     }
-    .order-route::after{
+
+    .order-route::after {
         content: "";
         display: block;
         clear: both;
     }
-    .order-route div.approved span{
+
+    .order-route div.approved span {
         background: #2396f3;
     }
-    .dashed{
+
+    .dashed {
         float: right;
         margin-top: 20px;
     }
 
-    .order-route ul li i{
+    .order-route ul li i {
         position: absolute;
         right: -21px;
         top: -5px;
         color: #FFFFFF;
         z-index: 2;
     }
-    .order-route ul li.approved{
+
+    .order-route ul li.approved {
         background: #2396f3;
         padding-left: 80px;
         height: 2px;
@@ -108,19 +122,23 @@
         position: relative;
         margin-left: 30px;
     }
-    .approved .state-circle{
-        border: 3px solid #2396f3!important;
+
+    .approved .state-circle {
+        border: 3px solid #2396f3 !important;
         background: #2396f3;
     }
-    .approved .state-title{
+
+    .approved .state-title {
         color: #2396f3;
     }
-    .order-route .state-title{
+
+    .order-route .state-title {
         position: absolute;
         right: -45px;
         top: 30px;
     }
-    .order-route .state-circle{
+
+    .order-route .state-circle {
         display: inline-block;
         direction: rtl;
         width: 18px;
@@ -131,7 +149,8 @@
         top: -10px;
         right: -27px;
     }
-    .order-route ul li{
+
+    .order-route ul li {
         padding-left: 80px;
         height: 2px;
         background: #dee1e7;
@@ -139,34 +158,40 @@
         position: relative;
         margin-left: 30px;
     }
-    .order-route ul li:last-child{
+
+    .order-route ul li:last-child {
         margin-left: 0;
     }
-    .order-route ul{
+
+    .order-route ul {
         float: right;
         margin: 20px 35px 0 10px;
     }
-    .order-route .dashed span{
+
+    .order-route .dashed span {
         display: inline-block;
         width: 11px;
         height: 2px;
         background: #ccc;
     }
-    .rotate{
+
+    .rotate {
         transform: rotate(180deg);
         transition-duration: 0.4s;
     }
 </style><!---order-track--->
 <style>
-    .order{
+    .order {
         width: 97%;
         margin: 0 auto;
         margin-bottom: 20px;
     }
-    .order > thead{
+
+    .order > thead {
         background: #eee;
     }
-    .order>thead>td{
+
+    .order > thead > td {
         border: 1px solid #e1e1e1;
         line-height: 22px;
         font-size: 12px;
@@ -175,97 +200,116 @@
         color: #6b6b6b;
         background: #f8f9fb;
     }
-    .order tr td{
+
+    .order tr td {
         border: 1px solid #e1e1e1;
         line-height: 22px;
         font-size: 12px;
         text-align: center;
         padding: 10px 0;
     }
-    .more-order-detail{
+
+    .more-order-detail {
         color: #6b6b6b;
         cursor: pointer;
     }
-    .more-order-detail i{
+
+    .more-order-detail i {
         position: relative;
         top: 9px;
     }
-    .button a{
+
+    .button a {
         display: inline-block;
         padding: 5px 10px;
         border: 1px solid #e2e2e2;
         border-radius: 4px;
         cursor: pointer;
     }
-    .sub-order{
-        margin:50px;
+
+    .sub-order {
+        margin: 50px;
     }
-    .sub-order h3{
+
+    .sub-order h3 {
         text-align: right;
         margin: 10px 0;
     }
-    .sub-order table{
+
+    .sub-order table {
         width: 100%;
     }
-    .sub-order table thead{
-        background-color: #ebecee!important;
+
+    .sub-order table thead {
+        background-color: #ebecee !important;
     }
 </style><!----Order--->
 <style>
-    #content{
+    #content {
         width: 1190px;
         margin: 0 auto;
         height: 100%;
         padding: 10px 0 100px 0;
     }
-    #main{
+
+    #main {
         background-image: url(public/img/1503990105pattern42.png);
-        background-color: rgb(238,239,241);
+        background-color: rgb(238, 239, 241);
         width: 100%;
         height: auto;
     }
-    body{
+
+    body {
         font-family: iran-sans;
     }
 </style>
 <style>
-    .report-wrapper{
+    .report-wrapper {
         margin-bottom: 10px;
     }
-    .report-wrapper header{
+
+    .report-wrapper header {
         background-color: #f8f9fb;
         padding: 8px 15px;
         font-size: 14px;
         direction: rtl;
     }
-    .report-info-wrapper{
+
+    .report-info-wrapper {
         direction: rtl;
         padding: 15px;
     }
-    .info-title{
+
+    .info-title {
         font-size: 15px;
     }
+
     .report-info-wrapper table {
         width: 100%;
         font-size: 11px;
         margin: 15px 0;
     }
-    .report-info-wrapper table tr{
-        line-height:22px;
+
+    .report-info-wrapper table tr {
+        line-height: 22px;
     }
-    .report-info-wrapper table tr td{
-        border:1px solid #eee;
+
+    .report-info-wrapper table tr td {
+        border: 1px solid #eee;
         padding: 10px 15px;
     }
-    ._txt{
+
+    ._txt {
         color: #2095f2;
         margin-right: 5px;
     }
-    .report-button-container{
+
+    .report-button-container {
         margin: 25px 0;
         direction: ltr;
     }
-    .report-button-container a{
+
+    .report-button-container a {
         padding: 8px 23px;
         font-size: 14px;
         color: #fff;
@@ -274,7 +318,17 @@
         background-color: #2196f3;
         border-radius: 2px;
     }
+
+    .msg-meta {
+        text-align: right;
+        font-size: 15px;
+    }
 </style><!--report-wrapper-->
+<?php
+$profile = $data['profile'];
+$orderInfo = $data['orderInfo'];
+$orderCount = $data['orderCount'];
+?>
 <div id="main">
     <div id="content">
         <div class="report-wrapper dk-box">
@@ -287,47 +341,55 @@
                     <tr>
                         <td>
                             <span class="title">نام و نام خانوادگی :</span>
-                            <span class="_txt">امیرحسین سبحانی</span>
+                            <span class="_txt"><?= $profile['family'] ?></span>
                         </td>
                         <td>
                             <span class="title">آدرس الکترونیک :</span>
-                            <span class="_txt">devi***************l.com</span>
+                            <span class="_txt"><?= $profile['email'] ?></span>
                         </td>
                         <td>
                             <span class="title">کد ملی :</span>
-                            <span class="_txt">037****313</span>
+                            <span class="_txt"><?= $profile['code_melli'] ?></span>
                         </td>
                         <td>
                             <span class="title">شماره تلفن ثابت  :</span>
-                            <span class="_txt">025**104</span>
+                            <span class="_txt"><?= $profile['tel'] ?></span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span class="title">شماره تلفن همراه  :</span>
-                            <span class="_txt">091*****964</span>
+                            <span class="_txt"><?= $profile['mobile'] ?></span>
                         </td>
                         <td>
                             <span class="title">تاریخ تولد :</span>
-                            <span class="_txt">1372</span>
+                            <span class="_txt"><?= $profile['birthday'] ?></span>
                         </td>
                         <td>
                             <span class="title">جنسیت :</span>
-                            <span class="_txt">مرد</span>
+                            <span class="_txt"><?= $profile['sex'] ?></span>
                         </td>
                         <td>
                             <span class="title">محل سکونت  :</span>
-                            <span class="_txt">قم ، قم</span>
+                            <span class="_txt"><?= $profile['location'] ?></span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span class="title">شماره کارت :</span>
-                            <span class="_txt">xxxx-xxxx-xxxx-9103</span>
+                            <span class="_txt"><?= $profile['credit_card'] ?></span>
                         </td>
                         <td>
                             <span class="title">دریافت خبرنامه : </span>
-                            <span class="_txt">✔</span>
+                            <?php if ($profile['feed'] == 1) {
+                                ?>
+                                <span class="_txt">✔</span>
+                                <?php
+                            } else {
+                                ?>
+                                <span class="_txt">×</span>
+                                <?php
+                            } ?>
                         </td>
                         <td>
                             <span class="title"></span>
@@ -354,7 +416,7 @@
                     <tr>
                         <td>
                             <span class="title">تعداد کل سفارشات :</span>
-                            <span class="_txt"></span>
+                            <span class="_txt"><?= $orderCount ?></span>
                         </td>
                         <td>
                             <span class="title">کل دیجی بن دریافتی:</span>
@@ -371,7 +433,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="title">کل دیجی بن مصرفی</span>
+                            <span class="title">کل دیجی بن مصرفی :</span>
                             <span class="_txt"></span>
                         </td>
                         <td>
@@ -430,10 +492,10 @@
             <header>
                 <div id="navbar">
                     <ul class="product-tab-header dk-box">
-                        <li class="active">
+                        <li class="messageLi active">
                             پیغام های من
                         </li>
-                        <li>
+                        <li class="myOrder">
                             سفارشات من
                         </li>
                         <li>
@@ -462,10 +524,10 @@
             </header>
             <article id="tab">
                 <?php
-                    require ('ItemTab1.php');
-                    require ('ItemTab2.php');
-                    require ('ItemTab3.php');
-                    require ('ItemTab4.php');
+                require('ItemTab1.php');
+                require('ItemTab2.php');
+                require('ItemTab3.php');
+                require('ItemTab4.php');
                 ?>
             </article>
         </section>

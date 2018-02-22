@@ -307,12 +307,14 @@ $postInfo = $data['postInfo'];
         </div>
     </div>
     <?php
-    $cart = serialize($cart);
+//    $cart = serialize($cart);
     $postInfo = serialize($postInfo);
+
     ?>
     <input hidden name="cartPrice" value="<?= $cartPrice ?>">
     <input hidden name="cartDiscount" value="<?= $cartDiscount ?>">
     <input hidden name="postInfo" value="<?= $postInfo ?>">
+    <textarea  name="cartInfo"><?= $cart ?></textarea>
 </form>
 <script>
     function setOrder() {

@@ -903,7 +903,6 @@
         require('Breadcrumb.php');
         require('OrderRoute.php');
         require('ShippingType.php');
-
         ?>
         <div class="payment">
             <header>
