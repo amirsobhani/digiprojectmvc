@@ -9,6 +9,9 @@
     <link href="public/css/flipTimer.css" rel="stylesheet" type="text/css"/>
     <script src="public/js/jquery.flipTimer.js"></script>
 
+    <script src="public/js/jquery-ui-slider/jquery-ui-slider-pips.js"></script>
+    <link href="public/js/jquery-ui-slider/jquery-ui-slider-pips.css" rel="stylesheet" type="text/css">
+
 
     <style>
         html, body, div, span, applet, object, iframe,
