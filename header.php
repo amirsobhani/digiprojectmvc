@@ -9,8 +9,9 @@
     <link href="public/css/flipTimer.css" rel="stylesheet" type="text/css"/>
     <script src="public/js/jquery.flipTimer.js"></script>
 
-    <script src="public/js/jquery-ui-slider/jquery-ui-slider-pips.js"></script>
-    <link href="public/js/jquery-ui-slider/jquery-ui-slider-pips.css" rel="stylesheet" type="text/css">
+    <script src="public/js/jquery-ui.js"></script>
+    <script src="public/js/Flat-Style-Slider/slider.js"></script>
+    <link href="public/js/Flat-Style-Slider/style.css" rel="stylesheet" type="text/css">
 
 
     <style>

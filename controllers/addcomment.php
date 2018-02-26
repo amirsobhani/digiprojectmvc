@@ -6,8 +6,12 @@ class addcomment extends Controller
     {
 
     }
-    function index()
+
+    function index($productId)
     {
-        $this->View('addcomment/index');
+        $commentParam = $this->model->index($productId);
+        $productInfo = $this->model->getProductInfo($productId);
+        $data = ['productInfo' => $productInfo, 'commentParam' => $commentParam];
+        $this->View('addcomment/index', $data);
     }
 }
