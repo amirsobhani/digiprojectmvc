@@ -4,7 +4,7 @@
     <base href="<?= URL ?>">
     <meta charset="utf-8">
     <title>فروشگاه دی جی کالا</title>
-    <link href="public/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="public/fontawesome-free-5.0.7/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
     <script src="public/js/jquery-3.2.1.min.js"></script>
     <link href="public/css/flipTimer.css" rel="stylesheet" type="text/css"/>
     <script src="public/js/jquery.flipTimer.js"></script>

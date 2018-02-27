@@ -10,10 +10,6 @@ class model_addcomment extends Model
     function index($productId)
     {
         $productInfo = $this->getProductInfo($productId);
-
-//        $sql = 'SELECT comment_param_tbl.*, product_tbl.title as productTitle, product_tbl.product_model
-//        FROM comment_param_tbl
-//        LEFT JOIN product_tbl ON comment_param_tbl.idcategory=product_tbl.idcategory';
         $sql = 'SELECT * FROM comment_param_tbl WHERE idcategory=?';
         $result = $this->doSelect($sql, [$productInfo['idcategory']]);
         return $result;
@@ -24,5 +20,26 @@ class model_addcomment extends Model
         $sql = 'SELECT * FROM product_tbl WHERE id=?';
         $result = $this->doSelect($sql, [$productId], 'fetch');
         return $result;
+    }
+
+    function setComment($data)
+    {
+        Model::sesionInit();
+        $userId = $this->userId = Model::sessionOnGet('UserId');
+        if ($userId == false) {
+            header('location:' . URL . 'login');
+        }
+        $title = $data['title'];
+        $posotive = $data['posotive'];
+        $negative = $data['negative'];
+        $content = $data['content'];
+        $productId = $data['productId'];
+        $commentParamId = $this->index($productId);
+        $values = [];
+//        foreach ($commentParamId as $row) {
+//            $row['id'] = $data['value_' . $row['id'].']
+//            array_push($values, );
+//        }
+
     }
 }

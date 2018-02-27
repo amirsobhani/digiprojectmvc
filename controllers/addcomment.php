@@ -14,4 +14,8 @@ class addcomment extends Controller
         $data = ['productInfo' => $productInfo, 'commentParam' => $commentParam];
         $this->View('addcomment/index', $data);
     }
+    function setComment()
+    {
+        $this->model->setComment($_POST);
+    }
 }
