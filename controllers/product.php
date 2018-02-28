@@ -32,7 +32,9 @@ class Product extends Controller
         $question = $getQuestion[0];
         $answer = $getQuestion[1];
 
-        $data = [$description, $fanni, $comment_param_name, $getComment, $comment_param_rate, $question, $answer];
+        $productInfo = $this->model->productInfo($id);
+
+        $data = [$description, $fanni, $comment_param_name, $getComment, $comment_param_rate, $question, $answer, $productInfo];
         $this->View('product/ItemTab' . $number . '', $data, 'NoHeader', 'NoFooter');
     }
 

@@ -69,7 +69,8 @@
     }
 
     .flat-slider .ui-slider-handle {
-        background-color: #666;
+        background-color: #fff;
+        border: 1px solid #A2A2A1;
     }
 
     .commentForm {
@@ -145,6 +146,14 @@
         margin: 10px 0;
     }
 
+    .pos label {
+        color: #4EAF52;
+    }
+
+    .neg label {
+        color: #ff5153;
+    }
+
     .commentForm button {
         width: 110px;
         line-height: 40px;
@@ -162,12 +171,16 @@
         clear: both;
         display: block;
     }
+
+    .flat-slider .ui-widget-content {
+        background-color: #69CA6D;
+    }
 </style>
 <div class="main">
     <div class="content">
         <?php
         error_reporting(E_ERROR | E_PARSE);
-        include URL."core/jdf.php";
+        include URL . "core/jdf.php";
         require('Breadcrumb.php');
         $productInfo = $data['productInfo'];
         $commentParam = $data['commentParam'];
@@ -280,7 +293,7 @@
     }
 
     $(".flat-slider").flatslider({
-        min: 1,
+        min: 0,
         max: 5,
         step: 1,
         value: 3,

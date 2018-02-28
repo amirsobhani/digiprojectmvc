@@ -9,10 +9,19 @@
         <?php
         $comment_params = $data[2];
         $comment_params_rate = $data[4];
+        $productInfo = $data[7];
+        $getComment = $data[3];
+
+        $avarageRateTotal = 0;
+        $commentCount = count($comment_params);
         foreach ($comment_params as $param) {
             $avarage_rate = $comment_params_rate[$param['id']];
             $full_rate = floor($avarage_rate);
             $part_rate = 100 * ($avarage_rate - $full_rate);
+//            print_r($part_rate);
+//            array_push($avarageRateTotal, $avarage_rate);
+            $avarageRateTotal = $avarageRateTotal + $avarage_rate;
+//            print_r($avarage_rate);
             ?>
             <div class="rated">
             <span class="rate-title">
@@ -37,24 +46,27 @@
                         <?php
                     }
                     ?>
-                    <span class="numberRate"><?= $avarage_rate ?></span>
+                    <span class="numberRate"><?= round($avarage_rate, 1) ?></span>
                 </ul>
             </div>
             <?php
         }
+        $avarageRateTotal = $avarageRateTotal / $commentCount;
         ?>
     </div><!--comment-rate-->
     <div class="set-comment">
         <div class="txt-count">
-            <span>۳.۹</span>
-            <span>/۵</span>
-            <span>( ۱۶۱۰ نفر )</span>
+            <span><?= round($avarageRateTotal, 1) ?></span>
+            <span>/5</span>
+<!--            <span>( ۱۶۱۰ نفر )</span>-->
         </div>
         <p>شما هم می توانید در مورد این کالا نظر بدهید.</p>
         <span class="sing-war">
 										برای ثبت نظرات، نقد و بررسی شما لازم است ابتدا وارد حساب کاربری خود شوید. اگر این محصول را قبلا از دیجی کالا خریده باشید، نظر شما به عنوان مالک محصول ثبت خواهد شد.
 									</span>
-        <button>نظر خود را بنویسید</button>
+        <a href="addcomment/index/<?= $productInfo['id'] ?>">
+            <button>نظر خود را بنویسید</button>
+        </a>
     </div>
 </div><!--set-comment-->
 <div id="last-comment">
@@ -62,7 +74,7 @@
         <i class="fa fa-caret-left" aria-hidden="true"></i>
         نظرات کاربران
     </h2>
-    <span class="comment-count">(۷۵۳ نظر )</span>
+    <span class="comment-count">(<?= count($getComment) ?> نظر )</span>
     <div class="comment-sort">
         <span>مرتب سازی بر اساس :</span>
         <ul>
@@ -86,7 +98,6 @@
     </div>
 
     <?php
-    $getComment = $data[3];
     foreach ($getComment as $comment) {
         ?>
         <div class="user-comment">

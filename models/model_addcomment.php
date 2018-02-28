@@ -47,9 +47,10 @@ class model_addcomment extends Model
         $negative = serialize($negative);
         $values = serialize($values);
 
-        $sql = 'INSERT INTO comment_tbl (user, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO comment_tbl (user_id, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
         $params = [$userId, $title, $content, $date, $posotive, $negative, $productId, $values];
         $this->idu($sql, $params);
+        header('location:' . URL . 'product/index/'.$productId);
 
     }
 }
