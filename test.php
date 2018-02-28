@@ -8,10 +8,13 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+include 'core/jdf.php';
+?>
 <div class="div">
-    <div style="float: right;width: 100px;height: 100px; background: red;"></div>
-    <div style="float: right;width: 100px;height: 100px; background: blue;"></div>
-    <div style="float: right;width: 100px;height: 100px; background: yellow;"></div>
+    <?php
+    print jdate("j F Y - h:s", time());
+    ?>
 </div>
 </body>
 </html>

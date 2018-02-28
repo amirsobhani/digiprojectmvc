@@ -34,12 +34,22 @@ class model_addcomment extends Model
         $negative = $data['negative'];
         $content = $data['content'];
         $productId = $data['productId'];
-        $commentParamId = $this->index($productId);
+        $date = $data['date'];
+        $commentParam = $this->index($productId);
         $values = [];
-//        foreach ($commentParamId as $row) {
-//            $row['id'] = $data['value_' . $row['id'].']
-//            array_push($values, );
-//        }
+        foreach ($commentParam as $row) {
+            $paramId = $row['id'];
+            $value = $_POST['value_'.$paramId];
+            $values [$paramId] = $value;
+        }
+
+        $posotive = serialize($posotive);
+        $negative = serialize($negative);
+        $values = serialize($values);
+
+        $sql = 'INSERT INTO comment_tbl (user, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
+        $params = [$userId, $title, $content, $date, $posotive, $negative, $productId, $values];
+        $this->idu($sql, $params);
 
     }
 }

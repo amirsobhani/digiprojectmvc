@@ -166,6 +166,8 @@
 <div class="main">
     <div class="content">
         <?php
+        error_reporting(E_ERROR | E_PARSE);
+        include URL."core/jdf.php";
         require('Breadcrumb.php');
         $productInfo = $data['productInfo'];
         $commentParam = $data['commentParam'];
@@ -248,6 +250,7 @@
                     <textarea class="textarea" name="content"></textarea>
                 </div>
                 <input name="productId" type="hidden" value="<?= $productInfo['id'] ?>">
+                <input name="date" type="hidden" value="<?= jdate("j F Y - h:s", time()); ?>">
                 <button>ثبت نظر</button>
             </div>
         </form>
