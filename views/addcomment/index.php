@@ -206,10 +206,12 @@
                     <div class="rate">
                         <div class="rowRight">
                             <?php
+                            $commentRate = unserialize($comment['params']);
                             foreach ($commentRight as $right) {
                                 ?>
                                 <h4><?= $right['title'] ?></h4>
-                                <input name="value_<?= $right['id'] ?>" type="hidden" value="3" class="flat-slider">
+                                <input data-val="<?= $commentRate[$right['id']] ?>" name="value_<?= $right['id'] ?>"
+                                       type="hidden" value="<?= $commentRate[$right['id']] ?>" class="flat-slider">
                                 <?php
                             }
                             ?>
@@ -219,7 +221,8 @@
                             foreach ($commentLeft as $left) {
                                 ?>
                                 <h4><?= $left['title'] ?></h4>
-                                <input name="value_<?= $left['id'] ?>" type="hidden" value="3" class="flat-slider">
+                                <input data-val="<?= $commentRate[$left['id']] ?>" name="value_<?= $left['id'] ?>"
+                                       type="hidden" value="<?= $commentRate[$right['id']] ?>" class="flat-slider">
                                 <?php
                             }
                             ?>
@@ -235,7 +238,7 @@
                     <label>
                         عنوان نقد و بررسی شما (اجباری)
                     </label>
-                    <input name="title" maxlength="50">
+                    <input name="title" maxlength="50" value="<?= $comment['title'] ?>">
                     <div class="pos-neg">
                         <div class="right">
                             <?php
@@ -248,7 +251,7 @@
                                     </label>
                                     <input name="posotive[]" maxlength="25" value="<?= $pos ?>">
                                     <i class="fas fa-plus-circle" onclick="plus(plus, this)"></i>
-                                    <i class="fas fa-minus-circle"></i>
+                                    <i class="fas fa-minus-circle" onclick="minus(plus, this)"></i>
                                 </div>
                                 <?php
                             }
@@ -258,7 +261,6 @@
                         <div class="left">
                             <?php
                             $negative = unserialize($comment['negative']);
-                            print_r($negative);
                             foreach ($negative as $neg) {
                                 ?>
                                 <div class="neg">
@@ -267,7 +269,7 @@
                                     </label>
                                     <input name="negative[]" maxlength="25" value="<?= $neg ?>">
                                     <i class="fas fa-plus-circle" onclick="plus(negative, this)"></i>
-                                    <i class="fas fa-minus-circle"></i>
+                                    <i class="fas fa-minus-circle" onclick="minus(negative, this)"></i>
                                 </div>
                                 <?php
                             }
@@ -277,7 +279,7 @@
                     <label>
                         متن نقد و بررسی شما (اجباری)
                     </label>
-                    <textarea class="textarea" name="content"></textarea>
+                    <textarea class="textarea" name="content"><?= $comment['content'] ?></textarea>
                 </div>
                 <input name="productId" type="hidden" value="<?= $productInfo['id'] ?>">
                 <input name="date" type="hidden" value="<?= jdate("j F Y - h:s", time()); ?>">
@@ -288,6 +290,7 @@
 </div>
 <script>
     var negative;
+
 
     function plus(mood, tag) {
         if (mood == plus) {
@@ -301,11 +304,17 @@
     }
 
     function minus(mood, tag) {
+        var ngL = $('.neg').length;
+        var psL = $('.pos').length;
+
         if (mood == plus) {
-            $(tag).parent('.pos').remove();
-        }
-        if (mood == negative) {
-            $(tag).parent('.neg').remove();
+            if (psL > 1) {
+                $(tag).parent('.pos').remove();
+            }
+        } else {
+            if (ngL > 1) {
+                $(tag).parent('.neg').remove();
+            }
         }
     }
 

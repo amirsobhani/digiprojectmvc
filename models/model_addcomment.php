@@ -20,8 +20,6 @@ class model_addcomment extends Model
         $getsql = 'SELECT * FROM comment_tbl WHERE user_id=? AND idproduct=?';
         $getParam = [$userId, $productId];
         $comment = $this->doSelect($getsql, $getParam, 'fetch');
-        print_r($comment);
-
 
         return [$result, $comment];
     }
@@ -51,7 +49,7 @@ class model_addcomment extends Model
         $values = [];
         foreach ($commentParam as $row) {
             $paramId = $row['id'];
-            $value = $_POST['value_'.$paramId];
+            $value = $_POST['value_' . $paramId];
             $values [$paramId] = $value;
         }
 
@@ -59,11 +57,16 @@ class model_addcomment extends Model
         $negative = serialize($negative);
         $values = serialize($values);
 
-        $sql = 'INSERT INTO comment_tbl (user_id, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
-        $params = [$userId, $title, $content, $date, $posotive, $negative, $productId, $values];
-        $this->idu($sql, $params);
-        header('location:' . URL . 'product/index/'.$productId);
+        if (isset($indexData[1])) {
+            $sql = 'UPDATE comment_tbl SET title=?, content=?, date=?, posotive=?, negative=?, params=? WHERE user_id=? AND idproduct=?';
+            $params = [ $title, $content, $date, $posotive, $negative, $values ,$userId , $productId];
+        } else {
+            $sql = 'INSERT INTO comment_tbl (user_id, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
+            $params = [$userId, $title, $content, $date, $posotive, $negative, $productId, $values];
+        }
 
+        $this->idu($sql, $params);
+        header('location:' . URL . 'addcomment/index/' . $productId);
     }
 
 }
