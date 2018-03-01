@@ -243,54 +243,54 @@ idcategory</ColNames>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="68" parent="15" name="user">
-      <Position>2</Position>
-      <DataType>int(255)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="69" parent="15" name="title">
+    <column id="68" parent="15" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="70" parent="15" name="content">
+    <column id="69" parent="15" name="content">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="71" parent="15" name="date">
+    <column id="70" parent="15" name="date">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="72" parent="15" name="posotive">
+    <column id="71" parent="15" name="posotive">
       <Position>6</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="73" parent="15" name="negative">
+    <column id="72" parent="15" name="negative">
       <Position>7</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="74" parent="15" name="like">
+    <column id="73" parent="15" name="like">
       <Position>8</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="75" parent="15" name="dislike">
+    <column id="74" parent="15" name="dislike">
       <Position>9</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="76" parent="15" name="idproduct">
+    <column id="75" parent="15" name="idproduct">
       <Position>10</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="77" parent="15" name="params">
+    <column id="76" parent="15" name="params">
       <Position>11</Position>
       <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="15" name="user_id">
+      <Position>2</Position>
+      <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="78" parent="15" name="PRIMARY">

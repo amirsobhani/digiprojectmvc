@@ -9,10 +9,21 @@ class model_addcomment extends Model
 
     function index($productId)
     {
+        Model::sesionInit();
+        $userId = $this->userId = Model::sessionOnGet('UserId');
+
         $productInfo = $this->getProductInfo($productId);
         $sql = 'SELECT * FROM comment_param_tbl WHERE idcategory=?';
         $result = $this->doSelect($sql, [$productInfo['idcategory']]);
-        return $result;
+
+
+        $getsql = 'SELECT * FROM comment_tbl WHERE user_id=? AND idproduct=?';
+        $getParam = [$userId, $productId];
+        $comment = $this->doSelect($getsql, $getParam, 'fetch');
+        print_r($comment);
+
+
+        return [$result, $comment];
     }
 
     function getProductInfo($productId)
@@ -35,7 +46,8 @@ class model_addcomment extends Model
         $content = $data['content'];
         $productId = $data['productId'];
         $date = $data['date'];
-        $commentParam = $this->index($productId);
+        $indexData = $this->index($productId);
+        $commentParam = $indexData[0];
         $values = [];
         foreach ($commentParam as $row) {
             $paramId = $row['id'];
@@ -53,4 +65,5 @@ class model_addcomment extends Model
         header('location:' . URL . 'product/index/'.$productId);
 
     }
+
 }

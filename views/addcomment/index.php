@@ -184,6 +184,7 @@
         require('Breadcrumb.php');
         $productInfo = $data['productInfo'];
         $commentParam = $data['commentParam'];
+        $comment = $data['comment'];
         $commentParamLength = count($commentParam);
         $commentParamRight = ceil($commentParamLength / 2);
         $commentParamLeft = $commentParamLength - $commentParamRight;
@@ -237,24 +238,40 @@
                     <input name="title" maxlength="50">
                     <div class="pos-neg">
                         <div class="right">
-                            <div class="pos">
-                                <label>
-                                    نقاط قوت
-                                </label>
-                                <input name="posotive[]" maxlength="25">
-                                <i class="fas fa-plus-circle" onclick="plus(plus, this)"></i>
-                                <i class="fas fa-minus-circle"></i>
-                            </div>
+                            <?php
+                            $posotive = unserialize($comment['posotive']);
+                            foreach ($posotive as $pos) {
+                                ?>
+                                <div class="pos">
+                                    <label>
+                                        نقاط قوت
+                                    </label>
+                                    <input name="posotive[]" maxlength="25" value="<?= $pos ?>">
+                                    <i class="fas fa-plus-circle" onclick="plus(plus, this)"></i>
+                                    <i class="fas fa-minus-circle"></i>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
                         </div>
                         <div class="left">
-                            <div class="neg">
-                                <label>
-                                    نقاط ضعف
-                                </label>
-                                <input name="negative[]" maxlength="25">
-                                <i class="fas fa-plus-circle" onclick="plus(negative, this)"></i>
-                                <i class="fas fa-minus-circle"></i>
-                            </div>
+                            <?php
+                            $negative = unserialize($comment['negative']);
+                            print_r($negative);
+                            foreach ($negative as $neg) {
+                                ?>
+                                <div class="neg">
+                                    <label>
+                                        نقاط ضعف
+                                    </label>
+                                    <input name="negative[]" maxlength="25" value="<?= $neg ?>">
+                                    <i class="fas fa-plus-circle" onclick="plus(negative, this)"></i>
+                                    <i class="fas fa-minus-circle"></i>
+                                </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <label>
