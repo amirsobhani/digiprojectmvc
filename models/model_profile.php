@@ -51,5 +51,16 @@ class model_profile extends Model
         return $result;
     }
 
+    function getComment()
+    {
+        $userId = $this->userId;
+        $sql = 'SELECT comment_tbl.*, product_tbl.title AS productTitle FROM comment_tbl
+                LEFT JOIN product_tbl ON comment_tbl.idproduct = product_tbl.id
+                WHERE user_id=?';
+        $result = $this->doSelect($sql, [$userId]);
+        return $result;
+
+    }
+
 
 }

@@ -10,10 +10,11 @@ class Profile extends Controller
     {
         $profile = $this->model->getProfile();
         $order = $this->model->getOrder();
+        $comment = $this->model->getComment();
         $orderInfo = $order[0];
         $orderCount = $order[1];
 
-        $data = ['profile' => $profile, 'orderInfo' => $orderInfo, 'orderCount' => $orderCount];
+        $data = ['profile' => $profile, 'orderInfo' => $orderInfo, 'orderCount' => $orderCount, 'comment' => $comment];
         $this->View('profile/index', $data);
     }
 

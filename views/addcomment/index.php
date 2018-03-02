@@ -103,6 +103,9 @@
         width: 250px;
         line-height: 24px;
         border: 1px solid #b2b2b2;
+        font-family: iran-sans;
+        font-size: 13px;
+        padding-right: 10px;
     }
 
     .pos-neg {
@@ -134,11 +137,13 @@
         height: 220px;
         border: 1px solid #b2b2b2;
         padding: 15px;
+        font-family: iran-sans;
+        font-size: 13px;
     }
 
     .pos-neg .right, .pos-neg .left {
         float: right;
-        width: 36%;
+        width: 37%;
         display: inline-block;
     }
 
