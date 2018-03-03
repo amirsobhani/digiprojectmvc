@@ -13,27 +13,27 @@ $comment = $data['comment'];
                 <td>تاریخ</td>
                 <td>عنوان</td>
                 <td>محصول</td>
-                <td>مشاهده</td>
+                <td>مشاهده محصول</td>
                 <td>ویرایش نظر</td>
                 <td>جزئیات</td>
             </tr>
             </thead>
             <tr>
-                <td><?= $i ?></td>
-                <td><?= $row['date'] ?></td>
+                <td width="5%"><?= $i ?></td>
+                <td width="15%"><?= $row['date'] ?></td>
                 <td><?= $row['title'] ?></td>
                 <td><?= $row['productTitle'] ?></td>
-                <td>
-                    <a>
+                <td width="10%">
+                    <a target="_blank" href="product/index/<?= $row['idproduct'] ?>/<?= $row['idcategory'] ?>">
                         <i class="fas fa-eye fa-2x"></i>
                     </a>
                 </td>
-                <td>
-                    <a href="addcomment/index/<?= $row['idproduct'] ?>">
+                <td width="10%">
+                    <a target="_blank" href="addcomment/index/<?= $row['idproduct'] ?>">
                         <i class="far fa-edit fa-2x"></i>
                     </a>
                 </td>
-                <td onclick="moreDetaile(this)" class="more-order-detail"><i class="fa fa-angle-down fa-3x"></i></td>
+                <td width="10%" onclick="moreDetaile(this)" class="more-order-detail"><i class="fa fa-angle-down fa-3x"></i></td>
             </tr>
             <tr style="display: none;">
                 <td colspan="8">
@@ -50,62 +50,6 @@ $comment = $data['comment'];
     }
     ?>
 </div><!--item-tab 1-->
-<script>
-    function moreDetaile(tag) {
-        $(tag).find('i').toggleClass('rotate');
-        $(tag).parents('tr').next().slideToggle(200);
-    }
-
-    $('.messageLi').click(function () {
-        var refresh = '<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>';
-        var orderTable = $('.item-tab').eq(0).find('.order');
-        var url = 'profile/getMessage';
-        var data = {};
-        $.post(url, data, function (msg) {
-            orderTable.remove();
-            orderTable.html(refresh);
-            message(msg);
-        }, 'json');
-    });
-
-    function message(msg) {
-        var i = 1;
-        $.each(msg, function (index, value) {
-            var messageTable = '<table class="order"><thead><tr><td>ردیف</td><td>تاریخ</td><td>وضعیت</td><td>جزئیات</td></tr></thead><tr><td>' + i + '</td><td>' + value['date'] + '</td><td>خوانده نشده</td><td onclick="moreDetaile(this)" class="more-order-detail"><i class="fa fa-angle-down fa-3x"></i></td></tr><tr style="display: none;"><td colspan="8"><div class="sub-order"><div class="msg-meta">' + value['content'] + '</div></div></td></tr></table>';
-            i++;
-            $('.item-tab').eq(0).append(messageTable);
-        })
-    }
-
-    $('.tabListChild h3').click(function () {
-        var tabContent = $(this).parent().find('.tabContent');
-        var i = $(this).find('i');
-        var tabDisplay = tabContent.css('display');
-        if (tabDisplay == 'block') {
-            i.removeClass('fa-minus-square');
-            i.addClass('fa-plus-square');
-            tabContent.slideUp(200);
-        } else {
-            i.removeClass('fa-plus-square');
-            i.addClass('fa-minus-square');
-            tabContent.slideDown(200);
-        }
-    });
-
-    $('.product-tab-header li').click(function () {
-        var body = $("html, body");
-        var sticky = $('.product-tab').offset().top;
-        body.animate({scrollTop: sticky - 50}, 500);
-
-        $('.product-tab-header li').removeClass('active');
-        $(this).addClass('active');
-        var index = $(this).index();
-        $('.item-tab').hide();
-        $('.item-tab').eq(index).fadeIn();
-    });
-
-
-</script><!--item-tab 1-->
 <style>
     .tabContent {
         padding: 29px;

@@ -9,19 +9,21 @@ class model_addcomment extends Model
 
     function index($productId)
     {
-        Model::sesionInit();
-        $userId = $this->userId = Model::sessionOnGet('UserId');
-
         $productInfo = $this->getProductInfo($productId);
         $sql = 'SELECT * FROM comment_param_tbl WHERE idcategory=?';
         $result = $this->doSelect($sql, [$productInfo['idcategory']]);
+        return $result;
+    }
 
+    function getComment($productId)
+    {
+        Model::sesionInit();
+        $userId = $this->userId = Model::sessionOnGet('UserId');
 
         $getsql = 'SELECT * FROM comment_tbl WHERE user_id=? AND idproduct=?';
         $getParam = [$userId, $productId];
         $comment = $this->doSelect($getsql, $getParam, 'fetch');
-
-        return [$result, $comment];
+        return $comment;
     }
 
     function getProductInfo($productId)
@@ -31,7 +33,7 @@ class model_addcomment extends Model
         return $result;
     }
 
-    function setComment($data)
+    function setComment($data, $productId)
     {
         Model::sesionInit();
         $userId = $this->userId = Model::sessionOnGet('UserId');
@@ -42,10 +44,9 @@ class model_addcomment extends Model
         $posotive = $data['posotive'];
         $negative = $data['negative'];
         $content = $data['content'];
-        $productId = $data['productId'];
         $date = $data['date'];
-        $indexData = $this->index($productId);
-        $commentParam = $indexData[0];
+        $commentParam = $this->index($productId);
+        $comment = $this->getComment($productId);
         $values = [];
         foreach ($commentParam as $row) {
             $paramId = $row['id'];
@@ -57,15 +58,16 @@ class model_addcomment extends Model
         $negative = serialize($negative);
         $values = serialize($values);
 
-        if (isset($indexData[1])) {
+        if (count($comment) > 1) {
             $sql = 'UPDATE comment_tbl SET title=?, content=?, date=?, posotive=?, negative=?, params=? WHERE user_id=? AND idproduct=?';
-            $params = [ $title, $content, $date, $posotive, $negative, $values ,$userId , $productId];
+            $params = [$title, $content, $date, $posotive, $negative, $values, $userId, $productId];
         } else {
             $sql = 'INSERT INTO comment_tbl (user_id, title, content, date, posotive, negative, idproduct, params) VALUES (?,?,?,?,?,?,?,?)';
             $params = [$userId, $title, $content, $date, $posotive, $negative, $productId, $values];
         }
 
         $this->idu($sql, $params);
+
         header('location:' . URL . 'addcomment/index/' . $productId);
     }
 

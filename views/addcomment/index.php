@@ -196,7 +196,7 @@
         $commentRight = array_slice($commentParam, 0, $commentParamRight);
         $commentLeft = array_slice($commentParam, $commentParamRight, $commentParamLeft);
         ?>
-        <form action="<?= URL ?>addcomment/setComment" method="post">
+        <form action="<?= URL ?>addcomment/setComment/<?= $productInfo['id'] ?>" method="post">
             <div class="innerContent">
                 <div class="right">
                     <div class="pic"><img src="public/img/product gallery/<?= $productInfo['id'] ?>/product350.jpg">
@@ -243,36 +243,61 @@
                     <label>
                         عنوان نقد و بررسی شما (اجباری)
                     </label>
-                    <input name="title" maxlength="50" value="<?= $comment['title'] ?>">
+                    <input name="title" maxlength="50" value="<?= @$comment['title'] ?>">
                     <div class="pos-neg">
                         <div class="right">
                             <?php
-                            $posotive = unserialize($comment['posotive']);
-                            foreach ($posotive as $pos) {
+                            if (isset($comment['posotive'])) {
+                                $posotive = unserialize($comment['posotive']);
+                                foreach ($posotive as $pos) {
+                                    ?>
+                                    <div class="pos">
+                                        <label>
+                                            نقاط قوت
+                                        </label>
+                                        <input name="posotive[]" maxlength="25" value="<?= $pos ?>">
+                                        <i class="fas fa-plus-circle" onclick="plus(plus, this)"></i>
+                                        <i class="fas fa-minus-circle" onclick="minus(plus, this)"></i>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
                                 ?>
                                 <div class="pos">
                                     <label>
                                         نقاط قوت
                                     </label>
-                                    <input name="posotive[]" maxlength="25" value="<?= $pos ?>">
+                                    <input name="posotive[]" maxlength="25">
                                     <i class="fas fa-plus-circle" onclick="plus(plus, this)"></i>
                                     <i class="fas fa-minus-circle" onclick="minus(plus, this)"></i>
                                 </div>
                                 <?php
                             }
                             ?>
-
                         </div>
                         <div class="left">
                             <?php
-                            $negative = unserialize($comment['negative']);
-                            foreach ($negative as $neg) {
+                            if (isset($comment['negative'])) {
+                                $negative = unserialize($comment['negative']);
+                                foreach ($negative as $neg) {
+                                    ?>
+                                    <div class="neg">
+                                        <label>
+                                            نقاط ضعف
+                                        </label>
+                                        <input name="negative[]" maxlength="25" value="<?= $neg ?>">
+                                        <i class="fas fa-plus-circle" onclick="plus(negative, this)"></i>
+                                        <i class="fas fa-minus-circle" onclick="minus(negative, this)"></i>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
                                 ?>
                                 <div class="neg">
                                     <label>
                                         نقاط ضعف
                                     </label>
-                                    <input name="negative[]" maxlength="25" value="<?= $neg ?>">
+                                    <input name="negative[]" maxlength="25">
                                     <i class="fas fa-plus-circle" onclick="plus(negative, this)"></i>
                                     <i class="fas fa-minus-circle" onclick="minus(negative, this)"></i>
                                 </div>

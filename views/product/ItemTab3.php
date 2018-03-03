@@ -13,9 +13,9 @@
         $getComment = $data[3];
 
         $avarageRateTotal = 0;
-        $commentCount = count($comment_params);
+        @$commentCount = count($comment_params);
         foreach ($comment_params as $param) {
-            $avarage_rate = $comment_params_rate[$param['id']];
+            @$avarage_rate = $comment_params_rate[$param['id']];
             $full_rate = floor($avarage_rate);
             $part_rate = 100 * ($avarage_rate - $full_rate);
 //            print_r($part_rate);
@@ -51,7 +51,7 @@
             </div>
             <?php
         }
-        $avarageRateTotal = $avarageRateTotal / $commentCount;
+        @$avarageRateTotal = @$avarageRateTotal / @$commentCount;
         ?>
     </div><!--comment-rate-->
     <div class="set-comment">

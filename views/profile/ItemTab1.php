@@ -26,10 +26,6 @@
     </table>
 </div><!--item-tab 1-->
 <script>
-    function moreDetaile(tag) {
-        $(tag).find('i').toggleClass('rotate');
-        $(tag).parents('tr').next().slideToggle(200);
-    }
 
     $('.messageLi').click(function () {
         var refresh = '<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>';
