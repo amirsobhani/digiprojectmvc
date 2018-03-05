@@ -34,6 +34,12 @@ class Profile extends Controller
         $this->View('profile/EditProfile', $data);
     }
 
+    function ChangePass()
+    {
+        $oldPass = $this->model->ChangePass();
+        $this->View('profile/ChangePass');
+    }
+
     function getCity()
     {
         $city = $this->model->getCity($_POST);

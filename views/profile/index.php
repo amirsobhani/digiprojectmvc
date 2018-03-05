@@ -402,7 +402,7 @@ $orderCount = $data['orderCount'];
                     </tr>
                 </table><!---Table--->
                 <div class="report-button-container">
-                    <a><span>ویرایش اطلاعات</span></a>
+                    <a href="profile/EditProfile"><span>ویرایش اطلاعات</span></a>
                     <a><span>تغییر کلمه عبور</span></a>
                 </div>
             </div>

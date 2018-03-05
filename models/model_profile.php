@@ -86,5 +86,22 @@ class model_profile extends Model
         return $result;
     }
 
+    function ChangePass($data)
+    {
+        $newPass1 = $data['1NewPass'];
+        $newPass2 = $data['2NewPass'];
+        $oldPassResult = $this->getUserInfo();
+        if ($oldPassResult['password'] == $data['oldPass']) {
+            if ($newPass1 == $newPass2) {
+
+            } else {
+
+            }
+
+        } else {
+
+        }
+    }
+
 
 }
