@@ -252,8 +252,8 @@ $address = $data['address'];
                     <div class="address">
                         <div class="address-name">
                             <h3><?= $row['user_name'] ?></h3>
-                            <i onclick="deleteAddress(<?= $row['id'] ?>)" class="fa fa-close" aria-hidden="true"></i>
-                            <i onclick="editAddress(<?= $row['id'] ?>)" class="fa fa-pencil" aria-hidden="true"></i>
+                            <i onclick="deleteAddress(<?= $row['id'] ?>)" class="far fa-times-circle" aria-hidden="true"></i>
+                            <i onclick="editAddress(<?= $row['id'] ?>)" class="far fa-edit" aria-hidden="true"></i>
                         </div>
                         <div class="location">
                             <div class="address-location">

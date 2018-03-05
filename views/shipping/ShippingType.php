@@ -176,21 +176,21 @@ $cart = $data['cart'];
 
 <div id="ShippingType">
     <div class="head">
-        <i class="fa fa-caret-left" aria-hidden="true"></i>
+        <i class="fas fa-caret-left" aria-hidden="true"></i>
         <h2>
             انتخاب شیوه ارسال
         </h2>
     </div>
     <div class="product-pack">
         <div class="shipment-selection">
-            <i class="fa fa-caret-left" aria-hidden="true"></i>
+            <i class="fas fa-caret-left" aria-hidden="true"></i>
             <h2>
                 لیست مرسوله‌ها
             </h2>
         </div>
         <div class="scroll-slider">
             <h3>محصولاتی که در این مرسوله ارسال می‌شوند: </h3>
-            <div class="scroll-next" onClick="scroll('left',this);"><i class="fa fa-angle-right fa-4x"
+            <div class="scroll-next" onClick="scroll('left',this);"><i class="fas fa-angle-right fa-4x"
                                                                        aria-hidden="true"></i></div>
             <div class="scroll-main">
                 <ul>
@@ -207,7 +207,7 @@ $cart = $data['cart'];
                     ?>
                 </ul>
             </div>
-            <div class="scroll-prev" onClick="scroll('right',this);"><i class="fa fa-angle-left fa-4x"
+            <div class="scroll-prev" onClick="scroll('right',this);"><i class="fas fa-angle-left fa-4x"
                                                                         aria-hidden="true"></i></div>
         </div><!--Scroll Slider-->
         <div class="wrapper-shipping">
@@ -254,7 +254,7 @@ $cart = $data['cart'];
 					</span>
         </div>
         <div class="factor-pack">
-            <i class="fa fa-caret-left"></i>
+            <i class="fas fa-caret-left"></i>
             <p>
                 آیا مایل هستید به همراه این سفارش فاکتور (فقط اقلام عرضه شده توسط دیجی کالا) ارسال شود؟
             </p>
@@ -270,13 +270,13 @@ $cart = $data['cart'];
             </form>
         </div>
         <div class="factor-message-green">
-            <i class="fa fa-tree" aria-hidden="true"></i>
+            <i class="fas fa-tree" aria-hidden="true"></i>
             <p>
                 از شما سپاسگزاریم که با عدم دریافت فاکتور کاغذی به سبز ماندن زمین کمک می کنید.
             </p>
         </div>
         <div class="factor-message-brown">
-            <i class="fa fa-tree" aria-hidden="true"></i>
+            <i class="fas fa-tree" aria-hidden="true"></i>
             <p>
                 بیاییم با عدم دریافت فاکتور کاغذی به سبز ماندن زمین کمک کنیم.
             </p>

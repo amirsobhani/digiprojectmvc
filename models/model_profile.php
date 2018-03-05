@@ -62,5 +62,29 @@ class model_profile extends Model
 
     }
 
+    function getProvince()
+    {
+        $sql = 'SELECT * FROM province';
+        $result = $this->doSelect($sql);
+        return $result;
+    }
+
+    function getCity($data)
+    {
+        $provinceId = $data['province'];
+        $sql = 'SELECT * FROM city WHERE province_id=?';
+        $param = [$provinceId];
+        $result = $this->doSelect($sql, $param);
+        return $result;
+    }
+
+    function getUserInfo()
+    {
+        $userId = $this->userId;
+        $sql = 'SELECT * FROM users_tbl WHERE id=?';
+        $result = $this->doSelect($sql, [$userId], 'fetch');
+        return $result;
+    }
+
 
 }

@@ -24,6 +24,27 @@ class Profile extends Controller
         echo json_encode($message);
     }
 
+    function EditProfile()
+    {
+        error_reporting(E_ERROR | E_PARSE);
+        $province = $this->model->getProvince();
+        $city = $this->model->getCity($_POST);
+        $userInfo = $this->model->getUserInfo();
+        $data = ['province' => $province, 'city' => $city, 'userInfo' => $userInfo];
+        $this->View('profile/EditProfile', $data);
+    }
+
+    function getCity()
+    {
+        $city = $this->model->getCity($_POST);
+        echo json_encode($city);
+    }
+
+    function UpdateProfile()
+    {
+        $this->model->UpdateProfile($_POST);
+    }
+
 }
 
 
