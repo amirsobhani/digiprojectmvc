@@ -86,20 +86,47 @@ class model_profile extends Model
         return $result;
     }
 
+    function UpdateProfile($data)
+    {
+        $email = $data['email'];
+        $family = $data['family'];
+        $code_melli = $data['melliCode'];
+        $tel = $data['tel'];
+        $mobile = $data['mobile'];
+        $birthday = $data['birthday'];
+        $sex = $data['sex'];
+        $province = $data['province'];
+        $city = $data['city'];
+        $credit_card = $data['creditCard'];
+        $feed = $data['feed'];
+
+        $sql = 'UPDATE users_tbl SET email=?, family=?, code_melli=?, tel=?, mobile=?, birthday=?, sex=?, province=?, city=?, credit_card=?, feed=?';
+        $params = [$email, $family, $code_melli, $tel, $mobile, $birthday, $sex, $province, $city, $credit_card, $feed];
+        $this->idu($sql, $params);
+    }
+
     function ChangePass($data)
     {
         $newPass1 = $data['1NewPass'];
         $newPass2 = $data['2NewPass'];
         $oldPassResult = $this->getUserInfo();
+        $userId = $this->userId;
+        $error = '';
+        $success = '';
         if ($oldPassResult['password'] == $data['oldPass']) {
             if ($newPass1 == $newPass2) {
-
+                $sql = 'UPDATE users_tbl SET password=? WHERE id=?';
+                $params = [$newPass1, $userId];
+                $this->idu($sql, $params);
+                $success = 'رمز با موفقیت تغییر یافت';
+                header('location:ChangePass?success=' . $success);
             } else {
-
+                $error = 'تاییدیه رمز جدید مطابقت ندارد';
+                header('location:ChangePass?error=' . $error);
             }
-
         } else {
-
+            $error = 'رمز عبور فعلی را اشتباه وارد کرده اید';
+            header('location:ChangePass?error=' . $error);
         }
     }
 

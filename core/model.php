@@ -12,6 +12,7 @@ class Model
         $dbname = "digiproject_db";
         $attr = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
         self::$conn = new PDO('mysql:host=' . $servername . ';dbname=' . $dbname, $username, $password, $attr);
+        self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     function doSelect($sql, $values = [], $fetch = '', $fetchStyle = PDO::FETCH_ASSOC)

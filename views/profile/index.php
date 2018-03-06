@@ -371,7 +371,7 @@ $orderCount = $data['orderCount'];
                         </td>
                         <td>
                             <span class="title">محل سکونت  :</span>
-                            <span class="_txt"><?= $profile['location'] ?></span>
+                            <span class="_txt"><?= $profile['province'] ?> , <?= $profile['city'] ?></span>
                         </td>
                     </tr>
                     <tr>
@@ -403,7 +403,7 @@ $orderCount = $data['orderCount'];
                 </table><!---Table--->
                 <div class="report-button-container">
                     <a href="profile/EditProfile"><span>ویرایش اطلاعات</span></a>
-                    <a><span>تغییر کلمه عبور</span></a>
+                    <a href="profile/ChangePass"><span>تغییر کلمه عبور</span></a>
                 </div>
             </div>
         </div>

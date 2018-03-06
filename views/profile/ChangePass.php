@@ -212,6 +212,24 @@
         float: left;
     }
 
+    .error {
+        width: 50%;
+        margin: 20px auto;
+        line-height: 60px;
+        border: 1px solid #ef5662;
+        color: #ef5662;
+        border-radius: 4px;
+    }
+
+    .success {
+        width: 50%;
+        margin: 20px auto;
+        line-height: 60px;
+        border: 1px solid #46a349;
+        color: #46a349;
+        border-radius: 4px;
+    }
+
 </style>
 
 <div id="conten">
@@ -219,11 +237,29 @@
         <div class="register-box-icon">
             <i class="fa fa-sign-in fa-5x" aria-hidden="true"></i>
             <h1>تغییر رمز عبور</h1><!--register-box-icon-->
+            <?php
+            if (isset($_GET['error'])){
+                ?>
+                <div class="error">
+                    <h2><?= $_GET['error'] ?></h2>
+                </div>
+            <?php
+            }
+            ?>
+            <?php
+            if (isset($_GET['success'])){
+                ?>
+                <div class="success">
+                    <h2><?= $_GET['success'] ?></h2>
+                </div>
+                <?php
+            }
+            ?>
         </div>
         <div class="register">
             <div id="right-register">
                 <div class="inside-register">
-                    <form action="profile/ChangePass" method="post">
+                    <form action="profile/UpdatePass" method="post">
                         <div class="email-register">
                             <label>رمز عبور فعلی</label>
                             <input name="oldPass" type="password" placeholder="رمز عبور فعلی را وارد کنید"/>
