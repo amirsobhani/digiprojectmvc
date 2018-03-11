@@ -279,6 +279,9 @@
     if (window.location.href === "<?= URL ?>admincategory") {
         $('#category').addClass('menu-open active');
     }
+    if (window.location.href === "<?= URL ?>adminorders") {
+        $('#orders').addClass('menu-open active');
+    }
     if (window.location.href === "<?= URL ?>adminproduct") {
         $('#product').addClass('menu-open active');
         $('#subproduct').addClass('menu-open active');

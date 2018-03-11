@@ -45,6 +45,11 @@
                     <li id="addProduct"><a href="<?= URL ?>adminproduct/addproduct"><i class="fa fa-circle-o"></i>اضافه کردن محصول</a></li>
                 </ul>
             </li>
+            <li id="orders">
+                <a href="<?= URL ?>adminorders">
+                    <i class="fa fa-shopping-basket"></i> <span>سفارشات</span>
+                </a>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>

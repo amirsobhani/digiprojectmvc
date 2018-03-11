@@ -22,15 +22,14 @@
 
     .delPro {
         position: relative;
-        right: -153px;
-        top: -77px;
+        right: -60px;
+        top: -30px;
         float: left;
     }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <?php
 $orders = $data['orders'];
-
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -73,10 +72,10 @@ $orders = $data['orders'];
                         <h3 class="box-title">مدیریت سفارشات</h3>
 
                         <div class="box-body">
-                            <a href="adminproduct/addproduct" class="btn btn-success">
-                                محصول جدید
-                                <i class="fa fa-plus"></i>
-                            </a>
+<!--                            <a href="adminproduct/addproduct" class="btn btn-success">-->
+<!--                                محصول جدید-->
+<!--                                <i class="fa fa-plus"></i>-->
+<!--                            </a>-->
 
                         </div><!--modal btn--->
 
@@ -116,14 +115,13 @@ $orders = $data['orders'];
                                         <td><?= $row['provinceName'] ?> / <?= $row['nameCity'] ?></td>
                                         <td><?= $row['statusTitle'] ?></td>
                                         <td>
-                                            <a class="editPro" href="adminproduct/addproduct/<?= $row['id'] ?>">
+                                            <a class="editPro" href="adminorders/editOrders/<?= $row['id'] ?>">
                                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                         <td class="selPro">
                                             <input name="id[]" value="<?= $row['id'] ?>" type="checkbox"
                                                    class="flat-red"/>
-
                                         </td>
                                     </tr>
                                     <?php

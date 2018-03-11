@@ -13,4 +13,12 @@ class adminorders extends Controller
         $data = ['orders' => $orders];
         $this->AdminView('admin/adminorders/index', $data);
     }
+
+    function editOrders($orderId)
+    {
+        $order = $this->model->getOrder($orderId);
+        $status = $this->model->getStatus();
+        $data = ['order' => $order, 'statusInfo' => $status];
+        $this->AdminView('admin/adminorders/editOrders', $data);
+    }
 }
