@@ -43,16 +43,16 @@
         <!--            جدول ها-->
         <!--            <small>پیشرفته</small>-->
         <!--        <!--        </h1>-->
-                <ol class="breadcrumb" data-id="<?= $categoryInfo['id'] ?>">
-                    <li>
-                        <a href="<?= URL ?>/admincategory/showchild/<?= $categoryInfo['id'] ?>">
-                            <?= $categoryInfo['title'] ?>
-                        </a>
-                    </li>
-                    <li>
-                        <?= $attrInfo[0]['title'] ?>
-                    </li>
-                </ol>
+        <ol class="breadcrumb" data-id="<?= $categoryInfo['id'] ?>">
+            <li>
+                <a href="<?= URL ?>/admincategory/showchild/<?= $categoryInfo['id'] ?>">
+                    <?= $categoryInfo['title'] ?>
+                </a>
+            </li>
+            <li>
+                <?= $attrInfo[0]['title'] ?>
+            </li>
+        </ol>
     </section>
 
     <!-- Main content -->
@@ -74,7 +74,8 @@
                         <div class="box-title">
                         </div>
                     </div><!-- /.box-header -->
-                    <form action="<?= URL ?>admincategory/deleteAttr/<?= @$categoryInfo['id'] ?>/<?= @$attrInfo[0]['id'] ?>" class="tableForm" method="post">
+                    <form action="<?= URL ?>admincategory/deleteAttr/<?= @$categoryInfo['id'] ?>/<?= @$attrInfo[0]['id'] ?>"
+                          class="tableForm" method="post">
                         <button type="submit" class="btn btn-danger delcat"
                         ">
                         حذف
@@ -86,8 +87,11 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>عنوان ویژگی</th>
-                                    <?php if (!isset($attrInfo[0]['title'])) {?>
-                                    <th>ویژگی های فرزند</th>
+                                    <?php if (!isset($attrInfo[0]['title'])) { ?>
+                                        <th>ویژگی های فرزند</th>
+                                    <?php } ?>
+                                    <?php if (isset($attrInfo[0]['title'])) { ?>
+                                        <th>مقادیر پیش فرض</th>
                                     <?php } ?>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
@@ -100,12 +104,15 @@
                                     <tr class="trTitle">
                                         <td class="tdId"><?= $row['id'] ?></td>
                                         <td class="td-title"><?= $row['title'] ?></td>
-                                        <?php if (!isset($attrInfo[0]['title'])) {?>
-                                        <td>
-                                            <a href="<?= URL ?>admincategory/ShowAttr/<?= $categoryInfo['id'] ?>/<?= $row['id'] ?>">
-                                                مشاهده ویژگی ها
-                                            </a>
-                                        </td>
+                                        <?php if (!isset($attrInfo[0]['title'])) { ?>
+                                            <td>
+                                                <a href="<?= URL ?>admincategory/ShowAttr/<?= $categoryInfo['id'] ?>/<?= $row['id'] ?>">
+                                                    مشاهده ویژگی ها
+                                                </a>
+                                            </td>
+                                        <?php } ?>
+                                        <?php if (isset($attrInfo[0]['title'])) { ?>
+                                            <td><a href="<?= URL ?>admincategory/AttrVal/<?= $row['id'] ?>">ویرایش</a></td>
                                         <?php } ?>
                                         <td>
                                             <a class="editAttr" data-toggle="modal" data-target="#modal-edit">
@@ -126,8 +133,11 @@
                                 <tr>
                                     <th>ردیف</th>
                                     <th>عنوان ویژگی</th>
-                                    <?php if (!isset($attrInfo[0]['title'])) {?>
+                                    <?php if (!isset($attrInfo[0]['title'])) { ?>
                                         <th>ویژگی های فرزند</th>
+                                    <?php } ?>
+                                    <?php if (isset($attrInfo[0]['title'])) { ?>
+                                        <th>مقادیر پیش فرض</th>
                                     <?php } ?>
                                     <th>ویرایش</th>
                                     <th>انتخاب</th>
@@ -180,7 +190,7 @@
                             </div>
                             <div class="col-xs-12">
                                 <input hidden name="idcategory" value="<?= $categoryInfo['id'] ?>">
-                                <div >
+                                <div>
                                     <label>انتخاب ویژگی مادر :</label>
                                     <select class="form-control select2 main-category" name="parent"
                                             style="width: 100%;">
@@ -188,7 +198,7 @@
                                         foreach ($attrParent as $row) {
                                             if ($row['id'] == $attrInfo[0]['id']) {
                                                 $x = 'selected';
-                                            }else{
+                                            } else {
                                                 $x = '';
                                             }
                                             ?>
@@ -229,9 +239,10 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <form id="edit-form" action="" method="post">
-                            <div class="col-xs-12" >
+                            <div class="col-xs-12">
                                 <label>عنوان ویژگی :</label>
-                                <input id="attr-title" value="" type="text"  class="form-control" placeholder="عنوان ویژگی" name="title">
+                                <input id="attr-title" value="" type="text" class="form-control"
+                                       placeholder="عنوان ویژگی" name="title">
                                 <input hidden value="" name="id" id="attr-id">
                             </div>
                             <div class="col-xs-12">
@@ -258,7 +269,7 @@
                                         foreach ($attrParent as $row) {
                                             if ($row['id'] == $attrInfo[0]['id']) {
                                                 $x = 'selected';
-                                            }else{
+                                            } else {
                                                 $x = '';
                                             }
                                             ?>

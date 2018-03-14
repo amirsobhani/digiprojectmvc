@@ -92,7 +92,12 @@ class admincategory extends Controller
         if ($idcategory == 0) {
             header('location:' . URL . 'admincategory');
         } else {
-            header('location:' . URL . 'admincategory/ShowAttr/' . $idcategory . '/' . $parentId );
+            header('location:' . URL . 'admincategory/ShowAttr/' . $idcategory . '/' . $parentId);
         }
+    }
+
+    function AttrVal($attrId)
+    {
+        $this->AdminView('admin/admincategory/AttrVal');
     }
 }
