@@ -149,7 +149,7 @@ class model_admincategory extends Model
         $id = $data['id'];
         $parent = $data['parent'];
         $sql = 'UPDATE attr_tbl SET title=?,idcategory=?,parent=? WHERE id=?';
-        $value = [$title,$categoryId, $parent, $id];
+        $value = [$title, $categoryId, $parent, $id];
         $this->idu($sql, $value);
     }
 
@@ -177,6 +177,28 @@ class model_admincategory extends Model
             }
         }
         return $all_child;
+    }
+
+    function getAttrVal($attrId)
+    {
+        $sql = 'SELECT * FROM attr_val_tbl WHERE attrId=?';
+        $result = $this->doSelect($sql, [$attrId], 'fetch');
+        return $result;
+    }
+
+    function addOrUpdate($attrId, $data, $job)
+    {
+        if ($job == 'update') {
+            $data = array_filter($data);
+            $data = serialize($data);
+            $sql = 'UPDATE attr_val_tbl SET value=? WHERE attrId=?';
+            $this->idu($sql, [$data, $attrId]);
+        } else {
+            $data = array_filter($data);
+            $data = serialize($data);
+            $sql = 'INSERT INTO attr_val_tbl (attrId, value) VALUES (?,?)';
+            $this->idu($sql, [$attrId, $data]);
+        }
     }
 }
 

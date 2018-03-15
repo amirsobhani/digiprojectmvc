@@ -72,8 +72,25 @@
         border: 1px solid #ccc;
         width: 85%;
     }
+    form button{
+        background-color: #00a65a;
+        border-color: #008d4c;
+        color: #fff0ff;
+        border-radius: 3px;
+        float: left;
+        margin: 0 0 50px 100px;
+        padding: 5px 20px;
+    }
 </style>
-
+<?php
+$attrVal = $data['attrVal'];
+$attrParentId = $data['attrParentId'];
+if (isset($attrVal['value'])){
+    $job = 'update';
+}else{
+    $job = 'insert';
+}
+?>
 <div class="content-wrapper">
     <section class="content-header">
 
@@ -82,8 +99,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <form action="" method="post"
-                          enctype="multipart/form-data">
+                    <form action="<?= URL ?>admincategory/addOrUpdate/<?= $attrParentId ?>/<?= $job ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>توضیحات :</label>
                             <p>
@@ -92,34 +108,32 @@
                             <div class="pos-neg">
                                 <div class="right">
                                     <?php
-                                    if (isset($comment['posotive'])) {
-                                        $posotive = unserialize($comment['posotive']);
-                                        foreach ($posotive as $pos) {
+                                    $attrValue = unserialize($attrVal['value']);
+                                    if (isset($attrValue)) {
+                                        foreach ($attrValue as $row) {
                                             ?>
                                             <div class="pos">
                                                 <label>
                                                     ویژگی
                                                 </label>
-                                                <input name="posotive[]" maxlength="25" value="<?= $pos ?>">
+                                                <input name="attrValue[]" maxlength="25" value="<?= @$row ?>">
                                                 <i class="fa fa-plus-circle" onclick="plus(plus, this)"></i>
                                                 <i class="fa fa-minus-circle" onclick="minus(plus, this)"></i>
                                             </div>
                                             <?php
                                         }
-                                    } else {
-                                        ?>
-                                        <div class="pos">
-                                            <label>ویژگی</label>
-                                            <input name="posotive[]" maxlength="25">
-                                            <i class="fa fa-plus-circle" onclick="plus(plus, this)"></i>
-                                            <i class="fa fa-minus-circle" onclick="minus(plus, this)"></i>
-                                        </div>
-                                        <?php
                                     }
                                     ?>
+                                    <div class="pos">
+                                        <label>ویژگی</label>
+                                        <input name="attrValue[]" maxlength="25">
+                                        <i class="fa fa-plus-circle" onclick="plus(plus, this)"></i>
+                                        <i class="fa fa-minus-circle" onclick="minus(plus, this)"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <button>ثبت اطلاعات</button>
                     </form>
                     <!-- /.box -->
                 </div>
@@ -129,12 +143,10 @@
     </section>
 </div>
 <script>
-    var negative;
-
 
     function plus(mood, tag) {
         if (mood == plus) {
-            var addInputPlus = '<div class="pos"><label>  ویژگی  </label><input name="posotive[]" maxlength="25"><i class="fa fa-plus-circle" onclick="plus(plus, this)"></i>  <i class="fa fa-minus-circle" onclick="minus(plus, this)"></i>  </div>';
+            var addInputPlus = '<div class="pos"> <label>ویژگی</label> <input name="attrValue[]" maxlength="25"> <i class="fa fa-plus-circle" onclick="plus(plus, this)"></i>  <i class="fa fa-minus-circle" onclick="minus(plus, this)"></i>  </div>';
             $(tag).parents('.right').append(addInputPlus);
         }
     }

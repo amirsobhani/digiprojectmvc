@@ -98,6 +98,15 @@ class admincategory extends Controller
 
     function AttrVal($attrId)
     {
-        $this->AdminView('admin/admincategory/AttrVal');
+        error_reporting(E_ERROR | E_PARSE);
+        $attrVal = $this->model->getAttrVal($attrId);
+        $data = ['attrVal' => $attrVal, 'attrParentId' => $attrId];
+        $this->AdminView('admin/admincategory/AttrVal', $data);
+    }
+
+    function addOrUpdate($attrId, $job)
+    {
+        $this->model->addOrUpdate($attrId, $_POST['attrValue'], $job);
+        header('location:' . URL . 'admincategory/AttrVal/' . $attrId . '');
     }
 }
